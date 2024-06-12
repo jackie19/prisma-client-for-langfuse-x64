@@ -193,8 +193,12 @@ exports.Prisma.LlmApiKeysScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   provider: 'provider',
+  adapter: 'adapter',
   displaySecretKey: 'displaySecretKey',
   secretKey: 'secretKey',
+  baseURL: 'baseURL',
+  customModels: 'customModels',
+  withDefaultModels: 'withDefaultModels',
   projectId: 'projectId'
 };
 
@@ -424,6 +428,7 @@ exports.Prisma.EvalTemplateScalarFieldEnum = {
   version: 'version',
   prompt: 'prompt',
   model: 'model',
+  provider: 'provider',
   modelParams: 'modelParams',
   vars: 'vars',
   outputSchema: 'outputSchema'

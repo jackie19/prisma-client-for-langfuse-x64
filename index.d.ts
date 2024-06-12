@@ -10211,8 +10211,11 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     provider: string | null
+    adapter: string | null
     displaySecretKey: string | null
     secretKey: string | null
+    baseURL: string | null
+    withDefaultModels: boolean | null
     projectId: string | null
   }
 
@@ -10221,8 +10224,11 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     provider: string | null
+    adapter: string | null
     displaySecretKey: string | null
     secretKey: string | null
+    baseURL: string | null
+    withDefaultModels: boolean | null
     projectId: string | null
   }
 
@@ -10231,8 +10237,12 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     provider: number
+    adapter: number
     displaySecretKey: number
     secretKey: number
+    baseURL: number
+    customModels: number
+    withDefaultModels: number
     projectId: number
     _all: number
   }
@@ -10243,8 +10253,11 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     provider?: true
+    adapter?: true
     displaySecretKey?: true
     secretKey?: true
+    baseURL?: true
+    withDefaultModels?: true
     projectId?: true
   }
 
@@ -10253,8 +10266,11 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     provider?: true
+    adapter?: true
     displaySecretKey?: true
     secretKey?: true
+    baseURL?: true
+    withDefaultModels?: true
     projectId?: true
   }
 
@@ -10263,8 +10279,12 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     provider?: true
+    adapter?: true
     displaySecretKey?: true
     secretKey?: true
+    baseURL?: true
+    customModels?: true
+    withDefaultModels?: true
     projectId?: true
     _all?: true
   }
@@ -10346,8 +10366,12 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL: string | null
+    customModels: string[]
+    withDefaultModels: boolean
     projectId: string
     _count: LlmApiKeysCountAggregateOutputType | null
     _min: LlmApiKeysMinAggregateOutputType | null
@@ -10373,8 +10397,12 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     provider?: boolean
+    adapter?: boolean
     displaySecretKey?: boolean
     secretKey?: boolean
+    baseURL?: boolean
+    customModels?: boolean
+    withDefaultModels?: boolean
     projectId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["llmApiKeys"]>
@@ -10384,8 +10412,12 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     provider?: boolean
+    adapter?: boolean
     displaySecretKey?: boolean
     secretKey?: boolean
+    baseURL?: boolean
+    customModels?: boolean
+    withDefaultModels?: boolean
     projectId?: boolean
   }
 
@@ -10405,8 +10437,12 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       provider: string
+      adapter: string
       displaySecretKey: string
       secretKey: string
+      baseURL: string | null
+      customModels: string[]
+      withDefaultModels: boolean
       projectId: string
     }, ExtArgs["result"]["llmApiKeys"]>
     composites: {}
@@ -10807,8 +10843,12 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"LlmApiKeys", 'DateTime'>
     readonly updatedAt: FieldRef<"LlmApiKeys", 'DateTime'>
     readonly provider: FieldRef<"LlmApiKeys", 'String'>
+    readonly adapter: FieldRef<"LlmApiKeys", 'String'>
     readonly displaySecretKey: FieldRef<"LlmApiKeys", 'String'>
     readonly secretKey: FieldRef<"LlmApiKeys", 'String'>
+    readonly baseURL: FieldRef<"LlmApiKeys", 'String'>
+    readonly customModels: FieldRef<"LlmApiKeys", 'String[]'>
+    readonly withDefaultModels: FieldRef<"LlmApiKeys", 'Boolean'>
     readonly projectId: FieldRef<"LlmApiKeys", 'String'>
   }
     
@@ -27277,6 +27317,7 @@ export namespace Prisma {
     version: number | null
     prompt: string | null
     model: string | null
+    provider: string | null
   }
 
   export type EvalTemplateMaxAggregateOutputType = {
@@ -27288,6 +27329,7 @@ export namespace Prisma {
     version: number | null
     prompt: string | null
     model: string | null
+    provider: string | null
   }
 
   export type EvalTemplateCountAggregateOutputType = {
@@ -27299,6 +27341,7 @@ export namespace Prisma {
     version: number
     prompt: number
     model: number
+    provider: number
     modelParams: number
     vars: number
     outputSchema: number
@@ -27323,6 +27366,7 @@ export namespace Prisma {
     version?: true
     prompt?: true
     model?: true
+    provider?: true
   }
 
   export type EvalTemplateMaxAggregateInputType = {
@@ -27334,6 +27378,7 @@ export namespace Prisma {
     version?: true
     prompt?: true
     model?: true
+    provider?: true
   }
 
   export type EvalTemplateCountAggregateInputType = {
@@ -27345,6 +27390,7 @@ export namespace Prisma {
     version?: true
     prompt?: true
     model?: true
+    provider?: true
     modelParams?: true
     vars?: true
     outputSchema?: true
@@ -27446,6 +27492,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonValue
     vars: string[]
     outputSchema: JsonValue
@@ -27479,6 +27526,7 @@ export namespace Prisma {
     version?: boolean
     prompt?: boolean
     model?: boolean
+    provider?: boolean
     modelParams?: boolean
     vars?: boolean
     outputSchema?: boolean
@@ -27496,6 +27544,7 @@ export namespace Prisma {
     version?: boolean
     prompt?: boolean
     model?: boolean
+    provider?: boolean
     modelParams?: boolean
     vars?: boolean
     outputSchema?: boolean
@@ -27524,6 +27573,7 @@ export namespace Prisma {
       version: number
       prompt: string
       model: string
+      provider: string
       modelParams: Prisma.JsonValue
       vars: string[]
       outputSchema: Prisma.JsonValue
@@ -27932,6 +27982,7 @@ export namespace Prisma {
     readonly version: FieldRef<"EvalTemplate", 'Int'>
     readonly prompt: FieldRef<"EvalTemplate", 'String'>
     readonly model: FieldRef<"EvalTemplate", 'String'>
+    readonly provider: FieldRef<"EvalTemplate", 'String'>
     readonly modelParams: FieldRef<"EvalTemplate", 'Json'>
     readonly vars: FieldRef<"EvalTemplate", 'String[]'>
     readonly outputSchema: FieldRef<"EvalTemplate", 'Json'>
@@ -34503,8 +34554,12 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     provider: 'provider',
+    adapter: 'adapter',
     displaySecretKey: 'displaySecretKey',
     secretKey: 'secretKey',
+    baseURL: 'baseURL',
+    customModels: 'customModels',
+    withDefaultModels: 'withDefaultModels',
     projectId: 'projectId'
   };
 
@@ -34785,6 +34840,7 @@ export namespace Prisma {
     version: 'version',
     prompt: 'prompt',
     model: 'model',
+    provider: 'provider',
     modelParams: 'modelParams',
     vars: 'vars',
     outputSchema: 'outputSchema'
@@ -35372,11 +35428,11 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    name?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     password?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
@@ -35389,7 +35445,7 @@ export namespace Prisma {
     projectMemberships?: ProjectMembershipListRelationFilter
     invitations?: MembershipInvitationListRelationFilter
     AuditLog?: AuditLogListRelationFilter
-  }, "id" | "name" | "email">
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -35660,8 +35716,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     updatedAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     provider?: StringFilter<"LlmApiKeys"> | string
+    adapter?: StringFilter<"LlmApiKeys"> | string
     displaySecretKey?: StringFilter<"LlmApiKeys"> | string
     secretKey?: StringFilter<"LlmApiKeys"> | string
+    baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
+    customModels?: StringNullableListFilter<"LlmApiKeys">
+    withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
     projectId?: StringFilter<"LlmApiKeys"> | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
   }
@@ -35671,8 +35731,12 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     provider?: SortOrder
+    adapter?: SortOrder
     displaySecretKey?: SortOrder
     secretKey?: SortOrder
+    baseURL?: SortOrderInput | SortOrder
+    customModels?: SortOrder
+    withDefaultModels?: SortOrder
     projectId?: SortOrder
     project?: ProjectOrderByWithRelationInput
   }
@@ -35686,8 +35750,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     updatedAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     provider?: StringFilter<"LlmApiKeys"> | string
+    adapter?: StringFilter<"LlmApiKeys"> | string
     displaySecretKey?: StringFilter<"LlmApiKeys"> | string
     secretKey?: StringFilter<"LlmApiKeys"> | string
+    baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
+    customModels?: StringNullableListFilter<"LlmApiKeys">
+    withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
     projectId?: StringFilter<"LlmApiKeys"> | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
   }, "id" | "id" | "projectId_provider">
@@ -35697,8 +35765,12 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     provider?: SortOrder
+    adapter?: SortOrder
     displaySecretKey?: SortOrder
     secretKey?: SortOrder
+    baseURL?: SortOrderInput | SortOrder
+    customModels?: SortOrder
+    withDefaultModels?: SortOrder
     projectId?: SortOrder
     _count?: LlmApiKeysCountOrderByAggregateInput
     _max?: LlmApiKeysMaxOrderByAggregateInput
@@ -35713,8 +35785,12 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"LlmApiKeys"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"LlmApiKeys"> | Date | string
     provider?: StringWithAggregatesFilter<"LlmApiKeys"> | string
+    adapter?: StringWithAggregatesFilter<"LlmApiKeys"> | string
     displaySecretKey?: StringWithAggregatesFilter<"LlmApiKeys"> | string
     secretKey?: StringWithAggregatesFilter<"LlmApiKeys"> | string
+    baseURL?: StringNullableWithAggregatesFilter<"LlmApiKeys"> | string | null
+    customModels?: StringNullableListFilter<"LlmApiKeys">
+    withDefaultModels?: BoolWithAggregatesFilter<"LlmApiKeys"> | boolean
     projectId?: StringWithAggregatesFilter<"LlmApiKeys"> | string
   }
 
@@ -37131,6 +37207,7 @@ export namespace Prisma {
     version?: IntFilter<"EvalTemplate"> | number
     prompt?: StringFilter<"EvalTemplate"> | string
     model?: StringFilter<"EvalTemplate"> | string
+    provider?: StringFilter<"EvalTemplate"> | string
     modelParams?: JsonFilter<"EvalTemplate">
     vars?: StringNullableListFilter<"EvalTemplate">
     outputSchema?: JsonFilter<"EvalTemplate">
@@ -37147,6 +37224,7 @@ export namespace Prisma {
     version?: SortOrder
     prompt?: SortOrder
     model?: SortOrder
+    provider?: SortOrder
     modelParams?: SortOrder
     vars?: SortOrder
     outputSchema?: SortOrder
@@ -37167,6 +37245,7 @@ export namespace Prisma {
     version?: IntFilter<"EvalTemplate"> | number
     prompt?: StringFilter<"EvalTemplate"> | string
     model?: StringFilter<"EvalTemplate"> | string
+    provider?: StringFilter<"EvalTemplate"> | string
     modelParams?: JsonFilter<"EvalTemplate">
     vars?: StringNullableListFilter<"EvalTemplate">
     outputSchema?: JsonFilter<"EvalTemplate">
@@ -37183,6 +37262,7 @@ export namespace Prisma {
     version?: SortOrder
     prompt?: SortOrder
     model?: SortOrder
+    provider?: SortOrder
     modelParams?: SortOrder
     vars?: SortOrder
     outputSchema?: SortOrder
@@ -37205,6 +37285,7 @@ export namespace Prisma {
     version?: IntWithAggregatesFilter<"EvalTemplate"> | number
     prompt?: StringWithAggregatesFilter<"EvalTemplate"> | string
     model?: StringWithAggregatesFilter<"EvalTemplate"> | string
+    provider?: StringWithAggregatesFilter<"EvalTemplate"> | string
     modelParams?: JsonWithAggregatesFilter<"EvalTemplate">
     vars?: StringNullableListFilter<"EvalTemplate">
     outputSchema?: JsonWithAggregatesFilter<"EvalTemplate">
@@ -38359,8 +38440,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
     project: ProjectCreateNestedOneWithoutLlmApiKeysInput
   }
 
@@ -38369,8 +38454,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
     projectId: string
   }
 
@@ -38379,8 +38468,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
     project?: ProjectUpdateOneRequiredWithoutLlmApiKeysNestedInput
   }
 
@@ -38389,8 +38482,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
     projectId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -38399,8 +38496,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
     projectId: string
   }
 
@@ -38409,8 +38510,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type LlmApiKeysUncheckedUpdateManyInput = {
@@ -38418,8 +38523,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
     projectId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -39970,6 +40079,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -39986,6 +40096,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -40000,6 +40111,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -40016,6 +40128,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -40031,6 +40144,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -40044,6 +40158,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -40058,6 +40173,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -41413,8 +41529,12 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     provider?: SortOrder
+    adapter?: SortOrder
     displaySecretKey?: SortOrder
     secretKey?: SortOrder
+    baseURL?: SortOrder
+    customModels?: SortOrder
+    withDefaultModels?: SortOrder
     projectId?: SortOrder
   }
 
@@ -41423,8 +41543,11 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     provider?: SortOrder
+    adapter?: SortOrder
     displaySecretKey?: SortOrder
     secretKey?: SortOrder
+    baseURL?: SortOrder
+    withDefaultModels?: SortOrder
     projectId?: SortOrder
   }
 
@@ -41433,8 +41556,11 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     provider?: SortOrder
+    adapter?: SortOrder
     displaySecretKey?: SortOrder
     secretKey?: SortOrder
+    baseURL?: SortOrder
+    withDefaultModels?: SortOrder
     projectId?: SortOrder
   }
 
@@ -42516,6 +42642,7 @@ export namespace Prisma {
     version?: SortOrder
     prompt?: SortOrder
     model?: SortOrder
+    provider?: SortOrder
     modelParams?: SortOrder
     vars?: SortOrder
     outputSchema?: SortOrder
@@ -42534,6 +42661,7 @@ export namespace Prisma {
     version?: SortOrder
     prompt?: SortOrder
     model?: SortOrder
+    provider?: SortOrder
   }
 
   export type EvalTemplateMinOrderByAggregateInput = {
@@ -42545,6 +42673,7 @@ export namespace Prisma {
     version?: SortOrder
     prompt?: SortOrder
     model?: SortOrder
+    provider?: SortOrder
   }
 
   export type EvalTemplateSumOrderByAggregateInput = {
@@ -44016,10 +44145,19 @@ export namespace Prisma {
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutApiKeysInput, ProjectUpdateWithoutApiKeysInput>, ProjectUncheckedUpdateWithoutApiKeysInput>
   }
 
+  export type LlmApiKeysCreatecustomModelsInput = {
+    set: string[]
+  }
+
   export type ProjectCreateNestedOneWithoutLlmApiKeysInput = {
     create?: XOR<ProjectCreateWithoutLlmApiKeysInput, ProjectUncheckedCreateWithoutLlmApiKeysInput>
     connectOrCreate?: ProjectCreateOrConnectWithoutLlmApiKeysInput
     connect?: ProjectWhereUniqueInput
+  }
+
+  export type LlmApiKeysUpdatecustomModelsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type ProjectUpdateOneRequiredWithoutLlmApiKeysNestedInput = {
@@ -46563,6 +46701,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -46577,6 +46716,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -46676,8 +46816,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
   }
 
   export type LlmApiKeysUncheckedCreateWithoutProjectInput = {
@@ -46685,8 +46829,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
   }
 
   export type LlmApiKeysCreateOrConnectWithoutProjectInput = {
@@ -47163,6 +47311,7 @@ export namespace Prisma {
     version?: IntFilter<"EvalTemplate"> | number
     prompt?: StringFilter<"EvalTemplate"> | string
     model?: StringFilter<"EvalTemplate"> | string
+    provider?: StringFilter<"EvalTemplate"> | string
     modelParams?: JsonFilter<"EvalTemplate">
     vars?: StringNullableListFilter<"EvalTemplate">
     outputSchema?: JsonFilter<"EvalTemplate">
@@ -47260,8 +47409,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     updatedAt?: DateTimeFilter<"LlmApiKeys"> | Date | string
     provider?: StringFilter<"LlmApiKeys"> | string
+    adapter?: StringFilter<"LlmApiKeys"> | string
     displaySecretKey?: StringFilter<"LlmApiKeys"> | string
     secretKey?: StringFilter<"LlmApiKeys"> | string
+    baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
+    customModels?: StringNullableListFilter<"LlmApiKeys">
+    withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
     projectId?: StringFilter<"LlmApiKeys"> | string
   }
 
@@ -50817,6 +50970,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -50832,6 +50986,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -50958,6 +51113,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -50973,6 +51129,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -51853,6 +52010,7 @@ export namespace Prisma {
     version: number
     prompt: string
     model: string
+    provider: string
     modelParams: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateCreatevarsInput | string[]
     outputSchema: JsonNullValueInput | InputJsonValue
@@ -51891,8 +52049,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: string
+    adapter: string
     displaySecretKey: string
     secretKey: string
+    baseURL?: string | null
+    customModels?: LlmApiKeysCreatecustomModelsInput | string[]
+    withDefaultModels?: boolean
   }
 
   export type PosthogIntegrationCreateManyProjectInput = {
@@ -52396,6 +52558,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -52410,6 +52573,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -52424,6 +52588,7 @@ export namespace Prisma {
     version?: IntFieldUpdateOperationsInput | number
     prompt?: StringFieldUpdateOperationsInput | string
     model?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
     modelParams?: JsonNullValueInput | InputJsonValue
     vars?: EvalTemplateUpdatevarsInput | string[]
     outputSchema?: JsonNullValueInput | InputJsonValue
@@ -52520,8 +52685,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type LlmApiKeysUncheckedUpdateWithoutProjectInput = {
@@ -52529,8 +52698,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type LlmApiKeysUncheckedUpdateManyWithoutProjectInput = {
@@ -52538,8 +52711,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: StringFieldUpdateOperationsInput | string
+    adapter?: StringFieldUpdateOperationsInput | string
     displaySecretKey?: StringFieldUpdateOperationsInput | string
     secretKey?: StringFieldUpdateOperationsInput | string
+    baseURL?: NullableStringFieldUpdateOperationsInput | string | null
+    customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
+    withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type PosthogIntegrationUpdateWithoutProjectInput = {
