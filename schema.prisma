@@ -4,7 +4,7 @@
 generator client {
     provider        = "prisma-client-js"
     previewFeatures = ["tracing", "views", "relationJoins"]
-    output          = "../src/generated/client"
+    output          = "../src/generated/client/windows"
 }
 
 datasource db {
@@ -65,7 +65,7 @@ model Session {
 
 model User {
     id                 String                 @id @default(cuid())
-    name               String?
+    name               String?                @unique  
     email              String?                @unique
     emailVerified      DateTime?              @map("email_verified")
     password           String?
