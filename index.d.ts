@@ -154,6 +154,11 @@ export type SsoConfig = $Result.DefaultSelection<Prisma.$SsoConfigPayload>
  */
 export type PosthogIntegration = $Result.DefaultSelection<Prisma.$PosthogIntegrationPayload>
 /**
+ * Model BatchExport
+ * 
+ */
+export type BatchExport = $Result.DefaultSelection<Prisma.$BatchExportPayload>
+/**
  * Model TraceView
  * 
  */
@@ -688,6 +693,16 @@ export class PrismaClient<
   get posthogIntegration(): Prisma.PosthogIntegrationDelegate<ExtArgs>;
 
   /**
+   * `prisma.batchExport`: Exposes CRUD operations for the **BatchExport** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BatchExports
+    * const batchExports = await prisma.batchExport.findMany()
+    * ```
+    */
+  get batchExport(): Prisma.BatchExportDelegate<ExtArgs>;
+
+  /**
    * `prisma.traceView`: Exposes CRUD operations for the **TraceView** model.
     * Example usage:
     * ```ts
@@ -1211,6 +1226,7 @@ export namespace Prisma {
     JobExecution: 'JobExecution',
     SsoConfig: 'SsoConfig',
     PosthogIntegration: 'PosthogIntegration',
+    BatchExport: 'BatchExport',
     TraceView: 'TraceView',
     ObservationView: 'ObservationView'
   };
@@ -1229,7 +1245,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'project' | 'apiKey' | 'llmApiKeys' | 'projectMembership' | 'membershipInvitation' | 'traceSession' | 'trace' | 'observation' | 'score' | 'scoreConfig' | 'cronJobs' | 'dataset' | 'datasetItem' | 'datasetRuns' | 'datasetRunItems' | 'events' | 'prompt' | 'model' | 'auditLog' | 'evalTemplate' | 'jobConfiguration' | 'jobExecution' | 'ssoConfig' | 'posthogIntegration' | 'traceView' | 'observationView'
+      modelProps: 'account' | 'session' | 'user' | 'verificationToken' | 'project' | 'apiKey' | 'llmApiKeys' | 'projectMembership' | 'membershipInvitation' | 'traceSession' | 'trace' | 'observation' | 'score' | 'scoreConfig' | 'cronJobs' | 'dataset' | 'datasetItem' | 'datasetRuns' | 'datasetRunItems' | 'events' | 'prompt' | 'model' | 'auditLog' | 'evalTemplate' | 'jobConfiguration' | 'jobExecution' | 'ssoConfig' | 'posthogIntegration' | 'batchExport' | 'traceView' | 'observationView'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -3081,6 +3097,72 @@ export namespace Prisma {
           }
         }
       }
+      BatchExport: {
+        payload: Prisma.$BatchExportPayload<ExtArgs>
+        fields: Prisma.BatchExportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BatchExportFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BatchExportFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          findFirst: {
+            args: Prisma.BatchExportFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BatchExportFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          findMany: {
+            args: Prisma.BatchExportFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>[]
+          }
+          create: {
+            args: Prisma.BatchExportCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          createMany: {
+            args: Prisma.BatchExportCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.BatchExportDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          update: {
+            args: Prisma.BatchExportUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          deleteMany: {
+            args: Prisma.BatchExportDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BatchExportUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.BatchExportUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$BatchExportPayload>
+          }
+          aggregate: {
+            args: Prisma.BatchExportAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateBatchExport>
+          }
+          groupBy: {
+            args: Prisma.BatchExportGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<BatchExportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BatchExportCountArgs<ExtArgs>,
+            result: $Utils.Optional<BatchExportCountAggregateOutputType> | number
+          }
+        }
+      }
       TraceView: {
         payload: Prisma.$TraceViewPayload<ExtArgs>
         fields: Prisma.TraceViewFieldRefs
@@ -3457,6 +3539,7 @@ export namespace Prisma {
     PosthogIntegration: number
     Score: number
     scoreConfig: number
+    BatchExport: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3478,6 +3561,7 @@ export namespace Prisma {
     PosthogIntegration?: boolean | ProjectCountOutputTypeCountPosthogIntegrationArgs
     Score?: boolean | ProjectCountOutputTypeCountScoreArgs
     scoreConfig?: boolean | ProjectCountOutputTypeCountScoreConfigArgs
+    BatchExport?: boolean | ProjectCountOutputTypeCountBatchExportArgs
   }
 
   // Custom InputTypes
@@ -3615,6 +3699,13 @@ export namespace Prisma {
    */
   export type ProjectCountOutputTypeCountScoreConfigArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ScoreConfigWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountBatchExportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BatchExportWhereInput
   }
 
 
@@ -3881,37 +3972,6 @@ export namespace Prisma {
    */
   export type DatasetRunsCountOutputTypeCountDatasetRunItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DatasetRunItemsWhereInput
-  }
-
-
-  /**
-   * Count Type PromptCountOutputType
-   */
-
-  export type PromptCountOutputType = {
-    Observation: number
-  }
-
-  export type PromptCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Observation?: boolean | PromptCountOutputTypeCountObservationArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PromptCountOutputType without action
-   */
-  export type PromptCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PromptCountOutputType
-     */
-    select?: PromptCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PromptCountOutputType without action
-   */
-  export type PromptCountOutputTypeCountObservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ObservationWhereInput
   }
 
 
@@ -8048,6 +8108,7 @@ export namespace Prisma {
     PosthogIntegration?: boolean | Project$PosthogIntegrationArgs<ExtArgs>
     Score?: boolean | Project$ScoreArgs<ExtArgs>
     scoreConfig?: boolean | Project$scoreConfigArgs<ExtArgs>
+    BatchExport?: boolean | Project$BatchExportArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -8079,6 +8140,7 @@ export namespace Prisma {
     PosthogIntegration?: boolean | Project$PosthogIntegrationArgs<ExtArgs>
     Score?: boolean | Project$ScoreArgs<ExtArgs>
     scoreConfig?: boolean | Project$scoreConfigArgs<ExtArgs>
+    BatchExport?: boolean | Project$BatchExportArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -8104,6 +8166,7 @@ export namespace Prisma {
       PosthogIntegration: Prisma.$PosthogIntegrationPayload<ExtArgs>[]
       Score: Prisma.$ScorePayload<ExtArgs>[]
       scoreConfig: Prisma.$ScoreConfigPayload<ExtArgs>[]
+      BatchExport: Prisma.$BatchExportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8511,6 +8574,8 @@ export namespace Prisma {
     Score<T extends Project$ScoreArgs<ExtArgs> = {}>(args?: Subset<T, Project$ScoreArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScorePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     scoreConfig<T extends Project$scoreConfigArgs<ExtArgs> = {}>(args?: Subset<T, Project$scoreConfigArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScoreConfigPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    BatchExport<T extends Project$BatchExportArgs<ExtArgs> = {}>(args?: Subset<T, Project$BatchExportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9210,6 +9275,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ScoreConfigScalarFieldEnum | ScoreConfigScalarFieldEnum[]
+  }
+
+  /**
+   * Project.BatchExport
+   */
+  export type Project$BatchExportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    where?: BatchExportWhereInput
+    orderBy?: BatchExportOrderByWithRelationInput | BatchExportOrderByWithRelationInput[]
+    cursor?: BatchExportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BatchExportScalarFieldEnum | BatchExportScalarFieldEnum[]
   }
 
   /**
@@ -15120,6 +15205,9 @@ export namespace Prisma {
     inputCost: Decimal | null
     outputCost: Decimal | null
     totalCost: Decimal | null
+    calculatedInputCost: Decimal | null
+    calculatedOutputCost: Decimal | null
+    calculatedTotalCost: Decimal | null
   }
 
   export type ObservationSumAggregateOutputType = {
@@ -15129,6 +15217,9 @@ export namespace Prisma {
     inputCost: Decimal | null
     outputCost: Decimal | null
     totalCost: Decimal | null
+    calculatedInputCost: Decimal | null
+    calculatedOutputCost: Decimal | null
+    calculatedTotalCost: Decimal | null
   }
 
   export type ObservationMinAggregateOutputType = {
@@ -15147,6 +15238,7 @@ export namespace Prisma {
     updatedAt: Date | null
     model: string | null
     internalModel: string | null
+    internalModelId: string | null
     promptTokens: number | null
     completionTokens: number | null
     totalTokens: number | null
@@ -15154,6 +15246,9 @@ export namespace Prisma {
     inputCost: Decimal | null
     outputCost: Decimal | null
     totalCost: Decimal | null
+    calculatedInputCost: Decimal | null
+    calculatedOutputCost: Decimal | null
+    calculatedTotalCost: Decimal | null
     completionStartTime: Date | null
     promptId: string | null
   }
@@ -15174,6 +15269,7 @@ export namespace Prisma {
     updatedAt: Date | null
     model: string | null
     internalModel: string | null
+    internalModelId: string | null
     promptTokens: number | null
     completionTokens: number | null
     totalTokens: number | null
@@ -15181,6 +15277,9 @@ export namespace Prisma {
     inputCost: Decimal | null
     outputCost: Decimal | null
     totalCost: Decimal | null
+    calculatedInputCost: Decimal | null
+    calculatedOutputCost: Decimal | null
+    calculatedTotalCost: Decimal | null
     completionStartTime: Date | null
     promptId: string | null
   }
@@ -15202,6 +15301,7 @@ export namespace Prisma {
     updatedAt: number
     model: number
     internalModel: number
+    internalModelId: number
     modelParameters: number
     input: number
     output: number
@@ -15212,6 +15312,9 @@ export namespace Prisma {
     inputCost: number
     outputCost: number
     totalCost: number
+    calculatedInputCost: number
+    calculatedOutputCost: number
+    calculatedTotalCost: number
     completionStartTime: number
     promptId: number
     _all: number
@@ -15225,6 +15328,9 @@ export namespace Prisma {
     inputCost?: true
     outputCost?: true
     totalCost?: true
+    calculatedInputCost?: true
+    calculatedOutputCost?: true
+    calculatedTotalCost?: true
   }
 
   export type ObservationSumAggregateInputType = {
@@ -15234,6 +15340,9 @@ export namespace Prisma {
     inputCost?: true
     outputCost?: true
     totalCost?: true
+    calculatedInputCost?: true
+    calculatedOutputCost?: true
+    calculatedTotalCost?: true
   }
 
   export type ObservationMinAggregateInputType = {
@@ -15252,6 +15361,7 @@ export namespace Prisma {
     updatedAt?: true
     model?: true
     internalModel?: true
+    internalModelId?: true
     promptTokens?: true
     completionTokens?: true
     totalTokens?: true
@@ -15259,6 +15369,9 @@ export namespace Prisma {
     inputCost?: true
     outputCost?: true
     totalCost?: true
+    calculatedInputCost?: true
+    calculatedOutputCost?: true
+    calculatedTotalCost?: true
     completionStartTime?: true
     promptId?: true
   }
@@ -15279,6 +15392,7 @@ export namespace Prisma {
     updatedAt?: true
     model?: true
     internalModel?: true
+    internalModelId?: true
     promptTokens?: true
     completionTokens?: true
     totalTokens?: true
@@ -15286,6 +15400,9 @@ export namespace Prisma {
     inputCost?: true
     outputCost?: true
     totalCost?: true
+    calculatedInputCost?: true
+    calculatedOutputCost?: true
+    calculatedTotalCost?: true
     completionStartTime?: true
     promptId?: true
   }
@@ -15307,6 +15424,7 @@ export namespace Prisma {
     updatedAt?: true
     model?: true
     internalModel?: true
+    internalModelId?: true
     modelParameters?: true
     input?: true
     output?: true
@@ -15317,6 +15435,9 @@ export namespace Prisma {
     inputCost?: true
     outputCost?: true
     totalCost?: true
+    calculatedInputCost?: true
+    calculatedOutputCost?: true
+    calculatedTotalCost?: true
     completionStartTime?: true
     promptId?: true
     _all?: true
@@ -15425,6 +15546,7 @@ export namespace Prisma {
     updatedAt: Date
     model: string | null
     internalModel: string | null
+    internalModelId: string | null
     modelParameters: JsonValue | null
     input: JsonValue | null
     output: JsonValue | null
@@ -15435,6 +15557,9 @@ export namespace Prisma {
     inputCost: Decimal | null
     outputCost: Decimal | null
     totalCost: Decimal | null
+    calculatedInputCost: Decimal | null
+    calculatedOutputCost: Decimal | null
+    calculatedTotalCost: Decimal | null
     completionStartTime: Date | null
     promptId: string | null
     _count: ObservationCountAggregateOutputType | null
@@ -15475,6 +15600,7 @@ export namespace Prisma {
     updatedAt?: boolean
     model?: boolean
     internalModel?: boolean
+    internalModelId?: boolean
     modelParameters?: boolean
     input?: boolean
     output?: boolean
@@ -15485,11 +15611,13 @@ export namespace Prisma {
     inputCost?: boolean
     outputCost?: boolean
     totalCost?: boolean
+    calculatedInputCost?: boolean
+    calculatedOutputCost?: boolean
+    calculatedTotalCost?: boolean
     completionStartTime?: boolean
     promptId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     derivedDatasetItems?: boolean | Observation$derivedDatasetItemsArgs<ExtArgs>
-    prompt?: boolean | Observation$promptArgs<ExtArgs>
     _count?: boolean | ObservationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["observation"]>
 
@@ -15510,6 +15638,7 @@ export namespace Prisma {
     updatedAt?: boolean
     model?: boolean
     internalModel?: boolean
+    internalModelId?: boolean
     modelParameters?: boolean
     input?: boolean
     output?: boolean
@@ -15520,6 +15649,9 @@ export namespace Prisma {
     inputCost?: boolean
     outputCost?: boolean
     totalCost?: boolean
+    calculatedInputCost?: boolean
+    calculatedOutputCost?: boolean
+    calculatedTotalCost?: boolean
     completionStartTime?: boolean
     promptId?: boolean
   }
@@ -15528,7 +15660,6 @@ export namespace Prisma {
   export type ObservationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     derivedDatasetItems?: boolean | Observation$derivedDatasetItemsArgs<ExtArgs>
-    prompt?: boolean | Observation$promptArgs<ExtArgs>
     _count?: boolean | ObservationCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -15538,7 +15669,6 @@ export namespace Prisma {
     objects: {
       project: Prisma.$ProjectPayload<ExtArgs>
       derivedDatasetItems: Prisma.$DatasetItemPayload<ExtArgs>[]
-      prompt: Prisma.$PromptPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -15557,6 +15687,7 @@ export namespace Prisma {
       updatedAt: Date
       model: string | null
       internalModel: string | null
+      internalModelId: string | null
       modelParameters: Prisma.JsonValue | null
       input: Prisma.JsonValue | null
       output: Prisma.JsonValue | null
@@ -15567,6 +15698,9 @@ export namespace Prisma {
       inputCost: Prisma.Decimal | null
       outputCost: Prisma.Decimal | null
       totalCost: Prisma.Decimal | null
+      calculatedInputCost: Prisma.Decimal | null
+      calculatedOutputCost: Prisma.Decimal | null
+      calculatedTotalCost: Prisma.Decimal | null
       completionStartTime: Date | null
       promptId: string | null
     }, ExtArgs["result"]["observation"]>
@@ -15938,8 +16072,6 @@ export namespace Prisma {
 
     derivedDatasetItems<T extends Observation$derivedDatasetItemsArgs<ExtArgs> = {}>(args?: Subset<T, Observation$derivedDatasetItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DatasetItemPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    prompt<T extends Observation$promptArgs<ExtArgs> = {}>(args?: Subset<T, Observation$promptArgs<ExtArgs>>): Prisma__PromptClient<$Result.GetResult<Prisma.$PromptPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15984,6 +16116,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Observation", 'DateTime'>
     readonly model: FieldRef<"Observation", 'String'>
     readonly internalModel: FieldRef<"Observation", 'String'>
+    readonly internalModelId: FieldRef<"Observation", 'String'>
     readonly modelParameters: FieldRef<"Observation", 'Json'>
     readonly input: FieldRef<"Observation", 'Json'>
     readonly output: FieldRef<"Observation", 'Json'>
@@ -15994,6 +16127,9 @@ export namespace Prisma {
     readonly inputCost: FieldRef<"Observation", 'Decimal'>
     readonly outputCost: FieldRef<"Observation", 'Decimal'>
     readonly totalCost: FieldRef<"Observation", 'Decimal'>
+    readonly calculatedInputCost: FieldRef<"Observation", 'Decimal'>
+    readonly calculatedOutputCost: FieldRef<"Observation", 'Decimal'>
+    readonly calculatedTotalCost: FieldRef<"Observation", 'Decimal'>
     readonly completionStartTime: FieldRef<"Observation", 'DateTime'>
     readonly promptId: FieldRef<"Observation", 'String'>
   }
@@ -16321,21 +16457,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DatasetItemScalarFieldEnum | DatasetItemScalarFieldEnum[]
-  }
-
-  /**
-   * Observation.prompt
-   */
-  export type Observation$promptArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Prompt
-     */
-    select?: PromptSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PromptInclude<ExtArgs> | null
-    where?: PromptWhereInput
   }
 
   /**
@@ -24448,8 +24569,6 @@ export namespace Prisma {
     tags?: boolean
     labels?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
-    Observation?: boolean | Prompt$ObservationArgs<ExtArgs>
-    _count?: boolean | PromptCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["prompt"]>
 
   export type PromptSelectScalar = {
@@ -24471,8 +24590,6 @@ export namespace Prisma {
 
   export type PromptInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
-    Observation?: boolean | Prompt$ObservationArgs<ExtArgs>
-    _count?: boolean | PromptCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
@@ -24480,7 +24597,6 @@ export namespace Prisma {
     name: "Prompt"
     objects: {
       project: Prisma.$ProjectPayload<ExtArgs>
-      Observation: Prisma.$ObservationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -24863,8 +24979,6 @@ export namespace Prisma {
 
     project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    Observation<T extends Prompt$ObservationArgs<ExtArgs> = {}>(args?: Subset<T, Prompt$ObservationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ObservationPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -25211,26 +25325,6 @@ export namespace Prisma {
      * Filter which Prompts to delete
      */
     where?: PromptWhereInput
-  }
-
-  /**
-   * Prompt.Observation
-   */
-  export type Prompt$ObservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Observation
-     */
-    select?: ObservationSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ObservationInclude<ExtArgs> | null
-    where?: ObservationWhereInput
-    orderBy?: ObservationOrderByWithRelationInput | ObservationOrderByWithRelationInput[]
-    cursor?: ObservationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ObservationScalarFieldEnum | ObservationScalarFieldEnum[]
   }
 
   /**
@@ -32220,6 +32314,1004 @@ export namespace Prisma {
 
 
   /**
+   * Model BatchExport
+   */
+
+  export type AggregateBatchExport = {
+    _count: BatchExportCountAggregateOutputType | null
+    _min: BatchExportMinAggregateOutputType | null
+    _max: BatchExportMaxAggregateOutputType | null
+  }
+
+  export type BatchExportMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    projectId: string | null
+    userId: string | null
+    finishedAt: Date | null
+    expiresAt: Date | null
+    name: string | null
+    status: string | null
+    format: string | null
+    url: string | null
+    log: string | null
+  }
+
+  export type BatchExportMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    projectId: string | null
+    userId: string | null
+    finishedAt: Date | null
+    expiresAt: Date | null
+    name: string | null
+    status: string | null
+    format: string | null
+    url: string | null
+    log: string | null
+  }
+
+  export type BatchExportCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    projectId: number
+    userId: number
+    finishedAt: number
+    expiresAt: number
+    name: number
+    status: number
+    query: number
+    format: number
+    url: number
+    log: number
+    _all: number
+  }
+
+
+  export type BatchExportMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    projectId?: true
+    userId?: true
+    finishedAt?: true
+    expiresAt?: true
+    name?: true
+    status?: true
+    format?: true
+    url?: true
+    log?: true
+  }
+
+  export type BatchExportMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    projectId?: true
+    userId?: true
+    finishedAt?: true
+    expiresAt?: true
+    name?: true
+    status?: true
+    format?: true
+    url?: true
+    log?: true
+  }
+
+  export type BatchExportCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    projectId?: true
+    userId?: true
+    finishedAt?: true
+    expiresAt?: true
+    name?: true
+    status?: true
+    query?: true
+    format?: true
+    url?: true
+    log?: true
+    _all?: true
+  }
+
+  export type BatchExportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BatchExport to aggregate.
+     */
+    where?: BatchExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BatchExports to fetch.
+     */
+    orderBy?: BatchExportOrderByWithRelationInput | BatchExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BatchExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BatchExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BatchExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BatchExports
+    **/
+    _count?: true | BatchExportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BatchExportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BatchExportMaxAggregateInputType
+  }
+
+  export type GetBatchExportAggregateType<T extends BatchExportAggregateArgs> = {
+        [P in keyof T & keyof AggregateBatchExport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBatchExport[P]>
+      : GetScalarType<T[P], AggregateBatchExport[P]>
+  }
+
+
+
+
+  export type BatchExportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BatchExportWhereInput
+    orderBy?: BatchExportOrderByWithAggregationInput | BatchExportOrderByWithAggregationInput[]
+    by: BatchExportScalarFieldEnum[] | BatchExportScalarFieldEnum
+    having?: BatchExportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BatchExportCountAggregateInputType | true
+    _min?: BatchExportMinAggregateInputType
+    _max?: BatchExportMaxAggregateInputType
+  }
+
+  export type BatchExportGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    projectId: string
+    userId: string
+    finishedAt: Date | null
+    expiresAt: Date | null
+    name: string
+    status: string
+    query: JsonValue
+    format: string
+    url: string | null
+    log: string | null
+    _count: BatchExportCountAggregateOutputType | null
+    _min: BatchExportMinAggregateOutputType | null
+    _max: BatchExportMaxAggregateOutputType | null
+  }
+
+  type GetBatchExportGroupByPayload<T extends BatchExportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BatchExportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BatchExportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BatchExportGroupByOutputType[P]>
+            : GetScalarType<T[P], BatchExportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BatchExportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    projectId?: boolean
+    userId?: boolean
+    finishedAt?: boolean
+    expiresAt?: boolean
+    name?: boolean
+    status?: boolean
+    query?: boolean
+    format?: boolean
+    url?: boolean
+    log?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["batchExport"]>
+
+  export type BatchExportSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    projectId?: boolean
+    userId?: boolean
+    finishedAt?: boolean
+    expiresAt?: boolean
+    name?: boolean
+    status?: boolean
+    query?: boolean
+    format?: boolean
+    url?: boolean
+    log?: boolean
+  }
+
+
+  export type BatchExportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }
+
+
+  export type $BatchExportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BatchExport"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      projectId: string
+      userId: string
+      finishedAt: Date | null
+      expiresAt: Date | null
+      name: string
+      status: string
+      query: Prisma.JsonValue
+      format: string
+      url: string | null
+      log: string | null
+    }, ExtArgs["result"]["batchExport"]>
+    composites: {}
+  }
+
+
+  type BatchExportGetPayload<S extends boolean | null | undefined | BatchExportDefaultArgs> = $Result.GetResult<Prisma.$BatchExportPayload, S>
+
+  type BatchExportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BatchExportFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: BatchExportCountAggregateInputType | true
+    }
+
+  export interface BatchExportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BatchExport'], meta: { name: 'BatchExport' } }
+    /**
+     * Find zero or one BatchExport that matches the filter.
+     * @param {BatchExportFindUniqueArgs} args - Arguments to find a BatchExport
+     * @example
+     * // Get one BatchExport
+     * const batchExport = await prisma.batchExport.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends BatchExportFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportFindUniqueArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one BatchExport that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {BatchExportFindUniqueOrThrowArgs} args - Arguments to find a BatchExport
+     * @example
+     * // Get one BatchExport
+     * const batchExport = await prisma.batchExport.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends BatchExportFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first BatchExport that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportFindFirstArgs} args - Arguments to find a BatchExport
+     * @example
+     * // Get one BatchExport
+     * const batchExport = await prisma.batchExport.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends BatchExportFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportFindFirstArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first BatchExport that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportFindFirstOrThrowArgs} args - Arguments to find a BatchExport
+     * @example
+     * // Get one BatchExport
+     * const batchExport = await prisma.batchExport.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends BatchExportFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more BatchExports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BatchExports
+     * const batchExports = await prisma.batchExport.findMany()
+     * 
+     * // Get first 10 BatchExports
+     * const batchExports = await prisma.batchExport.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const batchExportWithIdOnly = await prisma.batchExport.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends BatchExportFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a BatchExport.
+     * @param {BatchExportCreateArgs} args - Arguments to create a BatchExport.
+     * @example
+     * // Create one BatchExport
+     * const BatchExport = await prisma.batchExport.create({
+     *   data: {
+     *     // ... data to create a BatchExport
+     *   }
+     * })
+     * 
+    **/
+    create<T extends BatchExportCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportCreateArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many BatchExports.
+     *     @param {BatchExportCreateManyArgs} args - Arguments to create many BatchExports.
+     *     @example
+     *     // Create many BatchExports
+     *     const batchExport = await prisma.batchExport.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends BatchExportCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a BatchExport.
+     * @param {BatchExportDeleteArgs} args - Arguments to delete one BatchExport.
+     * @example
+     * // Delete one BatchExport
+     * const BatchExport = await prisma.batchExport.delete({
+     *   where: {
+     *     // ... filter to delete one BatchExport
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends BatchExportDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportDeleteArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one BatchExport.
+     * @param {BatchExportUpdateArgs} args - Arguments to update one BatchExport.
+     * @example
+     * // Update one BatchExport
+     * const batchExport = await prisma.batchExport.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends BatchExportUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportUpdateArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more BatchExports.
+     * @param {BatchExportDeleteManyArgs} args - Arguments to filter BatchExports to delete.
+     * @example
+     * // Delete a few BatchExports
+     * const { count } = await prisma.batchExport.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends BatchExportDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, BatchExportDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BatchExports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BatchExports
+     * const batchExport = await prisma.batchExport.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends BatchExportUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BatchExport.
+     * @param {BatchExportUpsertArgs} args - Arguments to update or create a BatchExport.
+     * @example
+     * // Update or create a BatchExport
+     * const batchExport = await prisma.batchExport.upsert({
+     *   create: {
+     *     // ... data to create a BatchExport
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BatchExport we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends BatchExportUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, BatchExportUpsertArgs<ExtArgs>>
+    ): Prisma__BatchExportClient<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of BatchExports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportCountArgs} args - Arguments to filter BatchExports to count.
+     * @example
+     * // Count the number of BatchExports
+     * const count = await prisma.batchExport.count({
+     *   where: {
+     *     // ... the filter for the BatchExports we want to count
+     *   }
+     * })
+    **/
+    count<T extends BatchExportCountArgs>(
+      args?: Subset<T, BatchExportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BatchExportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BatchExport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BatchExportAggregateArgs>(args: Subset<T, BatchExportAggregateArgs>): Prisma.PrismaPromise<GetBatchExportAggregateType<T>>
+
+    /**
+     * Group by BatchExport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BatchExportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BatchExportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BatchExportGroupByArgs['orderBy'] }
+        : { orderBy?: BatchExportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BatchExportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBatchExportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BatchExport model
+   */
+  readonly fields: BatchExportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BatchExport.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BatchExportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the BatchExport model
+   */ 
+  interface BatchExportFieldRefs {
+    readonly id: FieldRef<"BatchExport", 'String'>
+    readonly createdAt: FieldRef<"BatchExport", 'DateTime'>
+    readonly updatedAt: FieldRef<"BatchExport", 'DateTime'>
+    readonly projectId: FieldRef<"BatchExport", 'String'>
+    readonly userId: FieldRef<"BatchExport", 'String'>
+    readonly finishedAt: FieldRef<"BatchExport", 'DateTime'>
+    readonly expiresAt: FieldRef<"BatchExport", 'DateTime'>
+    readonly name: FieldRef<"BatchExport", 'String'>
+    readonly status: FieldRef<"BatchExport", 'String'>
+    readonly query: FieldRef<"BatchExport", 'Json'>
+    readonly format: FieldRef<"BatchExport", 'String'>
+    readonly url: FieldRef<"BatchExport", 'String'>
+    readonly log: FieldRef<"BatchExport", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BatchExport findUnique
+   */
+  export type BatchExportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter, which BatchExport to fetch.
+     */
+    where: BatchExportWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport findUniqueOrThrow
+   */
+  export type BatchExportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter, which BatchExport to fetch.
+     */
+    where: BatchExportWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport findFirst
+   */
+  export type BatchExportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter, which BatchExport to fetch.
+     */
+    where?: BatchExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BatchExports to fetch.
+     */
+    orderBy?: BatchExportOrderByWithRelationInput | BatchExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BatchExports.
+     */
+    cursor?: BatchExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BatchExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BatchExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BatchExports.
+     */
+    distinct?: BatchExportScalarFieldEnum | BatchExportScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport findFirstOrThrow
+   */
+  export type BatchExportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter, which BatchExport to fetch.
+     */
+    where?: BatchExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BatchExports to fetch.
+     */
+    orderBy?: BatchExportOrderByWithRelationInput | BatchExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BatchExports.
+     */
+    cursor?: BatchExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BatchExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BatchExports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BatchExports.
+     */
+    distinct?: BatchExportScalarFieldEnum | BatchExportScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport findMany
+   */
+  export type BatchExportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter, which BatchExports to fetch.
+     */
+    where?: BatchExportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BatchExports to fetch.
+     */
+    orderBy?: BatchExportOrderByWithRelationInput | BatchExportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BatchExports.
+     */
+    cursor?: BatchExportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BatchExports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BatchExports.
+     */
+    skip?: number
+    distinct?: BatchExportScalarFieldEnum | BatchExportScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport create
+   */
+  export type BatchExportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BatchExport.
+     */
+    data: XOR<BatchExportCreateInput, BatchExportUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport createMany
+   */
+  export type BatchExportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BatchExports.
+     */
+    data: BatchExportCreateManyInput | BatchExportCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BatchExport update
+   */
+  export type BatchExportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BatchExport.
+     */
+    data: XOR<BatchExportUpdateInput, BatchExportUncheckedUpdateInput>
+    /**
+     * Choose, which BatchExport to update.
+     */
+    where: BatchExportWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport updateMany
+   */
+  export type BatchExportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BatchExports.
+     */
+    data: XOR<BatchExportUpdateManyMutationInput, BatchExportUncheckedUpdateManyInput>
+    /**
+     * Filter which BatchExports to update
+     */
+    where?: BatchExportWhereInput
+  }
+
+  /**
+   * BatchExport upsert
+   */
+  export type BatchExportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BatchExport to update in case it exists.
+     */
+    where: BatchExportWhereUniqueInput
+    /**
+     * In case the BatchExport found by the `where` argument doesn't exist, create a new BatchExport with this data.
+     */
+    create: XOR<BatchExportCreateInput, BatchExportUncheckedCreateInput>
+    /**
+     * In case the BatchExport was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BatchExportUpdateInput, BatchExportUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport delete
+   */
+  export type BatchExportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+    /**
+     * Filter which BatchExport to delete.
+     */
+    where: BatchExportWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BatchExport deleteMany
+   */
+  export type BatchExportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BatchExports to delete
+     */
+    where?: BatchExportWhereInput
+  }
+
+  /**
+   * BatchExport without action
+   */
+  export type BatchExportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchExport
+     */
+    select?: BatchExportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BatchExportInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model TraceView
    */
 
@@ -34642,6 +35734,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     model: 'model',
     internalModel: 'internalModel',
+    internalModelId: 'internalModelId',
     modelParameters: 'modelParameters',
     input: 'input',
     output: 'output',
@@ -34652,6 +35745,9 @@ export namespace Prisma {
     inputCost: 'inputCost',
     outputCost: 'outputCost',
     totalCost: 'totalCost',
+    calculatedInputCost: 'calculatedInputCost',
+    calculatedOutputCost: 'calculatedOutputCost',
+    calculatedTotalCost: 'calculatedTotalCost',
     completionStartTime: 'completionStartTime',
     promptId: 'promptId'
   };
@@ -34906,6 +36002,25 @@ export namespace Prisma {
   };
 
   export type PosthogIntegrationScalarFieldEnum = (typeof PosthogIntegrationScalarFieldEnum)[keyof typeof PosthogIntegrationScalarFieldEnum]
+
+
+  export const BatchExportScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    projectId: 'projectId',
+    userId: 'userId',
+    finishedAt: 'finishedAt',
+    expiresAt: 'expiresAt',
+    name: 'name',
+    status: 'status',
+    query: 'query',
+    format: 'format',
+    url: 'url',
+    log: 'log'
+  };
+
+  export type BatchExportScalarFieldEnum = (typeof BatchExportScalarFieldEnum)[keyof typeof BatchExportScalarFieldEnum]
 
 
   export const TraceViewScalarFieldEnum: {
@@ -35549,6 +36664,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationListRelationFilter
     Score?: ScoreListRelationFilter
     scoreConfig?: ScoreConfigListRelationFilter
+    BatchExport?: BatchExportListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
@@ -35575,6 +36691,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationOrderByRelationAggregateInput
     Score?: ScoreOrderByRelationAggregateInput
     scoreConfig?: ScoreConfigOrderByRelationAggregateInput
+    BatchExport?: BatchExportOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -35604,6 +36721,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationListRelationFilter
     Score?: ScoreListRelationFilter
     scoreConfig?: ScoreConfigListRelationFilter
+    BatchExport?: BatchExportListRelationFilter
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
@@ -36129,6 +37247,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Observation"> | Date | string
     model?: StringNullableFilter<"Observation"> | string | null
     internalModel?: StringNullableFilter<"Observation"> | string | null
+    internalModelId?: StringNullableFilter<"Observation"> | string | null
     modelParameters?: JsonNullableFilter<"Observation">
     input?: JsonNullableFilter<"Observation">
     output?: JsonNullableFilter<"Observation">
@@ -36139,11 +37258,13 @@ export namespace Prisma {
     inputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     outputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     totalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: DateTimeNullableFilter<"Observation"> | Date | string | null
     promptId?: StringNullableFilter<"Observation"> | string | null
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     derivedDatasetItems?: DatasetItemListRelationFilter
-    prompt?: XOR<PromptNullableRelationFilter, PromptWhereInput> | null
   }
 
   export type ObservationOrderByWithRelationInput = {
@@ -36163,6 +37284,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     model?: SortOrderInput | SortOrder
     internalModel?: SortOrderInput | SortOrder
+    internalModelId?: SortOrderInput | SortOrder
     modelParameters?: SortOrderInput | SortOrder
     input?: SortOrderInput | SortOrder
     output?: SortOrderInput | SortOrder
@@ -36173,11 +37295,13 @@ export namespace Prisma {
     inputCost?: SortOrderInput | SortOrder
     outputCost?: SortOrderInput | SortOrder
     totalCost?: SortOrderInput | SortOrder
+    calculatedInputCost?: SortOrderInput | SortOrder
+    calculatedOutputCost?: SortOrderInput | SortOrder
+    calculatedTotalCost?: SortOrderInput | SortOrder
     completionStartTime?: SortOrderInput | SortOrder
     promptId?: SortOrderInput | SortOrder
     project?: ProjectOrderByWithRelationInput
     derivedDatasetItems?: DatasetItemOrderByRelationAggregateInput
-    prompt?: PromptOrderByWithRelationInput
   }
 
   export type ObservationWhereUniqueInput = Prisma.AtLeast<{
@@ -36201,6 +37325,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Observation"> | Date | string
     model?: StringNullableFilter<"Observation"> | string | null
     internalModel?: StringNullableFilter<"Observation"> | string | null
+    internalModelId?: StringNullableFilter<"Observation"> | string | null
     modelParameters?: JsonNullableFilter<"Observation">
     input?: JsonNullableFilter<"Observation">
     output?: JsonNullableFilter<"Observation">
@@ -36211,11 +37336,13 @@ export namespace Prisma {
     inputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     outputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     totalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: DateTimeNullableFilter<"Observation"> | Date | string | null
     promptId?: StringNullableFilter<"Observation"> | string | null
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     derivedDatasetItems?: DatasetItemListRelationFilter
-    prompt?: XOR<PromptNullableRelationFilter, PromptWhereInput> | null
   }, "id" | "id_projectId">
 
   export type ObservationOrderByWithAggregationInput = {
@@ -36235,6 +37362,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     model?: SortOrderInput | SortOrder
     internalModel?: SortOrderInput | SortOrder
+    internalModelId?: SortOrderInput | SortOrder
     modelParameters?: SortOrderInput | SortOrder
     input?: SortOrderInput | SortOrder
     output?: SortOrderInput | SortOrder
@@ -36245,6 +37373,9 @@ export namespace Prisma {
     inputCost?: SortOrderInput | SortOrder
     outputCost?: SortOrderInput | SortOrder
     totalCost?: SortOrderInput | SortOrder
+    calculatedInputCost?: SortOrderInput | SortOrder
+    calculatedOutputCost?: SortOrderInput | SortOrder
+    calculatedTotalCost?: SortOrderInput | SortOrder
     completionStartTime?: SortOrderInput | SortOrder
     promptId?: SortOrderInput | SortOrder
     _count?: ObservationCountOrderByAggregateInput
@@ -36274,6 +37405,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Observation"> | Date | string
     model?: StringNullableWithAggregatesFilter<"Observation"> | string | null
     internalModel?: StringNullableWithAggregatesFilter<"Observation"> | string | null
+    internalModelId?: StringNullableWithAggregatesFilter<"Observation"> | string | null
     modelParameters?: JsonNullableWithAggregatesFilter<"Observation">
     input?: JsonNullableWithAggregatesFilter<"Observation">
     output?: JsonNullableWithAggregatesFilter<"Observation">
@@ -36284,6 +37416,9 @@ export namespace Prisma {
     inputCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     outputCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     totalCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: DecimalNullableWithAggregatesFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: DateTimeNullableWithAggregatesFilter<"Observation"> | Date | string | null
     promptId?: StringNullableWithAggregatesFilter<"Observation"> | string | null
   }
@@ -36926,7 +38061,6 @@ export namespace Prisma {
     tags?: StringNullableListFilter<"Prompt">
     labels?: StringNullableListFilter<"Prompt">
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
-    Observation?: ObservationListRelationFilter
   }
 
   export type PromptOrderByWithRelationInput = {
@@ -36944,7 +38078,6 @@ export namespace Prisma {
     tags?: SortOrder
     labels?: SortOrder
     project?: ProjectOrderByWithRelationInput
-    Observation?: ObservationOrderByRelationAggregateInput
   }
 
   export type PromptWhereUniqueInput = Prisma.AtLeast<{
@@ -36966,7 +38099,6 @@ export namespace Prisma {
     tags?: StringNullableListFilter<"Prompt">
     labels?: StringNullableListFilter<"Prompt">
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
-    Observation?: ObservationListRelationFilter
   }, "id" | "projectId_name_version">
 
   export type PromptOrderByWithAggregationInput = {
@@ -37598,6 +38730,101 @@ export namespace Prisma {
     lastSyncAt?: DateTimeNullableWithAggregatesFilter<"PosthogIntegration"> | Date | string | null
     enabled?: BoolWithAggregatesFilter<"PosthogIntegration"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"PosthogIntegration"> | Date | string
+  }
+
+  export type BatchExportWhereInput = {
+    AND?: BatchExportWhereInput | BatchExportWhereInput[]
+    OR?: BatchExportWhereInput[]
+    NOT?: BatchExportWhereInput | BatchExportWhereInput[]
+    id?: StringFilter<"BatchExport"> | string
+    createdAt?: DateTimeFilter<"BatchExport"> | Date | string
+    updatedAt?: DateTimeFilter<"BatchExport"> | Date | string
+    projectId?: StringFilter<"BatchExport"> | string
+    userId?: StringFilter<"BatchExport"> | string
+    finishedAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    name?: StringFilter<"BatchExport"> | string
+    status?: StringFilter<"BatchExport"> | string
+    query?: JsonFilter<"BatchExport">
+    format?: StringFilter<"BatchExport"> | string
+    url?: StringNullableFilter<"BatchExport"> | string | null
+    log?: StringNullableFilter<"BatchExport"> | string | null
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+  }
+
+  export type BatchExportOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectId?: SortOrder
+    userId?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    query?: SortOrder
+    format?: SortOrder
+    url?: SortOrderInput | SortOrder
+    log?: SortOrderInput | SortOrder
+    project?: ProjectOrderByWithRelationInput
+  }
+
+  export type BatchExportWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BatchExportWhereInput | BatchExportWhereInput[]
+    OR?: BatchExportWhereInput[]
+    NOT?: BatchExportWhereInput | BatchExportWhereInput[]
+    createdAt?: DateTimeFilter<"BatchExport"> | Date | string
+    updatedAt?: DateTimeFilter<"BatchExport"> | Date | string
+    projectId?: StringFilter<"BatchExport"> | string
+    userId?: StringFilter<"BatchExport"> | string
+    finishedAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    name?: StringFilter<"BatchExport"> | string
+    status?: StringFilter<"BatchExport"> | string
+    query?: JsonFilter<"BatchExport">
+    format?: StringFilter<"BatchExport"> | string
+    url?: StringNullableFilter<"BatchExport"> | string | null
+    log?: StringNullableFilter<"BatchExport"> | string | null
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+  }, "id">
+
+  export type BatchExportOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectId?: SortOrder
+    userId?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    query?: SortOrder
+    format?: SortOrder
+    url?: SortOrderInput | SortOrder
+    log?: SortOrderInput | SortOrder
+    _count?: BatchExportCountOrderByAggregateInput
+    _max?: BatchExportMaxOrderByAggregateInput
+    _min?: BatchExportMinOrderByAggregateInput
+  }
+
+  export type BatchExportScalarWhereWithAggregatesInput = {
+    AND?: BatchExportScalarWhereWithAggregatesInput | BatchExportScalarWhereWithAggregatesInput[]
+    OR?: BatchExportScalarWhereWithAggregatesInput[]
+    NOT?: BatchExportScalarWhereWithAggregatesInput | BatchExportScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BatchExport"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BatchExport"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BatchExport"> | Date | string
+    projectId?: StringWithAggregatesFilter<"BatchExport"> | string
+    userId?: StringWithAggregatesFilter<"BatchExport"> | string
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"BatchExport"> | Date | string | null
+    expiresAt?: DateTimeNullableWithAggregatesFilter<"BatchExport"> | Date | string | null
+    name?: StringWithAggregatesFilter<"BatchExport"> | string
+    status?: StringWithAggregatesFilter<"BatchExport"> | string
+    query?: JsonWithAggregatesFilter<"BatchExport">
+    format?: StringWithAggregatesFilter<"BatchExport"> | string
+    url?: StringNullableWithAggregatesFilter<"BatchExport"> | string | null
+    log?: StringNullableWithAggregatesFilter<"BatchExport"> | string | null
   }
 
   export type TraceViewWhereInput = {
@@ -38241,6 +39468,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
@@ -38267,6 +39495,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
@@ -38293,6 +39522,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
@@ -38319,6 +39549,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
@@ -38882,6 +40113,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -38892,10 +40124,13 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
+    promptId?: string | null
     project: ProjectCreateNestedOneWithoutObservationsInput
     derivedDatasetItems?: DatasetItemCreateNestedManyWithoutSourceObservationInput
-    prompt?: PromptCreateNestedOneWithoutObservationInput
   }
 
   export type ObservationUncheckedCreateInput = {
@@ -38915,6 +40150,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -38925,6 +40161,9 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
     promptId?: string | null
     derivedDatasetItems?: DatasetItemUncheckedCreateNestedManyWithoutSourceObservationInput
@@ -38946,6 +40185,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -38956,10 +40196,13 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promptId?: NullableStringFieldUpdateOperationsInput | string | null
     project?: ProjectUpdateOneRequiredWithoutObservationsNestedInput
     derivedDatasetItems?: DatasetItemUpdateManyWithoutSourceObservationNestedInput
-    prompt?: PromptUpdateOneWithoutObservationNestedInput
   }
 
   export type ObservationUncheckedUpdateInput = {
@@ -38979,6 +40222,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -38989,6 +40233,9 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     promptId?: NullableStringFieldUpdateOperationsInput | string | null
     derivedDatasetItems?: DatasetItemUncheckedUpdateManyWithoutSourceObservationNestedInput
@@ -39011,6 +40258,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -39021,6 +40269,9 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
     promptId?: string | null
   }
@@ -39041,6 +40292,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -39051,7 +40303,11 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promptId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ObservationUncheckedUpdateManyInput = {
@@ -39071,6 +40327,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -39081,6 +40338,9 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     promptId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -39763,7 +41023,6 @@ export namespace Prisma {
     tags?: PromptCreatetagsInput | string[]
     labels?: PromptCreatelabelsInput | string[]
     project: ProjectCreateNestedOneWithoutPromptInput
-    Observation?: ObservationCreateNestedManyWithoutPromptInput
   }
 
   export type PromptUncheckedCreateInput = {
@@ -39780,7 +41039,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptCreatetagsInput | string[]
     labels?: PromptCreatelabelsInput | string[]
-    Observation?: ObservationUncheckedCreateNestedManyWithoutPromptInput
   }
 
   export type PromptUpdateInput = {
@@ -39797,7 +41055,6 @@ export namespace Prisma {
     tags?: PromptUpdatetagsInput | string[]
     labels?: PromptUpdatelabelsInput | string[]
     project?: ProjectUpdateOneRequiredWithoutPromptNestedInput
-    Observation?: ObservationUpdateManyWithoutPromptNestedInput
   }
 
   export type PromptUncheckedUpdateInput = {
@@ -39814,7 +41071,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptUpdatetagsInput | string[]
     labels?: PromptUpdatelabelsInput | string[]
-    Observation?: ObservationUncheckedUpdateManyWithoutPromptNestedInput
   }
 
   export type PromptCreateManyInput = {
@@ -40503,6 +41759,117 @@ export namespace Prisma {
     lastSyncAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BatchExportCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+    project: ProjectCreateNestedOneWithoutBatchExportInput
+  }
+
+  export type BatchExportUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    projectId: string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+  }
+
+  export type BatchExportUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
+    project?: ProjectUpdateOneRequiredWithoutBatchExportNestedInput
+  }
+
+  export type BatchExportUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BatchExportCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    projectId: string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+  }
+
+  export type BatchExportUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BatchExportUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TraceViewCreateInput = {
@@ -41368,6 +42735,12 @@ export namespace Prisma {
     none?: ScoreConfigWhereInput
   }
 
+  export type BatchExportListRelationFilter = {
+    every?: BatchExportWhereInput
+    some?: BatchExportWhereInput
+    none?: BatchExportWhereInput
+  }
+
   export type TraceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -41425,6 +42798,10 @@ export namespace Prisma {
   }
 
   export type ScoreConfigOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BatchExportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -41780,11 +43157,6 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type PromptNullableRelationFilter = {
-    is?: PromptWhereInput | null
-    isNot?: PromptWhereInput | null
-  }
-
   export type ObservationIdProjectIdCompoundUniqueInput = {
     id: string
     projectId: string
@@ -41807,6 +43179,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     model?: SortOrder
     internalModel?: SortOrder
+    internalModelId?: SortOrder
     modelParameters?: SortOrder
     input?: SortOrder
     output?: SortOrder
@@ -41817,6 +43190,9 @@ export namespace Prisma {
     inputCost?: SortOrder
     outputCost?: SortOrder
     totalCost?: SortOrder
+    calculatedInputCost?: SortOrder
+    calculatedOutputCost?: SortOrder
+    calculatedTotalCost?: SortOrder
     completionStartTime?: SortOrder
     promptId?: SortOrder
   }
@@ -41828,6 +43204,9 @@ export namespace Prisma {
     inputCost?: SortOrder
     outputCost?: SortOrder
     totalCost?: SortOrder
+    calculatedInputCost?: SortOrder
+    calculatedOutputCost?: SortOrder
+    calculatedTotalCost?: SortOrder
   }
 
   export type ObservationMaxOrderByAggregateInput = {
@@ -41846,6 +43225,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     model?: SortOrder
     internalModel?: SortOrder
+    internalModelId?: SortOrder
     promptTokens?: SortOrder
     completionTokens?: SortOrder
     totalTokens?: SortOrder
@@ -41853,6 +43233,9 @@ export namespace Prisma {
     inputCost?: SortOrder
     outputCost?: SortOrder
     totalCost?: SortOrder
+    calculatedInputCost?: SortOrder
+    calculatedOutputCost?: SortOrder
+    calculatedTotalCost?: SortOrder
     completionStartTime?: SortOrder
     promptId?: SortOrder
   }
@@ -41873,6 +43256,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     model?: SortOrder
     internalModel?: SortOrder
+    internalModelId?: SortOrder
     promptTokens?: SortOrder
     completionTokens?: SortOrder
     totalTokens?: SortOrder
@@ -41880,6 +43264,9 @@ export namespace Prisma {
     inputCost?: SortOrder
     outputCost?: SortOrder
     totalCost?: SortOrder
+    calculatedInputCost?: SortOrder
+    calculatedOutputCost?: SortOrder
+    calculatedTotalCost?: SortOrder
     completionStartTime?: SortOrder
     promptId?: SortOrder
   }
@@ -41891,6 +43278,9 @@ export namespace Prisma {
     inputCost?: SortOrder
     outputCost?: SortOrder
     totalCost?: SortOrder
+    calculatedInputCost?: SortOrder
+    calculatedOutputCost?: SortOrder
+    calculatedTotalCost?: SortOrder
   }
 
   export type EnumObservationTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -42918,6 +44308,52 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type BatchExportCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectId?: SortOrder
+    userId?: SortOrder
+    finishedAt?: SortOrder
+    expiresAt?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    query?: SortOrder
+    format?: SortOrder
+    url?: SortOrder
+    log?: SortOrder
+  }
+
+  export type BatchExportMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectId?: SortOrder
+    userId?: SortOrder
+    finishedAt?: SortOrder
+    expiresAt?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    format?: SortOrder
+    url?: SortOrder
+    log?: SortOrder
+  }
+
+  export type BatchExportMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectId?: SortOrder
+    userId?: SortOrder
+    finishedAt?: SortOrder
+    expiresAt?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    format?: SortOrder
+    url?: SortOrder
+    log?: SortOrder
+  }
+
   export type TraceViewCountOrderByAggregateInput = {
     id?: SortOrder
     externalId?: SortOrder
@@ -43501,6 +44937,13 @@ export namespace Prisma {
     connect?: ScoreConfigWhereUniqueInput | ScoreConfigWhereUniqueInput[]
   }
 
+  export type BatchExportCreateNestedManyWithoutProjectInput = {
+    create?: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput> | BatchExportCreateWithoutProjectInput[] | BatchExportUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: BatchExportCreateOrConnectWithoutProjectInput | BatchExportCreateOrConnectWithoutProjectInput[]
+    createMany?: BatchExportCreateManyProjectInputEnvelope
+    connect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+  }
+
   export type ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -43625,6 +45068,13 @@ export namespace Prisma {
     connectOrCreate?: ScoreConfigCreateOrConnectWithoutProjectInput | ScoreConfigCreateOrConnectWithoutProjectInput[]
     createMany?: ScoreConfigCreateManyProjectInputEnvelope
     connect?: ScoreConfigWhereUniqueInput | ScoreConfigWhereUniqueInput[]
+  }
+
+  export type BatchExportUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput> | BatchExportCreateWithoutProjectInput[] | BatchExportUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: BatchExportCreateOrConnectWithoutProjectInput | BatchExportCreateOrConnectWithoutProjectInput[]
+    createMany?: BatchExportCreateManyProjectInputEnvelope
+    connect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
   }
 
   export type ProjectMembershipUpdateManyWithoutProjectNestedInput = {
@@ -43879,6 +45329,20 @@ export namespace Prisma {
     deleteMany?: ScoreConfigScalarWhereInput | ScoreConfigScalarWhereInput[]
   }
 
+  export type BatchExportUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput> | BatchExportCreateWithoutProjectInput[] | BatchExportUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: BatchExportCreateOrConnectWithoutProjectInput | BatchExportCreateOrConnectWithoutProjectInput[]
+    upsert?: BatchExportUpsertWithWhereUniqueWithoutProjectInput | BatchExportUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: BatchExportCreateManyProjectInputEnvelope
+    set?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    disconnect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    delete?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    connect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    update?: BatchExportUpdateWithWhereUniqueWithoutProjectInput | BatchExportUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: BatchExportUpdateManyWithWhereWithoutProjectInput | BatchExportUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: BatchExportScalarWhereInput | BatchExportScalarWhereInput[]
+  }
+
   export type ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -44129,6 +45593,20 @@ export namespace Prisma {
     update?: ScoreConfigUpdateWithWhereUniqueWithoutProjectInput | ScoreConfigUpdateWithWhereUniqueWithoutProjectInput[]
     updateMany?: ScoreConfigUpdateManyWithWhereWithoutProjectInput | ScoreConfigUpdateManyWithWhereWithoutProjectInput[]
     deleteMany?: ScoreConfigScalarWhereInput | ScoreConfigScalarWhereInput[]
+  }
+
+  export type BatchExportUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput> | BatchExportCreateWithoutProjectInput[] | BatchExportUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: BatchExportCreateOrConnectWithoutProjectInput | BatchExportCreateOrConnectWithoutProjectInput[]
+    upsert?: BatchExportUpsertWithWhereUniqueWithoutProjectInput | BatchExportUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: BatchExportCreateManyProjectInputEnvelope
+    set?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    disconnect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    delete?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    connect?: BatchExportWhereUniqueInput | BatchExportWhereUniqueInput[]
+    update?: BatchExportUpdateWithWhereUniqueWithoutProjectInput | BatchExportUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: BatchExportUpdateManyWithWhereWithoutProjectInput | BatchExportUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: BatchExportScalarWhereInput | BatchExportScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutApiKeysInput = {
@@ -44422,12 +45900,6 @@ export namespace Prisma {
     connect?: DatasetItemWhereUniqueInput | DatasetItemWhereUniqueInput[]
   }
 
-  export type PromptCreateNestedOneWithoutObservationInput = {
-    create?: XOR<PromptCreateWithoutObservationInput, PromptUncheckedCreateWithoutObservationInput>
-    connectOrCreate?: PromptCreateOrConnectWithoutObservationInput
-    connect?: PromptWhereUniqueInput
-  }
-
   export type DatasetItemUncheckedCreateNestedManyWithoutSourceObservationInput = {
     create?: XOR<DatasetItemCreateWithoutSourceObservationInput, DatasetItemUncheckedCreateWithoutSourceObservationInput> | DatasetItemCreateWithoutSourceObservationInput[] | DatasetItemUncheckedCreateWithoutSourceObservationInput[]
     connectOrCreate?: DatasetItemCreateOrConnectWithoutSourceObservationInput | DatasetItemCreateOrConnectWithoutSourceObservationInput[]
@@ -44479,16 +45951,6 @@ export namespace Prisma {
     update?: DatasetItemUpdateWithWhereUniqueWithoutSourceObservationInput | DatasetItemUpdateWithWhereUniqueWithoutSourceObservationInput[]
     updateMany?: DatasetItemUpdateManyWithWhereWithoutSourceObservationInput | DatasetItemUpdateManyWithWhereWithoutSourceObservationInput[]
     deleteMany?: DatasetItemScalarWhereInput | DatasetItemScalarWhereInput[]
-  }
-
-  export type PromptUpdateOneWithoutObservationNestedInput = {
-    create?: XOR<PromptCreateWithoutObservationInput, PromptUncheckedCreateWithoutObservationInput>
-    connectOrCreate?: PromptCreateOrConnectWithoutObservationInput
-    upsert?: PromptUpsertWithoutObservationInput
-    disconnect?: PromptWhereInput | boolean
-    delete?: PromptWhereInput | boolean
-    connect?: PromptWhereUniqueInput
-    update?: XOR<XOR<PromptUpdateToOneWithWhereWithoutObservationInput, PromptUpdateWithoutObservationInput>, PromptUncheckedUpdateWithoutObservationInput>
   }
 
   export type DatasetItemUncheckedUpdateManyWithoutSourceObservationNestedInput = {
@@ -44959,20 +46421,6 @@ export namespace Prisma {
     connect?: ProjectWhereUniqueInput
   }
 
-  export type ObservationCreateNestedManyWithoutPromptInput = {
-    create?: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput> | ObservationCreateWithoutPromptInput[] | ObservationUncheckedCreateWithoutPromptInput[]
-    connectOrCreate?: ObservationCreateOrConnectWithoutPromptInput | ObservationCreateOrConnectWithoutPromptInput[]
-    createMany?: ObservationCreateManyPromptInputEnvelope
-    connect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-  }
-
-  export type ObservationUncheckedCreateNestedManyWithoutPromptInput = {
-    create?: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput> | ObservationCreateWithoutPromptInput[] | ObservationUncheckedCreateWithoutPromptInput[]
-    connectOrCreate?: ObservationCreateOrConnectWithoutPromptInput | ObservationCreateOrConnectWithoutPromptInput[]
-    createMany?: ObservationCreateManyPromptInputEnvelope
-    connect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-  }
-
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
   }
@@ -44993,34 +46441,6 @@ export namespace Prisma {
     upsert?: ProjectUpsertWithoutPromptInput
     connect?: ProjectWhereUniqueInput
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutPromptInput, ProjectUpdateWithoutPromptInput>, ProjectUncheckedUpdateWithoutPromptInput>
-  }
-
-  export type ObservationUpdateManyWithoutPromptNestedInput = {
-    create?: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput> | ObservationCreateWithoutPromptInput[] | ObservationUncheckedCreateWithoutPromptInput[]
-    connectOrCreate?: ObservationCreateOrConnectWithoutPromptInput | ObservationCreateOrConnectWithoutPromptInput[]
-    upsert?: ObservationUpsertWithWhereUniqueWithoutPromptInput | ObservationUpsertWithWhereUniqueWithoutPromptInput[]
-    createMany?: ObservationCreateManyPromptInputEnvelope
-    set?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    disconnect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    delete?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    connect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    update?: ObservationUpdateWithWhereUniqueWithoutPromptInput | ObservationUpdateWithWhereUniqueWithoutPromptInput[]
-    updateMany?: ObservationUpdateManyWithWhereWithoutPromptInput | ObservationUpdateManyWithWhereWithoutPromptInput[]
-    deleteMany?: ObservationScalarWhereInput | ObservationScalarWhereInput[]
-  }
-
-  export type ObservationUncheckedUpdateManyWithoutPromptNestedInput = {
-    create?: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput> | ObservationCreateWithoutPromptInput[] | ObservationUncheckedCreateWithoutPromptInput[]
-    connectOrCreate?: ObservationCreateOrConnectWithoutPromptInput | ObservationCreateOrConnectWithoutPromptInput[]
-    upsert?: ObservationUpsertWithWhereUniqueWithoutPromptInput | ObservationUpsertWithWhereUniqueWithoutPromptInput[]
-    createMany?: ObservationCreateManyPromptInputEnvelope
-    set?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    disconnect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    delete?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    connect?: ObservationWhereUniqueInput | ObservationWhereUniqueInput[]
-    update?: ObservationUpdateWithWhereUniqueWithoutPromptInput | ObservationUpdateWithWhereUniqueWithoutPromptInput[]
-    updateMany?: ObservationUpdateManyWithWhereWithoutPromptInput | ObservationUpdateManyWithWhereWithoutPromptInput[]
-    deleteMany?: ObservationScalarWhereInput | ObservationScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutModelInput = {
@@ -45296,6 +46716,20 @@ export namespace Prisma {
     upsert?: ProjectUpsertWithoutPosthogIntegrationInput
     connect?: ProjectWhereUniqueInput
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutPosthogIntegrationInput, ProjectUpdateWithoutPosthogIntegrationInput>, ProjectUncheckedUpdateWithoutPosthogIntegrationInput>
+  }
+
+  export type ProjectCreateNestedOneWithoutBatchExportInput = {
+    create?: XOR<ProjectCreateWithoutBatchExportInput, ProjectUncheckedCreateWithoutBatchExportInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutBatchExportInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutBatchExportNestedInput = {
+    create?: XOR<ProjectCreateWithoutBatchExportInput, ProjectUncheckedCreateWithoutBatchExportInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutBatchExportInput
+    upsert?: ProjectUpsertWithoutBatchExportInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutBatchExportInput, ProjectUpdateWithoutBatchExportInput>, ProjectUncheckedUpdateWithoutBatchExportInput>
   }
 
   export type TraceViewCreatetagsInput = {
@@ -46367,6 +47801,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -46377,9 +47812,12 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
+    promptId?: string | null
     derivedDatasetItems?: DatasetItemCreateNestedManyWithoutSourceObservationInput
-    prompt?: PromptCreateNestedOneWithoutObservationInput
   }
 
   export type ObservationUncheckedCreateWithoutProjectInput = {
@@ -46398,6 +47836,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -46408,6 +47847,9 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
     promptId?: string | null
     derivedDatasetItems?: DatasetItemUncheckedCreateNestedManyWithoutSourceObservationInput
@@ -46588,7 +48030,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptCreatetagsInput | string[]
     labels?: PromptCreatelabelsInput | string[]
-    Observation?: ObservationCreateNestedManyWithoutPromptInput
   }
 
   export type PromptUncheckedCreateWithoutProjectInput = {
@@ -46604,7 +48045,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptCreatetagsInput | string[]
     labels?: PromptCreatelabelsInput | string[]
-    Observation?: ObservationUncheckedCreateNestedManyWithoutPromptInput
   }
 
   export type PromptCreateOrConnectWithoutProjectInput = {
@@ -46957,6 +48397,46 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type BatchExportCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+  }
+
+  export type BatchExportUncheckedCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+  }
+
+  export type BatchExportCreateOrConnectWithoutProjectInput = {
+    where: BatchExportWhereUniqueInput
+    create: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput>
+  }
+
+  export type BatchExportCreateManyProjectInputEnvelope = {
+    data: BatchExportCreateManyProjectInput | BatchExportCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProjectMembershipUpsertWithWhereUniqueWithoutProjectInput = {
     where: ProjectMembershipWhereUniqueInput
     update: XOR<ProjectMembershipUpdateWithoutProjectInput, ProjectMembershipUncheckedUpdateWithoutProjectInput>
@@ -47048,6 +48528,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Observation"> | Date | string
     model?: StringNullableFilter<"Observation"> | string | null
     internalModel?: StringNullableFilter<"Observation"> | string | null
+    internalModelId?: StringNullableFilter<"Observation"> | string | null
     modelParameters?: JsonNullableFilter<"Observation">
     input?: JsonNullableFilter<"Observation">
     output?: JsonNullableFilter<"Observation">
@@ -47058,6 +48539,9 @@ export namespace Prisma {
     inputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     outputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     totalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: DecimalNullableFilter<"Observation"> | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: DateTimeNullableFilter<"Observation"> | Date | string | null
     promptId?: StringNullableFilter<"Observation"> | string | null
   }
@@ -47516,6 +49000,41 @@ export namespace Prisma {
     description?: StringNullableFilter<"ScoreConfig"> | string | null
   }
 
+  export type BatchExportUpsertWithWhereUniqueWithoutProjectInput = {
+    where: BatchExportWhereUniqueInput
+    update: XOR<BatchExportUpdateWithoutProjectInput, BatchExportUncheckedUpdateWithoutProjectInput>
+    create: XOR<BatchExportCreateWithoutProjectInput, BatchExportUncheckedCreateWithoutProjectInput>
+  }
+
+  export type BatchExportUpdateWithWhereUniqueWithoutProjectInput = {
+    where: BatchExportWhereUniqueInput
+    data: XOR<BatchExportUpdateWithoutProjectInput, BatchExportUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type BatchExportUpdateManyWithWhereWithoutProjectInput = {
+    where: BatchExportScalarWhereInput
+    data: XOR<BatchExportUpdateManyMutationInput, BatchExportUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type BatchExportScalarWhereInput = {
+    AND?: BatchExportScalarWhereInput | BatchExportScalarWhereInput[]
+    OR?: BatchExportScalarWhereInput[]
+    NOT?: BatchExportScalarWhereInput | BatchExportScalarWhereInput[]
+    id?: StringFilter<"BatchExport"> | string
+    createdAt?: DateTimeFilter<"BatchExport"> | Date | string
+    updatedAt?: DateTimeFilter<"BatchExport"> | Date | string
+    projectId?: StringFilter<"BatchExport"> | string
+    userId?: StringFilter<"BatchExport"> | string
+    finishedAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    expiresAt?: DateTimeNullableFilter<"BatchExport"> | Date | string | null
+    name?: StringFilter<"BatchExport"> | string
+    status?: StringFilter<"BatchExport"> | string
+    query?: JsonFilter<"BatchExport">
+    format?: StringFilter<"BatchExport"> | string
+    url?: StringNullableFilter<"BatchExport"> | string | null
+    log?: StringNullableFilter<"BatchExport"> | string | null
+  }
+
   export type ProjectCreateWithoutApiKeysInput = {
     id?: string
     createdAt?: Date | string
@@ -47539,6 +49058,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutApiKeysInput = {
@@ -47564,6 +49084,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutApiKeysInput = {
@@ -47605,6 +49126,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutApiKeysInput = {
@@ -47630,6 +49152,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutLlmApiKeysInput = {
@@ -47655,6 +49178,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutLlmApiKeysInput = {
@@ -47680,6 +49204,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutLlmApiKeysInput = {
@@ -47721,6 +49246,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutLlmApiKeysInput = {
@@ -47746,6 +49272,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutProjectMembersInput = {
@@ -47771,6 +49298,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutProjectMembersInput = {
@@ -47796,6 +49324,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutProjectMembersInput = {
@@ -47876,6 +49405,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutProjectMembersInput = {
@@ -47901,6 +49431,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutProjectMembershipsInput = {
@@ -47971,6 +49502,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutInvitationsInput = {
@@ -47996,6 +49528,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutInvitationsInput = {
@@ -48076,6 +49609,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutInvitationsInput = {
@@ -48101,6 +49635,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutInvitationsInput = {
@@ -48171,6 +49706,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutSessionsInput = {
@@ -48196,6 +49732,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutSessionsInput = {
@@ -48288,6 +49825,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutSessionsInput = {
@@ -48313,6 +49851,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceUpsertWithWhereUniqueWithoutSessionInput = {
@@ -48354,6 +49893,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutTracesInput = {
@@ -48379,6 +49919,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutTracesInput = {
@@ -48515,6 +50056,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutTracesInput = {
@@ -48540,6 +50082,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceSessionUpsertWithoutTracesInput = {
@@ -48642,6 +50185,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutObservationsInput = {
@@ -48667,6 +50211,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutObservationsInput = {
@@ -48710,43 +50255,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PromptCreateWithoutObservationInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    createdBy: string
-    prompt: JsonNullValueInput | InputJsonValue
-    name: string
-    version: number
-    type?: string
-    isActive?: boolean | null
-    config?: JsonNullValueInput | InputJsonValue
-    tags?: PromptCreatetagsInput | string[]
-    labels?: PromptCreatelabelsInput | string[]
-    project: ProjectCreateNestedOneWithoutPromptInput
-  }
-
-  export type PromptUncheckedCreateWithoutObservationInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    projectId: string
-    createdBy: string
-    prompt: JsonNullValueInput | InputJsonValue
-    name: string
-    version: number
-    type?: string
-    isActive?: boolean | null
-    config?: JsonNullValueInput | InputJsonValue
-    tags?: PromptCreatetagsInput | string[]
-    labels?: PromptCreatelabelsInput | string[]
-  }
-
-  export type PromptCreateOrConnectWithoutObservationInput = {
-    where: PromptWhereUniqueInput
-    create: XOR<PromptCreateWithoutObservationInput, PromptUncheckedCreateWithoutObservationInput>
-  }
-
   export type ProjectUpsertWithoutObservationsInput = {
     update: XOR<ProjectUpdateWithoutObservationsInput, ProjectUncheckedUpdateWithoutObservationsInput>
     create: XOR<ProjectCreateWithoutObservationsInput, ProjectUncheckedCreateWithoutObservationsInput>
@@ -48781,6 +50289,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutObservationsInput = {
@@ -48806,6 +50315,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type DatasetItemUpsertWithWhereUniqueWithoutSourceObservationInput = {
@@ -48822,49 +50332,6 @@ export namespace Prisma {
   export type DatasetItemUpdateManyWithWhereWithoutSourceObservationInput = {
     where: DatasetItemScalarWhereInput
     data: XOR<DatasetItemUpdateManyMutationInput, DatasetItemUncheckedUpdateManyWithoutSourceObservationInput>
-  }
-
-  export type PromptUpsertWithoutObservationInput = {
-    update: XOR<PromptUpdateWithoutObservationInput, PromptUncheckedUpdateWithoutObservationInput>
-    create: XOR<PromptCreateWithoutObservationInput, PromptUncheckedCreateWithoutObservationInput>
-    where?: PromptWhereInput
-  }
-
-  export type PromptUpdateToOneWithWhereWithoutObservationInput = {
-    where?: PromptWhereInput
-    data: XOR<PromptUpdateWithoutObservationInput, PromptUncheckedUpdateWithoutObservationInput>
-  }
-
-  export type PromptUpdateWithoutObservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdBy?: StringFieldUpdateOperationsInput | string
-    prompt?: JsonNullValueInput | InputJsonValue
-    name?: StringFieldUpdateOperationsInput | string
-    version?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    config?: JsonNullValueInput | InputJsonValue
-    tags?: PromptUpdatetagsInput | string[]
-    labels?: PromptUpdatelabelsInput | string[]
-    project?: ProjectUpdateOneRequiredWithoutPromptNestedInput
-  }
-
-  export type PromptUncheckedUpdateWithoutObservationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    projectId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
-    prompt?: JsonNullValueInput | InputJsonValue
-    name?: StringFieldUpdateOperationsInput | string
-    version?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    isActive?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    config?: JsonNullValueInput | InputJsonValue
-    tags?: PromptUpdatetagsInput | string[]
-    labels?: PromptUpdatelabelsInput | string[]
   }
 
   export type ProjectCreateWithoutScoreInput = {
@@ -48890,6 +50357,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreInput = {
@@ -48915,6 +50383,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreInput = {
@@ -49025,6 +50494,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreInput = {
@@ -49050,6 +50520,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobExecutionUpsertWithWhereUniqueWithoutScoreInput = {
@@ -49130,6 +50601,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreConfigInput = {
@@ -49155,6 +50627,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreConfigInput = {
@@ -49242,6 +50715,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreConfigInput = {
@@ -49267,6 +50741,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ScoreUpsertWithWhereUniqueWithoutScoreConfigInput = {
@@ -49308,6 +50783,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutDatasetInput = {
@@ -49333,6 +50809,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutDatasetInput = {
@@ -49440,6 +50917,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutDatasetInput = {
@@ -49465,6 +50943,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type DatasetItemUpsertWithWhereUniqueWithoutDatasetInput = {
@@ -49575,6 +51054,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -49585,9 +51065,12 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
+    promptId?: string | null
     project: ProjectCreateNestedOneWithoutObservationsInput
-    prompt?: PromptCreateNestedOneWithoutObservationInput
   }
 
   export type ObservationUncheckedCreateWithoutDerivedDatasetItemsInput = {
@@ -49607,6 +51090,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -49617,6 +51101,9 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
     promptId?: string | null
   }
@@ -49761,6 +51248,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -49771,9 +51259,12 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promptId?: NullableStringFieldUpdateOperationsInput | string | null
     project?: ProjectUpdateOneRequiredWithoutObservationsNestedInput
-    prompt?: PromptUpdateOneWithoutObservationNestedInput
   }
 
   export type ObservationUncheckedUpdateWithoutDerivedDatasetItemsInput = {
@@ -49793,6 +51284,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -49803,6 +51295,9 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     promptId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -50120,6 +51615,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutRawEventsInput = {
@@ -50145,6 +51641,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutRawEventsInput = {
@@ -50186,6 +51683,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutRawEventsInput = {
@@ -50211,6 +51709,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutPromptInput = {
@@ -50236,6 +51735,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPromptInput = {
@@ -50261,83 +51761,12 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPromptInput = {
     where: ProjectWhereUniqueInput
     create: XOR<ProjectCreateWithoutPromptInput, ProjectUncheckedCreateWithoutPromptInput>
-  }
-
-  export type ObservationCreateWithoutPromptInput = {
-    id?: string
-    traceId?: string | null
-    type: $Enums.ObservationType
-    startTime?: Date | string
-    endTime?: Date | string | null
-    name?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: string | null
-    level?: $Enums.ObservationLevel
-    statusMessage?: string | null
-    version?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    model?: string | null
-    internalModel?: string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: number
-    completionTokens?: number
-    totalTokens?: number
-    unit?: string | null
-    inputCost?: Decimal | DecimalJsLike | number | string | null
-    outputCost?: Decimal | DecimalJsLike | number | string | null
-    totalCost?: Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: Date | string | null
-    project: ProjectCreateNestedOneWithoutObservationsInput
-    derivedDatasetItems?: DatasetItemCreateNestedManyWithoutSourceObservationInput
-  }
-
-  export type ObservationUncheckedCreateWithoutPromptInput = {
-    id?: string
-    traceId?: string | null
-    projectId: string
-    type: $Enums.ObservationType
-    startTime?: Date | string
-    endTime?: Date | string | null
-    name?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: string | null
-    level?: $Enums.ObservationLevel
-    statusMessage?: string | null
-    version?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    model?: string | null
-    internalModel?: string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: number
-    completionTokens?: number
-    totalTokens?: number
-    unit?: string | null
-    inputCost?: Decimal | DecimalJsLike | number | string | null
-    outputCost?: Decimal | DecimalJsLike | number | string | null
-    totalCost?: Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: Date | string | null
-    derivedDatasetItems?: DatasetItemUncheckedCreateNestedManyWithoutSourceObservationInput
-  }
-
-  export type ObservationCreateOrConnectWithoutPromptInput = {
-    where: ObservationWhereUniqueInput
-    create: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput>
-  }
-
-  export type ObservationCreateManyPromptInputEnvelope = {
-    data: ObservationCreateManyPromptInput | ObservationCreateManyPromptInput[]
-    skipDuplicates?: boolean
   }
 
   export type ProjectUpsertWithoutPromptInput = {
@@ -50374,6 +51803,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPromptInput = {
@@ -50399,22 +51829,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
-  }
-
-  export type ObservationUpsertWithWhereUniqueWithoutPromptInput = {
-    where: ObservationWhereUniqueInput
-    update: XOR<ObservationUpdateWithoutPromptInput, ObservationUncheckedUpdateWithoutPromptInput>
-    create: XOR<ObservationCreateWithoutPromptInput, ObservationUncheckedCreateWithoutPromptInput>
-  }
-
-  export type ObservationUpdateWithWhereUniqueWithoutPromptInput = {
-    where: ObservationWhereUniqueInput
-    data: XOR<ObservationUpdateWithoutPromptInput, ObservationUncheckedUpdateWithoutPromptInput>
-  }
-
-  export type ObservationUpdateManyWithWhereWithoutPromptInput = {
-    where: ObservationScalarWhereInput
-    data: XOR<ObservationUpdateManyMutationInput, ObservationUncheckedUpdateManyWithoutPromptInput>
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutModelInput = {
@@ -50440,6 +51855,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutModelInput = {
@@ -50465,6 +51881,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutModelInput = {
@@ -50506,6 +51923,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutModelInput = {
@@ -50531,6 +51949,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserCreateWithoutAuditLogInput = {
@@ -50595,6 +52014,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutAuditLogInput = {
@@ -50620,6 +52040,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutAuditLogInput = {
@@ -50706,6 +52127,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutAuditLogInput = {
@@ -50731,6 +52153,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutEvalTemplateInput = {
@@ -50756,6 +52179,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutEvalTemplateInput = {
@@ -50781,6 +52205,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutEvalTemplateInput = {
@@ -50864,6 +52289,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutEvalTemplateInput = {
@@ -50889,6 +52315,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithWhereUniqueWithoutEvalTemplateInput = {
@@ -50930,6 +52357,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobConfigurationInput = {
@@ -50955,6 +52383,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobConfigurationInput = {
@@ -51067,6 +52496,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobConfigurationInput = {
@@ -51092,6 +52522,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type EvalTemplateUpsertWithoutJobConfigurationInput = {
@@ -51174,6 +52605,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobExecutionInput = {
@@ -51199,6 +52631,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobExecutionInput = {
@@ -51365,6 +52798,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobExecutionInput = {
@@ -51390,6 +52824,7 @@ export namespace Prisma {
     PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithoutJobExecutionInput = {
@@ -51558,6 +52993,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPosthogIntegrationInput = {
@@ -51583,6 +53019,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPosthogIntegrationInput = {
@@ -51624,6 +53061,7 @@ export namespace Prisma {
     LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPosthogIntegrationInput = {
@@ -51647,6 +53085,127 @@ export namespace Prisma {
     JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
     JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
     LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectCreateWithoutBatchExportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    cloudConfig?: NullableJsonNullValueInput | InputJsonValue
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    AuditLog?: AuditLogCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutBatchExportInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    cloudConfig?: NullableJsonNullValueInput | InputJsonValue
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    AuditLog?: AuditLogUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutBatchExportInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutBatchExportInput, ProjectUncheckedCreateWithoutBatchExportInput>
+  }
+
+  export type ProjectUpsertWithoutBatchExportInput = {
+    update: XOR<ProjectUpdateWithoutBatchExportInput, ProjectUncheckedUpdateWithoutBatchExportInput>
+    create: XOR<ProjectCreateWithoutBatchExportInput, ProjectUncheckedCreateWithoutBatchExportInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutBatchExportInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutBatchExportInput, ProjectUncheckedUpdateWithoutBatchExportInput>
+  }
+
+  export type ProjectUpdateWithoutBatchExportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    cloudConfig?: NullableJsonNullValueInput | InputJsonValue
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    AuditLog?: AuditLogUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutBatchExportInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    cloudConfig?: NullableJsonNullValueInput | InputJsonValue
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    AuditLog?: AuditLogUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
   }
@@ -51897,6 +53456,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     model?: string | null
     internalModel?: string | null
+    internalModelId?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -51907,6 +53467,9 @@ export namespace Prisma {
     inputCost?: Decimal | DecimalJsLike | number | string | null
     outputCost?: Decimal | DecimalJsLike | number | string | null
     totalCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: Decimal | DecimalJsLike | number | string | null
     completionStartTime?: Date | string | null
     promptId?: string | null
   }
@@ -52095,6 +53658,21 @@ export namespace Prisma {
     description?: string | null
   }
 
+  export type BatchExportCreateManyProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    finishedAt?: Date | string | null
+    expiresAt?: Date | string | null
+    name: string
+    status: string
+    query: JsonNullValueInput | InputJsonValue
+    format: string
+    url?: string | null
+    log?: string | null
+  }
+
   export type ProjectMembershipUpdateWithoutProjectInput = {
     role?: EnumProjectRoleFieldUpdateOperationsInput | $Enums.ProjectRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -52193,6 +53771,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -52203,9 +53782,12 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promptId?: NullableStringFieldUpdateOperationsInput | string | null
     derivedDatasetItems?: DatasetItemUpdateManyWithoutSourceObservationNestedInput
-    prompt?: PromptUpdateOneWithoutObservationNestedInput
   }
 
   export type ObservationUncheckedUpdateWithoutProjectInput = {
@@ -52224,6 +53806,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -52234,6 +53817,9 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     promptId?: NullableStringFieldUpdateOperationsInput | string | null
     derivedDatasetItems?: DatasetItemUncheckedUpdateManyWithoutSourceObservationNestedInput
@@ -52255,6 +53841,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     internalModel?: NullableStringFieldUpdateOperationsInput | string | null
+    internalModelId?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
@@ -52265,6 +53852,9 @@ export namespace Prisma {
     inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedInputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedOutputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    calculatedTotalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     promptId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -52432,7 +54022,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptUpdatetagsInput | string[]
     labels?: PromptUpdatelabelsInput | string[]
-    Observation?: ObservationUpdateManyWithoutPromptNestedInput
   }
 
   export type PromptUncheckedUpdateWithoutProjectInput = {
@@ -52448,7 +54037,6 @@ export namespace Prisma {
     config?: JsonNullValueInput | InputJsonValue
     tags?: PromptUpdatetagsInput | string[]
     labels?: PromptUpdatelabelsInput | string[]
-    Observation?: ObservationUncheckedUpdateManyWithoutPromptNestedInput
   }
 
   export type PromptUncheckedUpdateManyWithoutProjectInput = {
@@ -52835,6 +54423,51 @@ export namespace Prisma {
     maxValue?: NullableFloatFieldUpdateOperationsInput | number | null
     categories?: NullableJsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BatchExportUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BatchExportUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BatchExportUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    query?: JsonNullValueInput | InputJsonValue
+    format?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    log?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TraceCreateManySessionInput = {
@@ -53348,128 +54981,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ObservationCreateManyPromptInput = {
-    id?: string
-    traceId?: string | null
-    projectId: string
-    type: $Enums.ObservationType
-    startTime?: Date | string
-    endTime?: Date | string | null
-    name?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: string | null
-    level?: $Enums.ObservationLevel
-    statusMessage?: string | null
-    version?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    model?: string | null
-    internalModel?: string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: number
-    completionTokens?: number
-    totalTokens?: number
-    unit?: string | null
-    inputCost?: Decimal | DecimalJsLike | number | string | null
-    outputCost?: Decimal | DecimalJsLike | number | string | null
-    totalCost?: Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: Date | string | null
-  }
-
-  export type ObservationUpdateWithoutPromptInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    traceId?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: EnumObservationTypeFieldUpdateOperationsInput | $Enums.ObservationType
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: EnumObservationLevelFieldUpdateOperationsInput | $Enums.ObservationLevel
-    statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    internalModel?: NullableStringFieldUpdateOperationsInput | string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: IntFieldUpdateOperationsInput | number
-    completionTokens?: IntFieldUpdateOperationsInput | number
-    totalTokens?: IntFieldUpdateOperationsInput | number
-    unit?: NullableStringFieldUpdateOperationsInput | string | null
-    inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    project?: ProjectUpdateOneRequiredWithoutObservationsNestedInput
-    derivedDatasetItems?: DatasetItemUpdateManyWithoutSourceObservationNestedInput
-  }
-
-  export type ObservationUncheckedUpdateWithoutPromptInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    traceId?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: StringFieldUpdateOperationsInput | string
-    type?: EnumObservationTypeFieldUpdateOperationsInput | $Enums.ObservationType
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: EnumObservationLevelFieldUpdateOperationsInput | $Enums.ObservationLevel
-    statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    internalModel?: NullableStringFieldUpdateOperationsInput | string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: IntFieldUpdateOperationsInput | number
-    completionTokens?: IntFieldUpdateOperationsInput | number
-    totalTokens?: IntFieldUpdateOperationsInput | number
-    unit?: NullableStringFieldUpdateOperationsInput | string | null
-    inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    derivedDatasetItems?: DatasetItemUncheckedUpdateManyWithoutSourceObservationNestedInput
-  }
-
-  export type ObservationUncheckedUpdateManyWithoutPromptInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    traceId?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: StringFieldUpdateOperationsInput | string
-    type?: EnumObservationTypeFieldUpdateOperationsInput | $Enums.ObservationType
-    startTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    parentObservationId?: NullableStringFieldUpdateOperationsInput | string | null
-    level?: EnumObservationLevelFieldUpdateOperationsInput | $Enums.ObservationLevel
-    statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    model?: NullableStringFieldUpdateOperationsInput | string | null
-    internalModel?: NullableStringFieldUpdateOperationsInput | string | null
-    modelParameters?: NullableJsonNullValueInput | InputJsonValue
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    promptTokens?: IntFieldUpdateOperationsInput | number
-    completionTokens?: IntFieldUpdateOperationsInput | number
-    totalTokens?: IntFieldUpdateOperationsInput | number
-    unit?: NullableStringFieldUpdateOperationsInput | string | null
-    inputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    outputCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    totalCost?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    completionStartTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
   export type JobConfigurationCreateManyEvalTemplateInput = {
     id?: string
     createdAt?: Date | string
@@ -53630,10 +55141,6 @@ export namespace Prisma {
      */
     export type DatasetRunsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DatasetRunsCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use PromptCountOutputTypeDefaultArgs instead
-     */
-    export type PromptCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PromptCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use EvalTemplateCountOutputTypeDefaultArgs instead
      */
     export type EvalTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EvalTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -53753,6 +55260,10 @@ export namespace Prisma {
      * @deprecated Use PosthogIntegrationDefaultArgs instead
      */
     export type PosthogIntegrationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PosthogIntegrationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BatchExportDefaultArgs instead
+     */
+    export type BatchExportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BatchExportDefaultArgs<ExtArgs>
     /**
      * @deprecated Use TraceViewDefaultArgs instead
      */

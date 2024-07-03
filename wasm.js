@@ -266,6 +266,7 @@ exports.Prisma.ObservationScalarFieldEnum = {
   updatedAt: 'updatedAt',
   model: 'model',
   internalModel: 'internalModel',
+  internalModelId: 'internalModelId',
   modelParameters: 'modelParameters',
   input: 'input',
   output: 'output',
@@ -276,6 +277,9 @@ exports.Prisma.ObservationScalarFieldEnum = {
   inputCost: 'inputCost',
   outputCost: 'outputCost',
   totalCost: 'totalCost',
+  calculatedInputCost: 'calculatedInputCost',
+  calculatedOutputCost: 'calculatedOutputCost',
+  calculatedTotalCost: 'calculatedTotalCost',
   completionStartTime: 'completionStartTime',
   promptId: 'promptId'
 };
@@ -481,6 +485,22 @@ exports.Prisma.PosthogIntegrationScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.BatchExportScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  projectId: 'projectId',
+  userId: 'userId',
+  finishedAt: 'finishedAt',
+  expiresAt: 'expiresAt',
+  name: 'name',
+  status: 'status',
+  query: 'query',
+  format: 'format',
+  url: 'url',
+  log: 'log'
+};
+
 exports.Prisma.TraceViewScalarFieldEnum = {
   id: 'id',
   externalId: 'externalId',
@@ -646,6 +666,7 @@ exports.Prisma.ModelName = {
   JobExecution: 'JobExecution',
   SsoConfig: 'SsoConfig',
   PosthogIntegration: 'PosthogIntegration',
+  BatchExport: 'BatchExport',
   TraceView: 'TraceView',
   ObservationView: 'ObservationView'
 };

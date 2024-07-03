@@ -82,6 +82,6 @@
     },
     "./*": "./*"
   },
-  "version": "2.53.0",
+  "version": "2.58.0",
   "sideEffects": false
 }
