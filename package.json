@@ -1,5 +1,5 @@
 {
-  "name": "prisma-client-for-langfuse-x86",
+  "name": "prisma-client-for-langfuse-x64",
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "index-browser.js",
