@@ -517,6 +517,8 @@ exports.Prisma.TraceViewScalarFieldEnum = {
   input: 'input',
   output: 'output',
   sessionId: 'sessionId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   duration: 'duration'
 };
 
@@ -534,6 +536,7 @@ exports.Prisma.ObservationViewScalarFieldEnum = {
   statusMessage: 'statusMessage',
   version: 'version',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   model: 'model',
   modelParameters: 'modelParameters',
   input: 'input',

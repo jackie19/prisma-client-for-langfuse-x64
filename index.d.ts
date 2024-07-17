@@ -16704,7 +16704,7 @@ export namespace Prisma {
     timestamp: Date
     projectId: string
     name: string
-    value: number
+    value: number | null
     source: $Enums.ScoreSource
     authorUserId: string | null
     comment: string | null
@@ -16797,7 +16797,7 @@ export namespace Prisma {
       timestamp: Date
       projectId: string
       name: string
-      value: number
+      value: number | null
       source: $Enums.ScoreSource
       authorUserId: string | null
       comment: string | null
@@ -33343,6 +33343,8 @@ export namespace Prisma {
     public: boolean | null
     bookmarked: boolean | null
     sessionId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     duration: number | null
   }
 
@@ -33358,6 +33360,8 @@ export namespace Prisma {
     public: boolean | null
     bookmarked: boolean | null
     sessionId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     duration: number | null
   }
 
@@ -33377,6 +33381,8 @@ export namespace Prisma {
     input: number
     output: number
     sessionId: number
+    createdAt: number
+    updatedAt: number
     duration: number
     _all: number
   }
@@ -33402,6 +33408,8 @@ export namespace Prisma {
     public?: true
     bookmarked?: true
     sessionId?: true
+    createdAt?: true
+    updatedAt?: true
     duration?: true
   }
 
@@ -33417,6 +33425,8 @@ export namespace Prisma {
     public?: true
     bookmarked?: true
     sessionId?: true
+    createdAt?: true
+    updatedAt?: true
     duration?: true
   }
 
@@ -33436,6 +33446,8 @@ export namespace Prisma {
     input?: true
     output?: true
     sessionId?: true
+    createdAt?: true
+    updatedAt?: true
     duration?: true
     _all?: true
   }
@@ -33542,6 +33554,8 @@ export namespace Prisma {
     input: JsonValue | null
     output: JsonValue | null
     sessionId: string | null
+    createdAt: Date
+    updatedAt: Date
     duration: number | null
     _count: TraceViewCountAggregateOutputType | null
     _avg: TraceViewAvgAggregateOutputType | null
@@ -33580,6 +33594,8 @@ export namespace Prisma {
     input?: boolean
     output?: boolean
     sessionId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     duration?: boolean
   }, ExtArgs["result"]["traceView"]>
 
@@ -33599,6 +33615,8 @@ export namespace Prisma {
     input?: boolean
     output?: boolean
     sessionId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     duration?: boolean
   }
 
@@ -33623,6 +33641,8 @@ export namespace Prisma {
       input: Prisma.JsonValue | null
       output: Prisma.JsonValue | null
       sessionId: string | null
+      createdAt: Date
+      updatedAt: Date
       duration: number | null
     }, ExtArgs["result"]["traceView"]>
     composites: {}
@@ -34033,6 +34053,8 @@ export namespace Prisma {
     readonly input: FieldRef<"TraceView", 'Json'>
     readonly output: FieldRef<"TraceView", 'Json'>
     readonly sessionId: FieldRef<"TraceView", 'String'>
+    readonly createdAt: FieldRef<"TraceView", 'DateTime'>
+    readonly updatedAt: FieldRef<"TraceView", 'DateTime'>
     readonly duration: FieldRef<"TraceView", 'Float'>
   }
     
@@ -34369,6 +34391,7 @@ export namespace Prisma {
     statusMessage: string | null
     version: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     model: string | null
     promptTokens: number | null
     completionTokens: number | null
@@ -34400,6 +34423,7 @@ export namespace Prisma {
     statusMessage: string | null
     version: string | null
     createdAt: Date | null
+    updatedAt: Date | null
     model: string | null
     promptTokens: number | null
     completionTokens: number | null
@@ -34432,6 +34456,7 @@ export namespace Prisma {
     statusMessage: number
     version: number
     createdAt: number
+    updatedAt: number
     model: number
     modelParameters: number
     input: number
@@ -34496,6 +34521,7 @@ export namespace Prisma {
     statusMessage?: true
     version?: true
     createdAt?: true
+    updatedAt?: true
     model?: true
     promptTokens?: true
     completionTokens?: true
@@ -34527,6 +34553,7 @@ export namespace Prisma {
     statusMessage?: true
     version?: true
     createdAt?: true
+    updatedAt?: true
     model?: true
     promptTokens?: true
     completionTokens?: true
@@ -34559,6 +34586,7 @@ export namespace Prisma {
     statusMessage?: true
     version?: true
     createdAt?: true
+    updatedAt?: true
     model?: true
     modelParameters?: true
     input?: true
@@ -34681,6 +34709,7 @@ export namespace Prisma {
     statusMessage: string | null
     version: string | null
     createdAt: Date
+    updatedAt: Date
     model: string | null
     modelParameters: JsonValue | null
     input: JsonValue | null
@@ -34735,6 +34764,7 @@ export namespace Prisma {
     statusMessage?: boolean
     version?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     model?: boolean
     modelParameters?: boolean
     input?: boolean
@@ -34770,6 +34800,7 @@ export namespace Prisma {
     statusMessage?: boolean
     version?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
     model?: boolean
     modelParameters?: boolean
     input?: boolean
@@ -34810,6 +34841,7 @@ export namespace Prisma {
       statusMessage: string | null
       version: string | null
       createdAt: Date
+      updatedAt: Date
       model: string | null
       modelParameters: Prisma.JsonValue | null
       input: Prisma.JsonValue | null
@@ -35236,6 +35268,7 @@ export namespace Prisma {
     readonly statusMessage: FieldRef<"ObservationView", 'String'>
     readonly version: FieldRef<"ObservationView", 'String'>
     readonly createdAt: FieldRef<"ObservationView", 'DateTime'>
+    readonly updatedAt: FieldRef<"ObservationView", 'DateTime'>
     readonly model: FieldRef<"ObservationView", 'String'>
     readonly modelParameters: FieldRef<"ObservationView", 'Json'>
     readonly input: FieldRef<"ObservationView", 'Json'>
@@ -36039,6 +36072,8 @@ export namespace Prisma {
     input: 'input',
     output: 'output',
     sessionId: 'sessionId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     duration: 'duration'
   };
 
@@ -36059,6 +36094,7 @@ export namespace Prisma {
     statusMessage: 'statusMessage',
     version: 'version',
     createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     model: 'model',
     modelParameters: 'modelParameters',
     input: 'input',
@@ -37431,7 +37467,7 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"Score"> | Date | string
     projectId?: StringFilter<"Score"> | string
     name?: StringFilter<"Score"> | string
-    value?: FloatFilter<"Score"> | number
+    value?: FloatNullableFilter<"Score"> | number | null
     source?: EnumScoreSourceFilter<"Score"> | $Enums.ScoreSource
     authorUserId?: StringNullableFilter<"Score"> | string | null
     comment?: StringNullableFilter<"Score"> | string | null
@@ -37452,7 +37488,7 @@ export namespace Prisma {
     timestamp?: SortOrder
     projectId?: SortOrder
     name?: SortOrder
-    value?: SortOrder
+    value?: SortOrderInput | SortOrder
     source?: SortOrder
     authorUserId?: SortOrderInput | SortOrder
     comment?: SortOrderInput | SortOrder
@@ -37477,7 +37513,7 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"Score"> | Date | string
     projectId?: StringFilter<"Score"> | string
     name?: StringFilter<"Score"> | string
-    value?: FloatFilter<"Score"> | number
+    value?: FloatNullableFilter<"Score"> | number | null
     source?: EnumScoreSourceFilter<"Score"> | $Enums.ScoreSource
     authorUserId?: StringNullableFilter<"Score"> | string | null
     comment?: StringNullableFilter<"Score"> | string | null
@@ -37498,7 +37534,7 @@ export namespace Prisma {
     timestamp?: SortOrder
     projectId?: SortOrder
     name?: SortOrder
-    value?: SortOrder
+    value?: SortOrderInput | SortOrder
     source?: SortOrder
     authorUserId?: SortOrderInput | SortOrder
     comment?: SortOrderInput | SortOrder
@@ -37524,7 +37560,7 @@ export namespace Prisma {
     timestamp?: DateTimeWithAggregatesFilter<"Score"> | Date | string
     projectId?: StringWithAggregatesFilter<"Score"> | string
     name?: StringWithAggregatesFilter<"Score"> | string
-    value?: FloatWithAggregatesFilter<"Score"> | number
+    value?: FloatNullableWithAggregatesFilter<"Score"> | number | null
     source?: EnumScoreSourceWithAggregatesFilter<"Score"> | $Enums.ScoreSource
     authorUserId?: StringNullableWithAggregatesFilter<"Score"> | string | null
     comment?: StringNullableWithAggregatesFilter<"Score"> | string | null
@@ -38846,6 +38882,8 @@ export namespace Prisma {
     input?: JsonNullableFilter<"TraceView">
     output?: JsonNullableFilter<"TraceView">
     sessionId?: StringNullableFilter<"TraceView"> | string | null
+    createdAt?: DateTimeFilter<"TraceView"> | Date | string
+    updatedAt?: DateTimeFilter<"TraceView"> | Date | string
     duration?: FloatNullableFilter<"TraceView"> | number | null
   }
 
@@ -38865,6 +38903,8 @@ export namespace Prisma {
     input?: SortOrderInput | SortOrder
     output?: SortOrderInput | SortOrder
     sessionId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     duration?: SortOrderInput | SortOrder
   }
 
@@ -38887,6 +38927,8 @@ export namespace Prisma {
     input?: JsonNullableFilter<"TraceView">
     output?: JsonNullableFilter<"TraceView">
     sessionId?: StringNullableFilter<"TraceView"> | string | null
+    createdAt?: DateTimeFilter<"TraceView"> | Date | string
+    updatedAt?: DateTimeFilter<"TraceView"> | Date | string
     duration?: FloatNullableFilter<"TraceView"> | number | null
   }, "id">
 
@@ -38906,6 +38948,8 @@ export namespace Prisma {
     input?: SortOrderInput | SortOrder
     output?: SortOrderInput | SortOrder
     sessionId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     duration?: SortOrderInput | SortOrder
     _count?: TraceViewCountOrderByAggregateInput
     _avg?: TraceViewAvgOrderByAggregateInput
@@ -38933,6 +38977,8 @@ export namespace Prisma {
     input?: JsonNullableWithAggregatesFilter<"TraceView">
     output?: JsonNullableWithAggregatesFilter<"TraceView">
     sessionId?: StringNullableWithAggregatesFilter<"TraceView"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TraceView"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TraceView"> | Date | string
     duration?: FloatNullableWithAggregatesFilter<"TraceView"> | number | null
   }
 
@@ -38953,6 +38999,7 @@ export namespace Prisma {
     statusMessage?: StringNullableFilter<"ObservationView"> | string | null
     version?: StringNullableFilter<"ObservationView"> | string | null
     createdAt?: DateTimeFilter<"ObservationView"> | Date | string
+    updatedAt?: DateTimeFilter<"ObservationView"> | Date | string
     model?: StringNullableFilter<"ObservationView"> | string | null
     modelParameters?: JsonNullableFilter<"ObservationView">
     input?: JsonNullableFilter<"ObservationView">
@@ -38988,6 +39035,7 @@ export namespace Prisma {
     statusMessage?: SortOrderInput | SortOrder
     version?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     model?: SortOrderInput | SortOrder
     modelParameters?: SortOrderInput | SortOrder
     input?: SortOrderInput | SortOrder
@@ -39026,6 +39074,7 @@ export namespace Prisma {
     statusMessage?: StringNullableFilter<"ObservationView"> | string | null
     version?: StringNullableFilter<"ObservationView"> | string | null
     createdAt?: DateTimeFilter<"ObservationView"> | Date | string
+    updatedAt?: DateTimeFilter<"ObservationView"> | Date | string
     model?: StringNullableFilter<"ObservationView"> | string | null
     modelParameters?: JsonNullableFilter<"ObservationView">
     input?: JsonNullableFilter<"ObservationView">
@@ -39061,6 +39110,7 @@ export namespace Prisma {
     statusMessage?: SortOrderInput | SortOrder
     version?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     model?: SortOrderInput | SortOrder
     modelParameters?: SortOrderInput | SortOrder
     input?: SortOrderInput | SortOrder
@@ -39104,6 +39154,7 @@ export namespace Prisma {
     statusMessage?: StringNullableWithAggregatesFilter<"ObservationView"> | string | null
     version?: StringNullableWithAggregatesFilter<"ObservationView"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ObservationView"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ObservationView"> | Date | string
     model?: StringNullableWithAggregatesFilter<"ObservationView"> | string | null
     modelParameters?: JsonNullableWithAggregatesFilter<"ObservationView">
     input?: JsonNullableWithAggregatesFilter<"ObservationView">
@@ -40349,7 +40400,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -40369,7 +40420,7 @@ export namespace Prisma {
     timestamp?: Date | string
     projectId: string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -40387,7 +40438,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40407,7 +40458,7 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     projectId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40426,7 +40477,7 @@ export namespace Prisma {
     timestamp?: Date | string
     projectId: string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -40443,7 +40494,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40460,7 +40511,7 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     projectId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41888,6 +41939,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
     duration?: number | null
   }
 
@@ -41907,6 +41960,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
     duration?: number | null
   }
 
@@ -41926,6 +41981,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     duration?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -41945,6 +42002,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     duration?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -41964,6 +42023,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: string | null
+    createdAt: Date | string
+    updatedAt: Date | string
     duration?: number | null
   }
 
@@ -41983,6 +42044,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     duration?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -42002,6 +42065,8 @@ export namespace Prisma {
     input?: NullableJsonNullValueInput | InputJsonValue
     output?: NullableJsonNullValueInput | InputJsonValue
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     duration?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
@@ -42010,7 +42075,7 @@ export namespace Prisma {
     traceId?: string | null
     projectId: string
     type: $Enums.ObservationType
-    startTime?: Date | string
+    startTime: Date | string
     endTime?: Date | string | null
     name?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
@@ -42018,7 +42083,8 @@ export namespace Prisma {
     level?: $Enums.ObservationLevel
     statusMessage?: string | null
     version?: string | null
-    createdAt?: Date | string
+    createdAt: Date | string
+    updatedAt: Date | string
     model?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42045,7 +42111,7 @@ export namespace Prisma {
     traceId?: string | null
     projectId: string
     type: $Enums.ObservationType
-    startTime?: Date | string
+    startTime: Date | string
     endTime?: Date | string | null
     name?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
@@ -42053,7 +42119,8 @@ export namespace Prisma {
     level?: $Enums.ObservationLevel
     statusMessage?: string | null
     version?: string | null
-    createdAt?: Date | string
+    createdAt: Date | string
+    updatedAt: Date | string
     model?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42089,6 +42156,7 @@ export namespace Prisma {
     statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
     version?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42124,6 +42192,7 @@ export namespace Prisma {
     statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
     version?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42150,7 +42219,7 @@ export namespace Prisma {
     traceId?: string | null
     projectId: string
     type: $Enums.ObservationType
-    startTime?: Date | string
+    startTime: Date | string
     endTime?: Date | string | null
     name?: string | null
     metadata?: NullableJsonNullValueInput | InputJsonValue
@@ -42158,7 +42227,8 @@ export namespace Prisma {
     level?: $Enums.ObservationLevel
     statusMessage?: string | null
     version?: string | null
-    createdAt?: Date | string
+    createdAt: Date | string
+    updatedAt: Date | string
     model?: string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42194,6 +42264,7 @@ export namespace Prisma {
     statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
     version?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -42229,6 +42300,7 @@ export namespace Prisma {
     statusMessage?: NullableStringFieldUpdateOperationsInput | string | null
     version?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     model?: NullableStringFieldUpdateOperationsInput | string | null
     modelParameters?: NullableJsonNullValueInput | InputJsonValue
     input?: NullableJsonNullValueInput | InputJsonValue
@@ -43335,15 +43407,15 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type EnumScoreSourceFilter<$PrismaModel = never> = {
@@ -43432,20 +43504,20 @@ export namespace Prisma {
     value?: SortOrder
   }
 
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type EnumScoreSourceWithAggregatesFilter<$PrismaModel = never> = {
@@ -43466,17 +43538,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumScoreDataTypeFilter<$PrismaModel>
     _max?: NestedEnumScoreDataTypeFilter<$PrismaModel>
-  }
-
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type ScoreConfigIdProjectIdCompoundUniqueInput = {
@@ -43532,22 +43593,6 @@ export namespace Prisma {
   export type ScoreConfigSumOrderByAggregateInput = {
     minValue?: SortOrder
     maxValue?: SortOrder
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type CronJobsCountOrderByAggregateInput = {
@@ -44370,6 +44415,8 @@ export namespace Prisma {
     input?: SortOrder
     output?: SortOrder
     sessionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     duration?: SortOrder
   }
 
@@ -44389,6 +44436,8 @@ export namespace Prisma {
     public?: SortOrder
     bookmarked?: SortOrder
     sessionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     duration?: SortOrder
   }
 
@@ -44404,6 +44453,8 @@ export namespace Prisma {
     public?: SortOrder
     bookmarked?: SortOrder
     sessionId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     duration?: SortOrder
   }
 
@@ -44425,6 +44476,7 @@ export namespace Prisma {
     statusMessage?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     model?: SortOrder
     modelParameters?: SortOrder
     input?: SortOrder
@@ -44473,6 +44525,7 @@ export namespace Prisma {
     statusMessage?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
     completionTokens?: SortOrder
@@ -44504,6 +44557,7 @@ export namespace Prisma {
     statusMessage?: SortOrder
     version?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     model?: SortOrder
     promptTokens?: SortOrder
     completionTokens?: SortOrder
@@ -45993,8 +46047,8 @@ export namespace Prisma {
     connect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -46073,14 +46127,6 @@ export namespace Prisma {
     connectOrCreate?: ScoreCreateOrConnectWithoutScoreConfigInput | ScoreCreateOrConnectWithoutScoreConfigInput[]
     createMany?: ScoreCreateManyScoreConfigInputEnvelope
     connect?: ScoreWhereUniqueInput | ScoreWhereUniqueInput[]
-  }
-
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type ProjectUpdateOneRequiredWithoutScoreConfigNestedInput = {
@@ -47056,20 +47102,20 @@ export namespace Prisma {
     not?: NestedEnumScoreDataTypeFilter<$PrismaModel> | $Enums.ScoreDataType
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumScoreSourceWithAggregatesFilter<$PrismaModel = never> = {
@@ -47090,22 +47136,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumScoreDataTypeFilter<$PrismaModel>
     _max?: NestedEnumScoreDataTypeFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumDatasetStatusFilter<$PrismaModel = never> = {
@@ -48317,7 +48347,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -48335,7 +48365,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -48954,7 +48984,7 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"Score"> | Date | string
     projectId?: StringFilter<"Score"> | string
     name?: StringFilter<"Score"> | string
-    value?: FloatFilter<"Score"> | number
+    value?: FloatNullableFilter<"Score"> | number | null
     source?: EnumScoreSourceFilter<"Score"> | $Enums.ScoreSource
     authorUserId?: StringNullableFilter<"Score"> | string | null
     comment?: StringNullableFilter<"Score"> | string | null
@@ -50639,7 +50669,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -50658,7 +50688,7 @@ export namespace Prisma {
     timestamp?: Date | string
     projectId: string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -52727,7 +52757,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -52746,7 +52776,7 @@ export namespace Prisma {
     timestamp?: Date | string
     projectId: string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -52938,7 +52968,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52957,7 +52987,7 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     projectId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53632,7 +53662,7 @@ export namespace Prisma {
     id?: string
     timestamp?: Date | string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -54335,7 +54365,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54353,7 +54383,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54371,7 +54401,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54756,7 +54786,7 @@ export namespace Prisma {
     timestamp?: Date | string
     projectId: string
     name: string
-    value: number
+    value?: number | null
     source: $Enums.ScoreSource
     authorUserId?: string | null
     comment?: string | null
@@ -54772,7 +54802,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54791,7 +54821,7 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     projectId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54809,7 +54839,7 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     projectId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    value?: FloatFieldUpdateOperationsInput | number
+    value?: NullableFloatFieldUpdateOperationsInput | number | null
     source?: EnumScoreSourceFieldUpdateOperationsInput | $Enums.ScoreSource
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
