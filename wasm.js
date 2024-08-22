@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.13.0
- * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+ * Prisma Client JS version: 5.18.0
+ * Query Engine version: 4c784e32044a8a016d99474bd02a3b6123742169
  */
 Prisma.prismaVersion = {
-  client: "5.13.0",
-  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
+  client: "5.18.0",
+  engine: "4c784e32044a8a016d99474bd02a3b6123742169"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -167,12 +167,20 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
-exports.Prisma.ProjectScalarFieldEnum = {
+exports.Prisma.OrganizationScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  name: 'name',
   cloudConfig: 'cloudConfig'
+};
+
+exports.Prisma.ProjectScalarFieldEnum = {
+  id: 'id',
+  orgId: 'orgId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name'
 };
 
 exports.Prisma.ApiKeyScalarFieldEnum = {
@@ -202,7 +210,17 @@ exports.Prisma.LlmApiKeysScalarFieldEnum = {
   projectId: 'projectId'
 };
 
+exports.Prisma.OrganizationMembershipScalarFieldEnum = {
+  id: 'id',
+  orgId: 'orgId',
+  userId: 'userId',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ProjectMembershipScalarFieldEnum = {
+  orgMembershipId: 'orgMembershipId',
   projectId: 'projectId',
   userId: 'userId',
   role: 'role',
@@ -213,9 +231,11 @@ exports.Prisma.ProjectMembershipScalarFieldEnum = {
 exports.Prisma.MembershipInvitationScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  role: 'role',
+  orgId: 'orgId',
+  orgRole: 'orgRole',
   projectId: 'projectId',
-  senderId: 'senderId',
+  projectRole: 'projectRole',
+  invitedByUserId: 'invitedByUserId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -325,16 +345,17 @@ exports.Prisma.CronJobsScalarFieldEnum = {
 
 exports.Prisma.DatasetScalarFieldEnum = {
   id: 'id',
+  projectId: 'projectId',
   name: 'name',
   description: 'description',
   metadata: 'metadata',
-  projectId: 'projectId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.DatasetItemScalarFieldEnum = {
   id: 'id',
+  projectId: 'projectId',
   status: 'status',
   input: 'input',
   expectedOutput: 'expectedOutput',
@@ -348,6 +369,7 @@ exports.Prisma.DatasetItemScalarFieldEnum = {
 
 exports.Prisma.DatasetRunsScalarFieldEnum = {
   id: 'id',
+  projectId: 'projectId',
   name: 'name',
   description: 'description',
   metadata: 'metadata',
@@ -358,6 +380,7 @@ exports.Prisma.DatasetRunsScalarFieldEnum = {
 
 exports.Prisma.DatasetRunItemsScalarFieldEnum = {
   id: 'id',
+  projectId: 'projectId',
   datasetRunId: 'datasetRunId',
   datasetItemId: 'datasetItemId',
   traceId: 'traceId',
@@ -375,6 +398,17 @@ exports.Prisma.EventsScalarFieldEnum = {
   headers: 'headers',
   url: 'url',
   method: 'method'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  objectType: 'objectType',
+  objectId: 'objectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  content: 'content',
+  authorUserId: 'authorUserId'
 };
 
 exports.Prisma.PromptScalarFieldEnum = {
@@ -414,6 +448,8 @@ exports.Prisma.AuditLogScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId',
+  orgId: 'orgId',
+  userOrgRole: 'userOrgRole',
   projectId: 'projectId',
   userProjectRole: 'userProjectRole',
   resourceType: 'resourceType',
@@ -547,6 +583,8 @@ exports.Prisma.ObservationViewScalarFieldEnum = {
   unit: 'unit',
   completionStartTime: 'completionStartTime',
   promptId: 'promptId',
+  promptName: 'promptName',
+  promptVersion: 'promptVersion',
   modelId: 'modelId',
   inputPrice: 'inputPrice',
   outputPrice: 'outputPrice',
@@ -587,11 +625,12 @@ exports.Prisma.JsonNullValueFilter = {
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
 };
-exports.ProjectRole = exports.$Enums.ProjectRole = {
+exports.Role = exports.$Enums.Role = {
   OWNER: 'OWNER',
   ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
-  VIEWER: 'VIEWER'
+  VIEWER: 'VIEWER',
+  NONE: 'NONE'
 };
 
 exports.ObservationType = exports.$Enums.ObservationType = {
@@ -624,6 +663,13 @@ exports.DatasetStatus = exports.$Enums.DatasetStatus = {
   ARCHIVED: 'ARCHIVED'
 };
 
+exports.CommentObjectType = exports.$Enums.CommentObjectType = {
+  TRACE: 'TRACE',
+  OBSERVATION: 'OBSERVATION',
+  SESSION: 'SESSION',
+  PROMPT: 'PROMPT'
+};
+
 exports.JobType = exports.$Enums.JobType = {
   EVAL: 'EVAL'
 };
@@ -645,9 +691,11 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
   VerificationToken: 'VerificationToken',
+  Organization: 'Organization',
   Project: 'Project',
   ApiKey: 'ApiKey',
   LlmApiKeys: 'LlmApiKeys',
+  OrganizationMembership: 'OrganizationMembership',
   ProjectMembership: 'ProjectMembership',
   MembershipInvitation: 'MembershipInvitation',
   TraceSession: 'TraceSession',
@@ -661,6 +709,7 @@ exports.Prisma.ModelName = {
   DatasetRuns: 'DatasetRuns',
   DatasetRunItems: 'DatasetRunItems',
   Events: 'Events',
+  Comment: 'Comment',
   Prompt: 'Prompt',
   Model: 'Model',
   AuditLog: 'AuditLog',
