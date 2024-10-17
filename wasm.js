@@ -7,6 +7,7 @@ const {
   makeStrictEnum,
   Public,
   getRuntime,
+  skip
 } = require('./runtime/index-browser.js')
 
 
@@ -16,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.18.0
- * Query Engine version: 4c784e32044a8a016d99474bd02a3b6123742169
+ * Prisma Client JS version: 5.21.0
+ * Query Engine version: 08713a93b99d58f31485621c634b04983ae01d95
  */
 Prisma.prismaVersion = {
-  client: "5.18.0",
-  engine: "4c784e32044a8a016d99474bd02a3b6123742169"
+  client: "5.21.0",
+  engine: "08713a93b99d58f31485621c634b04983ae01d95"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -108,6 +109,8 @@ Prisma.NullTypes = {
   AnyNull: objectEnumValues.classes.AnyNull
 }
 
+
+
 /**
  * Enums
  */
@@ -133,7 +136,9 @@ exports.Prisma.AccountScalarFieldEnum = {
   token_type: 'token_type',
   scope: 'scope',
   id_token: 'id_token',
-  session_state: 'session_state'
+  session_state: 'session_state',
+  refresh_token_expires_in: 'refresh_token_expires_in',
+  created_at: 'created_at'
 };
 
 exports.Prisma.RelationLoadStrategy = {
@@ -207,6 +212,7 @@ exports.Prisma.LlmApiKeysScalarFieldEnum = {
   baseURL: 'baseURL',
   customModels: 'customModels',
   withDefaultModels: 'withDefaultModels',
+  config: 'config',
   projectId: 'projectId'
 };
 
@@ -317,6 +323,7 @@ exports.Prisma.ScoreScalarFieldEnum = {
   observationId: 'observationId',
   configId: 'configId',
   stringValue: 'stringValue',
+  queueId: 'queueId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   dataType: 'dataType'
@@ -334,6 +341,31 @@ exports.Prisma.ScoreConfigScalarFieldEnum = {
   maxValue: 'maxValue',
   categories: 'categories',
   description: 'description'
+};
+
+exports.Prisma.AnnotationQueueScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  scoreConfigIds: 'scoreConfigIds',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AnnotationQueueItemScalarFieldEnum = {
+  id: 'id',
+  queueId: 'queueId',
+  objectId: 'objectId',
+  objectType: 'objectType',
+  status: 'status',
+  lockedAt: 'lockedAt',
+  lockedByUserId: 'lockedByUserId',
+  annotatorUserId: 'annotatorUserId',
+  completedAt: 'completedAt',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CronJobsScalarFieldEnum = {
@@ -658,6 +690,16 @@ exports.ScoreDataType = exports.$Enums.ScoreDataType = {
   BOOLEAN: 'BOOLEAN'
 };
 
+exports.AnnotationQueueObjectType = exports.$Enums.AnnotationQueueObjectType = {
+  TRACE: 'TRACE',
+  OBSERVATION: 'OBSERVATION'
+};
+
+exports.AnnotationQueueStatus = exports.$Enums.AnnotationQueueStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED'
+};
+
 exports.DatasetStatus = exports.$Enums.DatasetStatus = {
   ACTIVE: 'ACTIVE',
   ARCHIVED: 'ARCHIVED'
@@ -703,6 +745,8 @@ exports.Prisma.ModelName = {
   Observation: 'Observation',
   Score: 'Score',
   ScoreConfig: 'ScoreConfig',
+  AnnotationQueue: 'AnnotationQueue',
+  AnnotationQueueItem: 'AnnotationQueueItem',
   CronJobs: 'CronJobs',
   Dataset: 'Dataset',
   DatasetItem: 'DatasetItem',

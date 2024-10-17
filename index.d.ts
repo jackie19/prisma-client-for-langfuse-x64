@@ -94,6 +94,16 @@ export type Score = $Result.DefaultSelection<Prisma.$ScorePayload>
  */
 export type ScoreConfig = $Result.DefaultSelection<Prisma.$ScoreConfigPayload>
 /**
+ * Model AnnotationQueue
+ * 
+ */
+export type AnnotationQueue = $Result.DefaultSelection<Prisma.$AnnotationQueuePayload>
+/**
+ * Model AnnotationQueueItem
+ * 
+ */
+export type AnnotationQueueItem = $Result.DefaultSelection<Prisma.$AnnotationQueueItemPayload>
+/**
  * Model CronJobs
  * 
  */
@@ -236,6 +246,22 @@ export const ScoreDataType: {
 export type ScoreDataType = (typeof ScoreDataType)[keyof typeof ScoreDataType]
 
 
+export const AnnotationQueueObjectType: {
+  TRACE: 'TRACE',
+  OBSERVATION: 'OBSERVATION'
+};
+
+export type AnnotationQueueObjectType = (typeof AnnotationQueueObjectType)[keyof typeof AnnotationQueueObjectType]
+
+
+export const AnnotationQueueStatus: {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED'
+};
+
+export type AnnotationQueueStatus = (typeof AnnotationQueueStatus)[keyof typeof AnnotationQueueStatus]
+
+
 export const DatasetStatus: {
   ACTIVE: 'ACTIVE',
   ARCHIVED: 'ARCHIVED'
@@ -299,6 +325,14 @@ export const ScoreSource: typeof $Enums.ScoreSource
 export type ScoreDataType = $Enums.ScoreDataType
 
 export const ScoreDataType: typeof $Enums.ScoreDataType
+
+export type AnnotationQueueObjectType = $Enums.AnnotationQueueObjectType
+
+export const AnnotationQueueObjectType: typeof $Enums.AnnotationQueueObjectType
+
+export type AnnotationQueueStatus = $Enums.AnnotationQueueStatus
+
+export const AnnotationQueueStatus: typeof $Enums.AnnotationQueueStatus
 
 export type DatasetStatus = $Enums.DatasetStatus
 
@@ -421,6 +455,7 @@ export class PrismaClient<
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -612,6 +647,26 @@ export class PrismaClient<
     * ```
     */
   get scoreConfig(): Prisma.ScoreConfigDelegate<ExtArgs>;
+
+  /**
+   * `prisma.annotationQueue`: Exposes CRUD operations for the **AnnotationQueue** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AnnotationQueues
+    * const annotationQueues = await prisma.annotationQueue.findMany()
+    * ```
+    */
+  get annotationQueue(): Prisma.AnnotationQueueDelegate<ExtArgs>;
+
+  /**
+   * `prisma.annotationQueueItem`: Exposes CRUD operations for the **AnnotationQueueItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AnnotationQueueItems
+    * const annotationQueueItems = await prisma.annotationQueueItem.findMany()
+    * ```
+    */
+  get annotationQueueItem(): Prisma.AnnotationQueueItemDelegate<ExtArgs>;
 
   /**
    * `prisma.cronJobs`: Exposes CRUD operations for the **CronJobs** model.
@@ -823,6 +878,8 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
+
+
   /**
    * Decimal.js
    */
@@ -849,8 +906,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.18.0
-   * Query Engine version: 4c784e32044a8a016d99474bd02a3b6123742169
+   * Prisma Client JS version: 5.21.0
+   * Query Engine version: 08713a93b99d58f31485621c634b04983ae01d95
    */
   export type PrismaVersion = {
     client: string
@@ -862,51 +919,13 @@ export namespace Prisma {
    * Utility Types
    */
 
-  /**
-   * From https://github.com/sindresorhus/type-fest/
-   * Matches a JSON object.
-   * This type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from. 
-   */
-  export type JsonObject = {[Key in string]?: JsonValue}
 
-  /**
-   * From https://github.com/sindresorhus/type-fest/
-   * Matches a JSON array.
-   */
-  export interface JsonArray extends Array<JsonValue> {}
-
-  /**
-   * From https://github.com/sindresorhus/type-fest/
-   * Matches any valid JSON value.
-   */
-  export type JsonValue = string | number | boolean | JsonObject | JsonArray | null
-
-  /**
-   * Matches a JSON object.
-   * Unlike `JsonObject`, this type allows undefined and read-only properties.
-   */
-  export type InputJsonObject = {readonly [Key in string]?: InputJsonValue | null}
-
-  /**
-   * Matches a JSON array.
-   * Unlike `JsonArray`, readonly arrays are assignable to this type.
-   */
-  export interface InputJsonArray extends ReadonlyArray<InputJsonValue | null> {}
-
-  /**
-   * Matches any valid value that can be used as an input for operations like
-   * create and update as the value of a JSON field. Unlike `JsonValue`, this
-   * type allows read-only arrays and read-only object properties and disallows
-   * `null` at the top level.
-   *
-   * `null` cannot be used as the value of a JSON field because its meaning
-   * would be ambiguous. Use `Prisma.JsonNull` to store the JSON null value or
-   * `Prisma.DbNull` to clear the JSON value and set the field to the database
-   * NULL value instead.
-   *
-   * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
-   */
-  export type InputJsonValue = string | number | boolean | InputJsonObject | InputJsonArray | { toJSON(): unknown }
+  export import JsonObject = runtime.JsonObject
+  export import JsonArray = runtime.JsonArray
+  export import JsonValue = runtime.JsonValue
+  export import InputJsonObject = runtime.InputJsonObject
+  export import InputJsonArray = runtime.InputJsonArray
+  export import InputJsonValue = runtime.InputJsonValue
 
   /**
    * Types of the values used to represent different kinds of `null` values when working with JSON fields.
@@ -1285,6 +1304,8 @@ export namespace Prisma {
     Observation: 'Observation',
     Score: 'Score',
     ScoreConfig: 'ScoreConfig',
+    AnnotationQueue: 'AnnotationQueue',
+    AnnotationQueueItem: 'AnnotationQueueItem',
     CronJobs: 'CronJobs',
     Dataset: 'Dataset',
     DatasetItem: 'DatasetItem',
@@ -1318,7 +1339,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "account" | "session" | "user" | "verificationToken" | "organization" | "project" | "apiKey" | "llmApiKeys" | "organizationMembership" | "projectMembership" | "membershipInvitation" | "traceSession" | "trace" | "observation" | "score" | "scoreConfig" | "cronJobs" | "dataset" | "datasetItem" | "datasetRuns" | "datasetRunItems" | "events" | "comment" | "prompt" | "model" | "auditLog" | "evalTemplate" | "jobConfiguration" | "jobExecution" | "ssoConfig" | "posthogIntegration" | "batchExport" | "traceView" | "observationView"
+      modelProps: "account" | "session" | "user" | "verificationToken" | "organization" | "project" | "apiKey" | "llmApiKeys" | "organizationMembership" | "projectMembership" | "membershipInvitation" | "traceSession" | "trace" | "observation" | "score" | "scoreConfig" | "annotationQueue" | "annotationQueueItem" | "cronJobs" | "dataset" | "datasetItem" | "datasetRuns" | "datasetRunItems" | "events" | "comment" | "prompt" | "model" | "auditLog" | "evalTemplate" | "jobConfiguration" | "jobExecution" | "ssoConfig" | "posthogIntegration" | "batchExport" | "traceView" | "observationView"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2439,6 +2460,146 @@ export namespace Prisma {
           count: {
             args: Prisma.ScoreConfigCountArgs<ExtArgs>
             result: $Utils.Optional<ScoreConfigCountAggregateOutputType> | number
+          }
+        }
+      }
+      AnnotationQueue: {
+        payload: Prisma.$AnnotationQueuePayload<ExtArgs>
+        fields: Prisma.AnnotationQueueFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AnnotationQueueFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AnnotationQueueFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          findFirst: {
+            args: Prisma.AnnotationQueueFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AnnotationQueueFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          findMany: {
+            args: Prisma.AnnotationQueueFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>[]
+          }
+          create: {
+            args: Prisma.AnnotationQueueCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          createMany: {
+            args: Prisma.AnnotationQueueCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AnnotationQueueCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>[]
+          }
+          delete: {
+            args: Prisma.AnnotationQueueDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          update: {
+            args: Prisma.AnnotationQueueUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          deleteMany: {
+            args: Prisma.AnnotationQueueDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AnnotationQueueUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AnnotationQueueUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueuePayload>
+          }
+          aggregate: {
+            args: Prisma.AnnotationQueueAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAnnotationQueue>
+          }
+          groupBy: {
+            args: Prisma.AnnotationQueueGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AnnotationQueueGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AnnotationQueueCountArgs<ExtArgs>
+            result: $Utils.Optional<AnnotationQueueCountAggregateOutputType> | number
+          }
+        }
+      }
+      AnnotationQueueItem: {
+        payload: Prisma.$AnnotationQueueItemPayload<ExtArgs>
+        fields: Prisma.AnnotationQueueItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AnnotationQueueItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AnnotationQueueItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          findFirst: {
+            args: Prisma.AnnotationQueueItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AnnotationQueueItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          findMany: {
+            args: Prisma.AnnotationQueueItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>[]
+          }
+          create: {
+            args: Prisma.AnnotationQueueItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          createMany: {
+            args: Prisma.AnnotationQueueItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AnnotationQueueItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>[]
+          }
+          delete: {
+            args: Prisma.AnnotationQueueItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          update: {
+            args: Prisma.AnnotationQueueItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.AnnotationQueueItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AnnotationQueueItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AnnotationQueueItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnotationQueueItemPayload>
+          }
+          aggregate: {
+            args: Prisma.AnnotationQueueItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAnnotationQueueItem>
+          }
+          groupBy: {
+            args: Prisma.AnnotationQueueItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AnnotationQueueItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AnnotationQueueItemCountArgs<ExtArgs>
+            result: $Utils.Optional<AnnotationQueueItemCountAggregateOutputType> | number
           }
         }
       }
@@ -3707,20 +3868,20 @@ export namespace Prisma {
     other: {
       payload: any
       operations: {
-        $executeRawUnsafe: {
-          args: [query: string, ...values: any[]],
-          result: any
-        }
         $executeRaw: {
           args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
           result: any
         }
-        $queryRawUnsafe: {
+        $executeRawUnsafe: {
           args: [query: string, ...values: any[]],
           result: any
         }
         $queryRaw: {
           args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
           result: any
         }
       }
@@ -3868,6 +4029,8 @@ export namespace Prisma {
     organizationMemberships: number
     projectMemberships: number
     invitations: number
+    annotatedLockedItem: number
+    annotatedCompletedItem: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3876,6 +4039,8 @@ export namespace Prisma {
     organizationMemberships?: boolean | UserCountOutputTypeCountOrganizationMembershipsArgs
     projectMemberships?: boolean | UserCountOutputTypeCountProjectMembershipsArgs
     invitations?: boolean | UserCountOutputTypeCountInvitationsArgs
+    annotatedLockedItem?: boolean | UserCountOutputTypeCountAnnotatedLockedItemArgs
+    annotatedCompletedItem?: boolean | UserCountOutputTypeCountAnnotatedCompletedItemArgs
   }
 
   // Custom InputTypes
@@ -3922,6 +4087,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MembershipInvitationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAnnotatedLockedItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueItemWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAnnotatedCompletedItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueItemWhereInput
   }
 
 
@@ -3998,6 +4177,8 @@ export namespace Prisma {
     scoreConfig: number
     BatchExport: number
     comment: number
+    annotationQueue: number
+    annotationQueueItem: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4020,6 +4201,8 @@ export namespace Prisma {
     scoreConfig?: boolean | ProjectCountOutputTypeCountScoreConfigArgs
     BatchExport?: boolean | ProjectCountOutputTypeCountBatchExportArgs
     comment?: boolean | ProjectCountOutputTypeCountCommentArgs
+    annotationQueue?: boolean | ProjectCountOutputTypeCountAnnotationQueueArgs
+    annotationQueueItem?: boolean | ProjectCountOutputTypeCountAnnotationQueueItemArgs
   }
 
   // Custom InputTypes
@@ -4164,6 +4347,20 @@ export namespace Prisma {
    */
   export type ProjectCountOutputTypeCountCommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountAnnotationQueueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountAnnotationQueueItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueItemWhereInput
   }
 
 
@@ -4319,6 +4516,37 @@ export namespace Prisma {
    */
   export type ScoreConfigCountOutputTypeCountScoreArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ScoreWhereInput
+  }
+
+
+  /**
+   * Count Type AnnotationQueueCountOutputType
+   */
+
+  export type AnnotationQueueCountOutputType = {
+    annotationQueueItem: number
+  }
+
+  export type AnnotationQueueCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    annotationQueueItem?: boolean | AnnotationQueueCountOutputTypeCountAnnotationQueueItemArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AnnotationQueueCountOutputType without action
+   */
+  export type AnnotationQueueCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueCountOutputType
+     */
+    select?: AnnotationQueueCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AnnotationQueueCountOutputType without action
+   */
+  export type AnnotationQueueCountOutputTypeCountAnnotationQueueItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueItemWhereInput
   }
 
 
@@ -4506,12 +4734,16 @@ export namespace Prisma {
     expires_at: number | null
     expires_in: number | null
     ext_expires_in: number | null
+    refresh_token_expires_in: number | null
+    created_at: number | null
   }
 
   export type AccountSumAggregateOutputType = {
     expires_at: number | null
     expires_in: number | null
     ext_expires_in: number | null
+    refresh_token_expires_in: number | null
+    created_at: number | null
   }
 
   export type AccountMinAggregateOutputType = {
@@ -4529,6 +4761,8 @@ export namespace Prisma {
     scope: string | null
     id_token: string | null
     session_state: string | null
+    refresh_token_expires_in: number | null
+    created_at: number | null
   }
 
   export type AccountMaxAggregateOutputType = {
@@ -4546,6 +4780,8 @@ export namespace Prisma {
     scope: string | null
     id_token: string | null
     session_state: string | null
+    refresh_token_expires_in: number | null
+    created_at: number | null
   }
 
   export type AccountCountAggregateOutputType = {
@@ -4563,6 +4799,8 @@ export namespace Prisma {
     scope: number
     id_token: number
     session_state: number
+    refresh_token_expires_in: number
+    created_at: number
     _all: number
   }
 
@@ -4571,12 +4809,16 @@ export namespace Prisma {
     expires_at?: true
     expires_in?: true
     ext_expires_in?: true
+    refresh_token_expires_in?: true
+    created_at?: true
   }
 
   export type AccountSumAggregateInputType = {
     expires_at?: true
     expires_in?: true
     ext_expires_in?: true
+    refresh_token_expires_in?: true
+    created_at?: true
   }
 
   export type AccountMinAggregateInputType = {
@@ -4594,6 +4836,8 @@ export namespace Prisma {
     scope?: true
     id_token?: true
     session_state?: true
+    refresh_token_expires_in?: true
+    created_at?: true
   }
 
   export type AccountMaxAggregateInputType = {
@@ -4611,6 +4855,8 @@ export namespace Prisma {
     scope?: true
     id_token?: true
     session_state?: true
+    refresh_token_expires_in?: true
+    created_at?: true
   }
 
   export type AccountCountAggregateInputType = {
@@ -4628,6 +4874,8 @@ export namespace Prisma {
     scope?: true
     id_token?: true
     session_state?: true
+    refresh_token_expires_in?: true
+    created_at?: true
     _all?: true
   }
 
@@ -4732,6 +4980,8 @@ export namespace Prisma {
     scope: string | null
     id_token: string | null
     session_state: string | null
+    refresh_token_expires_in: number | null
+    created_at: number | null
     _count: AccountCountAggregateOutputType | null
     _avg: AccountAvgAggregateOutputType | null
     _sum: AccountSumAggregateOutputType | null
@@ -4768,6 +5018,8 @@ export namespace Prisma {
     scope?: boolean
     id_token?: boolean
     session_state?: boolean
+    refresh_token_expires_in?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
@@ -4786,6 +5038,8 @@ export namespace Prisma {
     scope?: boolean
     id_token?: boolean
     session_state?: boolean
+    refresh_token_expires_in?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
@@ -4804,6 +5058,8 @@ export namespace Prisma {
     scope?: boolean
     id_token?: boolean
     session_state?: boolean
+    refresh_token_expires_in?: boolean
+    created_at?: boolean
   }
 
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4833,6 +5089,8 @@ export namespace Prisma {
       scope: string | null
       id_token: string | null
       session_state: string | null
+      refresh_token_expires_in: number | null
+      created_at: number | null
     }, ExtArgs["result"]["account"]>
     composites: {}
   }
@@ -5241,6 +5499,8 @@ export namespace Prisma {
     readonly scope: FieldRef<"Account", 'String'>
     readonly id_token: FieldRef<"Account", 'String'>
     readonly session_state: FieldRef<"Account", 'String'>
+    readonly refresh_token_expires_in: FieldRef<"Account", 'Int'>
+    readonly created_at: FieldRef<"Account", 'Int'>
   }
     
 
@@ -6717,6 +6977,8 @@ export namespace Prisma {
     organizationMemberships?: boolean | User$organizationMembershipsArgs<ExtArgs>
     projectMemberships?: boolean | User$projectMembershipsArgs<ExtArgs>
     invitations?: boolean | User$invitationsArgs<ExtArgs>
+    annotatedLockedItem?: boolean | User$annotatedLockedItemArgs<ExtArgs>
+    annotatedCompletedItem?: boolean | User$annotatedCompletedItemArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -6752,6 +7014,8 @@ export namespace Prisma {
     organizationMemberships?: boolean | User$organizationMembershipsArgs<ExtArgs>
     projectMemberships?: boolean | User$projectMembershipsArgs<ExtArgs>
     invitations?: boolean | User$invitationsArgs<ExtArgs>
+    annotatedLockedItem?: boolean | User$annotatedLockedItemArgs<ExtArgs>
+    annotatedCompletedItem?: boolean | User$annotatedCompletedItemArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6764,6 +7028,8 @@ export namespace Prisma {
       organizationMemberships: Prisma.$OrganizationMembershipPayload<ExtArgs>[]
       projectMemberships: Prisma.$ProjectMembershipPayload<ExtArgs>[]
       invitations: Prisma.$MembershipInvitationPayload<ExtArgs>[]
+      annotatedLockedItem: Prisma.$AnnotationQueueItemPayload<ExtArgs>[]
+      annotatedCompletedItem: Prisma.$AnnotationQueueItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7145,6 +7411,8 @@ export namespace Prisma {
     organizationMemberships<T extends User$organizationMembershipsArgs<ExtArgs> = {}>(args?: Subset<T, User$organizationMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrganizationMembershipPayload<ExtArgs>, T, "findMany"> | Null>
     projectMemberships<T extends User$projectMembershipsArgs<ExtArgs> = {}>(args?: Subset<T, User$projectMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectMembershipPayload<ExtArgs>, T, "findMany"> | Null>
     invitations<T extends User$invitationsArgs<ExtArgs> = {}>(args?: Subset<T, User$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MembershipInvitationPayload<ExtArgs>, T, "findMany"> | Null>
+    annotatedLockedItem<T extends User$annotatedLockedItemArgs<ExtArgs> = {}>(args?: Subset<T, User$annotatedLockedItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany"> | Null>
+    annotatedCompletedItem<T extends User$annotatedCompletedItemArgs<ExtArgs> = {}>(args?: Subset<T, User$annotatedCompletedItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7604,6 +7872,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MembershipInvitationScalarFieldEnum | MembershipInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * User.annotatedLockedItem
+   */
+  export type User$annotatedLockedItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    where?: AnnotationQueueItemWhereInput
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+  }
+
+  /**
+   * User.annotatedCompletedItem
+   */
+  export type User$annotatedCompletedItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    where?: AnnotationQueueItemWhereInput
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
   }
 
   /**
@@ -9669,6 +9977,8 @@ export namespace Prisma {
     scoreConfig?: boolean | Project$scoreConfigArgs<ExtArgs>
     BatchExport?: boolean | Project$BatchExportArgs<ExtArgs>
     comment?: boolean | Project$commentArgs<ExtArgs>
+    annotationQueue?: boolean | Project$annotationQueueArgs<ExtArgs>
+    annotationQueueItem?: boolean | Project$annotationQueueItemArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -9710,6 +10020,8 @@ export namespace Prisma {
     scoreConfig?: boolean | Project$scoreConfigArgs<ExtArgs>
     BatchExport?: boolean | Project$BatchExportArgs<ExtArgs>
     comment?: boolean | Project$commentArgs<ExtArgs>
+    annotationQueue?: boolean | Project$annotationQueueArgs<ExtArgs>
+    annotationQueueItem?: boolean | Project$annotationQueueItemArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9739,6 +10051,8 @@ export namespace Prisma {
       scoreConfig: Prisma.$ScoreConfigPayload<ExtArgs>[]
       BatchExport: Prisma.$BatchExportPayload<ExtArgs>[]
       comment: Prisma.$CommentPayload<ExtArgs>[]
+      annotationQueue: Prisma.$AnnotationQueuePayload<ExtArgs>[]
+      annotationQueueItem: Prisma.$AnnotationQueueItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10130,6 +10444,8 @@ export namespace Prisma {
     scoreConfig<T extends Project$scoreConfigArgs<ExtArgs> = {}>(args?: Subset<T, Project$scoreConfigArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ScoreConfigPayload<ExtArgs>, T, "findMany"> | Null>
     BatchExport<T extends Project$BatchExportArgs<ExtArgs> = {}>(args?: Subset<T, Project$BatchExportArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BatchExportPayload<ExtArgs>, T, "findMany"> | Null>
     comment<T extends Project$commentArgs<ExtArgs> = {}>(args?: Subset<T, Project$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany"> | Null>
+    annotationQueue<T extends Project$annotationQueueArgs<ExtArgs> = {}>(args?: Subset<T, Project$annotationQueueArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findMany"> | Null>
+    annotationQueueItem<T extends Project$annotationQueueItemArgs<ExtArgs> = {}>(args?: Subset<T, Project$annotationQueueItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10868,6 +11184,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
+  }
+
+  /**
+   * Project.annotationQueue
+   */
+  export type Project$annotationQueueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    where?: AnnotationQueueWhereInput
+    orderBy?: AnnotationQueueOrderByWithRelationInput | AnnotationQueueOrderByWithRelationInput[]
+    cursor?: AnnotationQueueWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnnotationQueueScalarFieldEnum | AnnotationQueueScalarFieldEnum[]
+  }
+
+  /**
+   * Project.annotationQueueItem
+   */
+  export type Project$annotationQueueItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    where?: AnnotationQueueItemWhereInput
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
   }
 
   /**
@@ -11934,6 +12290,7 @@ export namespace Prisma {
     baseURL: number
     customModels: number
     withDefaultModels: number
+    config: number
     projectId: number
     _all: number
   }
@@ -11976,6 +12333,7 @@ export namespace Prisma {
     baseURL?: true
     customModels?: true
     withDefaultModels?: true
+    config?: true
     projectId?: true
     _all?: true
   }
@@ -12063,6 +12421,7 @@ export namespace Prisma {
     baseURL: string | null
     customModels: string[]
     withDefaultModels: boolean
+    config: JsonValue | null
     projectId: string
     _count: LlmApiKeysCountAggregateOutputType | null
     _min: LlmApiKeysMinAggregateOutputType | null
@@ -12094,6 +12453,7 @@ export namespace Prisma {
     baseURL?: boolean
     customModels?: boolean
     withDefaultModels?: boolean
+    config?: boolean
     projectId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["llmApiKeys"]>
@@ -12109,6 +12469,7 @@ export namespace Prisma {
     baseURL?: boolean
     customModels?: boolean
     withDefaultModels?: boolean
+    config?: boolean
     projectId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["llmApiKeys"]>
@@ -12124,6 +12485,7 @@ export namespace Prisma {
     baseURL?: boolean
     customModels?: boolean
     withDefaultModels?: boolean
+    config?: boolean
     projectId?: boolean
   }
 
@@ -12150,6 +12512,7 @@ export namespace Prisma {
       baseURL: string | null
       customModels: string[]
       withDefaultModels: boolean
+      config: Prisma.JsonValue | null
       projectId: string
     }, ExtArgs["result"]["llmApiKeys"]>
     composites: {}
@@ -12555,6 +12918,7 @@ export namespace Prisma {
     readonly baseURL: FieldRef<"LlmApiKeys", 'String'>
     readonly customModels: FieldRef<"LlmApiKeys", 'String[]'>
     readonly withDefaultModels: FieldRef<"LlmApiKeys", 'Boolean'>
+    readonly config: FieldRef<"LlmApiKeys", 'Json'>
     readonly projectId: FieldRef<"LlmApiKeys", 'String'>
   }
     
@@ -19327,6 +19691,7 @@ export namespace Prisma {
     observationId: string | null
     configId: string | null
     stringValue: string | null
+    queueId: string | null
     createdAt: Date | null
     updatedAt: Date | null
     dataType: $Enums.ScoreDataType | null
@@ -19345,6 +19710,7 @@ export namespace Prisma {
     observationId: string | null
     configId: string | null
     stringValue: string | null
+    queueId: string | null
     createdAt: Date | null
     updatedAt: Date | null
     dataType: $Enums.ScoreDataType | null
@@ -19363,6 +19729,7 @@ export namespace Prisma {
     observationId: number
     configId: number
     stringValue: number
+    queueId: number
     createdAt: number
     updatedAt: number
     dataType: number
@@ -19391,6 +19758,7 @@ export namespace Prisma {
     observationId?: true
     configId?: true
     stringValue?: true
+    queueId?: true
     createdAt?: true
     updatedAt?: true
     dataType?: true
@@ -19409,6 +19777,7 @@ export namespace Prisma {
     observationId?: true
     configId?: true
     stringValue?: true
+    queueId?: true
     createdAt?: true
     updatedAt?: true
     dataType?: true
@@ -19427,6 +19796,7 @@ export namespace Prisma {
     observationId?: true
     configId?: true
     stringValue?: true
+    queueId?: true
     createdAt?: true
     updatedAt?: true
     dataType?: true
@@ -19532,6 +19902,7 @@ export namespace Prisma {
     observationId: string | null
     configId: string | null
     stringValue: string | null
+    queueId: string | null
     createdAt: Date
     updatedAt: Date
     dataType: $Enums.ScoreDataType
@@ -19569,6 +19940,7 @@ export namespace Prisma {
     observationId?: boolean
     configId?: boolean
     stringValue?: boolean
+    queueId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     dataType?: boolean
@@ -19591,6 +19963,7 @@ export namespace Prisma {
     observationId?: boolean
     configId?: boolean
     stringValue?: boolean
+    queueId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     dataType?: boolean
@@ -19611,6 +19984,7 @@ export namespace Prisma {
     observationId?: boolean
     configId?: boolean
     stringValue?: boolean
+    queueId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     dataType?: boolean
@@ -19647,6 +20021,7 @@ export namespace Prisma {
       observationId: string | null
       configId: string | null
       stringValue: string | null
+      queueId: string | null
       createdAt: Date
       updatedAt: Date
       dataType: $Enums.ScoreDataType
@@ -20058,6 +20433,7 @@ export namespace Prisma {
     readonly observationId: FieldRef<"Score", 'String'>
     readonly configId: FieldRef<"Score", 'String'>
     readonly stringValue: FieldRef<"Score", 'String'>
+    readonly queueId: FieldRef<"Score", 'String'>
     readonly createdAt: FieldRef<"Score", 'DateTime'>
     readonly updatedAt: FieldRef<"Score", 'DateTime'>
     readonly dataType: FieldRef<"Score", 'ScoreDataType'>
@@ -21508,6 +21884,2068 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ScoreConfigInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AnnotationQueue
+   */
+
+  export type AggregateAnnotationQueue = {
+    _count: AnnotationQueueCountAggregateOutputType | null
+    _min: AnnotationQueueMinAggregateOutputType | null
+    _max: AnnotationQueueMaxAggregateOutputType | null
+  }
+
+  export type AnnotationQueueMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AnnotationQueueMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AnnotationQueueCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    scoreConfigIds: number
+    projectId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AnnotationQueueMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AnnotationQueueMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AnnotationQueueCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    scoreConfigIds?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AnnotationQueueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnnotationQueue to aggregate.
+     */
+    where?: AnnotationQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueues to fetch.
+     */
+    orderBy?: AnnotationQueueOrderByWithRelationInput | AnnotationQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AnnotationQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AnnotationQueues
+    **/
+    _count?: true | AnnotationQueueCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AnnotationQueueMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AnnotationQueueMaxAggregateInputType
+  }
+
+  export type GetAnnotationQueueAggregateType<T extends AnnotationQueueAggregateArgs> = {
+        [P in keyof T & keyof AggregateAnnotationQueue]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAnnotationQueue[P]>
+      : GetScalarType<T[P], AggregateAnnotationQueue[P]>
+  }
+
+
+
+
+  export type AnnotationQueueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueWhereInput
+    orderBy?: AnnotationQueueOrderByWithAggregationInput | AnnotationQueueOrderByWithAggregationInput[]
+    by: AnnotationQueueScalarFieldEnum[] | AnnotationQueueScalarFieldEnum
+    having?: AnnotationQueueScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AnnotationQueueCountAggregateInputType | true
+    _min?: AnnotationQueueMinAggregateInputType
+    _max?: AnnotationQueueMaxAggregateInputType
+  }
+
+  export type AnnotationQueueGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    scoreConfigIds: string[]
+    projectId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: AnnotationQueueCountAggregateOutputType | null
+    _min: AnnotationQueueMinAggregateOutputType | null
+    _max: AnnotationQueueMaxAggregateOutputType | null
+  }
+
+  type GetAnnotationQueueGroupByPayload<T extends AnnotationQueueGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AnnotationQueueGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AnnotationQueueGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AnnotationQueueGroupByOutputType[P]>
+            : GetScalarType<T[P], AnnotationQueueGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AnnotationQueueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    scoreConfigIds?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    annotationQueueItem?: boolean | AnnotationQueue$annotationQueueItemArgs<ExtArgs>
+    _count?: boolean | AnnotationQueueCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["annotationQueue"]>
+
+  export type AnnotationQueueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    scoreConfigIds?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["annotationQueue"]>
+
+  export type AnnotationQueueSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    scoreConfigIds?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AnnotationQueueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    annotationQueueItem?: boolean | AnnotationQueue$annotationQueueItemArgs<ExtArgs>
+    _count?: boolean | AnnotationQueueCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AnnotationQueueIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }
+
+  export type $AnnotationQueuePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AnnotationQueue"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      annotationQueueItem: Prisma.$AnnotationQueueItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      scoreConfigIds: string[]
+      projectId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["annotationQueue"]>
+    composites: {}
+  }
+
+  type AnnotationQueueGetPayload<S extends boolean | null | undefined | AnnotationQueueDefaultArgs> = $Result.GetResult<Prisma.$AnnotationQueuePayload, S>
+
+  type AnnotationQueueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AnnotationQueueFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: AnnotationQueueCountAggregateInputType | true
+    }
+
+  export interface AnnotationQueueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AnnotationQueue'], meta: { name: 'AnnotationQueue' } }
+    /**
+     * Find zero or one AnnotationQueue that matches the filter.
+     * @param {AnnotationQueueFindUniqueArgs} args - Arguments to find a AnnotationQueue
+     * @example
+     * // Get one AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AnnotationQueueFindUniqueArgs>(args: SelectSubset<T, AnnotationQueueFindUniqueArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one AnnotationQueue that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AnnotationQueueFindUniqueOrThrowArgs} args - Arguments to find a AnnotationQueue
+     * @example
+     * // Get one AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AnnotationQueueFindUniqueOrThrowArgs>(args: SelectSubset<T, AnnotationQueueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first AnnotationQueue that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueFindFirstArgs} args - Arguments to find a AnnotationQueue
+     * @example
+     * // Get one AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AnnotationQueueFindFirstArgs>(args?: SelectSubset<T, AnnotationQueueFindFirstArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first AnnotationQueue that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueFindFirstOrThrowArgs} args - Arguments to find a AnnotationQueue
+     * @example
+     * // Get one AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AnnotationQueueFindFirstOrThrowArgs>(args?: SelectSubset<T, AnnotationQueueFindFirstOrThrowArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more AnnotationQueues that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AnnotationQueues
+     * const annotationQueues = await prisma.annotationQueue.findMany()
+     * 
+     * // Get first 10 AnnotationQueues
+     * const annotationQueues = await prisma.annotationQueue.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const annotationQueueWithIdOnly = await prisma.annotationQueue.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AnnotationQueueFindManyArgs>(args?: SelectSubset<T, AnnotationQueueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a AnnotationQueue.
+     * @param {AnnotationQueueCreateArgs} args - Arguments to create a AnnotationQueue.
+     * @example
+     * // Create one AnnotationQueue
+     * const AnnotationQueue = await prisma.annotationQueue.create({
+     *   data: {
+     *     // ... data to create a AnnotationQueue
+     *   }
+     * })
+     * 
+     */
+    create<T extends AnnotationQueueCreateArgs>(args: SelectSubset<T, AnnotationQueueCreateArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many AnnotationQueues.
+     * @param {AnnotationQueueCreateManyArgs} args - Arguments to create many AnnotationQueues.
+     * @example
+     * // Create many AnnotationQueues
+     * const annotationQueue = await prisma.annotationQueue.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AnnotationQueueCreateManyArgs>(args?: SelectSubset<T, AnnotationQueueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AnnotationQueues and returns the data saved in the database.
+     * @param {AnnotationQueueCreateManyAndReturnArgs} args - Arguments to create many AnnotationQueues.
+     * @example
+     * // Create many AnnotationQueues
+     * const annotationQueue = await prisma.annotationQueue.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AnnotationQueues and only return the `id`
+     * const annotationQueueWithIdOnly = await prisma.annotationQueue.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AnnotationQueueCreateManyAndReturnArgs>(args?: SelectSubset<T, AnnotationQueueCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a AnnotationQueue.
+     * @param {AnnotationQueueDeleteArgs} args - Arguments to delete one AnnotationQueue.
+     * @example
+     * // Delete one AnnotationQueue
+     * const AnnotationQueue = await prisma.annotationQueue.delete({
+     *   where: {
+     *     // ... filter to delete one AnnotationQueue
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AnnotationQueueDeleteArgs>(args: SelectSubset<T, AnnotationQueueDeleteArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one AnnotationQueue.
+     * @param {AnnotationQueueUpdateArgs} args - Arguments to update one AnnotationQueue.
+     * @example
+     * // Update one AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AnnotationQueueUpdateArgs>(args: SelectSubset<T, AnnotationQueueUpdateArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more AnnotationQueues.
+     * @param {AnnotationQueueDeleteManyArgs} args - Arguments to filter AnnotationQueues to delete.
+     * @example
+     * // Delete a few AnnotationQueues
+     * const { count } = await prisma.annotationQueue.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AnnotationQueueDeleteManyArgs>(args?: SelectSubset<T, AnnotationQueueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AnnotationQueues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AnnotationQueues
+     * const annotationQueue = await prisma.annotationQueue.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AnnotationQueueUpdateManyArgs>(args: SelectSubset<T, AnnotationQueueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AnnotationQueue.
+     * @param {AnnotationQueueUpsertArgs} args - Arguments to update or create a AnnotationQueue.
+     * @example
+     * // Update or create a AnnotationQueue
+     * const annotationQueue = await prisma.annotationQueue.upsert({
+     *   create: {
+     *     // ... data to create a AnnotationQueue
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AnnotationQueue we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AnnotationQueueUpsertArgs>(args: SelectSubset<T, AnnotationQueueUpsertArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of AnnotationQueues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueCountArgs} args - Arguments to filter AnnotationQueues to count.
+     * @example
+     * // Count the number of AnnotationQueues
+     * const count = await prisma.annotationQueue.count({
+     *   where: {
+     *     // ... the filter for the AnnotationQueues we want to count
+     *   }
+     * })
+    **/
+    count<T extends AnnotationQueueCountArgs>(
+      args?: Subset<T, AnnotationQueueCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AnnotationQueueCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AnnotationQueue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AnnotationQueueAggregateArgs>(args: Subset<T, AnnotationQueueAggregateArgs>): Prisma.PrismaPromise<GetAnnotationQueueAggregateType<T>>
+
+    /**
+     * Group by AnnotationQueue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AnnotationQueueGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AnnotationQueueGroupByArgs['orderBy'] }
+        : { orderBy?: AnnotationQueueGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AnnotationQueueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAnnotationQueueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AnnotationQueue model
+   */
+  readonly fields: AnnotationQueueFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AnnotationQueue.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AnnotationQueueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    annotationQueueItem<T extends AnnotationQueue$annotationQueueItemArgs<ExtArgs> = {}>(args?: Subset<T, AnnotationQueue$annotationQueueItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AnnotationQueue model
+   */ 
+  interface AnnotationQueueFieldRefs {
+    readonly id: FieldRef<"AnnotationQueue", 'String'>
+    readonly name: FieldRef<"AnnotationQueue", 'String'>
+    readonly description: FieldRef<"AnnotationQueue", 'String'>
+    readonly scoreConfigIds: FieldRef<"AnnotationQueue", 'String[]'>
+    readonly projectId: FieldRef<"AnnotationQueue", 'String'>
+    readonly createdAt: FieldRef<"AnnotationQueue", 'DateTime'>
+    readonly updatedAt: FieldRef<"AnnotationQueue", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AnnotationQueue findUnique
+   */
+  export type AnnotationQueueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueue to fetch.
+     */
+    where: AnnotationQueueWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue findUniqueOrThrow
+   */
+  export type AnnotationQueueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueue to fetch.
+     */
+    where: AnnotationQueueWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue findFirst
+   */
+  export type AnnotationQueueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueue to fetch.
+     */
+    where?: AnnotationQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueues to fetch.
+     */
+    orderBy?: AnnotationQueueOrderByWithRelationInput | AnnotationQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AnnotationQueues.
+     */
+    cursor?: AnnotationQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AnnotationQueues.
+     */
+    distinct?: AnnotationQueueScalarFieldEnum | AnnotationQueueScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue findFirstOrThrow
+   */
+  export type AnnotationQueueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueue to fetch.
+     */
+    where?: AnnotationQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueues to fetch.
+     */
+    orderBy?: AnnotationQueueOrderByWithRelationInput | AnnotationQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AnnotationQueues.
+     */
+    cursor?: AnnotationQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AnnotationQueues.
+     */
+    distinct?: AnnotationQueueScalarFieldEnum | AnnotationQueueScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue findMany
+   */
+  export type AnnotationQueueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueues to fetch.
+     */
+    where?: AnnotationQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueues to fetch.
+     */
+    orderBy?: AnnotationQueueOrderByWithRelationInput | AnnotationQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AnnotationQueues.
+     */
+    cursor?: AnnotationQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueues.
+     */
+    skip?: number
+    distinct?: AnnotationQueueScalarFieldEnum | AnnotationQueueScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue create
+   */
+  export type AnnotationQueueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AnnotationQueue.
+     */
+    data: XOR<AnnotationQueueCreateInput, AnnotationQueueUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue createMany
+   */
+  export type AnnotationQueueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AnnotationQueues.
+     */
+    data: AnnotationQueueCreateManyInput | AnnotationQueueCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AnnotationQueue createManyAndReturn
+   */
+  export type AnnotationQueueCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many AnnotationQueues.
+     */
+    data: AnnotationQueueCreateManyInput | AnnotationQueueCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AnnotationQueue update
+   */
+  export type AnnotationQueueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AnnotationQueue.
+     */
+    data: XOR<AnnotationQueueUpdateInput, AnnotationQueueUncheckedUpdateInput>
+    /**
+     * Choose, which AnnotationQueue to update.
+     */
+    where: AnnotationQueueWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue updateMany
+   */
+  export type AnnotationQueueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AnnotationQueues.
+     */
+    data: XOR<AnnotationQueueUpdateManyMutationInput, AnnotationQueueUncheckedUpdateManyInput>
+    /**
+     * Filter which AnnotationQueues to update
+     */
+    where?: AnnotationQueueWhereInput
+  }
+
+  /**
+   * AnnotationQueue upsert
+   */
+  export type AnnotationQueueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AnnotationQueue to update in case it exists.
+     */
+    where: AnnotationQueueWhereUniqueInput
+    /**
+     * In case the AnnotationQueue found by the `where` argument doesn't exist, create a new AnnotationQueue with this data.
+     */
+    create: XOR<AnnotationQueueCreateInput, AnnotationQueueUncheckedCreateInput>
+    /**
+     * In case the AnnotationQueue was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AnnotationQueueUpdateInput, AnnotationQueueUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue delete
+   */
+  export type AnnotationQueueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+    /**
+     * Filter which AnnotationQueue to delete.
+     */
+    where: AnnotationQueueWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueue deleteMany
+   */
+  export type AnnotationQueueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnnotationQueues to delete
+     */
+    where?: AnnotationQueueWhereInput
+  }
+
+  /**
+   * AnnotationQueue.annotationQueueItem
+   */
+  export type AnnotationQueue$annotationQueueItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    where?: AnnotationQueueItemWhereInput
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+  }
+
+  /**
+   * AnnotationQueue without action
+   */
+  export type AnnotationQueueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueue
+     */
+    select?: AnnotationQueueSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AnnotationQueueItem
+   */
+
+  export type AggregateAnnotationQueueItem = {
+    _count: AnnotationQueueItemCountAggregateOutputType | null
+    _min: AnnotationQueueItemMinAggregateOutputType | null
+    _max: AnnotationQueueItemMaxAggregateOutputType | null
+  }
+
+  export type AnnotationQueueItemMinAggregateOutputType = {
+    id: string | null
+    queueId: string | null
+    objectId: string | null
+    objectType: $Enums.AnnotationQueueObjectType | null
+    status: $Enums.AnnotationQueueStatus | null
+    lockedAt: Date | null
+    lockedByUserId: string | null
+    annotatorUserId: string | null
+    completedAt: Date | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AnnotationQueueItemMaxAggregateOutputType = {
+    id: string | null
+    queueId: string | null
+    objectId: string | null
+    objectType: $Enums.AnnotationQueueObjectType | null
+    status: $Enums.AnnotationQueueStatus | null
+    lockedAt: Date | null
+    lockedByUserId: string | null
+    annotatorUserId: string | null
+    completedAt: Date | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AnnotationQueueItemCountAggregateOutputType = {
+    id: number
+    queueId: number
+    objectId: number
+    objectType: number
+    status: number
+    lockedAt: number
+    lockedByUserId: number
+    annotatorUserId: number
+    completedAt: number
+    projectId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AnnotationQueueItemMinAggregateInputType = {
+    id?: true
+    queueId?: true
+    objectId?: true
+    objectType?: true
+    status?: true
+    lockedAt?: true
+    lockedByUserId?: true
+    annotatorUserId?: true
+    completedAt?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AnnotationQueueItemMaxAggregateInputType = {
+    id?: true
+    queueId?: true
+    objectId?: true
+    objectType?: true
+    status?: true
+    lockedAt?: true
+    lockedByUserId?: true
+    annotatorUserId?: true
+    completedAt?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AnnotationQueueItemCountAggregateInputType = {
+    id?: true
+    queueId?: true
+    objectId?: true
+    objectType?: true
+    status?: true
+    lockedAt?: true
+    lockedByUserId?: true
+    annotatorUserId?: true
+    completedAt?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AnnotationQueueItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnnotationQueueItem to aggregate.
+     */
+    where?: AnnotationQueueItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueueItems to fetch.
+     */
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueueItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueueItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AnnotationQueueItems
+    **/
+    _count?: true | AnnotationQueueItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AnnotationQueueItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AnnotationQueueItemMaxAggregateInputType
+  }
+
+  export type GetAnnotationQueueItemAggregateType<T extends AnnotationQueueItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateAnnotationQueueItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAnnotationQueueItem[P]>
+      : GetScalarType<T[P], AggregateAnnotationQueueItem[P]>
+  }
+
+
+
+
+  export type AnnotationQueueItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnotationQueueItemWhereInput
+    orderBy?: AnnotationQueueItemOrderByWithAggregationInput | AnnotationQueueItemOrderByWithAggregationInput[]
+    by: AnnotationQueueItemScalarFieldEnum[] | AnnotationQueueItemScalarFieldEnum
+    having?: AnnotationQueueItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AnnotationQueueItemCountAggregateInputType | true
+    _min?: AnnotationQueueItemMinAggregateInputType
+    _max?: AnnotationQueueItemMaxAggregateInputType
+  }
+
+  export type AnnotationQueueItemGroupByOutputType = {
+    id: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status: $Enums.AnnotationQueueStatus
+    lockedAt: Date | null
+    lockedByUserId: string | null
+    annotatorUserId: string | null
+    completedAt: Date | null
+    projectId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: AnnotationQueueItemCountAggregateOutputType | null
+    _min: AnnotationQueueItemMinAggregateOutputType | null
+    _max: AnnotationQueueItemMaxAggregateOutputType | null
+  }
+
+  type GetAnnotationQueueItemGroupByPayload<T extends AnnotationQueueItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AnnotationQueueItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AnnotationQueueItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AnnotationQueueItemGroupByOutputType[P]>
+            : GetScalarType<T[P], AnnotationQueueItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AnnotationQueueItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    queueId?: boolean
+    objectId?: boolean
+    objectType?: boolean
+    status?: boolean
+    lockedAt?: boolean
+    lockedByUserId?: boolean
+    annotatorUserId?: boolean
+    completedAt?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    queue?: boolean | AnnotationQueueDefaultArgs<ExtArgs>
+    lockedByUser?: boolean | AnnotationQueueItem$lockedByUserArgs<ExtArgs>
+    annotatorUser?: boolean | AnnotationQueueItem$annotatorUserArgs<ExtArgs>
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["annotationQueueItem"]>
+
+  export type AnnotationQueueItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    queueId?: boolean
+    objectId?: boolean
+    objectType?: boolean
+    status?: boolean
+    lockedAt?: boolean
+    lockedByUserId?: boolean
+    annotatorUserId?: boolean
+    completedAt?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    queue?: boolean | AnnotationQueueDefaultArgs<ExtArgs>
+    lockedByUser?: boolean | AnnotationQueueItem$lockedByUserArgs<ExtArgs>
+    annotatorUser?: boolean | AnnotationQueueItem$annotatorUserArgs<ExtArgs>
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["annotationQueueItem"]>
+
+  export type AnnotationQueueItemSelectScalar = {
+    id?: boolean
+    queueId?: boolean
+    objectId?: boolean
+    objectType?: boolean
+    status?: boolean
+    lockedAt?: boolean
+    lockedByUserId?: boolean
+    annotatorUserId?: boolean
+    completedAt?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AnnotationQueueItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    queue?: boolean | AnnotationQueueDefaultArgs<ExtArgs>
+    lockedByUser?: boolean | AnnotationQueueItem$lockedByUserArgs<ExtArgs>
+    annotatorUser?: boolean | AnnotationQueueItem$annotatorUserArgs<ExtArgs>
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }
+  export type AnnotationQueueItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    queue?: boolean | AnnotationQueueDefaultArgs<ExtArgs>
+    lockedByUser?: boolean | AnnotationQueueItem$lockedByUserArgs<ExtArgs>
+    annotatorUser?: boolean | AnnotationQueueItem$annotatorUserArgs<ExtArgs>
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }
+
+  export type $AnnotationQueueItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AnnotationQueueItem"
+    objects: {
+      queue: Prisma.$AnnotationQueuePayload<ExtArgs>
+      lockedByUser: Prisma.$UserPayload<ExtArgs> | null
+      annotatorUser: Prisma.$UserPayload<ExtArgs> | null
+      project: Prisma.$ProjectPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      queueId: string
+      objectId: string
+      objectType: $Enums.AnnotationQueueObjectType
+      status: $Enums.AnnotationQueueStatus
+      lockedAt: Date | null
+      lockedByUserId: string | null
+      annotatorUserId: string | null
+      completedAt: Date | null
+      projectId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["annotationQueueItem"]>
+    composites: {}
+  }
+
+  type AnnotationQueueItemGetPayload<S extends boolean | null | undefined | AnnotationQueueItemDefaultArgs> = $Result.GetResult<Prisma.$AnnotationQueueItemPayload, S>
+
+  type AnnotationQueueItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AnnotationQueueItemFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: AnnotationQueueItemCountAggregateInputType | true
+    }
+
+  export interface AnnotationQueueItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AnnotationQueueItem'], meta: { name: 'AnnotationQueueItem' } }
+    /**
+     * Find zero or one AnnotationQueueItem that matches the filter.
+     * @param {AnnotationQueueItemFindUniqueArgs} args - Arguments to find a AnnotationQueueItem
+     * @example
+     * // Get one AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AnnotationQueueItemFindUniqueArgs>(args: SelectSubset<T, AnnotationQueueItemFindUniqueArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one AnnotationQueueItem that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AnnotationQueueItemFindUniqueOrThrowArgs} args - Arguments to find a AnnotationQueueItem
+     * @example
+     * // Get one AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AnnotationQueueItemFindUniqueOrThrowArgs>(args: SelectSubset<T, AnnotationQueueItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first AnnotationQueueItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemFindFirstArgs} args - Arguments to find a AnnotationQueueItem
+     * @example
+     * // Get one AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AnnotationQueueItemFindFirstArgs>(args?: SelectSubset<T, AnnotationQueueItemFindFirstArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first AnnotationQueueItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemFindFirstOrThrowArgs} args - Arguments to find a AnnotationQueueItem
+     * @example
+     * // Get one AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AnnotationQueueItemFindFirstOrThrowArgs>(args?: SelectSubset<T, AnnotationQueueItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more AnnotationQueueItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AnnotationQueueItems
+     * const annotationQueueItems = await prisma.annotationQueueItem.findMany()
+     * 
+     * // Get first 10 AnnotationQueueItems
+     * const annotationQueueItems = await prisma.annotationQueueItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const annotationQueueItemWithIdOnly = await prisma.annotationQueueItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AnnotationQueueItemFindManyArgs>(args?: SelectSubset<T, AnnotationQueueItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a AnnotationQueueItem.
+     * @param {AnnotationQueueItemCreateArgs} args - Arguments to create a AnnotationQueueItem.
+     * @example
+     * // Create one AnnotationQueueItem
+     * const AnnotationQueueItem = await prisma.annotationQueueItem.create({
+     *   data: {
+     *     // ... data to create a AnnotationQueueItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends AnnotationQueueItemCreateArgs>(args: SelectSubset<T, AnnotationQueueItemCreateArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many AnnotationQueueItems.
+     * @param {AnnotationQueueItemCreateManyArgs} args - Arguments to create many AnnotationQueueItems.
+     * @example
+     * // Create many AnnotationQueueItems
+     * const annotationQueueItem = await prisma.annotationQueueItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AnnotationQueueItemCreateManyArgs>(args?: SelectSubset<T, AnnotationQueueItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AnnotationQueueItems and returns the data saved in the database.
+     * @param {AnnotationQueueItemCreateManyAndReturnArgs} args - Arguments to create many AnnotationQueueItems.
+     * @example
+     * // Create many AnnotationQueueItems
+     * const annotationQueueItem = await prisma.annotationQueueItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AnnotationQueueItems and only return the `id`
+     * const annotationQueueItemWithIdOnly = await prisma.annotationQueueItem.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AnnotationQueueItemCreateManyAndReturnArgs>(args?: SelectSubset<T, AnnotationQueueItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a AnnotationQueueItem.
+     * @param {AnnotationQueueItemDeleteArgs} args - Arguments to delete one AnnotationQueueItem.
+     * @example
+     * // Delete one AnnotationQueueItem
+     * const AnnotationQueueItem = await prisma.annotationQueueItem.delete({
+     *   where: {
+     *     // ... filter to delete one AnnotationQueueItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AnnotationQueueItemDeleteArgs>(args: SelectSubset<T, AnnotationQueueItemDeleteArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one AnnotationQueueItem.
+     * @param {AnnotationQueueItemUpdateArgs} args - Arguments to update one AnnotationQueueItem.
+     * @example
+     * // Update one AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AnnotationQueueItemUpdateArgs>(args: SelectSubset<T, AnnotationQueueItemUpdateArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more AnnotationQueueItems.
+     * @param {AnnotationQueueItemDeleteManyArgs} args - Arguments to filter AnnotationQueueItems to delete.
+     * @example
+     * // Delete a few AnnotationQueueItems
+     * const { count } = await prisma.annotationQueueItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AnnotationQueueItemDeleteManyArgs>(args?: SelectSubset<T, AnnotationQueueItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AnnotationQueueItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AnnotationQueueItems
+     * const annotationQueueItem = await prisma.annotationQueueItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AnnotationQueueItemUpdateManyArgs>(args: SelectSubset<T, AnnotationQueueItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AnnotationQueueItem.
+     * @param {AnnotationQueueItemUpsertArgs} args - Arguments to update or create a AnnotationQueueItem.
+     * @example
+     * // Update or create a AnnotationQueueItem
+     * const annotationQueueItem = await prisma.annotationQueueItem.upsert({
+     *   create: {
+     *     // ... data to create a AnnotationQueueItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AnnotationQueueItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AnnotationQueueItemUpsertArgs>(args: SelectSubset<T, AnnotationQueueItemUpsertArgs<ExtArgs>>): Prisma__AnnotationQueueItemClient<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of AnnotationQueueItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemCountArgs} args - Arguments to filter AnnotationQueueItems to count.
+     * @example
+     * // Count the number of AnnotationQueueItems
+     * const count = await prisma.annotationQueueItem.count({
+     *   where: {
+     *     // ... the filter for the AnnotationQueueItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends AnnotationQueueItemCountArgs>(
+      args?: Subset<T, AnnotationQueueItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AnnotationQueueItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AnnotationQueueItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AnnotationQueueItemAggregateArgs>(args: Subset<T, AnnotationQueueItemAggregateArgs>): Prisma.PrismaPromise<GetAnnotationQueueItemAggregateType<T>>
+
+    /**
+     * Group by AnnotationQueueItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnotationQueueItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AnnotationQueueItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AnnotationQueueItemGroupByArgs['orderBy'] }
+        : { orderBy?: AnnotationQueueItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AnnotationQueueItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAnnotationQueueItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AnnotationQueueItem model
+   */
+  readonly fields: AnnotationQueueItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AnnotationQueueItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AnnotationQueueItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    queue<T extends AnnotationQueueDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AnnotationQueueDefaultArgs<ExtArgs>>): Prisma__AnnotationQueueClient<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    lockedByUser<T extends AnnotationQueueItem$lockedByUserArgs<ExtArgs> = {}>(args?: Subset<T, AnnotationQueueItem$lockedByUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    annotatorUser<T extends AnnotationQueueItem$annotatorUserArgs<ExtArgs> = {}>(args?: Subset<T, AnnotationQueueItem$annotatorUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AnnotationQueueItem model
+   */ 
+  interface AnnotationQueueItemFieldRefs {
+    readonly id: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly queueId: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly objectId: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly objectType: FieldRef<"AnnotationQueueItem", 'AnnotationQueueObjectType'>
+    readonly status: FieldRef<"AnnotationQueueItem", 'AnnotationQueueStatus'>
+    readonly lockedAt: FieldRef<"AnnotationQueueItem", 'DateTime'>
+    readonly lockedByUserId: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly annotatorUserId: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly completedAt: FieldRef<"AnnotationQueueItem", 'DateTime'>
+    readonly projectId: FieldRef<"AnnotationQueueItem", 'String'>
+    readonly createdAt: FieldRef<"AnnotationQueueItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"AnnotationQueueItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AnnotationQueueItem findUnique
+   */
+  export type AnnotationQueueItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueueItem to fetch.
+     */
+    where: AnnotationQueueItemWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem findUniqueOrThrow
+   */
+  export type AnnotationQueueItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueueItem to fetch.
+     */
+    where: AnnotationQueueItemWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem findFirst
+   */
+  export type AnnotationQueueItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueueItem to fetch.
+     */
+    where?: AnnotationQueueItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueueItems to fetch.
+     */
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AnnotationQueueItems.
+     */
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueueItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueueItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AnnotationQueueItems.
+     */
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem findFirstOrThrow
+   */
+  export type AnnotationQueueItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueueItem to fetch.
+     */
+    where?: AnnotationQueueItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueueItems to fetch.
+     */
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AnnotationQueueItems.
+     */
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueueItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueueItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AnnotationQueueItems.
+     */
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem findMany
+   */
+  export type AnnotationQueueItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter, which AnnotationQueueItems to fetch.
+     */
+    where?: AnnotationQueueItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AnnotationQueueItems to fetch.
+     */
+    orderBy?: AnnotationQueueItemOrderByWithRelationInput | AnnotationQueueItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AnnotationQueueItems.
+     */
+    cursor?: AnnotationQueueItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AnnotationQueueItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AnnotationQueueItems.
+     */
+    skip?: number
+    distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem create
+   */
+  export type AnnotationQueueItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AnnotationQueueItem.
+     */
+    data: XOR<AnnotationQueueItemCreateInput, AnnotationQueueItemUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem createMany
+   */
+  export type AnnotationQueueItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AnnotationQueueItems.
+     */
+    data: AnnotationQueueItemCreateManyInput | AnnotationQueueItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AnnotationQueueItem createManyAndReturn
+   */
+  export type AnnotationQueueItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many AnnotationQueueItems.
+     */
+    data: AnnotationQueueItemCreateManyInput | AnnotationQueueItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AnnotationQueueItem update
+   */
+  export type AnnotationQueueItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AnnotationQueueItem.
+     */
+    data: XOR<AnnotationQueueItemUpdateInput, AnnotationQueueItemUncheckedUpdateInput>
+    /**
+     * Choose, which AnnotationQueueItem to update.
+     */
+    where: AnnotationQueueItemWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem updateMany
+   */
+  export type AnnotationQueueItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AnnotationQueueItems.
+     */
+    data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyInput>
+    /**
+     * Filter which AnnotationQueueItems to update
+     */
+    where?: AnnotationQueueItemWhereInput
+  }
+
+  /**
+   * AnnotationQueueItem upsert
+   */
+  export type AnnotationQueueItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AnnotationQueueItem to update in case it exists.
+     */
+    where: AnnotationQueueItemWhereUniqueInput
+    /**
+     * In case the AnnotationQueueItem found by the `where` argument doesn't exist, create a new AnnotationQueueItem with this data.
+     */
+    create: XOR<AnnotationQueueItemCreateInput, AnnotationQueueItemUncheckedCreateInput>
+    /**
+     * In case the AnnotationQueueItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AnnotationQueueItemUpdateInput, AnnotationQueueItemUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem delete
+   */
+  export type AnnotationQueueItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
+    /**
+     * Filter which AnnotationQueueItem to delete.
+     */
+    where: AnnotationQueueItemWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * AnnotationQueueItem deleteMany
+   */
+  export type AnnotationQueueItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AnnotationQueueItems to delete
+     */
+    where?: AnnotationQueueItemWhereInput
+  }
+
+  /**
+   * AnnotationQueueItem.lockedByUser
+   */
+  export type AnnotationQueueItem$lockedByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * AnnotationQueueItem.annotatorUser
+   */
+  export type AnnotationQueueItem$annotatorUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * AnnotationQueueItem without action
+   */
+  export type AnnotationQueueItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AnnotationQueueItem
+     */
+    select?: AnnotationQueueItemSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AnnotationQueueItemInclude<ExtArgs> | null
   }
 
 
@@ -40008,7 +42446,9 @@ export namespace Prisma {
     token_type: 'token_type',
     scope: 'scope',
     id_token: 'id_token',
-    session_state: 'session_state'
+    session_state: 'session_state',
+    refresh_token_expires_in: 'refresh_token_expires_in',
+    created_at: 'created_at'
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -40106,6 +42546,7 @@ export namespace Prisma {
     baseURL: 'baseURL',
     customModels: 'customModels',
     withDefaultModels: 'withDefaultModels',
+    config: 'config',
     projectId: 'projectId'
   };
 
@@ -40237,6 +42678,7 @@ export namespace Prisma {
     observationId: 'observationId',
     configId: 'configId',
     stringValue: 'stringValue',
+    queueId: 'queueId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     dataType: 'dataType'
@@ -40260,6 +42702,37 @@ export namespace Prisma {
   };
 
   export type ScoreConfigScalarFieldEnum = (typeof ScoreConfigScalarFieldEnum)[keyof typeof ScoreConfigScalarFieldEnum]
+
+
+  export const AnnotationQueueScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    scoreConfigIds: 'scoreConfigIds',
+    projectId: 'projectId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AnnotationQueueScalarFieldEnum = (typeof AnnotationQueueScalarFieldEnum)[keyof typeof AnnotationQueueScalarFieldEnum]
+
+
+  export const AnnotationQueueItemScalarFieldEnum: {
+    id: 'id',
+    queueId: 'queueId',
+    objectId: 'objectId',
+    objectType: 'objectType',
+    status: 'status',
+    lockedAt: 'lockedAt',
+    lockedByUserId: 'lockedByUserId',
+    annotatorUserId: 'annotatorUserId',
+    completedAt: 'completedAt',
+    projectId: 'projectId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AnnotationQueueItemScalarFieldEnum = (typeof AnnotationQueueItemScalarFieldEnum)[keyof typeof AnnotationQueueItemScalarFieldEnum]
 
 
   export const CronJobsScalarFieldEnum: {
@@ -40784,6 +43257,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AnnotationQueueObjectType'
+   */
+  export type EnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnnotationQueueObjectType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AnnotationQueueObjectType[]'
+   */
+  export type ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnnotationQueueObjectType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AnnotationQueueStatus'
+   */
+  export type EnumAnnotationQueueStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnnotationQueueStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AnnotationQueueStatus[]'
+   */
+  export type ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnnotationQueueStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DatasetStatus'
    */
   export type EnumDatasetStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DatasetStatus'>
@@ -40874,6 +43375,8 @@ export namespace Prisma {
     scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
     session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    created_at?: IntNullableFilter<"Account"> | number | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -40892,6 +43395,8 @@ export namespace Prisma {
     scope?: SortOrderInput | SortOrder
     id_token?: SortOrderInput | SortOrder
     session_state?: SortOrderInput | SortOrder
+    refresh_token_expires_in?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -40914,6 +43419,8 @@ export namespace Prisma {
     scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
     session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    created_at?: IntNullableFilter<"Account"> | number | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "provider_providerAccountId">
 
@@ -40932,6 +43439,8 @@ export namespace Prisma {
     scope?: SortOrderInput | SortOrder
     id_token?: SortOrderInput | SortOrder
     session_state?: SortOrderInput | SortOrder
+    refresh_token_expires_in?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
     _count?: AccountCountOrderByAggregateInput
     _avg?: AccountAvgOrderByAggregateInput
     _max?: AccountMaxOrderByAggregateInput
@@ -40957,6 +43466,8 @@ export namespace Prisma {
     scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
     id_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
     session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    refresh_token_expires_in?: IntNullableWithAggregatesFilter<"Account"> | number | null
+    created_at?: IntNullableWithAggregatesFilter<"Account"> | number | null
   }
 
   export type SessionWhereInput = {
@@ -41028,6 +43539,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipListRelationFilter
     projectMemberships?: ProjectMembershipListRelationFilter
     invitations?: MembershipInvitationListRelationFilter
+    annotatedLockedItem?: AnnotationQueueItemListRelationFilter
+    annotatedCompletedItem?: AnnotationQueueItemListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -41046,6 +43559,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipOrderByRelationAggregateInput
     projectMemberships?: ProjectMembershipOrderByRelationAggregateInput
     invitations?: MembershipInvitationOrderByRelationAggregateInput
+    annotatedLockedItem?: AnnotationQueueItemOrderByRelationAggregateInput
+    annotatedCompletedItem?: AnnotationQueueItemOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -41067,6 +43582,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipListRelationFilter
     projectMemberships?: ProjectMembershipListRelationFilter
     invitations?: MembershipInvitationListRelationFilter
+    annotatedLockedItem?: AnnotationQueueItemListRelationFilter
+    annotatedCompletedItem?: AnnotationQueueItemListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -41234,6 +43751,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigListRelationFilter
     BatchExport?: BatchExportListRelationFilter
     comment?: CommentListRelationFilter
+    annotationQueue?: AnnotationQueueListRelationFilter
+    annotationQueueItem?: AnnotationQueueItemListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
@@ -41262,6 +43781,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigOrderByRelationAggregateInput
     BatchExport?: BatchExportOrderByRelationAggregateInput
     comment?: CommentOrderByRelationAggregateInput
+    annotationQueue?: AnnotationQueueOrderByRelationAggregateInput
+    annotationQueueItem?: AnnotationQueueItemOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -41293,6 +43814,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigListRelationFilter
     BatchExport?: BatchExportListRelationFilter
     comment?: CommentListRelationFilter
+    annotationQueue?: AnnotationQueueListRelationFilter
+    annotationQueueItem?: AnnotationQueueItemListRelationFilter
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
@@ -41411,6 +43934,7 @@ export namespace Prisma {
     baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
     customModels?: StringNullableListFilter<"LlmApiKeys">
     withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
+    config?: JsonNullableFilter<"LlmApiKeys">
     projectId?: StringFilter<"LlmApiKeys"> | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
   }
@@ -41426,6 +43950,7 @@ export namespace Prisma {
     baseURL?: SortOrderInput | SortOrder
     customModels?: SortOrder
     withDefaultModels?: SortOrder
+    config?: SortOrderInput | SortOrder
     projectId?: SortOrder
     project?: ProjectOrderByWithRelationInput
   }
@@ -41445,6 +43970,7 @@ export namespace Prisma {
     baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
     customModels?: StringNullableListFilter<"LlmApiKeys">
     withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
+    config?: JsonNullableFilter<"LlmApiKeys">
     projectId?: StringFilter<"LlmApiKeys"> | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
   }, "id" | "id" | "projectId_provider">
@@ -41460,6 +43986,7 @@ export namespace Prisma {
     baseURL?: SortOrderInput | SortOrder
     customModels?: SortOrder
     withDefaultModels?: SortOrder
+    config?: SortOrderInput | SortOrder
     projectId?: SortOrder
     _count?: LlmApiKeysCountOrderByAggregateInput
     _max?: LlmApiKeysMaxOrderByAggregateInput
@@ -41480,6 +44007,7 @@ export namespace Prisma {
     baseURL?: StringNullableWithAggregatesFilter<"LlmApiKeys"> | string | null
     customModels?: StringNullableListFilter<"LlmApiKeys">
     withDefaultModels?: BoolWithAggregatesFilter<"LlmApiKeys"> | boolean
+    config?: JsonNullableWithAggregatesFilter<"LlmApiKeys">
     projectId?: StringWithAggregatesFilter<"LlmApiKeys"> | string
   }
 
@@ -42092,6 +44620,7 @@ export namespace Prisma {
     observationId?: StringNullableFilter<"Score"> | string | null
     configId?: StringNullableFilter<"Score"> | string | null
     stringValue?: StringNullableFilter<"Score"> | string | null
+    queueId?: StringNullableFilter<"Score"> | string | null
     createdAt?: DateTimeFilter<"Score"> | Date | string
     updatedAt?: DateTimeFilter<"Score"> | Date | string
     dataType?: EnumScoreDataTypeFilter<"Score"> | $Enums.ScoreDataType
@@ -42113,6 +44642,7 @@ export namespace Prisma {
     observationId?: SortOrderInput | SortOrder
     configId?: SortOrderInput | SortOrder
     stringValue?: SortOrderInput | SortOrder
+    queueId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     dataType?: SortOrder
@@ -42138,6 +44668,7 @@ export namespace Prisma {
     observationId?: StringNullableFilter<"Score"> | string | null
     configId?: StringNullableFilter<"Score"> | string | null
     stringValue?: StringNullableFilter<"Score"> | string | null
+    queueId?: StringNullableFilter<"Score"> | string | null
     createdAt?: DateTimeFilter<"Score"> | Date | string
     updatedAt?: DateTimeFilter<"Score"> | Date | string
     dataType?: EnumScoreDataTypeFilter<"Score"> | $Enums.ScoreDataType
@@ -42159,6 +44690,7 @@ export namespace Prisma {
     observationId?: SortOrderInput | SortOrder
     configId?: SortOrderInput | SortOrder
     stringValue?: SortOrderInput | SortOrder
+    queueId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     dataType?: SortOrder
@@ -42185,6 +44717,7 @@ export namespace Prisma {
     observationId?: StringNullableWithAggregatesFilter<"Score"> | string | null
     configId?: StringNullableWithAggregatesFilter<"Score"> | string | null
     stringValue?: StringNullableWithAggregatesFilter<"Score"> | string | null
+    queueId?: StringNullableWithAggregatesFilter<"Score"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Score"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Score"> | Date | string
     dataType?: EnumScoreDataTypeWithAggregatesFilter<"Score"> | $Enums.ScoreDataType
@@ -42279,6 +44812,174 @@ export namespace Prisma {
     maxValue?: FloatNullableWithAggregatesFilter<"ScoreConfig"> | number | null
     categories?: JsonNullableWithAggregatesFilter<"ScoreConfig">
     description?: StringNullableWithAggregatesFilter<"ScoreConfig"> | string | null
+  }
+
+  export type AnnotationQueueWhereInput = {
+    AND?: AnnotationQueueWhereInput | AnnotationQueueWhereInput[]
+    OR?: AnnotationQueueWhereInput[]
+    NOT?: AnnotationQueueWhereInput | AnnotationQueueWhereInput[]
+    id?: StringFilter<"AnnotationQueue"> | string
+    name?: StringFilter<"AnnotationQueue"> | string
+    description?: StringNullableFilter<"AnnotationQueue"> | string | null
+    scoreConfigIds?: StringNullableListFilter<"AnnotationQueue">
+    projectId?: StringFilter<"AnnotationQueue"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    annotationQueueItem?: AnnotationQueueItemListRelationFilter
+  }
+
+  export type AnnotationQueueOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    scoreConfigIds?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    annotationQueueItem?: AnnotationQueueItemOrderByRelationAggregateInput
+  }
+
+  export type AnnotationQueueWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    projectId_name?: AnnotationQueueProjectIdNameCompoundUniqueInput
+    AND?: AnnotationQueueWhereInput | AnnotationQueueWhereInput[]
+    OR?: AnnotationQueueWhereInput[]
+    NOT?: AnnotationQueueWhereInput | AnnotationQueueWhereInput[]
+    name?: StringFilter<"AnnotationQueue"> | string
+    description?: StringNullableFilter<"AnnotationQueue"> | string | null
+    scoreConfigIds?: StringNullableListFilter<"AnnotationQueue">
+    projectId?: StringFilter<"AnnotationQueue"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    annotationQueueItem?: AnnotationQueueItemListRelationFilter
+  }, "id" | "projectId_name">
+
+  export type AnnotationQueueOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    scoreConfigIds?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AnnotationQueueCountOrderByAggregateInput
+    _max?: AnnotationQueueMaxOrderByAggregateInput
+    _min?: AnnotationQueueMinOrderByAggregateInput
+  }
+
+  export type AnnotationQueueScalarWhereWithAggregatesInput = {
+    AND?: AnnotationQueueScalarWhereWithAggregatesInput | AnnotationQueueScalarWhereWithAggregatesInput[]
+    OR?: AnnotationQueueScalarWhereWithAggregatesInput[]
+    NOT?: AnnotationQueueScalarWhereWithAggregatesInput | AnnotationQueueScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AnnotationQueue"> | string
+    name?: StringWithAggregatesFilter<"AnnotationQueue"> | string
+    description?: StringNullableWithAggregatesFilter<"AnnotationQueue"> | string | null
+    scoreConfigIds?: StringNullableListFilter<"AnnotationQueue">
+    projectId?: StringWithAggregatesFilter<"AnnotationQueue"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"AnnotationQueue"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AnnotationQueue"> | Date | string
+  }
+
+  export type AnnotationQueueItemWhereInput = {
+    AND?: AnnotationQueueItemWhereInput | AnnotationQueueItemWhereInput[]
+    OR?: AnnotationQueueItemWhereInput[]
+    NOT?: AnnotationQueueItemWhereInput | AnnotationQueueItemWhereInput[]
+    id?: StringFilter<"AnnotationQueueItem"> | string
+    queueId?: StringFilter<"AnnotationQueueItem"> | string
+    objectId?: StringFilter<"AnnotationQueueItem"> | string
+    objectType?: EnumAnnotationQueueObjectTypeFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueStatus
+    lockedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    lockedByUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    annotatorUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    completedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    projectId?: StringFilter<"AnnotationQueueItem"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+    queue?: XOR<AnnotationQueueRelationFilter, AnnotationQueueWhereInput>
+    lockedByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    annotatorUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+  }
+
+  export type AnnotationQueueItemOrderByWithRelationInput = {
+    id?: SortOrder
+    queueId?: SortOrder
+    objectId?: SortOrder
+    objectType?: SortOrder
+    status?: SortOrder
+    lockedAt?: SortOrderInput | SortOrder
+    lockedByUserId?: SortOrderInput | SortOrder
+    annotatorUserId?: SortOrderInput | SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    queue?: AnnotationQueueOrderByWithRelationInput
+    lockedByUser?: UserOrderByWithRelationInput
+    annotatorUser?: UserOrderByWithRelationInput
+    project?: ProjectOrderByWithRelationInput
+  }
+
+  export type AnnotationQueueItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AnnotationQueueItemWhereInput | AnnotationQueueItemWhereInput[]
+    OR?: AnnotationQueueItemWhereInput[]
+    NOT?: AnnotationQueueItemWhereInput | AnnotationQueueItemWhereInput[]
+    queueId?: StringFilter<"AnnotationQueueItem"> | string
+    objectId?: StringFilter<"AnnotationQueueItem"> | string
+    objectType?: EnumAnnotationQueueObjectTypeFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueStatus
+    lockedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    lockedByUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    annotatorUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    completedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    projectId?: StringFilter<"AnnotationQueueItem"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+    queue?: XOR<AnnotationQueueRelationFilter, AnnotationQueueWhereInput>
+    lockedByUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    annotatorUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+  }, "id">
+
+  export type AnnotationQueueItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    queueId?: SortOrder
+    objectId?: SortOrder
+    objectType?: SortOrder
+    status?: SortOrder
+    lockedAt?: SortOrderInput | SortOrder
+    lockedByUserId?: SortOrderInput | SortOrder
+    annotatorUserId?: SortOrderInput | SortOrder
+    completedAt?: SortOrderInput | SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AnnotationQueueItemCountOrderByAggregateInput
+    _max?: AnnotationQueueItemMaxOrderByAggregateInput
+    _min?: AnnotationQueueItemMinOrderByAggregateInput
+  }
+
+  export type AnnotationQueueItemScalarWhereWithAggregatesInput = {
+    AND?: AnnotationQueueItemScalarWhereWithAggregatesInput | AnnotationQueueItemScalarWhereWithAggregatesInput[]
+    OR?: AnnotationQueueItemScalarWhereWithAggregatesInput[]
+    NOT?: AnnotationQueueItemScalarWhereWithAggregatesInput | AnnotationQueueItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AnnotationQueueItem"> | string
+    queueId?: StringWithAggregatesFilter<"AnnotationQueueItem"> | string
+    objectId?: StringWithAggregatesFilter<"AnnotationQueueItem"> | string
+    objectType?: EnumAnnotationQueueObjectTypeWithAggregatesFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusWithAggregatesFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueStatus
+    lockedAt?: DateTimeNullableWithAggregatesFilter<"AnnotationQueueItem"> | Date | string | null
+    lockedByUserId?: StringNullableWithAggregatesFilter<"AnnotationQueueItem"> | string | null
+    annotatorUserId?: StringNullableWithAggregatesFilter<"AnnotationQueueItem"> | string | null
+    completedAt?: DateTimeNullableWithAggregatesFilter<"AnnotationQueueItem"> | Date | string | null
+    projectId?: StringWithAggregatesFilter<"AnnotationQueueItem"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"AnnotationQueueItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AnnotationQueueItem"> | Date | string
   }
 
   export type CronJobsWhereInput = {
@@ -43904,6 +46605,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
     user: UserCreateNestedOneWithoutAccountsInput
   }
 
@@ -43922,6 +46625,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
   }
 
   export type AccountUpdateInput = {
@@ -43938,6 +46643,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutAccountsNestedInput
   }
 
@@ -43956,6 +46663,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountCreateManyInput = {
@@ -43973,6 +46682,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
   }
 
   export type AccountUpdateManyMutationInput = {
@@ -43989,6 +46700,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateManyInput = {
@@ -44006,6 +46719,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type SessionCreateInput = {
@@ -44072,6 +46787,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -44090,6 +46807,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUpdateInput = {
@@ -44108,6 +46827,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -44126,6 +46847,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -44302,6 +47025,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
@@ -44329,6 +47054,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
@@ -44356,6 +47083,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
@@ -44383,6 +47112,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
@@ -44509,6 +47240,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     project: ProjectCreateNestedOneWithoutLlmApiKeysInput
   }
 
@@ -44523,6 +47255,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     projectId: string
   }
 
@@ -44537,6 +47270,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     project?: ProjectUpdateOneRequiredWithoutLlmApiKeysNestedInput
   }
 
@@ -44551,6 +47285,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     projectId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -44565,6 +47300,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     projectId: string
   }
 
@@ -44579,6 +47315,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type LlmApiKeysUncheckedUpdateManyInput = {
@@ -44592,6 +47329,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
     projectId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -45264,6 +48002,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -45285,6 +48024,7 @@ export namespace Prisma {
     observationId?: string | null
     configId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -45302,6 +48042,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -45323,6 +48064,7 @@ export namespace Prisma {
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     configId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -45342,6 +48084,7 @@ export namespace Prisma {
     observationId?: string | null
     configId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -45358,6 +48101,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -45376,6 +48120,7 @@ export namespace Prisma {
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     configId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -45480,6 +48225,180 @@ export namespace Prisma {
     maxValue?: NullableFloatFieldUpdateOperationsInput | number | null
     categories?: NullableJsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AnnotationQueueCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    project: ProjectCreateNestedOneWithoutAnnotationQueueInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutQueueInput
+  }
+
+  export type AnnotationQueueUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutQueueInput
+  }
+
+  export type AnnotationQueueUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutQueueNestedInput
+  }
+
+  export type AnnotationQueueUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutQueueNestedInput
+  }
+
+  export type AnnotationQueueCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemCreateInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    queue: AnnotationQueueCreateNestedOneWithoutAnnotationQueueItemInput
+    lockedByUser?: UserCreateNestedOneWithoutAnnotatedLockedItemInput
+    annotatorUser?: UserCreateNestedOneWithoutAnnotatedCompletedItemInput
+    project: ProjectCreateNestedOneWithoutAnnotationQueueItemInput
+  }
+
+  export type AnnotationQueueItemUncheckedCreateInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    queue?: AnnotationQueueUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+    lockedByUser?: UserUpdateOneWithoutAnnotatedLockedItemNestedInput
+    annotatorUser?: UserUpdateOneWithoutAnnotatedCompletedItemNestedInput
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemCreateManyInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CronJobsCreateInput = {
@@ -47370,12 +50289,16 @@ export namespace Prisma {
     scope?: SortOrder
     id_token?: SortOrder
     session_state?: SortOrder
+    refresh_token_expires_in?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountAvgOrderByAggregateInput = {
     expires_at?: SortOrder
     expires_in?: SortOrder
     ext_expires_in?: SortOrder
+    refresh_token_expires_in?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountMaxOrderByAggregateInput = {
@@ -47393,6 +50316,8 @@ export namespace Prisma {
     scope?: SortOrder
     id_token?: SortOrder
     session_state?: SortOrder
+    refresh_token_expires_in?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountMinOrderByAggregateInput = {
@@ -47410,12 +50335,16 @@ export namespace Prisma {
     scope?: SortOrder
     id_token?: SortOrder
     session_state?: SortOrder
+    refresh_token_expires_in?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountSumOrderByAggregateInput = {
     expires_at?: SortOrder
     expires_in?: SortOrder
     ext_expires_in?: SortOrder
+    refresh_token_expires_in?: SortOrder
+    created_at?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -47570,6 +50499,12 @@ export namespace Prisma {
     none?: MembershipInvitationWhereInput
   }
 
+  export type AnnotationQueueItemListRelationFilter = {
+    every?: AnnotationQueueItemWhereInput
+    some?: AnnotationQueueItemWhereInput
+    none?: AnnotationQueueItemWhereInput
+  }
+
   export type AccountOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -47587,6 +50522,10 @@ export namespace Prisma {
   }
 
   export type MembershipInvitationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AnnotationQueueItemOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -47858,6 +50797,12 @@ export namespace Prisma {
     none?: CommentWhereInput
   }
 
+  export type AnnotationQueueListRelationFilter = {
+    every?: AnnotationQueueWhereInput
+    some?: AnnotationQueueWhereInput
+    none?: AnnotationQueueWhereInput
+  }
+
   export type TraceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -47923,6 +50868,10 @@ export namespace Prisma {
   }
 
   export type CommentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AnnotationQueueOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -48010,6 +50959,7 @@ export namespace Prisma {
     baseURL?: SortOrder
     customModels?: SortOrder
     withDefaultModels?: SortOrder
+    config?: SortOrder
     projectId?: SortOrder
   }
 
@@ -48539,6 +51489,7 @@ export namespace Prisma {
     observationId?: SortOrder
     configId?: SortOrder
     stringValue?: SortOrder
+    queueId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     dataType?: SortOrder
@@ -48561,6 +51512,7 @@ export namespace Prisma {
     observationId?: SortOrder
     configId?: SortOrder
     stringValue?: SortOrder
+    queueId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     dataType?: SortOrder
@@ -48579,6 +51531,7 @@ export namespace Prisma {
     observationId?: SortOrder
     configId?: SortOrder
     stringValue?: SortOrder
+    queueId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     dataType?: SortOrder
@@ -48677,6 +51630,123 @@ export namespace Prisma {
   export type ScoreConfigSumOrderByAggregateInput = {
     minValue?: SortOrder
     maxValue?: SortOrder
+  }
+
+  export type AnnotationQueueProjectIdNameCompoundUniqueInput = {
+    projectId: string
+    name: string
+  }
+
+  export type AnnotationQueueCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    scoreConfigIds?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AnnotationQueueMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AnnotationQueueMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAnnotationQueueObjectTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueObjectType | EnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel> | $Enums.AnnotationQueueObjectType
+  }
+
+  export type EnumAnnotationQueueStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueStatus | EnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel> | $Enums.AnnotationQueueStatus
+  }
+
+  export type AnnotationQueueRelationFilter = {
+    is?: AnnotationQueueWhereInput
+    isNot?: AnnotationQueueWhereInput
+  }
+
+  export type AnnotationQueueItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    queueId?: SortOrder
+    objectId?: SortOrder
+    objectType?: SortOrder
+    status?: SortOrder
+    lockedAt?: SortOrder
+    lockedByUserId?: SortOrder
+    annotatorUserId?: SortOrder
+    completedAt?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AnnotationQueueItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    queueId?: SortOrder
+    objectId?: SortOrder
+    objectType?: SortOrder
+    status?: SortOrder
+    lockedAt?: SortOrder
+    lockedByUserId?: SortOrder
+    annotatorUserId?: SortOrder
+    completedAt?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AnnotationQueueItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    queueId?: SortOrder
+    objectId?: SortOrder
+    objectType?: SortOrder
+    status?: SortOrder
+    lockedAt?: SortOrder
+    lockedByUserId?: SortOrder
+    annotatorUserId?: SortOrder
+    completedAt?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAnnotationQueueObjectTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueObjectType | EnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueObjectTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnnotationQueueObjectType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel>
+    _max?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel>
+  }
+
+  export type EnumAnnotationQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueStatus | EnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueStatusWithAggregatesFilter<$PrismaModel> | $Enums.AnnotationQueueStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel>
+    _max?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel>
   }
 
   export type CronJobsCountOrderByAggregateInput = {
@@ -49855,6 +52925,20 @@ export namespace Prisma {
     connect?: MembershipInvitationWhereUniqueInput | MembershipInvitationWhereUniqueInput[]
   }
 
+  export type AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput> | AnnotationQueueItemCreateWithoutLockedByUserInput[] | AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput | AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput[]
+    createMany?: AnnotationQueueItemCreateManyLockedByUserInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput> | AnnotationQueueItemCreateWithoutAnnotatorUserInput[] | AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput | AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput[]
+    createMany?: AnnotationQueueItemCreateManyAnnotatorUserInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -49888,6 +52972,20 @@ export namespace Prisma {
     connectOrCreate?: MembershipInvitationCreateOrConnectWithoutInvitedByUserInput | MembershipInvitationCreateOrConnectWithoutInvitedByUserInput[]
     createMany?: MembershipInvitationCreateManyInvitedByUserInputEnvelope
     connect?: MembershipInvitationWhereUniqueInput | MembershipInvitationWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput> | AnnotationQueueItemCreateWithoutLockedByUserInput[] | AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput | AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput[]
+    createMany?: AnnotationQueueItemCreateManyLockedByUserInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput> | AnnotationQueueItemCreateWithoutAnnotatorUserInput[] | AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput | AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput[]
+    createMany?: AnnotationQueueItemCreateManyAnnotatorUserInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -49973,6 +53071,34 @@ export namespace Prisma {
     deleteMany?: MembershipInvitationScalarWhereInput | MembershipInvitationScalarWhereInput[]
   }
 
+  export type AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput> | AnnotationQueueItemCreateWithoutLockedByUserInput[] | AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput | AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutLockedByUserInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutLockedByUserInput[]
+    createMany?: AnnotationQueueItemCreateManyLockedByUserInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutLockedByUserInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutLockedByUserInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutLockedByUserInput | AnnotationQueueItemUpdateManyWithWhereWithoutLockedByUserInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput> | AnnotationQueueItemCreateWithoutAnnotatorUserInput[] | AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput | AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutAnnotatorUserInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutAnnotatorUserInput[]
+    createMany?: AnnotationQueueItemCreateManyAnnotatorUserInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutAnnotatorUserInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutAnnotatorUserInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutAnnotatorUserInput | AnnotationQueueItemUpdateManyWithWhereWithoutAnnotatorUserInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -50041,6 +53167,34 @@ export namespace Prisma {
     update?: MembershipInvitationUpdateWithWhereUniqueWithoutInvitedByUserInput | MembershipInvitationUpdateWithWhereUniqueWithoutInvitedByUserInput[]
     updateMany?: MembershipInvitationUpdateManyWithWhereWithoutInvitedByUserInput | MembershipInvitationUpdateManyWithWhereWithoutInvitedByUserInput[]
     deleteMany?: MembershipInvitationScalarWhereInput | MembershipInvitationScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput> | AnnotationQueueItemCreateWithoutLockedByUserInput[] | AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput | AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutLockedByUserInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutLockedByUserInput[]
+    createMany?: AnnotationQueueItemCreateManyLockedByUserInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutLockedByUserInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutLockedByUserInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutLockedByUserInput | AnnotationQueueItemUpdateManyWithWhereWithoutLockedByUserInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput> | AnnotationQueueItemCreateWithoutAnnotatorUserInput[] | AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput | AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutAnnotatorUserInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutAnnotatorUserInput[]
+    createMany?: AnnotationQueueItemCreateManyAnnotatorUserInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutAnnotatorUserInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutAnnotatorUserInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutAnnotatorUserInput | AnnotationQueueItemUpdateManyWithWhereWithoutAnnotatorUserInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
   }
 
   export type OrganizationMembershipCreateNestedManyWithoutOrganizationInput = {
@@ -50308,6 +53462,20 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
+  export type AnnotationQueueCreateNestedManyWithoutProjectInput = {
+    create?: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput> | AnnotationQueueCreateWithoutProjectInput[] | AnnotationQueueUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutProjectInput | AnnotationQueueCreateOrConnectWithoutProjectInput[]
+    createMany?: AnnotationQueueCreateManyProjectInputEnvelope
+    connect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemCreateNestedManyWithoutProjectInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput> | AnnotationQueueItemCreateWithoutProjectInput[] | AnnotationQueueItemUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutProjectInput | AnnotationQueueItemCreateOrConnectWithoutProjectInput[]
+    createMany?: AnnotationQueueItemCreateManyProjectInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
   export type ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -50439,6 +53607,20 @@ export namespace Prisma {
     connectOrCreate?: CommentCreateOrConnectWithoutProjectInput | CommentCreateOrConnectWithoutProjectInput[]
     createMany?: CommentCreateManyProjectInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput> | AnnotationQueueCreateWithoutProjectInput[] | AnnotationQueueUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutProjectInput | AnnotationQueueCreateOrConnectWithoutProjectInput[]
+    createMany?: AnnotationQueueCreateManyProjectInputEnvelope
+    connect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput> | AnnotationQueueItemCreateWithoutProjectInput[] | AnnotationQueueItemUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutProjectInput | AnnotationQueueItemCreateOrConnectWithoutProjectInput[]
+    createMany?: AnnotationQueueItemCreateManyProjectInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
   }
 
   export type ProjectMembershipUpdateManyWithoutProjectNestedInput = {
@@ -50715,6 +53897,34 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
+  export type AnnotationQueueUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput> | AnnotationQueueCreateWithoutProjectInput[] | AnnotationQueueUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutProjectInput | AnnotationQueueCreateOrConnectWithoutProjectInput[]
+    upsert?: AnnotationQueueUpsertWithWhereUniqueWithoutProjectInput | AnnotationQueueUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: AnnotationQueueCreateManyProjectInputEnvelope
+    set?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    disconnect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    delete?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    connect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    update?: AnnotationQueueUpdateWithWhereUniqueWithoutProjectInput | AnnotationQueueUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: AnnotationQueueUpdateManyWithWhereWithoutProjectInput | AnnotationQueueUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: AnnotationQueueScalarWhereInput | AnnotationQueueScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput> | AnnotationQueueItemCreateWithoutProjectInput[] | AnnotationQueueItemUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutProjectInput | AnnotationQueueItemCreateOrConnectWithoutProjectInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutProjectInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: AnnotationQueueItemCreateManyProjectInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutProjectInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutProjectInput | AnnotationQueueItemUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
   export type ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -50979,6 +54189,34 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutProjectInput | CommentUpdateWithWhereUniqueWithoutProjectInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutProjectInput | CommentUpdateManyWithWhereWithoutProjectInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
+  }
+
+  export type AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput> | AnnotationQueueCreateWithoutProjectInput[] | AnnotationQueueUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutProjectInput | AnnotationQueueCreateOrConnectWithoutProjectInput[]
+    upsert?: AnnotationQueueUpsertWithWhereUniqueWithoutProjectInput | AnnotationQueueUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: AnnotationQueueCreateManyProjectInputEnvelope
+    set?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    disconnect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    delete?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    connect?: AnnotationQueueWhereUniqueInput | AnnotationQueueWhereUniqueInput[]
+    update?: AnnotationQueueUpdateWithWhereUniqueWithoutProjectInput | AnnotationQueueUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: AnnotationQueueUpdateManyWithWhereWithoutProjectInput | AnnotationQueueUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: AnnotationQueueScalarWhereInput | AnnotationQueueScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput> | AnnotationQueueItemCreateWithoutProjectInput[] | AnnotationQueueItemUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutProjectInput | AnnotationQueueItemCreateOrConnectWithoutProjectInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutProjectInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: AnnotationQueueItemCreateManyProjectInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutProjectInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutProjectInput | AnnotationQueueItemUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutApiKeysInput = {
@@ -51501,6 +54739,139 @@ export namespace Prisma {
     update?: ScoreUpdateWithWhereUniqueWithoutScoreConfigInput | ScoreUpdateWithWhereUniqueWithoutScoreConfigInput[]
     updateMany?: ScoreUpdateManyWithWhereWithoutScoreConfigInput | ScoreUpdateManyWithWhereWithoutScoreConfigInput[]
     deleteMany?: ScoreScalarWhereInput | ScoreScalarWhereInput[]
+  }
+
+  export type AnnotationQueueCreatescoreConfigIdsInput = {
+    set: string[]
+  }
+
+  export type ProjectCreateNestedOneWithoutAnnotationQueueInput = {
+    create?: XOR<ProjectCreateWithoutAnnotationQueueInput, ProjectUncheckedCreateWithoutAnnotationQueueInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutAnnotationQueueInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type AnnotationQueueItemCreateNestedManyWithoutQueueInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput> | AnnotationQueueItemCreateWithoutQueueInput[] | AnnotationQueueItemUncheckedCreateWithoutQueueInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutQueueInput | AnnotationQueueItemCreateOrConnectWithoutQueueInput[]
+    createMany?: AnnotationQueueItemCreateManyQueueInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedCreateNestedManyWithoutQueueInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput> | AnnotationQueueItemCreateWithoutQueueInput[] | AnnotationQueueItemUncheckedCreateWithoutQueueInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutQueueInput | AnnotationQueueItemCreateOrConnectWithoutQueueInput[]
+    createMany?: AnnotationQueueItemCreateManyQueueInputEnvelope
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
+  export type AnnotationQueueUpdatescoreConfigIdsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type ProjectUpdateOneRequiredWithoutAnnotationQueueNestedInput = {
+    create?: XOR<ProjectCreateWithoutAnnotationQueueInput, ProjectUncheckedCreateWithoutAnnotationQueueInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutAnnotationQueueInput
+    upsert?: ProjectUpsertWithoutAnnotationQueueInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutAnnotationQueueInput, ProjectUpdateWithoutAnnotationQueueInput>, ProjectUncheckedUpdateWithoutAnnotationQueueInput>
+  }
+
+  export type AnnotationQueueItemUpdateManyWithoutQueueNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput> | AnnotationQueueItemCreateWithoutQueueInput[] | AnnotationQueueItemUncheckedCreateWithoutQueueInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutQueueInput | AnnotationQueueItemCreateOrConnectWithoutQueueInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput[]
+    createMany?: AnnotationQueueItemCreateManyQueueInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutQueueInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutQueueInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutQueueInput | AnnotationQueueItemUpdateManyWithWhereWithoutQueueInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutQueueNestedInput = {
+    create?: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput> | AnnotationQueueItemCreateWithoutQueueInput[] | AnnotationQueueItemUncheckedCreateWithoutQueueInput[]
+    connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutQueueInput | AnnotationQueueItemCreateOrConnectWithoutQueueInput[]
+    upsert?: AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput | AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput[]
+    createMany?: AnnotationQueueItemCreateManyQueueInputEnvelope
+    set?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    disconnect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    delete?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+    update?: AnnotationQueueItemUpdateWithWhereUniqueWithoutQueueInput | AnnotationQueueItemUpdateWithWhereUniqueWithoutQueueInput[]
+    updateMany?: AnnotationQueueItemUpdateManyWithWhereWithoutQueueInput | AnnotationQueueItemUpdateManyWithWhereWithoutQueueInput[]
+    deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+  }
+
+  export type AnnotationQueueCreateNestedOneWithoutAnnotationQueueItemInput = {
+    create?: XOR<AnnotationQueueCreateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedCreateWithoutAnnotationQueueItemInput>
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutAnnotationQueueItemInput
+    connect?: AnnotationQueueWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutAnnotatedLockedItemInput = {
+    create?: XOR<UserCreateWithoutAnnotatedLockedItemInput, UserUncheckedCreateWithoutAnnotatedLockedItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAnnotatedLockedItemInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutAnnotatedCompletedItemInput = {
+    create?: XOR<UserCreateWithoutAnnotatedCompletedItemInput, UserUncheckedCreateWithoutAnnotatedCompletedItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAnnotatedCompletedItemInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProjectCreateNestedOneWithoutAnnotationQueueItemInput = {
+    create?: XOR<ProjectCreateWithoutAnnotationQueueItemInput, ProjectUncheckedCreateWithoutAnnotationQueueItemInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutAnnotationQueueItemInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AnnotationQueueObjectType
+  }
+
+  export type EnumAnnotationQueueStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AnnotationQueueStatus
+  }
+
+  export type AnnotationQueueUpdateOneRequiredWithoutAnnotationQueueItemNestedInput = {
+    create?: XOR<AnnotationQueueCreateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedCreateWithoutAnnotationQueueItemInput>
+    connectOrCreate?: AnnotationQueueCreateOrConnectWithoutAnnotationQueueItemInput
+    upsert?: AnnotationQueueUpsertWithoutAnnotationQueueItemInput
+    connect?: AnnotationQueueWhereUniqueInput
+    update?: XOR<XOR<AnnotationQueueUpdateToOneWithWhereWithoutAnnotationQueueItemInput, AnnotationQueueUpdateWithoutAnnotationQueueItemInput>, AnnotationQueueUncheckedUpdateWithoutAnnotationQueueItemInput>
+  }
+
+  export type UserUpdateOneWithoutAnnotatedLockedItemNestedInput = {
+    create?: XOR<UserCreateWithoutAnnotatedLockedItemInput, UserUncheckedCreateWithoutAnnotatedLockedItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAnnotatedLockedItemInput
+    upsert?: UserUpsertWithoutAnnotatedLockedItemInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAnnotatedLockedItemInput, UserUpdateWithoutAnnotatedLockedItemInput>, UserUncheckedUpdateWithoutAnnotatedLockedItemInput>
+  }
+
+  export type UserUpdateOneWithoutAnnotatedCompletedItemNestedInput = {
+    create?: XOR<UserCreateWithoutAnnotatedCompletedItemInput, UserUncheckedCreateWithoutAnnotatedCompletedItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAnnotatedCompletedItemInput
+    upsert?: UserUpsertWithoutAnnotatedCompletedItemInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAnnotatedCompletedItemInput, UserUpdateWithoutAnnotatedCompletedItemInput>, UserUncheckedUpdateWithoutAnnotatedCompletedItemInput>
+  }
+
+  export type ProjectUpdateOneRequiredWithoutAnnotationQueueItemNestedInput = {
+    create?: XOR<ProjectCreateWithoutAnnotationQueueItemInput, ProjectUncheckedCreateWithoutAnnotationQueueItemInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutAnnotationQueueItemInput
+    upsert?: ProjectUpsertWithoutAnnotationQueueItemInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutAnnotationQueueItemInput, ProjectUpdateWithoutAnnotationQueueItemInput>, ProjectUncheckedUpdateWithoutAnnotationQueueItemInput>
   }
 
   export type ProjectCreateNestedOneWithoutDatasetInput = {
@@ -52451,6 +55822,40 @@ export namespace Prisma {
     _max?: NestedEnumScoreDataTypeFilter<$PrismaModel>
   }
 
+  export type NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueObjectType | EnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel> | $Enums.AnnotationQueueObjectType
+  }
+
+  export type NestedEnumAnnotationQueueStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueStatus | EnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel> | $Enums.AnnotationQueueStatus
+  }
+
+  export type NestedEnumAnnotationQueueObjectTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueObjectType | EnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueObjectType[] | ListEnumAnnotationQueueObjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueObjectTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnnotationQueueObjectType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel>
+    _max?: NestedEnumAnnotationQueueObjectTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAnnotationQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AnnotationQueueStatus | EnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AnnotationQueueStatus[] | ListEnumAnnotationQueueStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAnnotationQueueStatusWithAggregatesFilter<$PrismaModel> | $Enums.AnnotationQueueStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel>
+    _max?: NestedEnumAnnotationQueueStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumDatasetStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.DatasetStatus | EnumDatasetStatusFieldRefInput<$PrismaModel>
     in?: $Enums.DatasetStatus[] | ListEnumDatasetStatusFieldRefInput<$PrismaModel>
@@ -52613,6 +56018,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -52630,6 +56037,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -52663,6 +56072,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -52680,6 +56091,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -52697,6 +56110,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -52714,6 +56129,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -52747,6 +56164,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -52764,6 +56183,8 @@ export namespace Prisma {
     organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -52780,6 +56201,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
   }
 
   export type AccountUncheckedCreateWithoutUserInput = {
@@ -52796,6 +56219,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
   }
 
   export type AccountCreateOrConnectWithoutUserInput = {
@@ -52916,6 +56341,82 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AnnotationQueueItemCreateWithoutLockedByUserInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    queue: AnnotationQueueCreateNestedOneWithoutAnnotationQueueItemInput
+    annotatorUser?: UserCreateNestedOneWithoutAnnotatedCompletedItemInput
+    project: ProjectCreateNestedOneWithoutAnnotationQueueItemInput
+  }
+
+  export type AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateOrConnectWithoutLockedByUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    create: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput>
+  }
+
+  export type AnnotationQueueItemCreateManyLockedByUserInputEnvelope = {
+    data: AnnotationQueueItemCreateManyLockedByUserInput | AnnotationQueueItemCreateManyLockedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AnnotationQueueItemCreateWithoutAnnotatorUserInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    queue: AnnotationQueueCreateNestedOneWithoutAnnotationQueueItemInput
+    lockedByUser?: UserCreateNestedOneWithoutAnnotatedLockedItemInput
+    project: ProjectCreateNestedOneWithoutAnnotationQueueItemInput
+  }
+
+  export type AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateOrConnectWithoutAnnotatorUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    create: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput>
+  }
+
+  export type AnnotationQueueItemCreateManyAnnotatorUserInputEnvelope = {
+    data: AnnotationQueueItemCreateManyAnnotatorUserInput | AnnotationQueueItemCreateManyAnnotatorUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
     where: AccountWhereUniqueInput
     update: XOR<AccountUpdateWithoutUserInput, AccountUncheckedUpdateWithoutUserInput>
@@ -52950,6 +56451,8 @@ export namespace Prisma {
     scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
     session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    created_at?: IntNullableFilter<"Account"> | number | null
   }
 
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -53065,6 +56568,56 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"MembershipInvitation"> | Date | string
   }
 
+  export type AnnotationQueueItemUpsertWithWhereUniqueWithoutLockedByUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    update: XOR<AnnotationQueueItemUpdateWithoutLockedByUserInput, AnnotationQueueItemUncheckedUpdateWithoutLockedByUserInput>
+    create: XOR<AnnotationQueueItemCreateWithoutLockedByUserInput, AnnotationQueueItemUncheckedCreateWithoutLockedByUserInput>
+  }
+
+  export type AnnotationQueueItemUpdateWithWhereUniqueWithoutLockedByUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    data: XOR<AnnotationQueueItemUpdateWithoutLockedByUserInput, AnnotationQueueItemUncheckedUpdateWithoutLockedByUserInput>
+  }
+
+  export type AnnotationQueueItemUpdateManyWithWhereWithoutLockedByUserInput = {
+    where: AnnotationQueueItemScalarWhereInput
+    data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserInput>
+  }
+
+  export type AnnotationQueueItemScalarWhereInput = {
+    AND?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+    OR?: AnnotationQueueItemScalarWhereInput[]
+    NOT?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
+    id?: StringFilter<"AnnotationQueueItem"> | string
+    queueId?: StringFilter<"AnnotationQueueItem"> | string
+    objectId?: StringFilter<"AnnotationQueueItem"> | string
+    objectType?: EnumAnnotationQueueObjectTypeFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFilter<"AnnotationQueueItem"> | $Enums.AnnotationQueueStatus
+    lockedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    lockedByUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    annotatorUserId?: StringNullableFilter<"AnnotationQueueItem"> | string | null
+    completedAt?: DateTimeNullableFilter<"AnnotationQueueItem"> | Date | string | null
+    projectId?: StringFilter<"AnnotationQueueItem"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueueItem"> | Date | string
+  }
+
+  export type AnnotationQueueItemUpsertWithWhereUniqueWithoutAnnotatorUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    update: XOR<AnnotationQueueItemUpdateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedUpdateWithoutAnnotatorUserInput>
+    create: XOR<AnnotationQueueItemCreateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedCreateWithoutAnnotatorUserInput>
+  }
+
+  export type AnnotationQueueItemUpdateWithWhereUniqueWithoutAnnotatorUserInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    data: XOR<AnnotationQueueItemUpdateWithoutAnnotatorUserInput, AnnotationQueueItemUncheckedUpdateWithoutAnnotatorUserInput>
+  }
+
+  export type AnnotationQueueItemUpdateManyWithWhereWithoutAnnotatorUserInput = {
+    where: AnnotationQueueItemScalarWhereInput
+    data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserInput>
+  }
+
   export type OrganizationMembershipCreateWithoutOrganizationInput = {
     id?: string
     role: $Enums.Role
@@ -53117,6 +56670,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutOrganizationInput = {
@@ -53143,6 +56698,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutOrganizationInput = {
@@ -53790,6 +57347,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type LlmApiKeysUncheckedCreateWithoutProjectInput = {
@@ -53803,6 +57361,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type LlmApiKeysCreateOrConnectWithoutProjectInput = {
@@ -53852,6 +57411,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -53871,6 +57431,7 @@ export namespace Prisma {
     observationId?: string | null
     configId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -53992,6 +57553,74 @@ export namespace Prisma {
 
   export type CommentCreateManyProjectInputEnvelope = {
     data: CommentCreateManyProjectInput | CommentCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AnnotationQueueCreateWithoutProjectInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutQueueInput
+  }
+
+  export type AnnotationQueueUncheckedCreateWithoutProjectInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutQueueInput
+  }
+
+  export type AnnotationQueueCreateOrConnectWithoutProjectInput = {
+    where: AnnotationQueueWhereUniqueInput
+    create: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueCreateManyProjectInputEnvelope = {
+    data: AnnotationQueueCreateManyProjectInput | AnnotationQueueCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AnnotationQueueItemCreateWithoutProjectInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    queue: AnnotationQueueCreateNestedOneWithoutAnnotationQueueItemInput
+    lockedByUser?: UserCreateNestedOneWithoutAnnotatedLockedItemInput
+    annotatorUser?: UserCreateNestedOneWithoutAnnotatedCompletedItemInput
+  }
+
+  export type AnnotationQueueItemUncheckedCreateWithoutProjectInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateOrConnectWithoutProjectInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    create: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueItemCreateManyProjectInputEnvelope = {
+    data: AnnotationQueueItemCreateManyProjectInput | AnnotationQueueItemCreateManyProjectInput[]
     skipDuplicates?: boolean
   }
 
@@ -54472,6 +58101,7 @@ export namespace Prisma {
     baseURL?: StringNullableFilter<"LlmApiKeys"> | string | null
     customModels?: StringNullableListFilter<"LlmApiKeys">
     withDefaultModels?: BoolFilter<"LlmApiKeys"> | boolean
+    config?: JsonNullableFilter<"LlmApiKeys">
     projectId?: StringFilter<"LlmApiKeys"> | string
   }
 
@@ -54535,6 +58165,7 @@ export namespace Prisma {
     observationId?: StringNullableFilter<"Score"> | string | null
     configId?: StringNullableFilter<"Score"> | string | null
     stringValue?: StringNullableFilter<"Score"> | string | null
+    queueId?: StringNullableFilter<"Score"> | string | null
     createdAt?: DateTimeFilter<"Score"> | Date | string
     updatedAt?: DateTimeFilter<"Score"> | Date | string
     dataType?: EnumScoreDataTypeFilter<"Score"> | $Enums.ScoreDataType
@@ -54638,6 +58269,51 @@ export namespace Prisma {
     authorUserId?: StringNullableFilter<"Comment"> | string | null
   }
 
+  export type AnnotationQueueUpsertWithWhereUniqueWithoutProjectInput = {
+    where: AnnotationQueueWhereUniqueInput
+    update: XOR<AnnotationQueueUpdateWithoutProjectInput, AnnotationQueueUncheckedUpdateWithoutProjectInput>
+    create: XOR<AnnotationQueueCreateWithoutProjectInput, AnnotationQueueUncheckedCreateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueUpdateWithWhereUniqueWithoutProjectInput = {
+    where: AnnotationQueueWhereUniqueInput
+    data: XOR<AnnotationQueueUpdateWithoutProjectInput, AnnotationQueueUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueUpdateManyWithWhereWithoutProjectInput = {
+    where: AnnotationQueueScalarWhereInput
+    data: XOR<AnnotationQueueUpdateManyMutationInput, AnnotationQueueUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type AnnotationQueueScalarWhereInput = {
+    AND?: AnnotationQueueScalarWhereInput | AnnotationQueueScalarWhereInput[]
+    OR?: AnnotationQueueScalarWhereInput[]
+    NOT?: AnnotationQueueScalarWhereInput | AnnotationQueueScalarWhereInput[]
+    id?: StringFilter<"AnnotationQueue"> | string
+    name?: StringFilter<"AnnotationQueue"> | string
+    description?: StringNullableFilter<"AnnotationQueue"> | string | null
+    scoreConfigIds?: StringNullableListFilter<"AnnotationQueue">
+    projectId?: StringFilter<"AnnotationQueue"> | string
+    createdAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+    updatedAt?: DateTimeFilter<"AnnotationQueue"> | Date | string
+  }
+
+  export type AnnotationQueueItemUpsertWithWhereUniqueWithoutProjectInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    update: XOR<AnnotationQueueItemUpdateWithoutProjectInput, AnnotationQueueItemUncheckedUpdateWithoutProjectInput>
+    create: XOR<AnnotationQueueItemCreateWithoutProjectInput, AnnotationQueueItemUncheckedCreateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueItemUpdateWithWhereUniqueWithoutProjectInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    data: XOR<AnnotationQueueItemUpdateWithoutProjectInput, AnnotationQueueItemUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type AnnotationQueueItemUpdateManyWithWhereWithoutProjectInput = {
+    where: AnnotationQueueItemScalarWhereInput
+    data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyWithoutProjectInput>
+  }
+
   export type ProjectCreateWithoutApiKeysInput = {
     id?: string
     createdAt?: Date | string
@@ -54662,6 +58338,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutApiKeysInput = {
@@ -54688,6 +58366,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutApiKeysInput = {
@@ -54730,6 +58410,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutApiKeysInput = {
@@ -54756,6 +58438,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutLlmApiKeysInput = {
@@ -54782,6 +58466,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutLlmApiKeysInput = {
@@ -54808,6 +58494,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutLlmApiKeysInput = {
@@ -54850,6 +58538,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutLlmApiKeysInput = {
@@ -54876,6 +58566,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type OrganizationCreateWithoutOrganizationMembershipsInput = {
@@ -54918,6 +58610,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateWithoutOrganizationMembershipsInput = {
@@ -54935,6 +58629,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserCreateOrConnectWithoutOrganizationMembershipsInput = {
@@ -55025,6 +58721,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutOrganizationMembershipsInput = {
@@ -55042,6 +58740,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type ProjectMembershipUpsertWithWhereUniqueWithoutOrganizationMembershipInput = {
@@ -55107,6 +58807,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutProjectMembersInput = {
@@ -55133,6 +58835,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutProjectMembersInput = {
@@ -55155,6 +58859,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateWithoutProjectMembershipsInput = {
@@ -55172,6 +58878,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
     invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserCreateOrConnectWithoutProjectMembershipsInput = {
@@ -55243,6 +58951,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutProjectMembersInput = {
@@ -55269,6 +58979,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutProjectMembershipsInput = {
@@ -55297,6 +59009,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
@@ -55314,6 +59028,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
     invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type OrganizationCreateWithoutMembershipInvitationInput = {
@@ -55365,6 +59081,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutInvitationsInput = {
@@ -55391,6 +59109,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutInvitationsInput = {
@@ -55413,6 +59133,8 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserUncheckedCreateWithoutInvitationsInput = {
@@ -55430,6 +59152,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
     projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
   }
 
   export type UserCreateOrConnectWithoutInvitationsInput = {
@@ -55503,6 +59227,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutInvitationsInput = {
@@ -55529,6 +59255,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutInvitationsInput = {
@@ -55557,6 +59285,8 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutInvitationsInput = {
@@ -55574,6 +59304,8 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
     projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
   }
 
   export type ProjectCreateWithoutSessionsInput = {
@@ -55600,6 +59332,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutSessionsInput = {
@@ -55626,6 +59360,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutSessionsInput = {
@@ -55717,6 +59453,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutSessionsInput = {
@@ -55743,6 +59481,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceUpsertWithWhereUniqueWithoutSessionInput = {
@@ -55785,6 +59525,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutTracesInput = {
@@ -55811,6 +59553,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutTracesInput = {
@@ -55912,6 +59656,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutTracesInput = {
@@ -55938,6 +59684,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceSessionUpsertWithoutTracesInput = {
@@ -56009,6 +59757,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutObservationsInput = {
@@ -56035,6 +59785,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutObservationsInput = {
@@ -56077,6 +59829,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutObservationsInput = {
@@ -56103,6 +59857,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutScoreInput = {
@@ -56129,6 +59885,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreInput = {
@@ -56155,6 +59913,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreInput = {
@@ -56266,6 +60026,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreInput = {
@@ -56292,6 +60054,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobExecutionUpsertWithWhereUniqueWithoutScoreInput = {
@@ -56373,6 +60137,8 @@ export namespace Prisma {
     Score?: ScoreCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreConfigInput = {
@@ -56399,6 +60165,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreConfigInput = {
@@ -56417,6 +60185,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -56436,6 +60205,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -56487,6 +60257,8 @@ export namespace Prisma {
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreConfigInput = {
@@ -56513,6 +60285,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ScoreUpsertWithWhereUniqueWithoutScoreConfigInput = {
@@ -56529,6 +60303,556 @@ export namespace Prisma {
   export type ScoreUpdateManyWithWhereWithoutScoreConfigInput = {
     where: ScoreScalarWhereInput
     data: XOR<ScoreUpdateManyMutationInput, ScoreUncheckedUpdateManyWithoutScoreConfigInput>
+  }
+
+  export type ProjectCreateWithoutAnnotationQueueInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    organization: OrganizationCreateNestedOneWithoutProjectsInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutAnnotationQueueInput = {
+    id?: string
+    orgId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutAnnotationQueueInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutAnnotationQueueInput, ProjectUncheckedCreateWithoutAnnotationQueueInput>
+  }
+
+  export type AnnotationQueueItemCreateWithoutQueueInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    lockedByUser?: UserCreateNestedOneWithoutAnnotatedLockedItemInput
+    annotatorUser?: UserCreateNestedOneWithoutAnnotatedCompletedItemInput
+    project: ProjectCreateNestedOneWithoutAnnotationQueueItemInput
+  }
+
+  export type AnnotationQueueItemUncheckedCreateWithoutQueueInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateOrConnectWithoutQueueInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    create: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput>
+  }
+
+  export type AnnotationQueueItemCreateManyQueueInputEnvelope = {
+    data: AnnotationQueueItemCreateManyQueueInput | AnnotationQueueItemCreateManyQueueInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProjectUpsertWithoutAnnotationQueueInput = {
+    update: XOR<ProjectUpdateWithoutAnnotationQueueInput, ProjectUncheckedUpdateWithoutAnnotationQueueInput>
+    create: XOR<ProjectCreateWithoutAnnotationQueueInput, ProjectUncheckedCreateWithoutAnnotationQueueInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutAnnotationQueueInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutAnnotationQueueInput, ProjectUncheckedUpdateWithoutAnnotationQueueInput>
+  }
+
+  export type ProjectUpdateWithoutAnnotationQueueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutProjectsNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutAnnotationQueueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    update: XOR<AnnotationQueueItemUpdateWithoutQueueInput, AnnotationQueueItemUncheckedUpdateWithoutQueueInput>
+    create: XOR<AnnotationQueueItemCreateWithoutQueueInput, AnnotationQueueItemUncheckedCreateWithoutQueueInput>
+  }
+
+  export type AnnotationQueueItemUpdateWithWhereUniqueWithoutQueueInput = {
+    where: AnnotationQueueItemWhereUniqueInput
+    data: XOR<AnnotationQueueItemUpdateWithoutQueueInput, AnnotationQueueItemUncheckedUpdateWithoutQueueInput>
+  }
+
+  export type AnnotationQueueItemUpdateManyWithWhereWithoutQueueInput = {
+    where: AnnotationQueueItemScalarWhereInput
+    data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyWithoutQueueInput>
+  }
+
+  export type AnnotationQueueCreateWithoutAnnotationQueueItemInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    project: ProjectCreateNestedOneWithoutAnnotationQueueInput
+  }
+
+  export type AnnotationQueueUncheckedCreateWithoutAnnotationQueueItemInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueCreateOrConnectWithoutAnnotationQueueItemInput = {
+    where: AnnotationQueueWhereUniqueInput
+    create: XOR<AnnotationQueueCreateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedCreateWithoutAnnotationQueueItemInput>
+  }
+
+  export type UserCreateWithoutAnnotatedLockedItemInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    password?: string | null
+    image?: string | null
+    admin?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    featureFlags?: UserCreatefeatureFlagsInput | string[]
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
+    projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemCreateNestedManyWithoutAnnotatorUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAnnotatedLockedItemInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    password?: string | null
+    image?: string | null
+    admin?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    featureFlags?: UserCreatefeatureFlagsInput | string[]
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
+    projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutAnnotatorUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAnnotatedLockedItemInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAnnotatedLockedItemInput, UserUncheckedCreateWithoutAnnotatedLockedItemInput>
+  }
+
+  export type UserCreateWithoutAnnotatedCompletedItemInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    password?: string | null
+    image?: string | null
+    admin?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    featureFlags?: UserCreatefeatureFlagsInput | string[]
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    organizationMemberships?: OrganizationMembershipCreateNestedManyWithoutUserInput
+    projectMemberships?: ProjectMembershipCreateNestedManyWithoutUserInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemCreateNestedManyWithoutLockedByUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAnnotatedCompletedItemInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    password?: string | null
+    image?: string | null
+    admin?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    featureFlags?: UserCreatefeatureFlagsInput | string[]
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    organizationMemberships?: OrganizationMembershipUncheckedCreateNestedManyWithoutUserInput
+    projectMemberships?: ProjectMembershipUncheckedCreateNestedManyWithoutUserInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutInvitedByUserInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutLockedByUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAnnotatedCompletedItemInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAnnotatedCompletedItemInput, UserUncheckedCreateWithoutAnnotatedCompletedItemInput>
+  }
+
+  export type ProjectCreateWithoutAnnotationQueueItemInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    organization: OrganizationCreateNestedOneWithoutProjectsInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutAnnotationQueueItemInput = {
+    id?: string
+    orgId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutAnnotationQueueItemInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutAnnotationQueueItemInput, ProjectUncheckedCreateWithoutAnnotationQueueItemInput>
+  }
+
+  export type AnnotationQueueUpsertWithoutAnnotationQueueItemInput = {
+    update: XOR<AnnotationQueueUpdateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedUpdateWithoutAnnotationQueueItemInput>
+    create: XOR<AnnotationQueueCreateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedCreateWithoutAnnotationQueueItemInput>
+    where?: AnnotationQueueWhereInput
+  }
+
+  export type AnnotationQueueUpdateToOneWithWhereWithoutAnnotationQueueItemInput = {
+    where?: AnnotationQueueWhereInput
+    data: XOR<AnnotationQueueUpdateWithoutAnnotationQueueItemInput, AnnotationQueueUncheckedUpdateWithoutAnnotationQueueItemInput>
+  }
+
+  export type AnnotationQueueUpdateWithoutAnnotationQueueItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueNestedInput
+  }
+
+  export type AnnotationQueueUncheckedUpdateWithoutAnnotationQueueItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutAnnotatedLockedItemInput = {
+    update: XOR<UserUpdateWithoutAnnotatedLockedItemInput, UserUncheckedUpdateWithoutAnnotatedLockedItemInput>
+    create: XOR<UserCreateWithoutAnnotatedLockedItemInput, UserUncheckedCreateWithoutAnnotatedLockedItemInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAnnotatedLockedItemInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAnnotatedLockedItemInput, UserUncheckedUpdateWithoutAnnotatedLockedItemInput>
+  }
+
+  export type UserUpdateWithoutAnnotatedLockedItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    featureFlags?: UserUpdatefeatureFlagsInput | string[]
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
+    projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUpdateManyWithoutAnnotatorUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAnnotatedLockedItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    featureFlags?: UserUpdatefeatureFlagsInput | string[]
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
+    projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedCompletedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserNestedInput
+  }
+
+  export type UserUpsertWithoutAnnotatedCompletedItemInput = {
+    update: XOR<UserUpdateWithoutAnnotatedCompletedItemInput, UserUncheckedUpdateWithoutAnnotatedCompletedItemInput>
+    create: XOR<UserCreateWithoutAnnotatedCompletedItemInput, UserUncheckedCreateWithoutAnnotatedCompletedItemInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAnnotatedCompletedItemInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAnnotatedCompletedItemInput, UserUncheckedUpdateWithoutAnnotatedCompletedItemInput>
+  }
+
+  export type UserUpdateWithoutAnnotatedCompletedItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    featureFlags?: UserUpdatefeatureFlagsInput | string[]
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    organizationMemberships?: OrganizationMembershipUpdateManyWithoutUserNestedInput
+    projectMemberships?: ProjectMembershipUpdateManyWithoutUserNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUpdateManyWithoutLockedByUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAnnotatedCompletedItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    admin?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    featureFlags?: UserUpdatefeatureFlagsInput | string[]
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    organizationMemberships?: OrganizationMembershipUncheckedUpdateManyWithoutUserNestedInput
+    projectMemberships?: ProjectMembershipUncheckedUpdateManyWithoutUserNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutInvitedByUserNestedInput
+    annotatedLockedItem?: AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserNestedInput
+  }
+
+  export type ProjectUpsertWithoutAnnotationQueueItemInput = {
+    update: XOR<ProjectUpdateWithoutAnnotationQueueItemInput, ProjectUncheckedUpdateWithoutAnnotationQueueItemInput>
+    create: XOR<ProjectCreateWithoutAnnotationQueueItemInput, ProjectUncheckedCreateWithoutAnnotationQueueItemInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutAnnotationQueueItemInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutAnnotationQueueItemInput, ProjectUncheckedUpdateWithoutAnnotationQueueItemInput>
+  }
+
+  export type ProjectUpdateWithoutAnnotationQueueItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutProjectsNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutAnnotationQueueItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutDatasetInput = {
@@ -56555,6 +60879,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutDatasetInput = {
@@ -56581,6 +60907,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutDatasetInput = {
@@ -56689,6 +61017,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutDatasetInput = {
@@ -56715,6 +61045,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type DatasetItemUpsertWithWhereUniqueWithoutDatasetInput = {
@@ -57154,6 +61486,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutRawEventsInput = {
@@ -57180,6 +61514,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutRawEventsInput = {
@@ -57222,6 +61558,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutRawEventsInput = {
@@ -57248,6 +61586,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutCommentInput = {
@@ -57274,6 +61614,8 @@ export namespace Prisma {
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutCommentInput = {
@@ -57300,6 +61642,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutCommentInput = {
@@ -57342,6 +61686,8 @@ export namespace Prisma {
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutCommentInput = {
@@ -57368,6 +61714,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutPromptInput = {
@@ -57394,6 +61742,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPromptInput = {
@@ -57420,6 +61770,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPromptInput = {
@@ -57462,6 +61814,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPromptInput = {
@@ -57488,6 +61842,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutModelInput = {
@@ -57514,6 +61870,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutModelInput = {
@@ -57540,6 +61898,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutModelInput = {
@@ -57582,6 +61942,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutModelInput = {
@@ -57608,6 +61970,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutEvalTemplateInput = {
@@ -57634,6 +61998,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutEvalTemplateInput = {
@@ -57660,6 +62026,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutEvalTemplateInput = {
@@ -57744,6 +62112,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutEvalTemplateInput = {
@@ -57770,6 +62140,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithWhereUniqueWithoutEvalTemplateInput = {
@@ -57812,6 +62184,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobConfigurationInput = {
@@ -57838,6 +62212,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobConfigurationInput = {
@@ -57951,6 +62327,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobConfigurationInput = {
@@ -57977,6 +62355,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type EvalTemplateUpsertWithoutJobConfigurationInput = {
@@ -58060,6 +62440,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobExecutionInput = {
@@ -58086,6 +62468,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobExecutionInput = {
@@ -58186,6 +62570,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -58206,6 +62591,7 @@ export namespace Prisma {
     observationId?: string | null
     configId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -58251,6 +62637,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobExecutionInput = {
@@ -58277,6 +62665,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithoutJobExecutionInput = {
@@ -58395,6 +62785,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -58415,6 +62806,7 @@ export namespace Prisma {
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     configId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -58444,6 +62836,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPosthogIntegrationInput = {
@@ -58470,6 +62864,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPosthogIntegrationInput = {
@@ -58512,6 +62908,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPosthogIntegrationInput = {
@@ -58538,6 +62936,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutBatchExportInput = {
@@ -58564,6 +62964,8 @@ export namespace Prisma {
     Score?: ScoreCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutBatchExportInput = {
@@ -58590,6 +62992,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
     scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutBatchExportInput = {
@@ -58632,6 +63036,8 @@ export namespace Prisma {
     Score?: ScoreUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutBatchExportInput = {
@@ -58658,6 +63064,8 @@ export namespace Prisma {
     Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -58674,6 +63082,8 @@ export namespace Prisma {
     scope?: string | null
     id_token?: string | null
     session_state?: string | null
+    refresh_token_expires_in?: number | null
+    created_at?: number | null
   }
 
   export type SessionCreateManyUserInput = {
@@ -58709,6 +63119,34 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type AnnotationQueueItemCreateManyLockedByUserInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateManyAnnotatorUserInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type AccountUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
@@ -58723,6 +63161,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateWithoutUserInput = {
@@ -58739,6 +63179,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateManyWithoutUserInput = {
@@ -58755,6 +63197,8 @@ export namespace Prisma {
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    created_at?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -58858,6 +63302,90 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AnnotationQueueItemUpdateWithoutLockedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    queue?: AnnotationQueueUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+    annotatorUser?: UserUpdateOneWithoutAnnotatedCompletedItemNestedInput
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateWithoutLockedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutLockedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUpdateWithoutAnnotatorUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    queue?: AnnotationQueueUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+    lockedByUser?: UserUpdateOneWithoutAnnotatedLockedItemNestedInput
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateWithoutAnnotatorUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutAnnotatorUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type OrganizationMembershipCreateManyOrganizationInput = {
     id?: string
     userId: string
@@ -58934,6 +63462,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutOrganizationInput = {
@@ -58960,6 +63490,8 @@ export namespace Prisma {
     scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateManyWithoutOrganizationInput = {
@@ -59196,6 +63728,7 @@ export namespace Prisma {
     baseURL?: string | null
     customModels?: LlmApiKeysCreatecustomModelsInput | string[]
     withDefaultModels?: boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PosthogIntegrationCreateManyProjectInput = {
@@ -59218,6 +63751,7 @@ export namespace Prisma {
     observationId?: string | null
     configId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -59259,6 +63793,29 @@ export namespace Prisma {
     updatedAt?: Date | string
     content: string
     authorUserId?: string | null
+  }
+
+  export type AnnotationQueueCreateManyProjectInput = {
+    id?: string
+    name: string
+    description?: string | null
+    scoreConfigIds?: AnnotationQueueCreatescoreConfigIdsInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemCreateManyProjectInput = {
+    id?: string
+    queueId: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ProjectMembershipUpdateWithoutProjectInput = {
@@ -59833,6 +64390,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type LlmApiKeysUncheckedUpdateWithoutProjectInput = {
@@ -59846,6 +64404,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type LlmApiKeysUncheckedUpdateManyWithoutProjectInput = {
@@ -59859,6 +64418,7 @@ export namespace Prisma {
     baseURL?: NullableStringFieldUpdateOperationsInput | string | null
     customModels?: LlmApiKeysUpdatecustomModelsInput | string[]
     withDefaultModels?: BoolFieldUpdateOperationsInput | boolean
+    config?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type PosthogIntegrationUpdateWithoutProjectInput = {
@@ -59896,6 +64456,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -59915,6 +64476,7 @@ export namespace Prisma {
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     configId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -59933,6 +64495,7 @@ export namespace Prisma {
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     configId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -60052,6 +64615,77 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
     authorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AnnotationQueueUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutQueueNestedInput
+  }
+
+  export type AnnotationQueueUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutQueueNestedInput
+  }
+
+  export type AnnotationQueueUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    scoreConfigIds?: AnnotationQueueUpdatescoreConfigIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    queue?: AnnotationQueueUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+    lockedByUser?: UserUpdateOneWithoutAnnotatedLockedItemNestedInput
+    annotatorUser?: UserUpdateOneWithoutAnnotatedCompletedItemNestedInput
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectMembershipCreateManyOrganizationMembershipInput = {
@@ -60277,6 +64911,7 @@ export namespace Prisma {
     traceId: string
     observationId?: string | null
     stringValue?: string | null
+    queueId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     dataType?: $Enums.ScoreDataType
@@ -60293,6 +64928,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -60312,6 +64948,7 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
@@ -60330,9 +64967,66 @@ export namespace Prisma {
     traceId?: StringFieldUpdateOperationsInput | string
     observationId?: NullableStringFieldUpdateOperationsInput | string | null
     stringValue?: NullableStringFieldUpdateOperationsInput | string | null
+    queueId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     dataType?: EnumScoreDataTypeFieldUpdateOperationsInput | $Enums.ScoreDataType
+  }
+
+  export type AnnotationQueueItemCreateManyQueueInput = {
+    id?: string
+    objectId: string
+    objectType: $Enums.AnnotationQueueObjectType
+    status?: $Enums.AnnotationQueueStatus
+    lockedAt?: Date | string | null
+    lockedByUserId?: string | null
+    annotatorUserId?: string | null
+    completedAt?: Date | string | null
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AnnotationQueueItemUpdateWithoutQueueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lockedByUser?: UserUpdateOneWithoutAnnotatedLockedItemNestedInput
+    annotatorUser?: UserUpdateOneWithoutAnnotatedCompletedItemNestedInput
+    project?: ProjectUpdateOneRequiredWithoutAnnotationQueueItemNestedInput
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateWithoutQueueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AnnotationQueueItemUncheckedUpdateManyWithoutQueueInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    objectId?: StringFieldUpdateOperationsInput | string
+    objectType?: EnumAnnotationQueueObjectTypeFieldUpdateOperationsInput | $Enums.AnnotationQueueObjectType
+    status?: EnumAnnotationQueueStatusFieldUpdateOperationsInput | $Enums.AnnotationQueueStatus
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lockedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    annotatorUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DatasetItemCreateManyDatasetInput = {
@@ -60647,6 +65341,10 @@ export namespace Prisma {
      */
     export type ScoreConfigCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ScoreConfigCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use AnnotationQueueCountOutputTypeDefaultArgs instead
+     */
+    export type AnnotationQueueCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AnnotationQueueCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use DatasetCountOutputTypeDefaultArgs instead
      */
     export type DatasetCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DatasetCountOutputTypeDefaultArgs<ExtArgs>
@@ -60730,6 +65428,14 @@ export namespace Prisma {
      * @deprecated Use ScoreConfigDefaultArgs instead
      */
     export type ScoreConfigArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ScoreConfigDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AnnotationQueueDefaultArgs instead
+     */
+    export type AnnotationQueueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AnnotationQueueDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AnnotationQueueItemDefaultArgs instead
+     */
+    export type AnnotationQueueItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AnnotationQueueItemDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CronJobsDefaultArgs instead
      */
