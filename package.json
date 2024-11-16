@@ -95,6 +95,6 @@
     },
     "./*": "./*"
   },
-  "version": "2.85.1",
+  "version": "2.90.1",
   "sideEffects": false
 }

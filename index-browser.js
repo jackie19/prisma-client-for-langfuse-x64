@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.21.0
- * Query Engine version: 08713a93b99d58f31485621c634b04983ae01d95
+ * Prisma Client JS version: 5.20.0
+ * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
  */
 Prisma.prismaVersion = {
-  client: "5.21.0",
-  engine: "08713a93b99d58f31485621c634b04983ae01d95"
+  client: "5.20.0",
+  engine: "06fc58a368dc7be9fbbbe894adf8d445d208c284"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -199,6 +199,19 @@ exports.Prisma.ApiKeyScalarFieldEnum = {
   lastUsedAt: 'lastUsedAt',
   expiresAt: 'expiresAt',
   projectId: 'projectId'
+};
+
+exports.Prisma.BackgroundMigrationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  script: 'script',
+  args: 'args',
+  state: 'state',
+  finishedAt: 'finishedAt',
+  failedAt: 'failedAt',
+  failedReason: 'failedReason',
+  workerId: 'workerId',
+  lockedAt: 'lockedAt'
 };
 
 exports.Prisma.LlmApiKeysScalarFieldEnum = {
@@ -475,6 +488,15 @@ exports.Prisma.ModelScalarFieldEnum = {
   tokenizerConfig: 'tokenizerConfig'
 };
 
+exports.Prisma.PriceScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  modelId: 'modelId',
+  usageType: 'usageType',
+  price: 'price'
+};
+
 exports.Prisma.AuditLogScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
@@ -533,6 +555,8 @@ exports.Prisma.JobExecutionScalarFieldEnum = {
   endTime: 'endTime',
   error: 'error',
   jobInputTraceId: 'jobInputTraceId',
+  jobInputObservationId: 'jobInputObservationId',
+  jobInputDatasetItemId: 'jobInputDatasetItemId',
   jobOutputScoreId: 'jobOutputScoreId'
 };
 
@@ -567,6 +591,42 @@ exports.Prisma.BatchExportScalarFieldEnum = {
   format: 'format',
   url: 'url',
   log: 'log'
+};
+
+exports.Prisma.MediaScalarFieldEnum = {
+  id: 'id',
+  sha256Hash: 'sha256Hash',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  uploadedAt: 'uploadedAt',
+  uploadHttpStatus: 'uploadHttpStatus',
+  uploadHttpError: 'uploadHttpError',
+  bucketPath: 'bucketPath',
+  bucketName: 'bucketName',
+  contentType: 'contentType',
+  contentLength: 'contentLength'
+};
+
+exports.Prisma.TraceMediaScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  mediaId: 'mediaId',
+  traceId: 'traceId',
+  field: 'field'
+};
+
+exports.Prisma.ObservationMediaScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  mediaId: 'mediaId',
+  traceId: 'traceId',
+  observationId: 'observationId',
+  field: 'field'
 };
 
 exports.Prisma.TraceViewScalarFieldEnum = {
@@ -736,6 +796,7 @@ exports.Prisma.ModelName = {
   Organization: 'Organization',
   Project: 'Project',
   ApiKey: 'ApiKey',
+  BackgroundMigration: 'BackgroundMigration',
   LlmApiKeys: 'LlmApiKeys',
   OrganizationMembership: 'OrganizationMembership',
   ProjectMembership: 'ProjectMembership',
@@ -756,6 +817,7 @@ exports.Prisma.ModelName = {
   Comment: 'Comment',
   Prompt: 'Prompt',
   Model: 'Model',
+  Price: 'Price',
   AuditLog: 'AuditLog',
   EvalTemplate: 'EvalTemplate',
   JobConfiguration: 'JobConfiguration',
@@ -763,6 +825,9 @@ exports.Prisma.ModelName = {
   SsoConfig: 'SsoConfig',
   PosthogIntegration: 'PosthogIntegration',
   BatchExport: 'BatchExport',
+  Media: 'Media',
+  TraceMedia: 'TraceMedia',
+  ObservationMedia: 'ObservationMedia',
   TraceView: 'TraceView',
   ObservationView: 'ObservationView'
 };

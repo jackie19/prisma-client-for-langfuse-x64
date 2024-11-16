@@ -49,6 +49,11 @@ export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
  */
 export type ApiKey = $Result.DefaultSelection<Prisma.$ApiKeyPayload>
 /**
+ * Model BackgroundMigration
+ * 
+ */
+export type BackgroundMigration = $Result.DefaultSelection<Prisma.$BackgroundMigrationPayload>
+/**
  * Model LlmApiKeys
  * 
  */
@@ -149,6 +154,11 @@ export type Prompt = $Result.DefaultSelection<Prisma.$PromptPayload>
  */
 export type Model = $Result.DefaultSelection<Prisma.$ModelPayload>
 /**
+ * Model Price
+ * 
+ */
+export type Price = $Result.DefaultSelection<Prisma.$PricePayload>
+/**
  * Model AuditLog
  * 
  */
@@ -183,6 +193,21 @@ export type PosthogIntegration = $Result.DefaultSelection<Prisma.$PosthogIntegra
  * 
  */
 export type BatchExport = $Result.DefaultSelection<Prisma.$BatchExportPayload>
+/**
+ * Model Media
+ * 
+ */
+export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
+/**
+ * Model TraceMedia
+ * 
+ */
+export type TraceMedia = $Result.DefaultSelection<Prisma.$TraceMediaPayload>
+/**
+ * Model ObservationMedia
+ * 
+ */
+export type ObservationMedia = $Result.DefaultSelection<Prisma.$ObservationMediaPayload>
 /**
  * Model TraceView
  * 
@@ -559,6 +584,16 @@ export class PrismaClient<
   get apiKey(): Prisma.ApiKeyDelegate<ExtArgs>;
 
   /**
+   * `prisma.backgroundMigration`: Exposes CRUD operations for the **BackgroundMigration** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BackgroundMigrations
+    * const backgroundMigrations = await prisma.backgroundMigration.findMany()
+    * ```
+    */
+  get backgroundMigration(): Prisma.BackgroundMigrationDelegate<ExtArgs>;
+
+  /**
    * `prisma.llmApiKeys`: Exposes CRUD operations for the **LlmApiKeys** model.
     * Example usage:
     * ```ts
@@ -759,6 +794,16 @@ export class PrismaClient<
   get model(): Prisma.ModelDelegate<ExtArgs>;
 
   /**
+   * `prisma.price`: Exposes CRUD operations for the **Price** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Prices
+    * const prices = await prisma.price.findMany()
+    * ```
+    */
+  get price(): Prisma.PriceDelegate<ExtArgs>;
+
+  /**
    * `prisma.auditLog`: Exposes CRUD operations for the **AuditLog** model.
     * Example usage:
     * ```ts
@@ -827,6 +872,36 @@ export class PrismaClient<
     * ```
     */
   get batchExport(): Prisma.BatchExportDelegate<ExtArgs>;
+
+  /**
+   * `prisma.media`: Exposes CRUD operations for the **Media** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Media
+    * const media = await prisma.media.findMany()
+    * ```
+    */
+  get media(): Prisma.MediaDelegate<ExtArgs>;
+
+  /**
+   * `prisma.traceMedia`: Exposes CRUD operations for the **TraceMedia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TraceMedias
+    * const traceMedias = await prisma.traceMedia.findMany()
+    * ```
+    */
+  get traceMedia(): Prisma.TraceMediaDelegate<ExtArgs>;
+
+  /**
+   * `prisma.observationMedia`: Exposes CRUD operations for the **ObservationMedia** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ObservationMedias
+    * const observationMedias = await prisma.observationMedia.findMany()
+    * ```
+    */
+  get observationMedia(): Prisma.ObservationMediaDelegate<ExtArgs>;
 
   /**
    * `prisma.traceView`: Exposes CRUD operations for the **TraceView** model.
@@ -906,8 +981,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.21.0
-   * Query Engine version: 08713a93b99d58f31485621c634b04983ae01d95
+   * Prisma Client JS version: 5.20.0
+   * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
    */
   export type PrismaVersion = {
     client: string
@@ -1295,6 +1370,7 @@ export namespace Prisma {
     Organization: 'Organization',
     Project: 'Project',
     ApiKey: 'ApiKey',
+    BackgroundMigration: 'BackgroundMigration',
     LlmApiKeys: 'LlmApiKeys',
     OrganizationMembership: 'OrganizationMembership',
     ProjectMembership: 'ProjectMembership',
@@ -1315,6 +1391,7 @@ export namespace Prisma {
     Comment: 'Comment',
     Prompt: 'Prompt',
     Model: 'Model',
+    Price: 'Price',
     AuditLog: 'AuditLog',
     EvalTemplate: 'EvalTemplate',
     JobConfiguration: 'JobConfiguration',
@@ -1322,6 +1399,9 @@ export namespace Prisma {
     SsoConfig: 'SsoConfig',
     PosthogIntegration: 'PosthogIntegration',
     BatchExport: 'BatchExport',
+    Media: 'Media',
+    TraceMedia: 'TraceMedia',
+    ObservationMedia: 'ObservationMedia',
     TraceView: 'TraceView',
     ObservationView: 'ObservationView'
   };
@@ -1339,7 +1419,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "account" | "session" | "user" | "verificationToken" | "organization" | "project" | "apiKey" | "llmApiKeys" | "organizationMembership" | "projectMembership" | "membershipInvitation" | "traceSession" | "trace" | "observation" | "score" | "scoreConfig" | "annotationQueue" | "annotationQueueItem" | "cronJobs" | "dataset" | "datasetItem" | "datasetRuns" | "datasetRunItems" | "events" | "comment" | "prompt" | "model" | "auditLog" | "evalTemplate" | "jobConfiguration" | "jobExecution" | "ssoConfig" | "posthogIntegration" | "batchExport" | "traceView" | "observationView"
+      modelProps: "account" | "session" | "user" | "verificationToken" | "organization" | "project" | "apiKey" | "backgroundMigration" | "llmApiKeys" | "organizationMembership" | "projectMembership" | "membershipInvitation" | "traceSession" | "trace" | "observation" | "score" | "scoreConfig" | "annotationQueue" | "annotationQueueItem" | "cronJobs" | "dataset" | "datasetItem" | "datasetRuns" | "datasetRunItems" | "events" | "comment" | "prompt" | "model" | "price" | "auditLog" | "evalTemplate" | "jobConfiguration" | "jobExecution" | "ssoConfig" | "posthogIntegration" | "batchExport" | "media" | "traceMedia" | "observationMedia" | "traceView" | "observationView"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1830,6 +1910,76 @@ export namespace Prisma {
           count: {
             args: Prisma.ApiKeyCountArgs<ExtArgs>
             result: $Utils.Optional<ApiKeyCountAggregateOutputType> | number
+          }
+        }
+      }
+      BackgroundMigration: {
+        payload: Prisma.$BackgroundMigrationPayload<ExtArgs>
+        fields: Prisma.BackgroundMigrationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BackgroundMigrationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BackgroundMigrationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          findFirst: {
+            args: Prisma.BackgroundMigrationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BackgroundMigrationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          findMany: {
+            args: Prisma.BackgroundMigrationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>[]
+          }
+          create: {
+            args: Prisma.BackgroundMigrationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          createMany: {
+            args: Prisma.BackgroundMigrationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BackgroundMigrationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>[]
+          }
+          delete: {
+            args: Prisma.BackgroundMigrationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          update: {
+            args: Prisma.BackgroundMigrationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          deleteMany: {
+            args: Prisma.BackgroundMigrationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BackgroundMigrationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BackgroundMigrationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BackgroundMigrationPayload>
+          }
+          aggregate: {
+            args: Prisma.BackgroundMigrationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBackgroundMigration>
+          }
+          groupBy: {
+            args: Prisma.BackgroundMigrationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BackgroundMigrationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BackgroundMigrationCountArgs<ExtArgs>
+            result: $Utils.Optional<BackgroundMigrationCountAggregateOutputType> | number
           }
         }
       }
@@ -3233,6 +3383,76 @@ export namespace Prisma {
           }
         }
       }
+      Price: {
+        payload: Prisma.$PricePayload<ExtArgs>
+        fields: Prisma.PriceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PriceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PriceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          findFirst: {
+            args: Prisma.PriceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PriceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          findMany: {
+            args: Prisma.PriceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>[]
+          }
+          create: {
+            args: Prisma.PriceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          createMany: {
+            args: Prisma.PriceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PriceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>[]
+          }
+          delete: {
+            args: Prisma.PriceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          update: {
+            args: Prisma.PriceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          deleteMany: {
+            args: Prisma.PriceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PriceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PriceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PricePayload>
+          }
+          aggregate: {
+            args: Prisma.PriceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePrice>
+          }
+          groupBy: {
+            args: Prisma.PriceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PriceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PriceCountArgs<ExtArgs>
+            result: $Utils.Optional<PriceCountAggregateOutputType> | number
+          }
+        }
+      }
       AuditLog: {
         payload: Prisma.$AuditLogPayload<ExtArgs>
         fields: Prisma.AuditLogFieldRefs
@@ -3723,6 +3943,216 @@ export namespace Prisma {
           }
         }
       }
+      Media: {
+        payload: Prisma.$MediaPayload<ExtArgs>
+        fields: Prisma.MediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          findFirst: {
+            args: Prisma.MediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          findMany: {
+            args: Prisma.MediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>[]
+          }
+          create: {
+            args: Prisma.MediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          createMany: {
+            args: Prisma.MediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>[]
+          }
+          delete: {
+            args: Prisma.MediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          update: {
+            args: Prisma.MediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.MediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.MediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MediaPayload>
+          }
+          aggregate: {
+            args: Prisma.MediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMedia>
+          }
+          groupBy: {
+            args: Prisma.MediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MediaCountArgs<ExtArgs>
+            result: $Utils.Optional<MediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      TraceMedia: {
+        payload: Prisma.$TraceMediaPayload<ExtArgs>
+        fields: Prisma.TraceMediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TraceMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TraceMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          findFirst: {
+            args: Prisma.TraceMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TraceMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          findMany: {
+            args: Prisma.TraceMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>[]
+          }
+          create: {
+            args: Prisma.TraceMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          createMany: {
+            args: Prisma.TraceMediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TraceMediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>[]
+          }
+          delete: {
+            args: Prisma.TraceMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          update: {
+            args: Prisma.TraceMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.TraceMediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TraceMediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TraceMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TraceMediaPayload>
+          }
+          aggregate: {
+            args: Prisma.TraceMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTraceMedia>
+          }
+          groupBy: {
+            args: Prisma.TraceMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TraceMediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TraceMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<TraceMediaCountAggregateOutputType> | number
+          }
+        }
+      }
+      ObservationMedia: {
+        payload: Prisma.$ObservationMediaPayload<ExtArgs>
+        fields: Prisma.ObservationMediaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ObservationMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ObservationMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          findFirst: {
+            args: Prisma.ObservationMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ObservationMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          findMany: {
+            args: Prisma.ObservationMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>[]
+          }
+          create: {
+            args: Prisma.ObservationMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          createMany: {
+            args: Prisma.ObservationMediaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ObservationMediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>[]
+          }
+          delete: {
+            args: Prisma.ObservationMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          update: {
+            args: Prisma.ObservationMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          deleteMany: {
+            args: Prisma.ObservationMediaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ObservationMediaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ObservationMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ObservationMediaPayload>
+          }
+          aggregate: {
+            args: Prisma.ObservationMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateObservationMedia>
+          }
+          groupBy: {
+            args: Prisma.ObservationMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ObservationMediaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ObservationMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<ObservationMediaCountAggregateOutputType> | number
+          }
+        }
+      }
       TraceView: {
         payload: Prisma.$TraceViewPayload<ExtArgs>
         fields: Prisma.TraceViewFieldRefs
@@ -4179,6 +4609,9 @@ export namespace Prisma {
     comment: number
     annotationQueue: number
     annotationQueueItem: number
+    TraceMedia: number
+    Media: number
+    ObservationMedia: number
   }
 
   export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4203,6 +4636,9 @@ export namespace Prisma {
     comment?: boolean | ProjectCountOutputTypeCountCommentArgs
     annotationQueue?: boolean | ProjectCountOutputTypeCountAnnotationQueueArgs
     annotationQueueItem?: boolean | ProjectCountOutputTypeCountAnnotationQueueItemArgs
+    TraceMedia?: boolean | ProjectCountOutputTypeCountTraceMediaArgs
+    Media?: boolean | ProjectCountOutputTypeCountMediaArgs
+    ObservationMedia?: boolean | ProjectCountOutputTypeCountObservationMediaArgs
   }
 
   // Custom InputTypes
@@ -4363,6 +4799,27 @@ export namespace Prisma {
     where?: AnnotationQueueItemWhereInput
   }
 
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountTraceMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TraceMediaWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MediaWhereInput
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountObservationMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ObservationMediaWhereInput
+  }
+
 
   /**
    * Count Type OrganizationMembershipCountOutputType
@@ -4423,37 +4880,6 @@ export namespace Prisma {
    */
   export type TraceSessionCountOutputTypeCountTracesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TraceWhereInput
-  }
-
-
-  /**
-   * Count Type TraceCountOutputType
-   */
-
-  export type TraceCountOutputType = {
-    JobExecution: number
-  }
-
-  export type TraceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    JobExecution?: boolean | TraceCountOutputTypeCountJobExecutionArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * TraceCountOutputType without action
-   */
-  export type TraceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TraceCountOutputType
-     */
-    select?: TraceCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TraceCountOutputType without action
-   */
-  export type TraceCountOutputTypeCountJobExecutionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: JobExecutionWhereInput
   }
 
 
@@ -4653,6 +5079,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ModelCountOutputType
+   */
+
+  export type ModelCountOutputType = {
+    Price: number
+  }
+
+  export type ModelCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Price?: boolean | ModelCountOutputTypeCountPriceArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ModelCountOutputType without action
+   */
+  export type ModelCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModelCountOutputType
+     */
+    select?: ModelCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ModelCountOutputType without action
+   */
+  export type ModelCountOutputTypeCountPriceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceWhereInput
+  }
+
+
+  /**
    * Count Type EvalTemplateCountOutputType
    */
 
@@ -4711,6 +5168,46 @@ export namespace Prisma {
    */
   export type JobConfigurationCountOutputTypeCountJobExecutionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: JobExecutionWhereInput
+  }
+
+
+  /**
+   * Count Type MediaCountOutputType
+   */
+
+  export type MediaCountOutputType = {
+    TraceMedia: number
+    ObservationMedia: number
+  }
+
+  export type MediaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TraceMedia?: boolean | MediaCountOutputTypeCountTraceMediaArgs
+    ObservationMedia?: boolean | MediaCountOutputTypeCountObservationMediaArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MediaCountOutputType without action
+   */
+  export type MediaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MediaCountOutputType
+     */
+    select?: MediaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MediaCountOutputType without action
+   */
+  export type MediaCountOutputTypeCountTraceMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TraceMediaWhereInput
+  }
+
+  /**
+   * MediaCountOutputType without action
+   */
+  export type MediaCountOutputTypeCountObservationMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ObservationMediaWhereInput
   }
 
 
@@ -9979,6 +10476,9 @@ export namespace Prisma {
     comment?: boolean | Project$commentArgs<ExtArgs>
     annotationQueue?: boolean | Project$annotationQueueArgs<ExtArgs>
     annotationQueueItem?: boolean | Project$annotationQueueItemArgs<ExtArgs>
+    TraceMedia?: boolean | Project$TraceMediaArgs<ExtArgs>
+    Media?: boolean | Project$MediaArgs<ExtArgs>
+    ObservationMedia?: boolean | Project$ObservationMediaArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
@@ -10022,6 +10522,9 @@ export namespace Prisma {
     comment?: boolean | Project$commentArgs<ExtArgs>
     annotationQueue?: boolean | Project$annotationQueueArgs<ExtArgs>
     annotationQueueItem?: boolean | Project$annotationQueueItemArgs<ExtArgs>
+    TraceMedia?: boolean | Project$TraceMediaArgs<ExtArgs>
+    Media?: boolean | Project$MediaArgs<ExtArgs>
+    ObservationMedia?: boolean | Project$ObservationMediaArgs<ExtArgs>
     _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10053,6 +10556,9 @@ export namespace Prisma {
       comment: Prisma.$CommentPayload<ExtArgs>[]
       annotationQueue: Prisma.$AnnotationQueuePayload<ExtArgs>[]
       annotationQueueItem: Prisma.$AnnotationQueueItemPayload<ExtArgs>[]
+      TraceMedia: Prisma.$TraceMediaPayload<ExtArgs>[]
+      Media: Prisma.$MediaPayload<ExtArgs>[]
+      ObservationMedia: Prisma.$ObservationMediaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10446,6 +10952,9 @@ export namespace Prisma {
     comment<T extends Project$commentArgs<ExtArgs> = {}>(args?: Subset<T, Project$commentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany"> | Null>
     annotationQueue<T extends Project$annotationQueueArgs<ExtArgs> = {}>(args?: Subset<T, Project$annotationQueueArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueuePayload<ExtArgs>, T, "findMany"> | Null>
     annotationQueueItem<T extends Project$annotationQueueItemArgs<ExtArgs> = {}>(args?: Subset<T, Project$annotationQueueItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnotationQueueItemPayload<ExtArgs>, T, "findMany"> | Null>
+    TraceMedia<T extends Project$TraceMediaArgs<ExtArgs> = {}>(args?: Subset<T, Project$TraceMediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findMany"> | Null>
+    Media<T extends Project$MediaArgs<ExtArgs> = {}>(args?: Subset<T, Project$MediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany"> | Null>
+    ObservationMedia<T extends Project$ObservationMediaArgs<ExtArgs> = {}>(args?: Subset<T, Project$ObservationMediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11224,6 +11733,66 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AnnotationQueueItemScalarFieldEnum | AnnotationQueueItemScalarFieldEnum[]
+  }
+
+  /**
+   * Project.TraceMedia
+   */
+  export type Project$TraceMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    where?: TraceMediaWhereInput
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    cursor?: TraceMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceMediaScalarFieldEnum | TraceMediaScalarFieldEnum[]
+  }
+
+  /**
+   * Project.Media
+   */
+  export type Project$MediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    where?: MediaWhereInput
+    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    cursor?: MediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+  }
+
+  /**
+   * Project.ObservationMedia
+   */
+  export type Project$ObservationMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    where?: ObservationMediaWhereInput
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    cursor?: ObservationMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ObservationMediaScalarFieldEnum | ObservationMediaScalarFieldEnum[]
   }
 
   /**
@@ -12240,6 +12809,945 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ApiKeyInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BackgroundMigration
+   */
+
+  export type AggregateBackgroundMigration = {
+    _count: BackgroundMigrationCountAggregateOutputType | null
+    _min: BackgroundMigrationMinAggregateOutputType | null
+    _max: BackgroundMigrationMaxAggregateOutputType | null
+  }
+
+  export type BackgroundMigrationMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    script: string | null
+    finishedAt: Date | null
+    failedAt: Date | null
+    failedReason: string | null
+    workerId: string | null
+    lockedAt: Date | null
+  }
+
+  export type BackgroundMigrationMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    script: string | null
+    finishedAt: Date | null
+    failedAt: Date | null
+    failedReason: string | null
+    workerId: string | null
+    lockedAt: Date | null
+  }
+
+  export type BackgroundMigrationCountAggregateOutputType = {
+    id: number
+    name: number
+    script: number
+    args: number
+    state: number
+    finishedAt: number
+    failedAt: number
+    failedReason: number
+    workerId: number
+    lockedAt: number
+    _all: number
+  }
+
+
+  export type BackgroundMigrationMinAggregateInputType = {
+    id?: true
+    name?: true
+    script?: true
+    finishedAt?: true
+    failedAt?: true
+    failedReason?: true
+    workerId?: true
+    lockedAt?: true
+  }
+
+  export type BackgroundMigrationMaxAggregateInputType = {
+    id?: true
+    name?: true
+    script?: true
+    finishedAt?: true
+    failedAt?: true
+    failedReason?: true
+    workerId?: true
+    lockedAt?: true
+  }
+
+  export type BackgroundMigrationCountAggregateInputType = {
+    id?: true
+    name?: true
+    script?: true
+    args?: true
+    state?: true
+    finishedAt?: true
+    failedAt?: true
+    failedReason?: true
+    workerId?: true
+    lockedAt?: true
+    _all?: true
+  }
+
+  export type BackgroundMigrationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BackgroundMigration to aggregate.
+     */
+    where?: BackgroundMigrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BackgroundMigrations to fetch.
+     */
+    orderBy?: BackgroundMigrationOrderByWithRelationInput | BackgroundMigrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BackgroundMigrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BackgroundMigrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BackgroundMigrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BackgroundMigrations
+    **/
+    _count?: true | BackgroundMigrationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BackgroundMigrationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BackgroundMigrationMaxAggregateInputType
+  }
+
+  export type GetBackgroundMigrationAggregateType<T extends BackgroundMigrationAggregateArgs> = {
+        [P in keyof T & keyof AggregateBackgroundMigration]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBackgroundMigration[P]>
+      : GetScalarType<T[P], AggregateBackgroundMigration[P]>
+  }
+
+
+
+
+  export type BackgroundMigrationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BackgroundMigrationWhereInput
+    orderBy?: BackgroundMigrationOrderByWithAggregationInput | BackgroundMigrationOrderByWithAggregationInput[]
+    by: BackgroundMigrationScalarFieldEnum[] | BackgroundMigrationScalarFieldEnum
+    having?: BackgroundMigrationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BackgroundMigrationCountAggregateInputType | true
+    _min?: BackgroundMigrationMinAggregateInputType
+    _max?: BackgroundMigrationMaxAggregateInputType
+  }
+
+  export type BackgroundMigrationGroupByOutputType = {
+    id: string
+    name: string
+    script: string
+    args: JsonValue
+    state: JsonValue
+    finishedAt: Date | null
+    failedAt: Date | null
+    failedReason: string | null
+    workerId: string | null
+    lockedAt: Date | null
+    _count: BackgroundMigrationCountAggregateOutputType | null
+    _min: BackgroundMigrationMinAggregateOutputType | null
+    _max: BackgroundMigrationMaxAggregateOutputType | null
+  }
+
+  type GetBackgroundMigrationGroupByPayload<T extends BackgroundMigrationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BackgroundMigrationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BackgroundMigrationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BackgroundMigrationGroupByOutputType[P]>
+            : GetScalarType<T[P], BackgroundMigrationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BackgroundMigrationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    script?: boolean
+    args?: boolean
+    state?: boolean
+    finishedAt?: boolean
+    failedAt?: boolean
+    failedReason?: boolean
+    workerId?: boolean
+    lockedAt?: boolean
+  }, ExtArgs["result"]["backgroundMigration"]>
+
+  export type BackgroundMigrationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    script?: boolean
+    args?: boolean
+    state?: boolean
+    finishedAt?: boolean
+    failedAt?: boolean
+    failedReason?: boolean
+    workerId?: boolean
+    lockedAt?: boolean
+  }, ExtArgs["result"]["backgroundMigration"]>
+
+  export type BackgroundMigrationSelectScalar = {
+    id?: boolean
+    name?: boolean
+    script?: boolean
+    args?: boolean
+    state?: boolean
+    finishedAt?: boolean
+    failedAt?: boolean
+    failedReason?: boolean
+    workerId?: boolean
+    lockedAt?: boolean
+  }
+
+
+  export type $BackgroundMigrationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BackgroundMigration"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      script: string
+      args: Prisma.JsonValue
+      state: Prisma.JsonValue
+      finishedAt: Date | null
+      failedAt: Date | null
+      failedReason: string | null
+      workerId: string | null
+      lockedAt: Date | null
+    }, ExtArgs["result"]["backgroundMigration"]>
+    composites: {}
+  }
+
+  type BackgroundMigrationGetPayload<S extends boolean | null | undefined | BackgroundMigrationDefaultArgs> = $Result.GetResult<Prisma.$BackgroundMigrationPayload, S>
+
+  type BackgroundMigrationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BackgroundMigrationFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: BackgroundMigrationCountAggregateInputType | true
+    }
+
+  export interface BackgroundMigrationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BackgroundMigration'], meta: { name: 'BackgroundMigration' } }
+    /**
+     * Find zero or one BackgroundMigration that matches the filter.
+     * @param {BackgroundMigrationFindUniqueArgs} args - Arguments to find a BackgroundMigration
+     * @example
+     * // Get one BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BackgroundMigrationFindUniqueArgs>(args: SelectSubset<T, BackgroundMigrationFindUniqueArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one BackgroundMigration that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {BackgroundMigrationFindUniqueOrThrowArgs} args - Arguments to find a BackgroundMigration
+     * @example
+     * // Get one BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BackgroundMigrationFindUniqueOrThrowArgs>(args: SelectSubset<T, BackgroundMigrationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first BackgroundMigration that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationFindFirstArgs} args - Arguments to find a BackgroundMigration
+     * @example
+     * // Get one BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BackgroundMigrationFindFirstArgs>(args?: SelectSubset<T, BackgroundMigrationFindFirstArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first BackgroundMigration that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationFindFirstOrThrowArgs} args - Arguments to find a BackgroundMigration
+     * @example
+     * // Get one BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BackgroundMigrationFindFirstOrThrowArgs>(args?: SelectSubset<T, BackgroundMigrationFindFirstOrThrowArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more BackgroundMigrations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BackgroundMigrations
+     * const backgroundMigrations = await prisma.backgroundMigration.findMany()
+     * 
+     * // Get first 10 BackgroundMigrations
+     * const backgroundMigrations = await prisma.backgroundMigration.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const backgroundMigrationWithIdOnly = await prisma.backgroundMigration.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BackgroundMigrationFindManyArgs>(args?: SelectSubset<T, BackgroundMigrationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a BackgroundMigration.
+     * @param {BackgroundMigrationCreateArgs} args - Arguments to create a BackgroundMigration.
+     * @example
+     * // Create one BackgroundMigration
+     * const BackgroundMigration = await prisma.backgroundMigration.create({
+     *   data: {
+     *     // ... data to create a BackgroundMigration
+     *   }
+     * })
+     * 
+     */
+    create<T extends BackgroundMigrationCreateArgs>(args: SelectSubset<T, BackgroundMigrationCreateArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many BackgroundMigrations.
+     * @param {BackgroundMigrationCreateManyArgs} args - Arguments to create many BackgroundMigrations.
+     * @example
+     * // Create many BackgroundMigrations
+     * const backgroundMigration = await prisma.backgroundMigration.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BackgroundMigrationCreateManyArgs>(args?: SelectSubset<T, BackgroundMigrationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BackgroundMigrations and returns the data saved in the database.
+     * @param {BackgroundMigrationCreateManyAndReturnArgs} args - Arguments to create many BackgroundMigrations.
+     * @example
+     * // Create many BackgroundMigrations
+     * const backgroundMigration = await prisma.backgroundMigration.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BackgroundMigrations and only return the `id`
+     * const backgroundMigrationWithIdOnly = await prisma.backgroundMigration.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BackgroundMigrationCreateManyAndReturnArgs>(args?: SelectSubset<T, BackgroundMigrationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a BackgroundMigration.
+     * @param {BackgroundMigrationDeleteArgs} args - Arguments to delete one BackgroundMigration.
+     * @example
+     * // Delete one BackgroundMigration
+     * const BackgroundMigration = await prisma.backgroundMigration.delete({
+     *   where: {
+     *     // ... filter to delete one BackgroundMigration
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BackgroundMigrationDeleteArgs>(args: SelectSubset<T, BackgroundMigrationDeleteArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one BackgroundMigration.
+     * @param {BackgroundMigrationUpdateArgs} args - Arguments to update one BackgroundMigration.
+     * @example
+     * // Update one BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BackgroundMigrationUpdateArgs>(args: SelectSubset<T, BackgroundMigrationUpdateArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more BackgroundMigrations.
+     * @param {BackgroundMigrationDeleteManyArgs} args - Arguments to filter BackgroundMigrations to delete.
+     * @example
+     * // Delete a few BackgroundMigrations
+     * const { count } = await prisma.backgroundMigration.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BackgroundMigrationDeleteManyArgs>(args?: SelectSubset<T, BackgroundMigrationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BackgroundMigrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BackgroundMigrations
+     * const backgroundMigration = await prisma.backgroundMigration.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BackgroundMigrationUpdateManyArgs>(args: SelectSubset<T, BackgroundMigrationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BackgroundMigration.
+     * @param {BackgroundMigrationUpsertArgs} args - Arguments to update or create a BackgroundMigration.
+     * @example
+     * // Update or create a BackgroundMigration
+     * const backgroundMigration = await prisma.backgroundMigration.upsert({
+     *   create: {
+     *     // ... data to create a BackgroundMigration
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BackgroundMigration we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BackgroundMigrationUpsertArgs>(args: SelectSubset<T, BackgroundMigrationUpsertArgs<ExtArgs>>): Prisma__BackgroundMigrationClient<$Result.GetResult<Prisma.$BackgroundMigrationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of BackgroundMigrations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationCountArgs} args - Arguments to filter BackgroundMigrations to count.
+     * @example
+     * // Count the number of BackgroundMigrations
+     * const count = await prisma.backgroundMigration.count({
+     *   where: {
+     *     // ... the filter for the BackgroundMigrations we want to count
+     *   }
+     * })
+    **/
+    count<T extends BackgroundMigrationCountArgs>(
+      args?: Subset<T, BackgroundMigrationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BackgroundMigrationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BackgroundMigration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BackgroundMigrationAggregateArgs>(args: Subset<T, BackgroundMigrationAggregateArgs>): Prisma.PrismaPromise<GetBackgroundMigrationAggregateType<T>>
+
+    /**
+     * Group by BackgroundMigration.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BackgroundMigrationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BackgroundMigrationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BackgroundMigrationGroupByArgs['orderBy'] }
+        : { orderBy?: BackgroundMigrationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BackgroundMigrationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBackgroundMigrationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BackgroundMigration model
+   */
+  readonly fields: BackgroundMigrationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BackgroundMigration.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BackgroundMigrationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BackgroundMigration model
+   */ 
+  interface BackgroundMigrationFieldRefs {
+    readonly id: FieldRef<"BackgroundMigration", 'String'>
+    readonly name: FieldRef<"BackgroundMigration", 'String'>
+    readonly script: FieldRef<"BackgroundMigration", 'String'>
+    readonly args: FieldRef<"BackgroundMigration", 'Json'>
+    readonly state: FieldRef<"BackgroundMigration", 'Json'>
+    readonly finishedAt: FieldRef<"BackgroundMigration", 'DateTime'>
+    readonly failedAt: FieldRef<"BackgroundMigration", 'DateTime'>
+    readonly failedReason: FieldRef<"BackgroundMigration", 'String'>
+    readonly workerId: FieldRef<"BackgroundMigration", 'String'>
+    readonly lockedAt: FieldRef<"BackgroundMigration", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BackgroundMigration findUnique
+   */
+  export type BackgroundMigrationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter, which BackgroundMigration to fetch.
+     */
+    where: BackgroundMigrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration findUniqueOrThrow
+   */
+  export type BackgroundMigrationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter, which BackgroundMigration to fetch.
+     */
+    where: BackgroundMigrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration findFirst
+   */
+  export type BackgroundMigrationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter, which BackgroundMigration to fetch.
+     */
+    where?: BackgroundMigrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BackgroundMigrations to fetch.
+     */
+    orderBy?: BackgroundMigrationOrderByWithRelationInput | BackgroundMigrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BackgroundMigrations.
+     */
+    cursor?: BackgroundMigrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BackgroundMigrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BackgroundMigrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BackgroundMigrations.
+     */
+    distinct?: BackgroundMigrationScalarFieldEnum | BackgroundMigrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration findFirstOrThrow
+   */
+  export type BackgroundMigrationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter, which BackgroundMigration to fetch.
+     */
+    where?: BackgroundMigrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BackgroundMigrations to fetch.
+     */
+    orderBy?: BackgroundMigrationOrderByWithRelationInput | BackgroundMigrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BackgroundMigrations.
+     */
+    cursor?: BackgroundMigrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BackgroundMigrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BackgroundMigrations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BackgroundMigrations.
+     */
+    distinct?: BackgroundMigrationScalarFieldEnum | BackgroundMigrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration findMany
+   */
+  export type BackgroundMigrationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter, which BackgroundMigrations to fetch.
+     */
+    where?: BackgroundMigrationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BackgroundMigrations to fetch.
+     */
+    orderBy?: BackgroundMigrationOrderByWithRelationInput | BackgroundMigrationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BackgroundMigrations.
+     */
+    cursor?: BackgroundMigrationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BackgroundMigrations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BackgroundMigrations.
+     */
+    skip?: number
+    distinct?: BackgroundMigrationScalarFieldEnum | BackgroundMigrationScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration create
+   */
+  export type BackgroundMigrationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * The data needed to create a BackgroundMigration.
+     */
+    data: XOR<BackgroundMigrationCreateInput, BackgroundMigrationUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration createMany
+   */
+  export type BackgroundMigrationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BackgroundMigrations.
+     */
+    data: BackgroundMigrationCreateManyInput | BackgroundMigrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BackgroundMigration createManyAndReturn
+   */
+  export type BackgroundMigrationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many BackgroundMigrations.
+     */
+    data: BackgroundMigrationCreateManyInput | BackgroundMigrationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BackgroundMigration update
+   */
+  export type BackgroundMigrationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * The data needed to update a BackgroundMigration.
+     */
+    data: XOR<BackgroundMigrationUpdateInput, BackgroundMigrationUncheckedUpdateInput>
+    /**
+     * Choose, which BackgroundMigration to update.
+     */
+    where: BackgroundMigrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration updateMany
+   */
+  export type BackgroundMigrationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BackgroundMigrations.
+     */
+    data: XOR<BackgroundMigrationUpdateManyMutationInput, BackgroundMigrationUncheckedUpdateManyInput>
+    /**
+     * Filter which BackgroundMigrations to update
+     */
+    where?: BackgroundMigrationWhereInput
+  }
+
+  /**
+   * BackgroundMigration upsert
+   */
+  export type BackgroundMigrationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * The filter to search for the BackgroundMigration to update in case it exists.
+     */
+    where: BackgroundMigrationWhereUniqueInput
+    /**
+     * In case the BackgroundMigration found by the `where` argument doesn't exist, create a new BackgroundMigration with this data.
+     */
+    create: XOR<BackgroundMigrationCreateInput, BackgroundMigrationUncheckedCreateInput>
+    /**
+     * In case the BackgroundMigration was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BackgroundMigrationUpdateInput, BackgroundMigrationUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration delete
+   */
+  export type BackgroundMigrationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
+    /**
+     * Filter which BackgroundMigration to delete.
+     */
+    where: BackgroundMigrationWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * BackgroundMigration deleteMany
+   */
+  export type BackgroundMigrationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BackgroundMigrations to delete
+     */
+    where?: BackgroundMigrationWhereInput
+  }
+
+  /**
+   * BackgroundMigration without action
+   */
+  export type BackgroundMigrationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BackgroundMigration
+     */
+    select?: BackgroundMigrationSelect<ExtArgs> | null
   }
 
 
@@ -17471,8 +18979,6 @@ export namespace Prisma {
     updatedAt?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     session?: boolean | Trace$sessionArgs<ExtArgs>
-    JobExecution?: boolean | Trace$JobExecutionArgs<ExtArgs>
-    _count?: boolean | TraceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trace"]>
 
   export type TraceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -17520,8 +19026,6 @@ export namespace Prisma {
   export type TraceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     session?: boolean | Trace$sessionArgs<ExtArgs>
-    JobExecution?: boolean | Trace$JobExecutionArgs<ExtArgs>
-    _count?: boolean | TraceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TraceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
@@ -17533,7 +19037,6 @@ export namespace Prisma {
     objects: {
       project: Prisma.$ProjectPayload<ExtArgs>
       session: Prisma.$TraceSessionPayload<ExtArgs> | null
-      JobExecution: Prisma.$JobExecutionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -17919,7 +19422,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     session<T extends Trace$sessionArgs<ExtArgs> = {}>(args?: Subset<T, Trace$sessionArgs<ExtArgs>>): Prisma__TraceSessionClient<$Result.GetResult<Prisma.$TraceSessionPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
-    JobExecution<T extends Trace$JobExecutionArgs<ExtArgs> = {}>(args?: Subset<T, Trace$JobExecutionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JobExecutionPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18305,26 +19807,6 @@ export namespace Prisma {
      */
     include?: TraceSessionInclude<ExtArgs> | null
     where?: TraceSessionWhereInput
-  }
-
-  /**
-   * Trace.JobExecution
-   */
-  export type Trace$JobExecutionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JobExecution
-     */
-    select?: JobExecutionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JobExecutionInclude<ExtArgs> | null
-    where?: JobExecutionWhereInput
-    orderBy?: JobExecutionOrderByWithRelationInput | JobExecutionOrderByWithRelationInput[]
-    cursor?: JobExecutionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: JobExecutionScalarFieldEnum | JobExecutionScalarFieldEnum[]
   }
 
   /**
@@ -32080,7 +33562,7 @@ export namespace Prisma {
     inputPrice: Decimal | null
     outputPrice: Decimal | null
     totalPrice: Decimal | null
-    unit: string
+    unit: string | null
     tokenizerId: string | null
     tokenizerConfig: JsonValue | null
     _count: ModelCountAggregateOutputType | null
@@ -32119,6 +33601,8 @@ export namespace Prisma {
     tokenizerId?: boolean
     tokenizerConfig?: boolean
     project?: boolean | Model$projectArgs<ExtArgs>
+    Price?: boolean | Model$PriceArgs<ExtArgs>
+    _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["model"]>
 
   export type ModelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -32156,6 +33640,8 @@ export namespace Prisma {
 
   export type ModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | Model$projectArgs<ExtArgs>
+    Price?: boolean | Model$PriceArgs<ExtArgs>
+    _count?: boolean | ModelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ModelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | Model$projectArgs<ExtArgs>
@@ -32165,6 +33651,7 @@ export namespace Prisma {
     name: "Model"
     objects: {
       project: Prisma.$ProjectPayload<ExtArgs> | null
+      Price: Prisma.$PricePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -32177,7 +33664,7 @@ export namespace Prisma {
       inputPrice: Prisma.Decimal | null
       outputPrice: Prisma.Decimal | null
       totalPrice: Prisma.Decimal | null
-      unit: string
+      unit: string | null
       tokenizerId: string | null
       tokenizerConfig: Prisma.JsonValue | null
     }, ExtArgs["result"]["model"]>
@@ -32545,6 +34032,7 @@ export namespace Prisma {
   export interface Prisma__ModelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     project<T extends Model$projectArgs<ExtArgs> = {}>(args?: Subset<T, Model$projectArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    Price<T extends Model$PriceArgs<ExtArgs> = {}>(args?: Subset<T, Model$PriceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -32929,6 +34417,26 @@ export namespace Prisma {
   }
 
   /**
+   * Model.Price
+   */
+  export type Model$PriceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    where?: PriceWhereInput
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    cursor?: PriceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+  }
+
+  /**
    * Model without action
    */
   export type ModelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -32940,6 +34448,994 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ModelInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Price
+   */
+
+  export type AggregatePrice = {
+    _count: PriceCountAggregateOutputType | null
+    _avg: PriceAvgAggregateOutputType | null
+    _sum: PriceSumAggregateOutputType | null
+    _min: PriceMinAggregateOutputType | null
+    _max: PriceMaxAggregateOutputType | null
+  }
+
+  export type PriceAvgAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type PriceSumAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type PriceMinAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    modelId: string | null
+    usageType: string | null
+    price: Decimal | null
+  }
+
+  export type PriceMaxAggregateOutputType = {
+    id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    modelId: string | null
+    usageType: string | null
+    price: Decimal | null
+  }
+
+  export type PriceCountAggregateOutputType = {
+    id: number
+    createdAt: number
+    updatedAt: number
+    modelId: number
+    usageType: number
+    price: number
+    _all: number
+  }
+
+
+  export type PriceAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type PriceSumAggregateInputType = {
+    price?: true
+  }
+
+  export type PriceMinAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+    usageType?: true
+    price?: true
+  }
+
+  export type PriceMaxAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+    usageType?: true
+    price?: true
+  }
+
+  export type PriceCountAggregateInputType = {
+    id?: true
+    createdAt?: true
+    updatedAt?: true
+    modelId?: true
+    usageType?: true
+    price?: true
+    _all?: true
+  }
+
+  export type PriceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Price to aggregate.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Prices
+    **/
+    _count?: true | PriceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PriceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PriceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PriceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PriceMaxAggregateInputType
+  }
+
+  export type GetPriceAggregateType<T extends PriceAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrice[P]>
+      : GetScalarType<T[P], AggregatePrice[P]>
+  }
+
+
+
+
+  export type PriceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceWhereInput
+    orderBy?: PriceOrderByWithAggregationInput | PriceOrderByWithAggregationInput[]
+    by: PriceScalarFieldEnum[] | PriceScalarFieldEnum
+    having?: PriceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PriceCountAggregateInputType | true
+    _avg?: PriceAvgAggregateInputType
+    _sum?: PriceSumAggregateInputType
+    _min?: PriceMinAggregateInputType
+    _max?: PriceMaxAggregateInputType
+  }
+
+  export type PriceGroupByOutputType = {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    modelId: string
+    usageType: string
+    price: Decimal
+    _count: PriceCountAggregateOutputType | null
+    _avg: PriceAvgAggregateOutputType | null
+    _sum: PriceSumAggregateOutputType | null
+    _min: PriceMinAggregateOutputType | null
+    _max: PriceMaxAggregateOutputType | null
+  }
+
+  type GetPriceGroupByPayload<T extends PriceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PriceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PriceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PriceGroupByOutputType[P]>
+            : GetScalarType<T[P], PriceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PriceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    usageType?: boolean
+    price?: boolean
+    Model?: boolean | ModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["price"]>
+
+  export type PriceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    usageType?: boolean
+    price?: boolean
+    Model?: boolean | ModelDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["price"]>
+
+  export type PriceSelectScalar = {
+    id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    modelId?: boolean
+    usageType?: boolean
+    price?: boolean
+  }
+
+  export type PriceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Model?: boolean | ModelDefaultArgs<ExtArgs>
+  }
+  export type PriceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Model?: boolean | ModelDefaultArgs<ExtArgs>
+  }
+
+  export type $PricePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Price"
+    objects: {
+      Model: Prisma.$ModelPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      createdAt: Date
+      updatedAt: Date
+      modelId: string
+      usageType: string
+      price: Prisma.Decimal
+    }, ExtArgs["result"]["price"]>
+    composites: {}
+  }
+
+  type PriceGetPayload<S extends boolean | null | undefined | PriceDefaultArgs> = $Result.GetResult<Prisma.$PricePayload, S>
+
+  type PriceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PriceFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: PriceCountAggregateInputType | true
+    }
+
+  export interface PriceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Price'], meta: { name: 'Price' } }
+    /**
+     * Find zero or one Price that matches the filter.
+     * @param {PriceFindUniqueArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PriceFindUniqueArgs>(args: SelectSubset<T, PriceFindUniqueArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Price that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PriceFindUniqueOrThrowArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PriceFindUniqueOrThrowArgs>(args: SelectSubset<T, PriceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Price that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindFirstArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PriceFindFirstArgs>(args?: SelectSubset<T, PriceFindFirstArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Price that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindFirstOrThrowArgs} args - Arguments to find a Price
+     * @example
+     * // Get one Price
+     * const price = await prisma.price.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PriceFindFirstOrThrowArgs>(args?: SelectSubset<T, PriceFindFirstOrThrowArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Prices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Prices
+     * const prices = await prisma.price.findMany()
+     * 
+     * // Get first 10 Prices
+     * const prices = await prisma.price.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const priceWithIdOnly = await prisma.price.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PriceFindManyArgs>(args?: SelectSubset<T, PriceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Price.
+     * @param {PriceCreateArgs} args - Arguments to create a Price.
+     * @example
+     * // Create one Price
+     * const Price = await prisma.price.create({
+     *   data: {
+     *     // ... data to create a Price
+     *   }
+     * })
+     * 
+     */
+    create<T extends PriceCreateArgs>(args: SelectSubset<T, PriceCreateArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Prices.
+     * @param {PriceCreateManyArgs} args - Arguments to create many Prices.
+     * @example
+     * // Create many Prices
+     * const price = await prisma.price.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PriceCreateManyArgs>(args?: SelectSubset<T, PriceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Prices and returns the data saved in the database.
+     * @param {PriceCreateManyAndReturnArgs} args - Arguments to create many Prices.
+     * @example
+     * // Create many Prices
+     * const price = await prisma.price.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Prices and only return the `id`
+     * const priceWithIdOnly = await prisma.price.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PriceCreateManyAndReturnArgs>(args?: SelectSubset<T, PriceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Price.
+     * @param {PriceDeleteArgs} args - Arguments to delete one Price.
+     * @example
+     * // Delete one Price
+     * const Price = await prisma.price.delete({
+     *   where: {
+     *     // ... filter to delete one Price
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PriceDeleteArgs>(args: SelectSubset<T, PriceDeleteArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Price.
+     * @param {PriceUpdateArgs} args - Arguments to update one Price.
+     * @example
+     * // Update one Price
+     * const price = await prisma.price.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PriceUpdateArgs>(args: SelectSubset<T, PriceUpdateArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Prices.
+     * @param {PriceDeleteManyArgs} args - Arguments to filter Prices to delete.
+     * @example
+     * // Delete a few Prices
+     * const { count } = await prisma.price.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PriceDeleteManyArgs>(args?: SelectSubset<T, PriceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Prices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Prices
+     * const price = await prisma.price.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PriceUpdateManyArgs>(args: SelectSubset<T, PriceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Price.
+     * @param {PriceUpsertArgs} args - Arguments to update or create a Price.
+     * @example
+     * // Update or create a Price
+     * const price = await prisma.price.upsert({
+     *   create: {
+     *     // ... data to create a Price
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Price we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PriceUpsertArgs>(args: SelectSubset<T, PriceUpsertArgs<ExtArgs>>): Prisma__PriceClient<$Result.GetResult<Prisma.$PricePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Prices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceCountArgs} args - Arguments to filter Prices to count.
+     * @example
+     * // Count the number of Prices
+     * const count = await prisma.price.count({
+     *   where: {
+     *     // ... the filter for the Prices we want to count
+     *   }
+     * })
+    **/
+    count<T extends PriceCountArgs>(
+      args?: Subset<T, PriceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PriceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Price.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PriceAggregateArgs>(args: Subset<T, PriceAggregateArgs>): Prisma.PrismaPromise<GetPriceAggregateType<T>>
+
+    /**
+     * Group by Price.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PriceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PriceGroupByArgs['orderBy'] }
+        : { orderBy?: PriceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PriceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPriceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Price model
+   */
+  readonly fields: PriceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Price.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PriceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Model<T extends ModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ModelDefaultArgs<ExtArgs>>): Prisma__ModelClient<$Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Price model
+   */ 
+  interface PriceFieldRefs {
+    readonly id: FieldRef<"Price", 'String'>
+    readonly createdAt: FieldRef<"Price", 'DateTime'>
+    readonly updatedAt: FieldRef<"Price", 'DateTime'>
+    readonly modelId: FieldRef<"Price", 'String'>
+    readonly usageType: FieldRef<"Price", 'String'>
+    readonly price: FieldRef<"Price", 'Decimal'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Price findUnique
+   */
+  export type PriceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where: PriceWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price findUniqueOrThrow
+   */
+  export type PriceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where: PriceWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price findFirst
+   */
+  export type PriceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prices.
+     */
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price findFirstOrThrow
+   */
+  export type PriceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Price to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Prices.
+     */
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price findMany
+   */
+  export type PriceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter, which Prices to fetch.
+     */
+    where?: PriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Prices to fetch.
+     */
+    orderBy?: PriceOrderByWithRelationInput | PriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Prices.
+     */
+    cursor?: PriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Prices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Prices.
+     */
+    skip?: number
+    distinct?: PriceScalarFieldEnum | PriceScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price create
+   */
+  export type PriceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Price.
+     */
+    data: XOR<PriceCreateInput, PriceUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price createMany
+   */
+  export type PriceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Prices.
+     */
+    data: PriceCreateManyInput | PriceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Price createManyAndReturn
+   */
+  export type PriceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Prices.
+     */
+    data: PriceCreateManyInput | PriceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Price update
+   */
+  export type PriceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Price.
+     */
+    data: XOR<PriceUpdateInput, PriceUncheckedUpdateInput>
+    /**
+     * Choose, which Price to update.
+     */
+    where: PriceWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price updateMany
+   */
+  export type PriceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Prices.
+     */
+    data: XOR<PriceUpdateManyMutationInput, PriceUncheckedUpdateManyInput>
+    /**
+     * Filter which Prices to update
+     */
+    where?: PriceWhereInput
+  }
+
+  /**
+   * Price upsert
+   */
+  export type PriceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Price to update in case it exists.
+     */
+    where: PriceWhereUniqueInput
+    /**
+     * In case the Price found by the `where` argument doesn't exist, create a new Price with this data.
+     */
+    create: XOR<PriceCreateInput, PriceUncheckedCreateInput>
+    /**
+     * In case the Price was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PriceUpdateInput, PriceUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price delete
+   */
+  export type PriceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
+    /**
+     * Filter which Price to delete.
+     */
+    where: PriceWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Price deleteMany
+   */
+  export type PriceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Prices to delete
+     */
+    where?: PriceWhereInput
+  }
+
+  /**
+   * Price without action
+   */
+  export type PriceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Price
+     */
+    select?: PriceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceInclude<ExtArgs> | null
   }
 
 
@@ -36136,6 +38632,8 @@ export namespace Prisma {
     endTime: Date | null
     error: string | null
     jobInputTraceId: string | null
+    jobInputObservationId: string | null
+    jobInputDatasetItemId: string | null
     jobOutputScoreId: string | null
   }
 
@@ -36150,6 +38648,8 @@ export namespace Prisma {
     endTime: Date | null
     error: string | null
     jobInputTraceId: string | null
+    jobInputObservationId: string | null
+    jobInputDatasetItemId: string | null
     jobOutputScoreId: string | null
   }
 
@@ -36164,6 +38664,8 @@ export namespace Prisma {
     endTime: number
     error: number
     jobInputTraceId: number
+    jobInputObservationId: number
+    jobInputDatasetItemId: number
     jobOutputScoreId: number
     _all: number
   }
@@ -36180,6 +38682,8 @@ export namespace Prisma {
     endTime?: true
     error?: true
     jobInputTraceId?: true
+    jobInputObservationId?: true
+    jobInputDatasetItemId?: true
     jobOutputScoreId?: true
   }
 
@@ -36194,6 +38698,8 @@ export namespace Prisma {
     endTime?: true
     error?: true
     jobInputTraceId?: true
+    jobInputObservationId?: true
+    jobInputDatasetItemId?: true
     jobOutputScoreId?: true
   }
 
@@ -36208,6 +38714,8 @@ export namespace Prisma {
     endTime?: true
     error?: true
     jobInputTraceId?: true
+    jobInputObservationId?: true
+    jobInputDatasetItemId?: true
     jobOutputScoreId?: true
     _all?: true
   }
@@ -36295,6 +38803,8 @@ export namespace Prisma {
     endTime: Date | null
     error: string | null
     jobInputTraceId: string | null
+    jobInputObservationId: string | null
+    jobInputDatasetItemId: string | null
     jobOutputScoreId: string | null
     _count: JobExecutionCountAggregateOutputType | null
     _min: JobExecutionMinAggregateOutputType | null
@@ -36326,10 +38836,11 @@ export namespace Prisma {
     endTime?: boolean
     error?: boolean
     jobInputTraceId?: boolean
+    jobInputObservationId?: boolean
+    jobInputDatasetItemId?: boolean
     jobOutputScoreId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     jobConfiguration?: boolean | JobConfigurationDefaultArgs<ExtArgs>
-    trace?: boolean | JobExecution$traceArgs<ExtArgs>
     score?: boolean | JobExecution$scoreArgs<ExtArgs>
   }, ExtArgs["result"]["jobExecution"]>
 
@@ -36344,10 +38855,11 @@ export namespace Prisma {
     endTime?: boolean
     error?: boolean
     jobInputTraceId?: boolean
+    jobInputObservationId?: boolean
+    jobInputDatasetItemId?: boolean
     jobOutputScoreId?: boolean
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     jobConfiguration?: boolean | JobConfigurationDefaultArgs<ExtArgs>
-    trace?: boolean | JobExecution$traceArgs<ExtArgs>
     score?: boolean | JobExecution$scoreArgs<ExtArgs>
   }, ExtArgs["result"]["jobExecution"]>
 
@@ -36362,19 +38874,19 @@ export namespace Prisma {
     endTime?: boolean
     error?: boolean
     jobInputTraceId?: boolean
+    jobInputObservationId?: boolean
+    jobInputDatasetItemId?: boolean
     jobOutputScoreId?: boolean
   }
 
   export type JobExecutionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     jobConfiguration?: boolean | JobConfigurationDefaultArgs<ExtArgs>
-    trace?: boolean | JobExecution$traceArgs<ExtArgs>
     score?: boolean | JobExecution$scoreArgs<ExtArgs>
   }
   export type JobExecutionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     project?: boolean | ProjectDefaultArgs<ExtArgs>
     jobConfiguration?: boolean | JobConfigurationDefaultArgs<ExtArgs>
-    trace?: boolean | JobExecution$traceArgs<ExtArgs>
     score?: boolean | JobExecution$scoreArgs<ExtArgs>
   }
 
@@ -36383,7 +38895,6 @@ export namespace Prisma {
     objects: {
       project: Prisma.$ProjectPayload<ExtArgs>
       jobConfiguration: Prisma.$JobConfigurationPayload<ExtArgs>
-      trace: Prisma.$TracePayload<ExtArgs> | null
       score: Prisma.$ScorePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -36397,6 +38908,8 @@ export namespace Prisma {
       endTime: Date | null
       error: string | null
       jobInputTraceId: string | null
+      jobInputObservationId: string | null
+      jobInputDatasetItemId: string | null
       jobOutputScoreId: string | null
     }, ExtArgs["result"]["jobExecution"]>
     composites: {}
@@ -36764,7 +39277,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     jobConfiguration<T extends JobConfigurationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JobConfigurationDefaultArgs<ExtArgs>>): Prisma__JobConfigurationClient<$Result.GetResult<Prisma.$JobConfigurationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    trace<T extends JobExecution$traceArgs<ExtArgs> = {}>(args?: Subset<T, JobExecution$traceArgs<ExtArgs>>): Prisma__TraceClient<$Result.GetResult<Prisma.$TracePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     score<T extends JobExecution$scoreArgs<ExtArgs> = {}>(args?: Subset<T, JobExecution$scoreArgs<ExtArgs>>): Prisma__ScoreClient<$Result.GetResult<Prisma.$ScorePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -36805,6 +39317,8 @@ export namespace Prisma {
     readonly endTime: FieldRef<"JobExecution", 'DateTime'>
     readonly error: FieldRef<"JobExecution", 'String'>
     readonly jobInputTraceId: FieldRef<"JobExecution", 'String'>
+    readonly jobInputObservationId: FieldRef<"JobExecution", 'String'>
+    readonly jobInputDatasetItemId: FieldRef<"JobExecution", 'String'>
     readonly jobOutputScoreId: FieldRef<"JobExecution", 'String'>
   }
     
@@ -37130,21 +39644,6 @@ export namespace Prisma {
      * Filter which JobExecutions to delete
      */
     where?: JobExecutionWhereInput
-  }
-
-  /**
-   * JobExecution.trace
-   */
-  export type JobExecution$traceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Trace
-     */
-    select?: TraceSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TraceInclude<ExtArgs> | null
-    where?: TraceWhereInput
   }
 
   /**
@@ -40049,6 +42548,3076 @@ export namespace Prisma {
 
 
   /**
+   * Model Media
+   */
+
+  export type AggregateMedia = {
+    _count: MediaCountAggregateOutputType | null
+    _avg: MediaAvgAggregateOutputType | null
+    _sum: MediaSumAggregateOutputType | null
+    _min: MediaMinAggregateOutputType | null
+    _max: MediaMaxAggregateOutputType | null
+  }
+
+  export type MediaAvgAggregateOutputType = {
+    uploadHttpStatus: number | null
+    contentLength: number | null
+  }
+
+  export type MediaSumAggregateOutputType = {
+    uploadHttpStatus: number | null
+    contentLength: bigint | null
+  }
+
+  export type MediaMinAggregateOutputType = {
+    id: string | null
+    sha256Hash: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uploadedAt: Date | null
+    uploadHttpStatus: number | null
+    uploadHttpError: string | null
+    bucketPath: string | null
+    bucketName: string | null
+    contentType: string | null
+    contentLength: bigint | null
+  }
+
+  export type MediaMaxAggregateOutputType = {
+    id: string | null
+    sha256Hash: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    uploadedAt: Date | null
+    uploadHttpStatus: number | null
+    uploadHttpError: string | null
+    bucketPath: string | null
+    bucketName: string | null
+    contentType: string | null
+    contentLength: bigint | null
+  }
+
+  export type MediaCountAggregateOutputType = {
+    id: number
+    sha256Hash: number
+    projectId: number
+    createdAt: number
+    updatedAt: number
+    uploadedAt: number
+    uploadHttpStatus: number
+    uploadHttpError: number
+    bucketPath: number
+    bucketName: number
+    contentType: number
+    contentLength: number
+    _all: number
+  }
+
+
+  export type MediaAvgAggregateInputType = {
+    uploadHttpStatus?: true
+    contentLength?: true
+  }
+
+  export type MediaSumAggregateInputType = {
+    uploadHttpStatus?: true
+    contentLength?: true
+  }
+
+  export type MediaMinAggregateInputType = {
+    id?: true
+    sha256Hash?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    uploadedAt?: true
+    uploadHttpStatus?: true
+    uploadHttpError?: true
+    bucketPath?: true
+    bucketName?: true
+    contentType?: true
+    contentLength?: true
+  }
+
+  export type MediaMaxAggregateInputType = {
+    id?: true
+    sha256Hash?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    uploadedAt?: true
+    uploadHttpStatus?: true
+    uploadHttpError?: true
+    bucketPath?: true
+    bucketName?: true
+    contentType?: true
+    contentLength?: true
+  }
+
+  export type MediaCountAggregateInputType = {
+    id?: true
+    sha256Hash?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    uploadedAt?: true
+    uploadHttpStatus?: true
+    uploadHttpError?: true
+    bucketPath?: true
+    bucketName?: true
+    contentType?: true
+    contentLength?: true
+    _all?: true
+  }
+
+  export type MediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Media to aggregate.
+     */
+    where?: MediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Media to fetch.
+     */
+    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Media from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Media.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Media
+    **/
+    _count?: true | MediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MediaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MediaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MediaMaxAggregateInputType
+  }
+
+  export type GetMediaAggregateType<T extends MediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMedia[P]>
+      : GetScalarType<T[P], AggregateMedia[P]>
+  }
+
+
+
+
+  export type MediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MediaWhereInput
+    orderBy?: MediaOrderByWithAggregationInput | MediaOrderByWithAggregationInput[]
+    by: MediaScalarFieldEnum[] | MediaScalarFieldEnum
+    having?: MediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MediaCountAggregateInputType | true
+    _avg?: MediaAvgAggregateInputType
+    _sum?: MediaSumAggregateInputType
+    _min?: MediaMinAggregateInputType
+    _max?: MediaMaxAggregateInputType
+  }
+
+  export type MediaGroupByOutputType = {
+    id: string
+    sha256Hash: string
+    projectId: string
+    createdAt: Date
+    updatedAt: Date
+    uploadedAt: Date | null
+    uploadHttpStatus: number | null
+    uploadHttpError: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint
+    _count: MediaCountAggregateOutputType | null
+    _avg: MediaAvgAggregateOutputType | null
+    _sum: MediaSumAggregateOutputType | null
+    _min: MediaMinAggregateOutputType | null
+    _max: MediaMaxAggregateOutputType | null
+  }
+
+  type GetMediaGroupByPayload<T extends MediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MediaGroupByOutputType[P]>
+            : GetScalarType<T[P], MediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sha256Hash?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    uploadedAt?: boolean
+    uploadHttpStatus?: boolean
+    uploadHttpError?: boolean
+    bucketPath?: boolean
+    bucketName?: boolean
+    contentType?: boolean
+    contentLength?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    TraceMedia?: boolean | Media$TraceMediaArgs<ExtArgs>
+    ObservationMedia?: boolean | Media$ObservationMediaArgs<ExtArgs>
+    _count?: boolean | MediaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["media"]>
+
+  export type MediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sha256Hash?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    uploadedAt?: boolean
+    uploadHttpStatus?: boolean
+    uploadHttpError?: boolean
+    bucketPath?: boolean
+    bucketName?: boolean
+    contentType?: boolean
+    contentLength?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["media"]>
+
+  export type MediaSelectScalar = {
+    id?: boolean
+    sha256Hash?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    uploadedAt?: boolean
+    uploadHttpStatus?: boolean
+    uploadHttpError?: boolean
+    bucketPath?: boolean
+    bucketName?: boolean
+    contentType?: boolean
+    contentLength?: boolean
+  }
+
+  export type MediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    TraceMedia?: boolean | Media$TraceMediaArgs<ExtArgs>
+    ObservationMedia?: boolean | Media$ObservationMediaArgs<ExtArgs>
+    _count?: boolean | MediaCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+  }
+
+  export type $MediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Media"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      TraceMedia: Prisma.$TraceMediaPayload<ExtArgs>[]
+      ObservationMedia: Prisma.$ObservationMediaPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      sha256Hash: string
+      projectId: string
+      createdAt: Date
+      updatedAt: Date
+      uploadedAt: Date | null
+      uploadHttpStatus: number | null
+      uploadHttpError: string | null
+      bucketPath: string
+      bucketName: string
+      contentType: string
+      contentLength: bigint
+    }, ExtArgs["result"]["media"]>
+    composites: {}
+  }
+
+  type MediaGetPayload<S extends boolean | null | undefined | MediaDefaultArgs> = $Result.GetResult<Prisma.$MediaPayload, S>
+
+  type MediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MediaFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: MediaCountAggregateInputType | true
+    }
+
+  export interface MediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Media'], meta: { name: 'Media' } }
+    /**
+     * Find zero or one Media that matches the filter.
+     * @param {MediaFindUniqueArgs} args - Arguments to find a Media
+     * @example
+     * // Get one Media
+     * const media = await prisma.media.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MediaFindUniqueArgs>(args: SelectSubset<T, MediaFindUniqueArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Media that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {MediaFindUniqueOrThrowArgs} args - Arguments to find a Media
+     * @example
+     * // Get one Media
+     * const media = await prisma.media.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MediaFindUniqueOrThrowArgs>(args: SelectSubset<T, MediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Media that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaFindFirstArgs} args - Arguments to find a Media
+     * @example
+     * // Get one Media
+     * const media = await prisma.media.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MediaFindFirstArgs>(args?: SelectSubset<T, MediaFindFirstArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Media that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaFindFirstOrThrowArgs} args - Arguments to find a Media
+     * @example
+     * // Get one Media
+     * const media = await prisma.media.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MediaFindFirstOrThrowArgs>(args?: SelectSubset<T, MediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Media that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Media
+     * const media = await prisma.media.findMany()
+     * 
+     * // Get first 10 Media
+     * const media = await prisma.media.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mediaWithIdOnly = await prisma.media.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MediaFindManyArgs>(args?: SelectSubset<T, MediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Media.
+     * @param {MediaCreateArgs} args - Arguments to create a Media.
+     * @example
+     * // Create one Media
+     * const Media = await prisma.media.create({
+     *   data: {
+     *     // ... data to create a Media
+     *   }
+     * })
+     * 
+     */
+    create<T extends MediaCreateArgs>(args: SelectSubset<T, MediaCreateArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Media.
+     * @param {MediaCreateManyArgs} args - Arguments to create many Media.
+     * @example
+     * // Create many Media
+     * const media = await prisma.media.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MediaCreateManyArgs>(args?: SelectSubset<T, MediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Media and returns the data saved in the database.
+     * @param {MediaCreateManyAndReturnArgs} args - Arguments to create many Media.
+     * @example
+     * // Create many Media
+     * const media = await prisma.media.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Media and only return the `id`
+     * const mediaWithIdOnly = await prisma.media.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MediaCreateManyAndReturnArgs>(args?: SelectSubset<T, MediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Media.
+     * @param {MediaDeleteArgs} args - Arguments to delete one Media.
+     * @example
+     * // Delete one Media
+     * const Media = await prisma.media.delete({
+     *   where: {
+     *     // ... filter to delete one Media
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MediaDeleteArgs>(args: SelectSubset<T, MediaDeleteArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Media.
+     * @param {MediaUpdateArgs} args - Arguments to update one Media.
+     * @example
+     * // Update one Media
+     * const media = await prisma.media.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MediaUpdateArgs>(args: SelectSubset<T, MediaUpdateArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Media.
+     * @param {MediaDeleteManyArgs} args - Arguments to filter Media to delete.
+     * @example
+     * // Delete a few Media
+     * const { count } = await prisma.media.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MediaDeleteManyArgs>(args?: SelectSubset<T, MediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Media.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Media
+     * const media = await prisma.media.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MediaUpdateManyArgs>(args: SelectSubset<T, MediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Media.
+     * @param {MediaUpsertArgs} args - Arguments to update or create a Media.
+     * @example
+     * // Update or create a Media
+     * const media = await prisma.media.upsert({
+     *   create: {
+     *     // ... data to create a Media
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Media we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MediaUpsertArgs>(args: SelectSubset<T, MediaUpsertArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Media.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaCountArgs} args - Arguments to filter Media to count.
+     * @example
+     * // Count the number of Media
+     * const count = await prisma.media.count({
+     *   where: {
+     *     // ... the filter for the Media we want to count
+     *   }
+     * })
+    **/
+    count<T extends MediaCountArgs>(
+      args?: Subset<T, MediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Media.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MediaAggregateArgs>(args: Subset<T, MediaAggregateArgs>): Prisma.PrismaPromise<GetMediaAggregateType<T>>
+
+    /**
+     * Group by Media.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MediaGroupByArgs['orderBy'] }
+        : { orderBy?: MediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Media model
+   */
+  readonly fields: MediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Media.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    TraceMedia<T extends Media$TraceMediaArgs<ExtArgs> = {}>(args?: Subset<T, Media$TraceMediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findMany"> | Null>
+    ObservationMedia<T extends Media$ObservationMediaArgs<ExtArgs> = {}>(args?: Subset<T, Media$ObservationMediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Media model
+   */ 
+  interface MediaFieldRefs {
+    readonly id: FieldRef<"Media", 'String'>
+    readonly sha256Hash: FieldRef<"Media", 'String'>
+    readonly projectId: FieldRef<"Media", 'String'>
+    readonly createdAt: FieldRef<"Media", 'DateTime'>
+    readonly updatedAt: FieldRef<"Media", 'DateTime'>
+    readonly uploadedAt: FieldRef<"Media", 'DateTime'>
+    readonly uploadHttpStatus: FieldRef<"Media", 'Int'>
+    readonly uploadHttpError: FieldRef<"Media", 'String'>
+    readonly bucketPath: FieldRef<"Media", 'String'>
+    readonly bucketName: FieldRef<"Media", 'String'>
+    readonly contentType: FieldRef<"Media", 'String'>
+    readonly contentLength: FieldRef<"Media", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Media findUnique
+   */
+  export type MediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter, which Media to fetch.
+     */
+    where: MediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media findUniqueOrThrow
+   */
+  export type MediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter, which Media to fetch.
+     */
+    where: MediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media findFirst
+   */
+  export type MediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter, which Media to fetch.
+     */
+    where?: MediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Media to fetch.
+     */
+    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Media.
+     */
+    cursor?: MediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Media from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Media.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Media.
+     */
+    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media findFirstOrThrow
+   */
+  export type MediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter, which Media to fetch.
+     */
+    where?: MediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Media to fetch.
+     */
+    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Media.
+     */
+    cursor?: MediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Media from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Media.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Media.
+     */
+    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media findMany
+   */
+  export type MediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter, which Media to fetch.
+     */
+    where?: MediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Media to fetch.
+     */
+    orderBy?: MediaOrderByWithRelationInput | MediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Media.
+     */
+    cursor?: MediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Media from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Media.
+     */
+    skip?: number
+    distinct?: MediaScalarFieldEnum | MediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media create
+   */
+  export type MediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Media.
+     */
+    data: XOR<MediaCreateInput, MediaUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media createMany
+   */
+  export type MediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Media.
+     */
+    data: MediaCreateManyInput | MediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Media createManyAndReturn
+   */
+  export type MediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Media.
+     */
+    data: MediaCreateManyInput | MediaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Media update
+   */
+  export type MediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Media.
+     */
+    data: XOR<MediaUpdateInput, MediaUncheckedUpdateInput>
+    /**
+     * Choose, which Media to update.
+     */
+    where: MediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media updateMany
+   */
+  export type MediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Media.
+     */
+    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyInput>
+    /**
+     * Filter which Media to update
+     */
+    where?: MediaWhereInput
+  }
+
+  /**
+   * Media upsert
+   */
+  export type MediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Media to update in case it exists.
+     */
+    where: MediaWhereUniqueInput
+    /**
+     * In case the Media found by the `where` argument doesn't exist, create a new Media with this data.
+     */
+    create: XOR<MediaCreateInput, MediaUncheckedCreateInput>
+    /**
+     * In case the Media was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MediaUpdateInput, MediaUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media delete
+   */
+  export type MediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+    /**
+     * Filter which Media to delete.
+     */
+    where: MediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * Media deleteMany
+   */
+  export type MediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Media to delete
+     */
+    where?: MediaWhereInput
+  }
+
+  /**
+   * Media.TraceMedia
+   */
+  export type Media$TraceMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    where?: TraceMediaWhereInput
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    cursor?: TraceMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TraceMediaScalarFieldEnum | TraceMediaScalarFieldEnum[]
+  }
+
+  /**
+   * Media.ObservationMedia
+   */
+  export type Media$ObservationMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    where?: ObservationMediaWhereInput
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    cursor?: ObservationMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ObservationMediaScalarFieldEnum | ObservationMediaScalarFieldEnum[]
+  }
+
+  /**
+   * Media without action
+   */
+  export type MediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Media
+     */
+    select?: MediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TraceMedia
+   */
+
+  export type AggregateTraceMedia = {
+    _count: TraceMediaCountAggregateOutputType | null
+    _min: TraceMediaMinAggregateOutputType | null
+    _max: TraceMediaMaxAggregateOutputType | null
+  }
+
+  export type TraceMediaMinAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mediaId: string | null
+    traceId: string | null
+    field: string | null
+  }
+
+  export type TraceMediaMaxAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mediaId: string | null
+    traceId: string | null
+    field: string | null
+  }
+
+  export type TraceMediaCountAggregateOutputType = {
+    id: number
+    projectId: number
+    createdAt: number
+    updatedAt: number
+    mediaId: number
+    traceId: number
+    field: number
+    _all: number
+  }
+
+
+  export type TraceMediaMinAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    field?: true
+  }
+
+  export type TraceMediaMaxAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    field?: true
+  }
+
+  export type TraceMediaCountAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    field?: true
+    _all?: true
+  }
+
+  export type TraceMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TraceMedia to aggregate.
+     */
+    where?: TraceMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TraceMedias to fetch.
+     */
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TraceMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TraceMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TraceMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TraceMedias
+    **/
+    _count?: true | TraceMediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TraceMediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TraceMediaMaxAggregateInputType
+  }
+
+  export type GetTraceMediaAggregateType<T extends TraceMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateTraceMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTraceMedia[P]>
+      : GetScalarType<T[P], AggregateTraceMedia[P]>
+  }
+
+
+
+
+  export type TraceMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TraceMediaWhereInput
+    orderBy?: TraceMediaOrderByWithAggregationInput | TraceMediaOrderByWithAggregationInput[]
+    by: TraceMediaScalarFieldEnum[] | TraceMediaScalarFieldEnum
+    having?: TraceMediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TraceMediaCountAggregateInputType | true
+    _min?: TraceMediaMinAggregateInputType
+    _max?: TraceMediaMaxAggregateInputType
+  }
+
+  export type TraceMediaGroupByOutputType = {
+    id: string
+    projectId: string
+    createdAt: Date
+    updatedAt: Date
+    mediaId: string
+    traceId: string
+    field: string
+    _count: TraceMediaCountAggregateOutputType | null
+    _min: TraceMediaMinAggregateOutputType | null
+    _max: TraceMediaMaxAggregateOutputType | null
+  }
+
+  type GetTraceMediaGroupByPayload<T extends TraceMediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TraceMediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TraceMediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TraceMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], TraceMediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TraceMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    field?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["traceMedia"]>
+
+  export type TraceMediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    field?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["traceMedia"]>
+
+  export type TraceMediaSelectScalar = {
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    field?: boolean
+  }
+
+  export type TraceMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }
+  export type TraceMediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }
+
+  export type $TraceMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TraceMedia"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      media: Prisma.$MediaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      projectId: string
+      createdAt: Date
+      updatedAt: Date
+      mediaId: string
+      traceId: string
+      field: string
+    }, ExtArgs["result"]["traceMedia"]>
+    composites: {}
+  }
+
+  type TraceMediaGetPayload<S extends boolean | null | undefined | TraceMediaDefaultArgs> = $Result.GetResult<Prisma.$TraceMediaPayload, S>
+
+  type TraceMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<TraceMediaFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: TraceMediaCountAggregateInputType | true
+    }
+
+  export interface TraceMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TraceMedia'], meta: { name: 'TraceMedia' } }
+    /**
+     * Find zero or one TraceMedia that matches the filter.
+     * @param {TraceMediaFindUniqueArgs} args - Arguments to find a TraceMedia
+     * @example
+     * // Get one TraceMedia
+     * const traceMedia = await prisma.traceMedia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TraceMediaFindUniqueArgs>(args: SelectSubset<T, TraceMediaFindUniqueArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one TraceMedia that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {TraceMediaFindUniqueOrThrowArgs} args - Arguments to find a TraceMedia
+     * @example
+     * // Get one TraceMedia
+     * const traceMedia = await prisma.traceMedia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TraceMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, TraceMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first TraceMedia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaFindFirstArgs} args - Arguments to find a TraceMedia
+     * @example
+     * // Get one TraceMedia
+     * const traceMedia = await prisma.traceMedia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TraceMediaFindFirstArgs>(args?: SelectSubset<T, TraceMediaFindFirstArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first TraceMedia that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaFindFirstOrThrowArgs} args - Arguments to find a TraceMedia
+     * @example
+     * // Get one TraceMedia
+     * const traceMedia = await prisma.traceMedia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TraceMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, TraceMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more TraceMedias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TraceMedias
+     * const traceMedias = await prisma.traceMedia.findMany()
+     * 
+     * // Get first 10 TraceMedias
+     * const traceMedias = await prisma.traceMedia.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const traceMediaWithIdOnly = await prisma.traceMedia.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TraceMediaFindManyArgs>(args?: SelectSubset<T, TraceMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a TraceMedia.
+     * @param {TraceMediaCreateArgs} args - Arguments to create a TraceMedia.
+     * @example
+     * // Create one TraceMedia
+     * const TraceMedia = await prisma.traceMedia.create({
+     *   data: {
+     *     // ... data to create a TraceMedia
+     *   }
+     * })
+     * 
+     */
+    create<T extends TraceMediaCreateArgs>(args: SelectSubset<T, TraceMediaCreateArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many TraceMedias.
+     * @param {TraceMediaCreateManyArgs} args - Arguments to create many TraceMedias.
+     * @example
+     * // Create many TraceMedias
+     * const traceMedia = await prisma.traceMedia.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TraceMediaCreateManyArgs>(args?: SelectSubset<T, TraceMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TraceMedias and returns the data saved in the database.
+     * @param {TraceMediaCreateManyAndReturnArgs} args - Arguments to create many TraceMedias.
+     * @example
+     * // Create many TraceMedias
+     * const traceMedia = await prisma.traceMedia.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TraceMedias and only return the `id`
+     * const traceMediaWithIdOnly = await prisma.traceMedia.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TraceMediaCreateManyAndReturnArgs>(args?: SelectSubset<T, TraceMediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a TraceMedia.
+     * @param {TraceMediaDeleteArgs} args - Arguments to delete one TraceMedia.
+     * @example
+     * // Delete one TraceMedia
+     * const TraceMedia = await prisma.traceMedia.delete({
+     *   where: {
+     *     // ... filter to delete one TraceMedia
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TraceMediaDeleteArgs>(args: SelectSubset<T, TraceMediaDeleteArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one TraceMedia.
+     * @param {TraceMediaUpdateArgs} args - Arguments to update one TraceMedia.
+     * @example
+     * // Update one TraceMedia
+     * const traceMedia = await prisma.traceMedia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TraceMediaUpdateArgs>(args: SelectSubset<T, TraceMediaUpdateArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more TraceMedias.
+     * @param {TraceMediaDeleteManyArgs} args - Arguments to filter TraceMedias to delete.
+     * @example
+     * // Delete a few TraceMedias
+     * const { count } = await prisma.traceMedia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TraceMediaDeleteManyArgs>(args?: SelectSubset<T, TraceMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TraceMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TraceMedias
+     * const traceMedia = await prisma.traceMedia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TraceMediaUpdateManyArgs>(args: SelectSubset<T, TraceMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TraceMedia.
+     * @param {TraceMediaUpsertArgs} args - Arguments to update or create a TraceMedia.
+     * @example
+     * // Update or create a TraceMedia
+     * const traceMedia = await prisma.traceMedia.upsert({
+     *   create: {
+     *     // ... data to create a TraceMedia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TraceMedia we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TraceMediaUpsertArgs>(args: SelectSubset<T, TraceMediaUpsertArgs<ExtArgs>>): Prisma__TraceMediaClient<$Result.GetResult<Prisma.$TraceMediaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of TraceMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaCountArgs} args - Arguments to filter TraceMedias to count.
+     * @example
+     * // Count the number of TraceMedias
+     * const count = await prisma.traceMedia.count({
+     *   where: {
+     *     // ... the filter for the TraceMedias we want to count
+     *   }
+     * })
+    **/
+    count<T extends TraceMediaCountArgs>(
+      args?: Subset<T, TraceMediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TraceMediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TraceMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TraceMediaAggregateArgs>(args: Subset<T, TraceMediaAggregateArgs>): Prisma.PrismaPromise<GetTraceMediaAggregateType<T>>
+
+    /**
+     * Group by TraceMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TraceMediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TraceMediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TraceMediaGroupByArgs['orderBy'] }
+        : { orderBy?: TraceMediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TraceMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTraceMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TraceMedia model
+   */
+  readonly fields: TraceMediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TraceMedia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TraceMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    media<T extends MediaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaDefaultArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TraceMedia model
+   */ 
+  interface TraceMediaFieldRefs {
+    readonly id: FieldRef<"TraceMedia", 'String'>
+    readonly projectId: FieldRef<"TraceMedia", 'String'>
+    readonly createdAt: FieldRef<"TraceMedia", 'DateTime'>
+    readonly updatedAt: FieldRef<"TraceMedia", 'DateTime'>
+    readonly mediaId: FieldRef<"TraceMedia", 'String'>
+    readonly traceId: FieldRef<"TraceMedia", 'String'>
+    readonly field: FieldRef<"TraceMedia", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TraceMedia findUnique
+   */
+  export type TraceMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which TraceMedia to fetch.
+     */
+    where: TraceMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia findUniqueOrThrow
+   */
+  export type TraceMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which TraceMedia to fetch.
+     */
+    where: TraceMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia findFirst
+   */
+  export type TraceMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which TraceMedia to fetch.
+     */
+    where?: TraceMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TraceMedias to fetch.
+     */
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TraceMedias.
+     */
+    cursor?: TraceMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TraceMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TraceMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TraceMedias.
+     */
+    distinct?: TraceMediaScalarFieldEnum | TraceMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia findFirstOrThrow
+   */
+  export type TraceMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which TraceMedia to fetch.
+     */
+    where?: TraceMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TraceMedias to fetch.
+     */
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TraceMedias.
+     */
+    cursor?: TraceMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TraceMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TraceMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TraceMedias.
+     */
+    distinct?: TraceMediaScalarFieldEnum | TraceMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia findMany
+   */
+  export type TraceMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which TraceMedias to fetch.
+     */
+    where?: TraceMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TraceMedias to fetch.
+     */
+    orderBy?: TraceMediaOrderByWithRelationInput | TraceMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TraceMedias.
+     */
+    cursor?: TraceMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TraceMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TraceMedias.
+     */
+    skip?: number
+    distinct?: TraceMediaScalarFieldEnum | TraceMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia create
+   */
+  export type TraceMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TraceMedia.
+     */
+    data: XOR<TraceMediaCreateInput, TraceMediaUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia createMany
+   */
+  export type TraceMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TraceMedias.
+     */
+    data: TraceMediaCreateManyInput | TraceMediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TraceMedia createManyAndReturn
+   */
+  export type TraceMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many TraceMedias.
+     */
+    data: TraceMediaCreateManyInput | TraceMediaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TraceMedia update
+   */
+  export type TraceMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TraceMedia.
+     */
+    data: XOR<TraceMediaUpdateInput, TraceMediaUncheckedUpdateInput>
+    /**
+     * Choose, which TraceMedia to update.
+     */
+    where: TraceMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia updateMany
+   */
+  export type TraceMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TraceMedias.
+     */
+    data: XOR<TraceMediaUpdateManyMutationInput, TraceMediaUncheckedUpdateManyInput>
+    /**
+     * Filter which TraceMedias to update
+     */
+    where?: TraceMediaWhereInput
+  }
+
+  /**
+   * TraceMedia upsert
+   */
+  export type TraceMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TraceMedia to update in case it exists.
+     */
+    where: TraceMediaWhereUniqueInput
+    /**
+     * In case the TraceMedia found by the `where` argument doesn't exist, create a new TraceMedia with this data.
+     */
+    create: XOR<TraceMediaCreateInput, TraceMediaUncheckedCreateInput>
+    /**
+     * In case the TraceMedia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TraceMediaUpdateInput, TraceMediaUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia delete
+   */
+  export type TraceMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+    /**
+     * Filter which TraceMedia to delete.
+     */
+    where: TraceMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * TraceMedia deleteMany
+   */
+  export type TraceMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TraceMedias to delete
+     */
+    where?: TraceMediaWhereInput
+  }
+
+  /**
+   * TraceMedia without action
+   */
+  export type TraceMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TraceMedia
+     */
+    select?: TraceMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TraceMediaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ObservationMedia
+   */
+
+  export type AggregateObservationMedia = {
+    _count: ObservationMediaCountAggregateOutputType | null
+    _min: ObservationMediaMinAggregateOutputType | null
+    _max: ObservationMediaMaxAggregateOutputType | null
+  }
+
+  export type ObservationMediaMinAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mediaId: string | null
+    traceId: string | null
+    observationId: string | null
+    field: string | null
+  }
+
+  export type ObservationMediaMaxAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    mediaId: string | null
+    traceId: string | null
+    observationId: string | null
+    field: string | null
+  }
+
+  export type ObservationMediaCountAggregateOutputType = {
+    id: number
+    projectId: number
+    createdAt: number
+    updatedAt: number
+    mediaId: number
+    traceId: number
+    observationId: number
+    field: number
+    _all: number
+  }
+
+
+  export type ObservationMediaMinAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    observationId?: true
+    field?: true
+  }
+
+  export type ObservationMediaMaxAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    observationId?: true
+    field?: true
+  }
+
+  export type ObservationMediaCountAggregateInputType = {
+    id?: true
+    projectId?: true
+    createdAt?: true
+    updatedAt?: true
+    mediaId?: true
+    traceId?: true
+    observationId?: true
+    field?: true
+    _all?: true
+  }
+
+  export type ObservationMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ObservationMedia to aggregate.
+     */
+    where?: ObservationMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ObservationMedias to fetch.
+     */
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ObservationMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ObservationMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ObservationMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ObservationMedias
+    **/
+    _count?: true | ObservationMediaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ObservationMediaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ObservationMediaMaxAggregateInputType
+  }
+
+  export type GetObservationMediaAggregateType<T extends ObservationMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateObservationMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateObservationMedia[P]>
+      : GetScalarType<T[P], AggregateObservationMedia[P]>
+  }
+
+
+
+
+  export type ObservationMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ObservationMediaWhereInput
+    orderBy?: ObservationMediaOrderByWithAggregationInput | ObservationMediaOrderByWithAggregationInput[]
+    by: ObservationMediaScalarFieldEnum[] | ObservationMediaScalarFieldEnum
+    having?: ObservationMediaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ObservationMediaCountAggregateInputType | true
+    _min?: ObservationMediaMinAggregateInputType
+    _max?: ObservationMediaMaxAggregateInputType
+  }
+
+  export type ObservationMediaGroupByOutputType = {
+    id: string
+    projectId: string
+    createdAt: Date
+    updatedAt: Date
+    mediaId: string
+    traceId: string
+    observationId: string
+    field: string
+    _count: ObservationMediaCountAggregateOutputType | null
+    _min: ObservationMediaMinAggregateOutputType | null
+    _max: ObservationMediaMaxAggregateOutputType | null
+  }
+
+  type GetObservationMediaGroupByPayload<T extends ObservationMediaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ObservationMediaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ObservationMediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ObservationMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], ObservationMediaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ObservationMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    observationId?: boolean
+    field?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["observationMedia"]>
+
+  export type ObservationMediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    observationId?: boolean
+    field?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["observationMedia"]>
+
+  export type ObservationMediaSelectScalar = {
+    id?: boolean
+    projectId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    mediaId?: boolean
+    traceId?: boolean
+    observationId?: boolean
+    field?: boolean
+  }
+
+  export type ObservationMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }
+  export type ObservationMediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    media?: boolean | MediaDefaultArgs<ExtArgs>
+  }
+
+  export type $ObservationMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ObservationMedia"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      media: Prisma.$MediaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      projectId: string
+      createdAt: Date
+      updatedAt: Date
+      mediaId: string
+      traceId: string
+      observationId: string
+      field: string
+    }, ExtArgs["result"]["observationMedia"]>
+    composites: {}
+  }
+
+  type ObservationMediaGetPayload<S extends boolean | null | undefined | ObservationMediaDefaultArgs> = $Result.GetResult<Prisma.$ObservationMediaPayload, S>
+
+  type ObservationMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ObservationMediaFindManyArgs, 'select' | 'include' | 'distinct' | 'relationLoadStrategy'> & {
+      select?: ObservationMediaCountAggregateInputType | true
+    }
+
+  export interface ObservationMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ObservationMedia'], meta: { name: 'ObservationMedia' } }
+    /**
+     * Find zero or one ObservationMedia that matches the filter.
+     * @param {ObservationMediaFindUniqueArgs} args - Arguments to find a ObservationMedia
+     * @example
+     * // Get one ObservationMedia
+     * const observationMedia = await prisma.observationMedia.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ObservationMediaFindUniqueArgs>(args: SelectSubset<T, ObservationMediaFindUniqueArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ObservationMedia that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ObservationMediaFindUniqueOrThrowArgs} args - Arguments to find a ObservationMedia
+     * @example
+     * // Get one ObservationMedia
+     * const observationMedia = await prisma.observationMedia.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ObservationMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, ObservationMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ObservationMedia that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaFindFirstArgs} args - Arguments to find a ObservationMedia
+     * @example
+     * // Get one ObservationMedia
+     * const observationMedia = await prisma.observationMedia.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ObservationMediaFindFirstArgs>(args?: SelectSubset<T, ObservationMediaFindFirstArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ObservationMedia that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaFindFirstOrThrowArgs} args - Arguments to find a ObservationMedia
+     * @example
+     * // Get one ObservationMedia
+     * const observationMedia = await prisma.observationMedia.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ObservationMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, ObservationMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ObservationMedias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ObservationMedias
+     * const observationMedias = await prisma.observationMedia.findMany()
+     * 
+     * // Get first 10 ObservationMedias
+     * const observationMedias = await prisma.observationMedia.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const observationMediaWithIdOnly = await prisma.observationMedia.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ObservationMediaFindManyArgs>(args?: SelectSubset<T, ObservationMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ObservationMedia.
+     * @param {ObservationMediaCreateArgs} args - Arguments to create a ObservationMedia.
+     * @example
+     * // Create one ObservationMedia
+     * const ObservationMedia = await prisma.observationMedia.create({
+     *   data: {
+     *     // ... data to create a ObservationMedia
+     *   }
+     * })
+     * 
+     */
+    create<T extends ObservationMediaCreateArgs>(args: SelectSubset<T, ObservationMediaCreateArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ObservationMedias.
+     * @param {ObservationMediaCreateManyArgs} args - Arguments to create many ObservationMedias.
+     * @example
+     * // Create many ObservationMedias
+     * const observationMedia = await prisma.observationMedia.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ObservationMediaCreateManyArgs>(args?: SelectSubset<T, ObservationMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ObservationMedias and returns the data saved in the database.
+     * @param {ObservationMediaCreateManyAndReturnArgs} args - Arguments to create many ObservationMedias.
+     * @example
+     * // Create many ObservationMedias
+     * const observationMedia = await prisma.observationMedia.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ObservationMedias and only return the `id`
+     * const observationMediaWithIdOnly = await prisma.observationMedia.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ObservationMediaCreateManyAndReturnArgs>(args?: SelectSubset<T, ObservationMediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ObservationMedia.
+     * @param {ObservationMediaDeleteArgs} args - Arguments to delete one ObservationMedia.
+     * @example
+     * // Delete one ObservationMedia
+     * const ObservationMedia = await prisma.observationMedia.delete({
+     *   where: {
+     *     // ... filter to delete one ObservationMedia
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ObservationMediaDeleteArgs>(args: SelectSubset<T, ObservationMediaDeleteArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ObservationMedia.
+     * @param {ObservationMediaUpdateArgs} args - Arguments to update one ObservationMedia.
+     * @example
+     * // Update one ObservationMedia
+     * const observationMedia = await prisma.observationMedia.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ObservationMediaUpdateArgs>(args: SelectSubset<T, ObservationMediaUpdateArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ObservationMedias.
+     * @param {ObservationMediaDeleteManyArgs} args - Arguments to filter ObservationMedias to delete.
+     * @example
+     * // Delete a few ObservationMedias
+     * const { count } = await prisma.observationMedia.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ObservationMediaDeleteManyArgs>(args?: SelectSubset<T, ObservationMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ObservationMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ObservationMedias
+     * const observationMedia = await prisma.observationMedia.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ObservationMediaUpdateManyArgs>(args: SelectSubset<T, ObservationMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ObservationMedia.
+     * @param {ObservationMediaUpsertArgs} args - Arguments to update or create a ObservationMedia.
+     * @example
+     * // Update or create a ObservationMedia
+     * const observationMedia = await prisma.observationMedia.upsert({
+     *   create: {
+     *     // ... data to create a ObservationMedia
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ObservationMedia we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ObservationMediaUpsertArgs>(args: SelectSubset<T, ObservationMediaUpsertArgs<ExtArgs>>): Prisma__ObservationMediaClient<$Result.GetResult<Prisma.$ObservationMediaPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ObservationMedias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaCountArgs} args - Arguments to filter ObservationMedias to count.
+     * @example
+     * // Count the number of ObservationMedias
+     * const count = await prisma.observationMedia.count({
+     *   where: {
+     *     // ... the filter for the ObservationMedias we want to count
+     *   }
+     * })
+    **/
+    count<T extends ObservationMediaCountArgs>(
+      args?: Subset<T, ObservationMediaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ObservationMediaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ObservationMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ObservationMediaAggregateArgs>(args: Subset<T, ObservationMediaAggregateArgs>): Prisma.PrismaPromise<GetObservationMediaAggregateType<T>>
+
+    /**
+     * Group by ObservationMedia.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ObservationMediaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ObservationMediaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ObservationMediaGroupByArgs['orderBy'] }
+        : { orderBy?: ObservationMediaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ObservationMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetObservationMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ObservationMedia model
+   */
+  readonly fields: ObservationMediaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ObservationMedia.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ObservationMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    media<T extends MediaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaDefaultArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ObservationMedia model
+   */ 
+  interface ObservationMediaFieldRefs {
+    readonly id: FieldRef<"ObservationMedia", 'String'>
+    readonly projectId: FieldRef<"ObservationMedia", 'String'>
+    readonly createdAt: FieldRef<"ObservationMedia", 'DateTime'>
+    readonly updatedAt: FieldRef<"ObservationMedia", 'DateTime'>
+    readonly mediaId: FieldRef<"ObservationMedia", 'String'>
+    readonly traceId: FieldRef<"ObservationMedia", 'String'>
+    readonly observationId: FieldRef<"ObservationMedia", 'String'>
+    readonly field: FieldRef<"ObservationMedia", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ObservationMedia findUnique
+   */
+  export type ObservationMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which ObservationMedia to fetch.
+     */
+    where: ObservationMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia findUniqueOrThrow
+   */
+  export type ObservationMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which ObservationMedia to fetch.
+     */
+    where: ObservationMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia findFirst
+   */
+  export type ObservationMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which ObservationMedia to fetch.
+     */
+    where?: ObservationMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ObservationMedias to fetch.
+     */
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ObservationMedias.
+     */
+    cursor?: ObservationMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ObservationMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ObservationMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ObservationMedias.
+     */
+    distinct?: ObservationMediaScalarFieldEnum | ObservationMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia findFirstOrThrow
+   */
+  export type ObservationMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which ObservationMedia to fetch.
+     */
+    where?: ObservationMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ObservationMedias to fetch.
+     */
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ObservationMedias.
+     */
+    cursor?: ObservationMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ObservationMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ObservationMedias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ObservationMedias.
+     */
+    distinct?: ObservationMediaScalarFieldEnum | ObservationMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia findMany
+   */
+  export type ObservationMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter, which ObservationMedias to fetch.
+     */
+    where?: ObservationMediaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ObservationMedias to fetch.
+     */
+    orderBy?: ObservationMediaOrderByWithRelationInput | ObservationMediaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ObservationMedias.
+     */
+    cursor?: ObservationMediaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ObservationMedias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ObservationMedias.
+     */
+    skip?: number
+    distinct?: ObservationMediaScalarFieldEnum | ObservationMediaScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia create
+   */
+  export type ObservationMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ObservationMedia.
+     */
+    data: XOR<ObservationMediaCreateInput, ObservationMediaUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia createMany
+   */
+  export type ObservationMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ObservationMedias.
+     */
+    data: ObservationMediaCreateManyInput | ObservationMediaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ObservationMedia createManyAndReturn
+   */
+  export type ObservationMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ObservationMedias.
+     */
+    data: ObservationMediaCreateManyInput | ObservationMediaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ObservationMedia update
+   */
+  export type ObservationMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ObservationMedia.
+     */
+    data: XOR<ObservationMediaUpdateInput, ObservationMediaUncheckedUpdateInput>
+    /**
+     * Choose, which ObservationMedia to update.
+     */
+    where: ObservationMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia updateMany
+   */
+  export type ObservationMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ObservationMedias.
+     */
+    data: XOR<ObservationMediaUpdateManyMutationInput, ObservationMediaUncheckedUpdateManyInput>
+    /**
+     * Filter which ObservationMedias to update
+     */
+    where?: ObservationMediaWhereInput
+  }
+
+  /**
+   * ObservationMedia upsert
+   */
+  export type ObservationMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ObservationMedia to update in case it exists.
+     */
+    where: ObservationMediaWhereUniqueInput
+    /**
+     * In case the ObservationMedia found by the `where` argument doesn't exist, create a new ObservationMedia with this data.
+     */
+    create: XOR<ObservationMediaCreateInput, ObservationMediaUncheckedCreateInput>
+    /**
+     * In case the ObservationMedia was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ObservationMediaUpdateInput, ObservationMediaUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia delete
+   */
+  export type ObservationMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+    /**
+     * Filter which ObservationMedia to delete.
+     */
+    where: ObservationMediaWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * ObservationMedia deleteMany
+   */
+  export type ObservationMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ObservationMedias to delete
+     */
+    where?: ObservationMediaWhereInput
+  }
+
+  /**
+   * ObservationMedia without action
+   */
+  export type ObservationMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ObservationMedia
+     */
+    select?: ObservationMediaSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ObservationMediaInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model TraceView
    */
 
@@ -42535,6 +48104,22 @@ export namespace Prisma {
   export type ApiKeyScalarFieldEnum = (typeof ApiKeyScalarFieldEnum)[keyof typeof ApiKeyScalarFieldEnum]
 
 
+  export const BackgroundMigrationScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    script: 'script',
+    args: 'args',
+    state: 'state',
+    finishedAt: 'finishedAt',
+    failedAt: 'failedAt',
+    failedReason: 'failedReason',
+    workerId: 'workerId',
+    lockedAt: 'lockedAt'
+  };
+
+  export type BackgroundMigrationScalarFieldEnum = (typeof BackgroundMigrationScalarFieldEnum)[keyof typeof BackgroundMigrationScalarFieldEnum]
+
+
   export const LlmApiKeysScalarFieldEnum: {
     id: 'id',
     createdAt: 'createdAt',
@@ -42869,6 +48454,18 @@ export namespace Prisma {
   export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof ModelScalarFieldEnum]
 
 
+  export const PriceScalarFieldEnum: {
+    id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    modelId: 'modelId',
+    usageType: 'usageType',
+    price: 'price'
+  };
+
+  export type PriceScalarFieldEnum = (typeof PriceScalarFieldEnum)[keyof typeof PriceScalarFieldEnum]
+
+
   export const AuditLogScalarFieldEnum: {
     id: 'id',
     createdAt: 'createdAt',
@@ -42936,6 +48533,8 @@ export namespace Prisma {
     endTime: 'endTime',
     error: 'error',
     jobInputTraceId: 'jobInputTraceId',
+    jobInputObservationId: 'jobInputObservationId',
+    jobInputDatasetItemId: 'jobInputDatasetItemId',
     jobOutputScoreId: 'jobOutputScoreId'
   };
 
@@ -42982,6 +48581,51 @@ export namespace Prisma {
   };
 
   export type BatchExportScalarFieldEnum = (typeof BatchExportScalarFieldEnum)[keyof typeof BatchExportScalarFieldEnum]
+
+
+  export const MediaScalarFieldEnum: {
+    id: 'id',
+    sha256Hash: 'sha256Hash',
+    projectId: 'projectId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    uploadedAt: 'uploadedAt',
+    uploadHttpStatus: 'uploadHttpStatus',
+    uploadHttpError: 'uploadHttpError',
+    bucketPath: 'bucketPath',
+    bucketName: 'bucketName',
+    contentType: 'contentType',
+    contentLength: 'contentLength'
+  };
+
+  export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
+
+
+  export const TraceMediaScalarFieldEnum: {
+    id: 'id',
+    projectId: 'projectId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    mediaId: 'mediaId',
+    traceId: 'traceId',
+    field: 'field'
+  };
+
+  export type TraceMediaScalarFieldEnum = (typeof TraceMediaScalarFieldEnum)[keyof typeof TraceMediaScalarFieldEnum]
+
+
+  export const ObservationMediaScalarFieldEnum: {
+    id: 'id',
+    projectId: 'projectId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    mediaId: 'mediaId',
+    traceId: 'traceId',
+    observationId: 'observationId',
+    field: 'field'
+  };
+
+  export type ObservationMediaScalarFieldEnum = (typeof ObservationMediaScalarFieldEnum)[keyof typeof ObservationMediaScalarFieldEnum]
 
 
   export const TraceViewScalarFieldEnum: {
@@ -43351,6 +48995,20 @@ export namespace Prisma {
    * Reference to a field of type 'JobExecutionStatus[]'
    */
   export type ListEnumJobExecutionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobExecutionStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
   /**
    * Deep Input Types
@@ -43753,6 +49411,9 @@ export namespace Prisma {
     comment?: CommentListRelationFilter
     annotationQueue?: AnnotationQueueListRelationFilter
     annotationQueueItem?: AnnotationQueueItemListRelationFilter
+    TraceMedia?: TraceMediaListRelationFilter
+    Media?: MediaListRelationFilter
+    ObservationMedia?: ObservationMediaListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
@@ -43783,6 +49444,9 @@ export namespace Prisma {
     comment?: CommentOrderByRelationAggregateInput
     annotationQueue?: AnnotationQueueOrderByRelationAggregateInput
     annotationQueueItem?: AnnotationQueueItemOrderByRelationAggregateInput
+    TraceMedia?: TraceMediaOrderByRelationAggregateInput
+    Media?: MediaOrderByRelationAggregateInput
+    ObservationMedia?: ObservationMediaOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -43816,6 +49480,9 @@ export namespace Prisma {
     comment?: CommentListRelationFilter
     annotationQueue?: AnnotationQueueListRelationFilter
     annotationQueueItem?: AnnotationQueueItemListRelationFilter
+    TraceMedia?: TraceMediaListRelationFilter
+    Media?: MediaListRelationFilter
+    ObservationMedia?: ObservationMediaListRelationFilter
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
@@ -43918,6 +49585,83 @@ export namespace Prisma {
     lastUsedAt?: DateTimeNullableWithAggregatesFilter<"ApiKey"> | Date | string | null
     expiresAt?: DateTimeNullableWithAggregatesFilter<"ApiKey"> | Date | string | null
     projectId?: StringWithAggregatesFilter<"ApiKey"> | string
+  }
+
+  export type BackgroundMigrationWhereInput = {
+    AND?: BackgroundMigrationWhereInput | BackgroundMigrationWhereInput[]
+    OR?: BackgroundMigrationWhereInput[]
+    NOT?: BackgroundMigrationWhereInput | BackgroundMigrationWhereInput[]
+    id?: StringFilter<"BackgroundMigration"> | string
+    name?: StringFilter<"BackgroundMigration"> | string
+    script?: StringFilter<"BackgroundMigration"> | string
+    args?: JsonFilter<"BackgroundMigration">
+    state?: JsonFilter<"BackgroundMigration">
+    finishedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+    failedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+    failedReason?: StringNullableFilter<"BackgroundMigration"> | string | null
+    workerId?: StringNullableFilter<"BackgroundMigration"> | string | null
+    lockedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+  }
+
+  export type BackgroundMigrationOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    script?: SortOrder
+    args?: SortOrder
+    state?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    failedAt?: SortOrderInput | SortOrder
+    failedReason?: SortOrderInput | SortOrder
+    workerId?: SortOrderInput | SortOrder
+    lockedAt?: SortOrderInput | SortOrder
+  }
+
+  export type BackgroundMigrationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: BackgroundMigrationWhereInput | BackgroundMigrationWhereInput[]
+    OR?: BackgroundMigrationWhereInput[]
+    NOT?: BackgroundMigrationWhereInput | BackgroundMigrationWhereInput[]
+    script?: StringFilter<"BackgroundMigration"> | string
+    args?: JsonFilter<"BackgroundMigration">
+    state?: JsonFilter<"BackgroundMigration">
+    finishedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+    failedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+    failedReason?: StringNullableFilter<"BackgroundMigration"> | string | null
+    workerId?: StringNullableFilter<"BackgroundMigration"> | string | null
+    lockedAt?: DateTimeNullableFilter<"BackgroundMigration"> | Date | string | null
+  }, "id" | "name">
+
+  export type BackgroundMigrationOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    script?: SortOrder
+    args?: SortOrder
+    state?: SortOrder
+    finishedAt?: SortOrderInput | SortOrder
+    failedAt?: SortOrderInput | SortOrder
+    failedReason?: SortOrderInput | SortOrder
+    workerId?: SortOrderInput | SortOrder
+    lockedAt?: SortOrderInput | SortOrder
+    _count?: BackgroundMigrationCountOrderByAggregateInput
+    _max?: BackgroundMigrationMaxOrderByAggregateInput
+    _min?: BackgroundMigrationMinOrderByAggregateInput
+  }
+
+  export type BackgroundMigrationScalarWhereWithAggregatesInput = {
+    AND?: BackgroundMigrationScalarWhereWithAggregatesInput | BackgroundMigrationScalarWhereWithAggregatesInput[]
+    OR?: BackgroundMigrationScalarWhereWithAggregatesInput[]
+    NOT?: BackgroundMigrationScalarWhereWithAggregatesInput | BackgroundMigrationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BackgroundMigration"> | string
+    name?: StringWithAggregatesFilter<"BackgroundMigration"> | string
+    script?: StringWithAggregatesFilter<"BackgroundMigration"> | string
+    args?: JsonWithAggregatesFilter<"BackgroundMigration">
+    state?: JsonWithAggregatesFilter<"BackgroundMigration">
+    finishedAt?: DateTimeNullableWithAggregatesFilter<"BackgroundMigration"> | Date | string | null
+    failedAt?: DateTimeNullableWithAggregatesFilter<"BackgroundMigration"> | Date | string | null
+    failedReason?: StringNullableWithAggregatesFilter<"BackgroundMigration"> | string | null
+    workerId?: StringNullableWithAggregatesFilter<"BackgroundMigration"> | string | null
+    lockedAt?: DateTimeNullableWithAggregatesFilter<"BackgroundMigration"> | Date | string | null
   }
 
   export type LlmApiKeysWhereInput = {
@@ -44313,7 +50057,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Trace"> | Date | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     session?: XOR<TraceSessionNullableRelationFilter, TraceSessionWhereInput> | null
-    JobExecution?: JobExecutionListRelationFilter
   }
 
   export type TraceOrderByWithRelationInput = {
@@ -44336,7 +50079,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     project?: ProjectOrderByWithRelationInput
     session?: TraceSessionOrderByWithRelationInput
-    JobExecution?: JobExecutionOrderByRelationAggregateInput
   }
 
   export type TraceWhereUniqueInput = Prisma.AtLeast<{
@@ -44362,7 +50104,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Trace"> | Date | string
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     session?: XOR<TraceSessionNullableRelationFilter, TraceSessionWhereInput> | null
-    JobExecution?: JobExecutionListRelationFilter
   }, "id">
 
   export type TraceOrderByWithAggregationInput = {
@@ -45592,10 +51333,11 @@ export namespace Prisma {
     inputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     outputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     totalPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFilter<"Model"> | string
+    unit?: StringNullableFilter<"Model"> | string | null
     tokenizerId?: StringNullableFilter<"Model"> | string | null
     tokenizerConfig?: JsonNullableFilter<"Model">
     project?: XOR<ProjectNullableRelationFilter, ProjectWhereInput> | null
+    Price?: PriceListRelationFilter
   }
 
   export type ModelOrderByWithRelationInput = {
@@ -45609,10 +51351,11 @@ export namespace Prisma {
     inputPrice?: SortOrderInput | SortOrder
     outputPrice?: SortOrderInput | SortOrder
     totalPrice?: SortOrderInput | SortOrder
-    unit?: SortOrder
+    unit?: SortOrderInput | SortOrder
     tokenizerId?: SortOrderInput | SortOrder
     tokenizerConfig?: SortOrderInput | SortOrder
     project?: ProjectOrderByWithRelationInput
+    Price?: PriceOrderByRelationAggregateInput
   }
 
   export type ModelWhereUniqueInput = Prisma.AtLeast<{
@@ -45630,10 +51373,11 @@ export namespace Prisma {
     inputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     outputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     totalPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFilter<"Model"> | string
+    unit?: StringNullableFilter<"Model"> | string | null
     tokenizerId?: StringNullableFilter<"Model"> | string | null
     tokenizerConfig?: JsonNullableFilter<"Model">
     project?: XOR<ProjectNullableRelationFilter, ProjectWhereInput> | null
+    Price?: PriceListRelationFilter
   }, "id" | "projectId_modelName_startDate_unit">
 
   export type ModelOrderByWithAggregationInput = {
@@ -45647,7 +51391,7 @@ export namespace Prisma {
     inputPrice?: SortOrderInput | SortOrder
     outputPrice?: SortOrderInput | SortOrder
     totalPrice?: SortOrderInput | SortOrder
-    unit?: SortOrder
+    unit?: SortOrderInput | SortOrder
     tokenizerId?: SortOrderInput | SortOrder
     tokenizerConfig?: SortOrderInput | SortOrder
     _count?: ModelCountOrderByAggregateInput
@@ -45671,9 +51415,72 @@ export namespace Prisma {
     inputPrice?: DecimalNullableWithAggregatesFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     outputPrice?: DecimalNullableWithAggregatesFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     totalPrice?: DecimalNullableWithAggregatesFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
-    unit?: StringWithAggregatesFilter<"Model"> | string
+    unit?: StringNullableWithAggregatesFilter<"Model"> | string | null
     tokenizerId?: StringNullableWithAggregatesFilter<"Model"> | string | null
     tokenizerConfig?: JsonNullableWithAggregatesFilter<"Model">
+  }
+
+  export type PriceWhereInput = {
+    AND?: PriceWhereInput | PriceWhereInput[]
+    OR?: PriceWhereInput[]
+    NOT?: PriceWhereInput | PriceWhereInput[]
+    id?: StringFilter<"Price"> | string
+    createdAt?: DateTimeFilter<"Price"> | Date | string
+    updatedAt?: DateTimeFilter<"Price"> | Date | string
+    modelId?: StringFilter<"Price"> | string
+    usageType?: StringFilter<"Price"> | string
+    price?: DecimalFilter<"Price"> | Decimal | DecimalJsLike | number | string
+    Model?: XOR<ModelRelationFilter, ModelWhereInput>
+  }
+
+  export type PriceOrderByWithRelationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    usageType?: SortOrder
+    price?: SortOrder
+    Model?: ModelOrderByWithRelationInput
+  }
+
+  export type PriceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    modelId_usageType?: PriceModelIdUsageTypeCompoundUniqueInput
+    AND?: PriceWhereInput | PriceWhereInput[]
+    OR?: PriceWhereInput[]
+    NOT?: PriceWhereInput | PriceWhereInput[]
+    createdAt?: DateTimeFilter<"Price"> | Date | string
+    updatedAt?: DateTimeFilter<"Price"> | Date | string
+    modelId?: StringFilter<"Price"> | string
+    usageType?: StringFilter<"Price"> | string
+    price?: DecimalFilter<"Price"> | Decimal | DecimalJsLike | number | string
+    Model?: XOR<ModelRelationFilter, ModelWhereInput>
+  }, "id" | "modelId_usageType">
+
+  export type PriceOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    usageType?: SortOrder
+    price?: SortOrder
+    _count?: PriceCountOrderByAggregateInput
+    _avg?: PriceAvgOrderByAggregateInput
+    _max?: PriceMaxOrderByAggregateInput
+    _min?: PriceMinOrderByAggregateInput
+    _sum?: PriceSumOrderByAggregateInput
+  }
+
+  export type PriceScalarWhereWithAggregatesInput = {
+    AND?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
+    OR?: PriceScalarWhereWithAggregatesInput[]
+    NOT?: PriceScalarWhereWithAggregatesInput | PriceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Price"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Price"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Price"> | Date | string
+    modelId?: StringWithAggregatesFilter<"Price"> | string
+    usageType?: StringWithAggregatesFilter<"Price"> | string
+    price?: DecimalWithAggregatesFilter<"Price"> | Decimal | DecimalJsLike | number | string
   }
 
   export type AuditLogWhereInput = {
@@ -45981,10 +51788,11 @@ export namespace Prisma {
     endTime?: DateTimeNullableFilter<"JobExecution"> | Date | string | null
     error?: StringNullableFilter<"JobExecution"> | string | null
     jobInputTraceId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputObservationId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputDatasetItemId?: StringNullableFilter<"JobExecution"> | string | null
     jobOutputScoreId?: StringNullableFilter<"JobExecution"> | string | null
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     jobConfiguration?: XOR<JobConfigurationRelationFilter, JobConfigurationWhereInput>
-    trace?: XOR<TraceNullableRelationFilter, TraceWhereInput> | null
     score?: XOR<ScoreNullableRelationFilter, ScoreWhereInput> | null
   }
 
@@ -45999,10 +51807,11 @@ export namespace Prisma {
     endTime?: SortOrderInput | SortOrder
     error?: SortOrderInput | SortOrder
     jobInputTraceId?: SortOrderInput | SortOrder
+    jobInputObservationId?: SortOrderInput | SortOrder
+    jobInputDatasetItemId?: SortOrderInput | SortOrder
     jobOutputScoreId?: SortOrderInput | SortOrder
     project?: ProjectOrderByWithRelationInput
     jobConfiguration?: JobConfigurationOrderByWithRelationInput
-    trace?: TraceOrderByWithRelationInput
     score?: ScoreOrderByWithRelationInput
   }
 
@@ -46020,10 +51829,11 @@ export namespace Prisma {
     endTime?: DateTimeNullableFilter<"JobExecution"> | Date | string | null
     error?: StringNullableFilter<"JobExecution"> | string | null
     jobInputTraceId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputObservationId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputDatasetItemId?: StringNullableFilter<"JobExecution"> | string | null
     jobOutputScoreId?: StringNullableFilter<"JobExecution"> | string | null
     project?: XOR<ProjectRelationFilter, ProjectWhereInput>
     jobConfiguration?: XOR<JobConfigurationRelationFilter, JobConfigurationWhereInput>
-    trace?: XOR<TraceNullableRelationFilter, TraceWhereInput> | null
     score?: XOR<ScoreNullableRelationFilter, ScoreWhereInput> | null
   }, "id">
 
@@ -46038,6 +51848,8 @@ export namespace Prisma {
     endTime?: SortOrderInput | SortOrder
     error?: SortOrderInput | SortOrder
     jobInputTraceId?: SortOrderInput | SortOrder
+    jobInputObservationId?: SortOrderInput | SortOrder
+    jobInputDatasetItemId?: SortOrderInput | SortOrder
     jobOutputScoreId?: SortOrderInput | SortOrder
     _count?: JobExecutionCountOrderByAggregateInput
     _max?: JobExecutionMaxOrderByAggregateInput
@@ -46058,6 +51870,8 @@ export namespace Prisma {
     endTime?: DateTimeNullableWithAggregatesFilter<"JobExecution"> | Date | string | null
     error?: StringNullableWithAggregatesFilter<"JobExecution"> | string | null
     jobInputTraceId?: StringNullableWithAggregatesFilter<"JobExecution"> | string | null
+    jobInputObservationId?: StringNullableWithAggregatesFilter<"JobExecution"> | string | null
+    jobInputDatasetItemId?: StringNullableWithAggregatesFilter<"JobExecution"> | string | null
     jobOutputScoreId?: StringNullableWithAggregatesFilter<"JobExecution"> | string | null
   }
 
@@ -46266,6 +52080,248 @@ export namespace Prisma {
     format?: StringWithAggregatesFilter<"BatchExport"> | string
     url?: StringNullableWithAggregatesFilter<"BatchExport"> | string | null
     log?: StringNullableWithAggregatesFilter<"BatchExport"> | string | null
+  }
+
+  export type MediaWhereInput = {
+    AND?: MediaWhereInput | MediaWhereInput[]
+    OR?: MediaWhereInput[]
+    NOT?: MediaWhereInput | MediaWhereInput[]
+    id?: StringFilter<"Media"> | string
+    sha256Hash?: StringFilter<"Media"> | string
+    projectId?: StringFilter<"Media"> | string
+    createdAt?: DateTimeFilter<"Media"> | Date | string
+    updatedAt?: DateTimeFilter<"Media"> | Date | string
+    uploadedAt?: DateTimeNullableFilter<"Media"> | Date | string | null
+    uploadHttpStatus?: IntNullableFilter<"Media"> | number | null
+    uploadHttpError?: StringNullableFilter<"Media"> | string | null
+    bucketPath?: StringFilter<"Media"> | string
+    bucketName?: StringFilter<"Media"> | string
+    contentType?: StringFilter<"Media"> | string
+    contentLength?: BigIntFilter<"Media"> | bigint | number
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    TraceMedia?: TraceMediaListRelationFilter
+    ObservationMedia?: ObservationMediaListRelationFilter
+  }
+
+  export type MediaOrderByWithRelationInput = {
+    id?: SortOrder
+    sha256Hash?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uploadedAt?: SortOrderInput | SortOrder
+    uploadHttpStatus?: SortOrderInput | SortOrder
+    uploadHttpError?: SortOrderInput | SortOrder
+    bucketPath?: SortOrder
+    bucketName?: SortOrder
+    contentType?: SortOrder
+    contentLength?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    TraceMedia?: TraceMediaOrderByRelationAggregateInput
+    ObservationMedia?: ObservationMediaOrderByRelationAggregateInput
+  }
+
+  export type MediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    projectId_sha256Hash?: MediaProjectIdSha256HashCompoundUniqueInput
+    AND?: MediaWhereInput | MediaWhereInput[]
+    OR?: MediaWhereInput[]
+    NOT?: MediaWhereInput | MediaWhereInput[]
+    sha256Hash?: StringFilter<"Media"> | string
+    projectId?: StringFilter<"Media"> | string
+    createdAt?: DateTimeFilter<"Media"> | Date | string
+    updatedAt?: DateTimeFilter<"Media"> | Date | string
+    uploadedAt?: DateTimeNullableFilter<"Media"> | Date | string | null
+    uploadHttpStatus?: IntNullableFilter<"Media"> | number | null
+    uploadHttpError?: StringNullableFilter<"Media"> | string | null
+    bucketPath?: StringFilter<"Media"> | string
+    bucketName?: StringFilter<"Media"> | string
+    contentType?: StringFilter<"Media"> | string
+    contentLength?: BigIntFilter<"Media"> | bigint | number
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    TraceMedia?: TraceMediaListRelationFilter
+    ObservationMedia?: ObservationMediaListRelationFilter
+  }, "id" | "projectId_sha256Hash">
+
+  export type MediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    sha256Hash?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uploadedAt?: SortOrderInput | SortOrder
+    uploadHttpStatus?: SortOrderInput | SortOrder
+    uploadHttpError?: SortOrderInput | SortOrder
+    bucketPath?: SortOrder
+    bucketName?: SortOrder
+    contentType?: SortOrder
+    contentLength?: SortOrder
+    _count?: MediaCountOrderByAggregateInput
+    _avg?: MediaAvgOrderByAggregateInput
+    _max?: MediaMaxOrderByAggregateInput
+    _min?: MediaMinOrderByAggregateInput
+    _sum?: MediaSumOrderByAggregateInput
+  }
+
+  export type MediaScalarWhereWithAggregatesInput = {
+    AND?: MediaScalarWhereWithAggregatesInput | MediaScalarWhereWithAggregatesInput[]
+    OR?: MediaScalarWhereWithAggregatesInput[]
+    NOT?: MediaScalarWhereWithAggregatesInput | MediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Media"> | string
+    sha256Hash?: StringWithAggregatesFilter<"Media"> | string
+    projectId?: StringWithAggregatesFilter<"Media"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
+    uploadedAt?: DateTimeNullableWithAggregatesFilter<"Media"> | Date | string | null
+    uploadHttpStatus?: IntNullableWithAggregatesFilter<"Media"> | number | null
+    uploadHttpError?: StringNullableWithAggregatesFilter<"Media"> | string | null
+    bucketPath?: StringWithAggregatesFilter<"Media"> | string
+    bucketName?: StringWithAggregatesFilter<"Media"> | string
+    contentType?: StringWithAggregatesFilter<"Media"> | string
+    contentLength?: BigIntWithAggregatesFilter<"Media"> | bigint | number
+  }
+
+  export type TraceMediaWhereInput = {
+    AND?: TraceMediaWhereInput | TraceMediaWhereInput[]
+    OR?: TraceMediaWhereInput[]
+    NOT?: TraceMediaWhereInput | TraceMediaWhereInput[]
+    id?: StringFilter<"TraceMedia"> | string
+    projectId?: StringFilter<"TraceMedia"> | string
+    createdAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    mediaId?: StringFilter<"TraceMedia"> | string
+    traceId?: StringFilter<"TraceMedia"> | string
+    field?: StringFilter<"TraceMedia"> | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    media?: XOR<MediaRelationFilter, MediaWhereInput>
+  }
+
+  export type TraceMediaOrderByWithRelationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    field?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    media?: MediaOrderByWithRelationInput
+  }
+
+  export type TraceMediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    projectId_traceId_mediaId_field?: TraceMediaProjectIdTraceIdMediaIdFieldCompoundUniqueInput
+    AND?: TraceMediaWhereInput | TraceMediaWhereInput[]
+    OR?: TraceMediaWhereInput[]
+    NOT?: TraceMediaWhereInput | TraceMediaWhereInput[]
+    projectId?: StringFilter<"TraceMedia"> | string
+    createdAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    mediaId?: StringFilter<"TraceMedia"> | string
+    traceId?: StringFilter<"TraceMedia"> | string
+    field?: StringFilter<"TraceMedia"> | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    media?: XOR<MediaRelationFilter, MediaWhereInput>
+  }, "id" | "projectId_traceId_mediaId_field">
+
+  export type TraceMediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    field?: SortOrder
+    _count?: TraceMediaCountOrderByAggregateInput
+    _max?: TraceMediaMaxOrderByAggregateInput
+    _min?: TraceMediaMinOrderByAggregateInput
+  }
+
+  export type TraceMediaScalarWhereWithAggregatesInput = {
+    AND?: TraceMediaScalarWhereWithAggregatesInput | TraceMediaScalarWhereWithAggregatesInput[]
+    OR?: TraceMediaScalarWhereWithAggregatesInput[]
+    NOT?: TraceMediaScalarWhereWithAggregatesInput | TraceMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TraceMedia"> | string
+    projectId?: StringWithAggregatesFilter<"TraceMedia"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"TraceMedia"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"TraceMedia"> | Date | string
+    mediaId?: StringWithAggregatesFilter<"TraceMedia"> | string
+    traceId?: StringWithAggregatesFilter<"TraceMedia"> | string
+    field?: StringWithAggregatesFilter<"TraceMedia"> | string
+  }
+
+  export type ObservationMediaWhereInput = {
+    AND?: ObservationMediaWhereInput | ObservationMediaWhereInput[]
+    OR?: ObservationMediaWhereInput[]
+    NOT?: ObservationMediaWhereInput | ObservationMediaWhereInput[]
+    id?: StringFilter<"ObservationMedia"> | string
+    projectId?: StringFilter<"ObservationMedia"> | string
+    createdAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    mediaId?: StringFilter<"ObservationMedia"> | string
+    traceId?: StringFilter<"ObservationMedia"> | string
+    observationId?: StringFilter<"ObservationMedia"> | string
+    field?: StringFilter<"ObservationMedia"> | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    media?: XOR<MediaRelationFilter, MediaWhereInput>
+  }
+
+  export type ObservationMediaOrderByWithRelationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    observationId?: SortOrder
+    field?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    media?: MediaOrderByWithRelationInput
+  }
+
+  export type ObservationMediaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    projectId_traceId_observationId_mediaId_field?: ObservationMediaProjectIdTraceIdObservationIdMediaIdFieldCompoundUniqueInput
+    AND?: ObservationMediaWhereInput | ObservationMediaWhereInput[]
+    OR?: ObservationMediaWhereInput[]
+    NOT?: ObservationMediaWhereInput | ObservationMediaWhereInput[]
+    projectId?: StringFilter<"ObservationMedia"> | string
+    createdAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    mediaId?: StringFilter<"ObservationMedia"> | string
+    traceId?: StringFilter<"ObservationMedia"> | string
+    observationId?: StringFilter<"ObservationMedia"> | string
+    field?: StringFilter<"ObservationMedia"> | string
+    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
+    media?: XOR<MediaRelationFilter, MediaWhereInput>
+  }, "id" | "projectId_traceId_observationId_mediaId_field">
+
+  export type ObservationMediaOrderByWithAggregationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    observationId?: SortOrder
+    field?: SortOrder
+    _count?: ObservationMediaCountOrderByAggregateInput
+    _max?: ObservationMediaMaxOrderByAggregateInput
+    _min?: ObservationMediaMinOrderByAggregateInput
+  }
+
+  export type ObservationMediaScalarWhereWithAggregatesInput = {
+    AND?: ObservationMediaScalarWhereWithAggregatesInput | ObservationMediaScalarWhereWithAggregatesInput[]
+    OR?: ObservationMediaScalarWhereWithAggregatesInput[]
+    NOT?: ObservationMediaScalarWhereWithAggregatesInput | ObservationMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ObservationMedia"> | string
+    projectId?: StringWithAggregatesFilter<"ObservationMedia"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ObservationMedia"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ObservationMedia"> | Date | string
+    mediaId?: StringWithAggregatesFilter<"ObservationMedia"> | string
+    traceId?: StringWithAggregatesFilter<"ObservationMedia"> | string
+    observationId?: StringWithAggregatesFilter<"ObservationMedia"> | string
+    field?: StringWithAggregatesFilter<"ObservationMedia"> | string
   }
 
   export type TraceViewWhereInput = {
@@ -47027,6 +53083,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
@@ -47056,6 +53115,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
@@ -47085,6 +53147,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
@@ -47114,6 +53179,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
@@ -47227,6 +53295,97 @@ export namespace Prisma {
     lastUsedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     projectId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BackgroundMigrationCreateInput = {
+    id?: string
+    name: string
+    script: string
+    args: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: Date | string | null
+    failedAt?: Date | string | null
+    failedReason?: string | null
+    workerId?: string | null
+    lockedAt?: Date | string | null
+  }
+
+  export type BackgroundMigrationUncheckedCreateInput = {
+    id?: string
+    name: string
+    script: string
+    args: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: Date | string | null
+    failedAt?: Date | string | null
+    failedReason?: string | null
+    workerId?: string | null
+    lockedAt?: Date | string | null
+  }
+
+  export type BackgroundMigrationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    args?: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    workerId?: NullableStringFieldUpdateOperationsInput | string | null
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BackgroundMigrationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    args?: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    workerId?: NullableStringFieldUpdateOperationsInput | string | null
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BackgroundMigrationCreateManyInput = {
+    id?: string
+    name: string
+    script: string
+    args: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: Date | string | null
+    failedAt?: Date | string | null
+    failedReason?: string | null
+    workerId?: string | null
+    lockedAt?: Date | string | null
+  }
+
+  export type BackgroundMigrationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    args?: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    workerId?: NullableStringFieldUpdateOperationsInput | string | null
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BackgroundMigrationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    script?: StringFieldUpdateOperationsInput | string
+    args?: JsonNullValueInput | InputJsonValue
+    state?: JsonNullValueInput | InputJsonValue
+    finishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    failedReason?: NullableStringFieldUpdateOperationsInput | string | null
+    workerId?: NullableStringFieldUpdateOperationsInput | string | null
+    lockedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type LlmApiKeysCreateInput = {
@@ -47623,7 +53782,6 @@ export namespace Prisma {
     updatedAt?: Date | string
     project: ProjectCreateNestedOneWithoutTracesInput
     session?: TraceSessionCreateNestedOneWithoutTracesInput
-    JobExecution?: JobExecutionCreateNestedManyWithoutTraceInput
   }
 
   export type TraceUncheckedCreateInput = {
@@ -47644,7 +53802,6 @@ export namespace Prisma {
     sessionId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutTraceInput
   }
 
   export type TraceUpdateInput = {
@@ -47665,7 +53822,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     project?: ProjectUpdateOneRequiredWithoutTracesNestedInput
     session?: TraceSessionUpdateOneWithoutTracesNestedInput
-    JobExecution?: JobExecutionUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceUncheckedUpdateInput = {
@@ -47686,7 +53842,6 @@ export namespace Prisma {
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    JobExecution?: JobExecutionUncheckedUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceCreateManyInput = {
@@ -49047,10 +55202,11 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
     project?: ProjectCreateNestedOneWithoutModelInput
+    Price?: PriceCreateNestedManyWithoutModelInput
   }
 
   export type ModelUncheckedCreateInput = {
@@ -49064,9 +55220,10 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceUncheckedCreateNestedManyWithoutModelInput
   }
 
   export type ModelUpdateInput = {
@@ -49079,10 +55236,11 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
     project?: ProjectUpdateOneWithoutModelNestedInput
+    Price?: PriceUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateInput = {
@@ -49096,9 +55254,10 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceUncheckedUpdateManyWithoutModelNestedInput
   }
 
   export type ModelCreateManyInput = {
@@ -49112,7 +55271,7 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -49127,7 +55286,7 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -49143,9 +55302,71 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type PriceCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+    Model: ModelCreateNestedOneWithoutPriceInput
+  }
+
+  export type PriceUncheckedCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    Model?: ModelUpdateOneRequiredWithoutPriceNestedInput
+  }
+
+  export type PriceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: StringFieldUpdateOperationsInput | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceCreateManyInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelId: string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelId?: StringFieldUpdateOperationsInput | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type AuditLogCreateInput = {
@@ -49490,9 +55711,11 @@ export namespace Prisma {
     startTime?: Date | string | null
     endTime?: Date | string | null
     error?: string | null
+    jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     project: ProjectCreateNestedOneWithoutJobExecutionInput
     jobConfiguration: JobConfigurationCreateNestedOneWithoutJobExecutionInput
-    trace?: TraceCreateNestedOneWithoutJobExecutionInput
     score?: ScoreCreateNestedOneWithoutJobExecutionInput
   }
 
@@ -49507,6 +55730,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -49518,9 +55743,11 @@ export namespace Prisma {
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     project?: ProjectUpdateOneRequiredWithoutJobExecutionNestedInput
     jobConfiguration?: JobConfigurationUpdateOneRequiredWithoutJobExecutionNestedInput
-    trace?: TraceUpdateOneWithoutJobExecutionNestedInput
     score?: ScoreUpdateOneWithoutJobExecutionNestedInput
   }
 
@@ -49535,6 +55762,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -49549,6 +55778,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -49560,6 +55791,9 @@ export namespace Prisma {
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type JobExecutionUncheckedUpdateManyInput = {
@@ -49573,6 +55807,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -49803,6 +56039,261 @@ export namespace Prisma {
     format?: StringFieldUpdateOperationsInput | string
     url?: NullableStringFieldUpdateOperationsInput | string | null
     log?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MediaCreateInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    project: ProjectCreateNestedOneWithoutMediaInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutMediaInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaUncheckedCreateInput = {
+    id?: string
+    sha256Hash: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutMediaInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    project?: ProjectUpdateOneRequiredWithoutMediaNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutMediaNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutMediaNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaCreateManyInput = {
+    id?: string
+    sha256Hash: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+  }
+
+  export type MediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type TraceMediaCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    field: string
+    project: ProjectCreateNestedOneWithoutTraceMediaInput
+    media: MediaCreateNestedOneWithoutTraceMediaInput
+  }
+
+  export type TraceMediaUncheckedCreateInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    field: string
+  }
+
+  export type TraceMediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutTraceMediaNestedInput
+    media?: MediaUpdateOneRequiredWithoutTraceMediaNestedInput
+  }
+
+  export type TraceMediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TraceMediaCreateManyInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    field: string
+  }
+
+  export type TraceMediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TraceMediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    observationId: string
+    field: string
+    project: ProjectCreateNestedOneWithoutObservationMediaInput
+    media: MediaCreateNestedOneWithoutObservationMediaInput
+  }
+
+  export type ObservationMediaUncheckedCreateInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
+  export type ObservationMediaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutObservationMediaNestedInput
+    media?: MediaUpdateOneRequiredWithoutObservationMediaNestedInput
+  }
+
+  export type ObservationMediaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaCreateManyInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
+  export type ObservationMediaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
   }
 
   export type TraceViewCreateInput = {
@@ -50803,6 +57294,24 @@ export namespace Prisma {
     none?: AnnotationQueueWhereInput
   }
 
+  export type TraceMediaListRelationFilter = {
+    every?: TraceMediaWhereInput
+    some?: TraceMediaWhereInput
+    none?: TraceMediaWhereInput
+  }
+
+  export type MediaListRelationFilter = {
+    every?: MediaWhereInput
+    some?: MediaWhereInput
+    none?: MediaWhereInput
+  }
+
+  export type ObservationMediaListRelationFilter = {
+    every?: ObservationMediaWhereInput
+    some?: ObservationMediaWhereInput
+    none?: ObservationMediaWhereInput
+  }
+
   export type TraceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -50875,6 +57384,18 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type TraceMediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ObservationMediaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
     orgId?: SortOrder
@@ -50941,6 +57462,88 @@ export namespace Prisma {
     lastUsedAt?: SortOrder
     expiresAt?: SortOrder
     projectId?: SortOrder
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type BackgroundMigrationCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    script?: SortOrder
+    args?: SortOrder
+    state?: SortOrder
+    finishedAt?: SortOrder
+    failedAt?: SortOrder
+    failedReason?: SortOrder
+    workerId?: SortOrder
+    lockedAt?: SortOrder
+  }
+
+  export type BackgroundMigrationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    script?: SortOrder
+    finishedAt?: SortOrder
+    failedAt?: SortOrder
+    failedReason?: SortOrder
+    workerId?: SortOrder
+    lockedAt?: SortOrder
+  }
+
+  export type BackgroundMigrationMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    script?: SortOrder
+    finishedAt?: SortOrder
+    failedAt?: SortOrder
+    failedReason?: SortOrder
+    workerId?: SortOrder
+    lockedAt?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type LlmApiKeysProjectIdProviderCompoundUniqueInput = {
@@ -51990,28 +58593,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
-  export type JsonFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type EventsCountOrderByAggregateInput = {
     id?: SortOrder
@@ -52040,31 +58621,6 @@ export namespace Prisma {
     projectId?: SortOrder
     url?: SortOrder
     method?: SortOrder
-  }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedJsonFilter<$PrismaModel>
-    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type EnumCommentObjectTypeFilter<$PrismaModel = never> = {
@@ -52184,6 +58740,16 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type PriceListRelationFilter = {
+    every?: PriceWhereInput
+    some?: PriceWhereInput
+    none?: PriceWhereInput
+  }
+
+  export type PriceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ModelProjectIdModelNameStartDateUnitCompoundUniqueInput = {
     projectId: string
     modelName: string
@@ -52247,6 +58813,78 @@ export namespace Prisma {
     inputPrice?: SortOrder
     outputPrice?: SortOrder
     totalPrice?: SortOrder
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type ModelRelationFilter = {
+    is?: ModelWhereInput
+    isNot?: ModelWhereInput
+  }
+
+  export type PriceModelIdUsageTypeCompoundUniqueInput = {
+    modelId: string
+    usageType: string
+  }
+
+  export type PriceCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    usageType?: SortOrder
+    price?: SortOrder
+  }
+
+  export type PriceAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type PriceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    usageType?: SortOrder
+    price?: SortOrder
+  }
+
+  export type PriceMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    modelId?: SortOrder
+    usageType?: SortOrder
+    price?: SortOrder
+  }
+
+  export type PriceSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type AuditLogCountOrderByAggregateInput = {
@@ -52364,17 +59002,6 @@ export namespace Prisma {
     not?: NestedEnumJobConfigStateFilter<$PrismaModel> | $Enums.JobConfigState
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type EvalTemplateNullableRelationFilter = {
     is?: EvalTemplateWhereInput | null
     isNot?: EvalTemplateWhereInput | null
@@ -52454,22 +59081,6 @@ export namespace Prisma {
     _max?: NestedEnumJobConfigStateFilter<$PrismaModel>
   }
 
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
   export type EnumJobExecutionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobExecutionStatus | EnumJobExecutionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.JobExecutionStatus[] | ListEnumJobExecutionStatusFieldRefInput<$PrismaModel>
@@ -52480,11 +59091,6 @@ export namespace Prisma {
   export type JobConfigurationRelationFilter = {
     is?: JobConfigurationWhereInput
     isNot?: JobConfigurationWhereInput
-  }
-
-  export type TraceNullableRelationFilter = {
-    is?: TraceWhereInput | null
-    isNot?: TraceWhereInput | null
   }
 
   export type ScoreNullableRelationFilter = {
@@ -52503,6 +59109,8 @@ export namespace Prisma {
     endTime?: SortOrder
     error?: SortOrder
     jobInputTraceId?: SortOrder
+    jobInputObservationId?: SortOrder
+    jobInputDatasetItemId?: SortOrder
     jobOutputScoreId?: SortOrder
   }
 
@@ -52517,6 +59125,8 @@ export namespace Prisma {
     endTime?: SortOrder
     error?: SortOrder
     jobInputTraceId?: SortOrder
+    jobInputObservationId?: SortOrder
+    jobInputDatasetItemId?: SortOrder
     jobOutputScoreId?: SortOrder
   }
 
@@ -52531,6 +59141,8 @@ export namespace Prisma {
     endTime?: SortOrder
     error?: SortOrder
     jobInputTraceId?: SortOrder
+    jobInputObservationId?: SortOrder
+    jobInputDatasetItemId?: SortOrder
     jobOutputScoreId?: SortOrder
   }
 
@@ -52637,6 +59249,176 @@ export namespace Prisma {
     format?: SortOrder
     url?: SortOrder
     log?: SortOrder
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type MediaProjectIdSha256HashCompoundUniqueInput = {
+    projectId: string
+    sha256Hash: string
+  }
+
+  export type MediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    sha256Hash?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uploadedAt?: SortOrder
+    uploadHttpStatus?: SortOrder
+    uploadHttpError?: SortOrder
+    bucketPath?: SortOrder
+    bucketName?: SortOrder
+    contentType?: SortOrder
+    contentLength?: SortOrder
+  }
+
+  export type MediaAvgOrderByAggregateInput = {
+    uploadHttpStatus?: SortOrder
+    contentLength?: SortOrder
+  }
+
+  export type MediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sha256Hash?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uploadedAt?: SortOrder
+    uploadHttpStatus?: SortOrder
+    uploadHttpError?: SortOrder
+    bucketPath?: SortOrder
+    bucketName?: SortOrder
+    contentType?: SortOrder
+    contentLength?: SortOrder
+  }
+
+  export type MediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    sha256Hash?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    uploadedAt?: SortOrder
+    uploadHttpStatus?: SortOrder
+    uploadHttpError?: SortOrder
+    bucketPath?: SortOrder
+    bucketName?: SortOrder
+    contentType?: SortOrder
+    contentLength?: SortOrder
+  }
+
+  export type MediaSumOrderByAggregateInput = {
+    uploadHttpStatus?: SortOrder
+    contentLength?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type MediaRelationFilter = {
+    is?: MediaWhereInput
+    isNot?: MediaWhereInput
+  }
+
+  export type TraceMediaProjectIdTraceIdMediaIdFieldCompoundUniqueInput = {
+    projectId: string
+    traceId: string
+    mediaId: string
+    field: string
+  }
+
+  export type TraceMediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    field?: SortOrder
+  }
+
+  export type TraceMediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    field?: SortOrder
+  }
+
+  export type TraceMediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    field?: SortOrder
+  }
+
+  export type ObservationMediaProjectIdTraceIdObservationIdMediaIdFieldCompoundUniqueInput = {
+    projectId: string
+    traceId: string
+    observationId: string
+    mediaId: string
+    field: string
+  }
+
+  export type ObservationMediaCountOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    observationId?: SortOrder
+    field?: SortOrder
+  }
+
+  export type ObservationMediaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    observationId?: SortOrder
+    field?: SortOrder
+  }
+
+  export type ObservationMediaMinOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    mediaId?: SortOrder
+    traceId?: SortOrder
+    observationId?: SortOrder
+    field?: SortOrder
   }
 
   export type TraceViewCountOrderByAggregateInput = {
@@ -53476,6 +60258,27 @@ export namespace Prisma {
     connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
   }
 
+  export type TraceMediaCreateNestedManyWithoutProjectInput = {
+    create?: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput> | TraceMediaCreateWithoutProjectInput[] | TraceMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutProjectInput | TraceMediaCreateOrConnectWithoutProjectInput[]
+    createMany?: TraceMediaCreateManyProjectInputEnvelope
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+  }
+
+  export type MediaCreateNestedManyWithoutProjectInput = {
+    create?: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput> | MediaCreateWithoutProjectInput[] | MediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutProjectInput | MediaCreateOrConnectWithoutProjectInput[]
+    createMany?: MediaCreateManyProjectInputEnvelope
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+  }
+
+  export type ObservationMediaCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput> | ObservationMediaCreateWithoutProjectInput[] | ObservationMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutProjectInput | ObservationMediaCreateOrConnectWithoutProjectInput[]
+    createMany?: ObservationMediaCreateManyProjectInputEnvelope
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+  }
+
   export type ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -53621,6 +60424,27 @@ export namespace Prisma {
     connectOrCreate?: AnnotationQueueItemCreateOrConnectWithoutProjectInput | AnnotationQueueItemCreateOrConnectWithoutProjectInput[]
     createMany?: AnnotationQueueItemCreateManyProjectInputEnvelope
     connect?: AnnotationQueueItemWhereUniqueInput | AnnotationQueueItemWhereUniqueInput[]
+  }
+
+  export type TraceMediaUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput> | TraceMediaCreateWithoutProjectInput[] | TraceMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutProjectInput | TraceMediaCreateOrConnectWithoutProjectInput[]
+    createMany?: TraceMediaCreateManyProjectInputEnvelope
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+  }
+
+  export type MediaUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput> | MediaCreateWithoutProjectInput[] | MediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutProjectInput | MediaCreateOrConnectWithoutProjectInput[]
+    createMany?: MediaCreateManyProjectInputEnvelope
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+  }
+
+  export type ObservationMediaUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput> | ObservationMediaCreateWithoutProjectInput[] | ObservationMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutProjectInput | ObservationMediaCreateOrConnectWithoutProjectInput[]
+    createMany?: ObservationMediaCreateManyProjectInputEnvelope
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
   }
 
   export type ProjectMembershipUpdateManyWithoutProjectNestedInput = {
@@ -53925,6 +60749,48 @@ export namespace Prisma {
     deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
   }
 
+  export type TraceMediaUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput> | TraceMediaCreateWithoutProjectInput[] | TraceMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutProjectInput | TraceMediaCreateOrConnectWithoutProjectInput[]
+    upsert?: TraceMediaUpsertWithWhereUniqueWithoutProjectInput | TraceMediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: TraceMediaCreateManyProjectInputEnvelope
+    set?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    disconnect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    delete?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    update?: TraceMediaUpdateWithWhereUniqueWithoutProjectInput | TraceMediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: TraceMediaUpdateManyWithWhereWithoutProjectInput | TraceMediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+  }
+
+  export type MediaUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput> | MediaCreateWithoutProjectInput[] | MediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutProjectInput | MediaCreateOrConnectWithoutProjectInput[]
+    upsert?: MediaUpsertWithWhereUniqueWithoutProjectInput | MediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: MediaCreateManyProjectInputEnvelope
+    set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    update?: MediaUpdateWithWhereUniqueWithoutProjectInput | MediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: MediaUpdateManyWithWhereWithoutProjectInput | MediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
+  }
+
+  export type ObservationMediaUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput> | ObservationMediaCreateWithoutProjectInput[] | ObservationMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutProjectInput | ObservationMediaCreateOrConnectWithoutProjectInput[]
+    upsert?: ObservationMediaUpsertWithWhereUniqueWithoutProjectInput | ObservationMediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ObservationMediaCreateManyProjectInputEnvelope
+    set?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    disconnect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    delete?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    update?: ObservationMediaUpdateWithWhereUniqueWithoutProjectInput | ObservationMediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ObservationMediaUpdateManyWithWhereWithoutProjectInput | ObservationMediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+  }
+
   export type ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput = {
     create?: XOR<ProjectMembershipCreateWithoutProjectInput, ProjectMembershipUncheckedCreateWithoutProjectInput> | ProjectMembershipCreateWithoutProjectInput[] | ProjectMembershipUncheckedCreateWithoutProjectInput[]
     connectOrCreate?: ProjectMembershipCreateOrConnectWithoutProjectInput | ProjectMembershipCreateOrConnectWithoutProjectInput[]
@@ -54219,6 +61085,48 @@ export namespace Prisma {
     deleteMany?: AnnotationQueueItemScalarWhereInput | AnnotationQueueItemScalarWhereInput[]
   }
 
+  export type TraceMediaUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput> | TraceMediaCreateWithoutProjectInput[] | TraceMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutProjectInput | TraceMediaCreateOrConnectWithoutProjectInput[]
+    upsert?: TraceMediaUpsertWithWhereUniqueWithoutProjectInput | TraceMediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: TraceMediaCreateManyProjectInputEnvelope
+    set?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    disconnect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    delete?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    update?: TraceMediaUpdateWithWhereUniqueWithoutProjectInput | TraceMediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: TraceMediaUpdateManyWithWhereWithoutProjectInput | TraceMediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+  }
+
+  export type MediaUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput> | MediaCreateWithoutProjectInput[] | MediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutProjectInput | MediaCreateOrConnectWithoutProjectInput[]
+    upsert?: MediaUpsertWithWhereUniqueWithoutProjectInput | MediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: MediaCreateManyProjectInputEnvelope
+    set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    update?: MediaUpdateWithWhereUniqueWithoutProjectInput | MediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: MediaUpdateManyWithWhereWithoutProjectInput | MediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
+  }
+
+  export type ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput> | ObservationMediaCreateWithoutProjectInput[] | ObservationMediaUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutProjectInput | ObservationMediaCreateOrConnectWithoutProjectInput[]
+    upsert?: ObservationMediaUpsertWithWhereUniqueWithoutProjectInput | ObservationMediaUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: ObservationMediaCreateManyProjectInputEnvelope
+    set?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    disconnect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    delete?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    update?: ObservationMediaUpdateWithWhereUniqueWithoutProjectInput | ObservationMediaUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: ObservationMediaUpdateManyWithWhereWithoutProjectInput | ObservationMediaUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+  }
+
   export type ProjectCreateNestedOneWithoutApiKeysInput = {
     create?: XOR<ProjectCreateWithoutApiKeysInput, ProjectUncheckedCreateWithoutApiKeysInput>
     connectOrCreate?: ProjectCreateOrConnectWithoutApiKeysInput
@@ -54494,20 +61402,6 @@ export namespace Prisma {
     connect?: TraceSessionWhereUniqueInput
   }
 
-  export type JobExecutionCreateNestedManyWithoutTraceInput = {
-    create?: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput> | JobExecutionCreateWithoutTraceInput[] | JobExecutionUncheckedCreateWithoutTraceInput[]
-    connectOrCreate?: JobExecutionCreateOrConnectWithoutTraceInput | JobExecutionCreateOrConnectWithoutTraceInput[]
-    createMany?: JobExecutionCreateManyTraceInputEnvelope
-    connect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-  }
-
-  export type JobExecutionUncheckedCreateNestedManyWithoutTraceInput = {
-    create?: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput> | JobExecutionCreateWithoutTraceInput[] | JobExecutionUncheckedCreateWithoutTraceInput[]
-    connectOrCreate?: JobExecutionCreateOrConnectWithoutTraceInput | JobExecutionCreateOrConnectWithoutTraceInput[]
-    createMany?: JobExecutionCreateManyTraceInputEnvelope
-    connect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-  }
-
   export type TraceUpdatetagsInput = {
     set?: string[]
     push?: string | string[]
@@ -54529,34 +61423,6 @@ export namespace Prisma {
     delete?: TraceSessionWhereInput | boolean
     connect?: TraceSessionWhereUniqueInput
     update?: XOR<XOR<TraceSessionUpdateToOneWithWhereWithoutTracesInput, TraceSessionUpdateWithoutTracesInput>, TraceSessionUncheckedUpdateWithoutTracesInput>
-  }
-
-  export type JobExecutionUpdateManyWithoutTraceNestedInput = {
-    create?: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput> | JobExecutionCreateWithoutTraceInput[] | JobExecutionUncheckedCreateWithoutTraceInput[]
-    connectOrCreate?: JobExecutionCreateOrConnectWithoutTraceInput | JobExecutionCreateOrConnectWithoutTraceInput[]
-    upsert?: JobExecutionUpsertWithWhereUniqueWithoutTraceInput | JobExecutionUpsertWithWhereUniqueWithoutTraceInput[]
-    createMany?: JobExecutionCreateManyTraceInputEnvelope
-    set?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    disconnect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    delete?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    connect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    update?: JobExecutionUpdateWithWhereUniqueWithoutTraceInput | JobExecutionUpdateWithWhereUniqueWithoutTraceInput[]
-    updateMany?: JobExecutionUpdateManyWithWhereWithoutTraceInput | JobExecutionUpdateManyWithWhereWithoutTraceInput[]
-    deleteMany?: JobExecutionScalarWhereInput | JobExecutionScalarWhereInput[]
-  }
-
-  export type JobExecutionUncheckedUpdateManyWithoutTraceNestedInput = {
-    create?: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput> | JobExecutionCreateWithoutTraceInput[] | JobExecutionUncheckedCreateWithoutTraceInput[]
-    connectOrCreate?: JobExecutionCreateOrConnectWithoutTraceInput | JobExecutionCreateOrConnectWithoutTraceInput[]
-    upsert?: JobExecutionUpsertWithWhereUniqueWithoutTraceInput | JobExecutionUpsertWithWhereUniqueWithoutTraceInput[]
-    createMany?: JobExecutionCreateManyTraceInputEnvelope
-    set?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    disconnect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    delete?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    connect?: JobExecutionWhereUniqueInput | JobExecutionWhereUniqueInput[]
-    update?: JobExecutionUpdateWithWhereUniqueWithoutTraceInput | JobExecutionUpdateWithWhereUniqueWithoutTraceInput[]
-    updateMany?: JobExecutionUpdateManyWithWhereWithoutTraceInput | JobExecutionUpdateManyWithWhereWithoutTraceInput[]
-    deleteMany?: JobExecutionScalarWhereInput | JobExecutionScalarWhereInput[]
   }
 
   export type ProjectCreateNestedOneWithoutObservationsInput = {
@@ -55190,6 +62056,20 @@ export namespace Prisma {
     connect?: ProjectWhereUniqueInput
   }
 
+  export type PriceCreateNestedManyWithoutModelInput = {
+    create?: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput> | PriceCreateWithoutModelInput[] | PriceUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: PriceCreateOrConnectWithoutModelInput | PriceCreateOrConnectWithoutModelInput[]
+    createMany?: PriceCreateManyModelInputEnvelope
+    connect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+  }
+
+  export type PriceUncheckedCreateNestedManyWithoutModelInput = {
+    create?: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput> | PriceCreateWithoutModelInput[] | PriceUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: PriceCreateOrConnectWithoutModelInput | PriceCreateOrConnectWithoutModelInput[]
+    createMany?: PriceCreateManyModelInputEnvelope
+    connect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+  }
+
   export type ProjectUpdateOneWithoutModelNestedInput = {
     create?: XOR<ProjectCreateWithoutModelInput, ProjectUncheckedCreateWithoutModelInput>
     connectOrCreate?: ProjectCreateOrConnectWithoutModelInput
@@ -55198,6 +62078,56 @@ export namespace Prisma {
     delete?: ProjectWhereInput | boolean
     connect?: ProjectWhereUniqueInput
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutModelInput, ProjectUpdateWithoutModelInput>, ProjectUncheckedUpdateWithoutModelInput>
+  }
+
+  export type PriceUpdateManyWithoutModelNestedInput = {
+    create?: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput> | PriceCreateWithoutModelInput[] | PriceUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: PriceCreateOrConnectWithoutModelInput | PriceCreateOrConnectWithoutModelInput[]
+    upsert?: PriceUpsertWithWhereUniqueWithoutModelInput | PriceUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: PriceCreateManyModelInputEnvelope
+    set?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    disconnect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    delete?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    connect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    update?: PriceUpdateWithWhereUniqueWithoutModelInput | PriceUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: PriceUpdateManyWithWhereWithoutModelInput | PriceUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: PriceScalarWhereInput | PriceScalarWhereInput[]
+  }
+
+  export type PriceUncheckedUpdateManyWithoutModelNestedInput = {
+    create?: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput> | PriceCreateWithoutModelInput[] | PriceUncheckedCreateWithoutModelInput[]
+    connectOrCreate?: PriceCreateOrConnectWithoutModelInput | PriceCreateOrConnectWithoutModelInput[]
+    upsert?: PriceUpsertWithWhereUniqueWithoutModelInput | PriceUpsertWithWhereUniqueWithoutModelInput[]
+    createMany?: PriceCreateManyModelInputEnvelope
+    set?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    disconnect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    delete?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    connect?: PriceWhereUniqueInput | PriceWhereUniqueInput[]
+    update?: PriceUpdateWithWhereUniqueWithoutModelInput | PriceUpdateWithWhereUniqueWithoutModelInput[]
+    updateMany?: PriceUpdateManyWithWhereWithoutModelInput | PriceUpdateManyWithWhereWithoutModelInput[]
+    deleteMany?: PriceScalarWhereInput | PriceScalarWhereInput[]
+  }
+
+  export type ModelCreateNestedOneWithoutPriceInput = {
+    create?: XOR<ModelCreateWithoutPriceInput, ModelUncheckedCreateWithoutPriceInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutPriceInput
+    connect?: ModelWhereUniqueInput
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type ModelUpdateOneRequiredWithoutPriceNestedInput = {
+    create?: XOR<ModelCreateWithoutPriceInput, ModelUncheckedCreateWithoutPriceInput>
+    connectOrCreate?: ModelCreateOrConnectWithoutPriceInput
+    upsert?: ModelUpsertWithoutPriceInput
+    connect?: ModelWhereUniqueInput
+    update?: XOR<XOR<ModelUpdateToOneWithWhereWithoutPriceInput, ModelUpdateWithoutPriceInput>, ModelUncheckedUpdateWithoutPriceInput>
   }
 
   export type EvalTemplateCreatevarsInput = {
@@ -55299,14 +62229,6 @@ export namespace Prisma {
     set?: $Enums.JobConfigState
   }
 
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
-  }
-
   export type ProjectUpdateOneRequiredWithoutJobConfigurationNestedInput = {
     create?: XOR<ProjectCreateWithoutJobConfigurationInput, ProjectUncheckedCreateWithoutJobConfigurationInput>
     connectOrCreate?: ProjectCreateOrConnectWithoutJobConfigurationInput
@@ -55365,12 +62287,6 @@ export namespace Prisma {
     connect?: JobConfigurationWhereUniqueInput
   }
 
-  export type TraceCreateNestedOneWithoutJobExecutionInput = {
-    create?: XOR<TraceCreateWithoutJobExecutionInput, TraceUncheckedCreateWithoutJobExecutionInput>
-    connectOrCreate?: TraceCreateOrConnectWithoutJobExecutionInput
-    connect?: TraceWhereUniqueInput
-  }
-
   export type ScoreCreateNestedOneWithoutJobExecutionInput = {
     create?: XOR<ScoreCreateWithoutJobExecutionInput, ScoreUncheckedCreateWithoutJobExecutionInput>
     connectOrCreate?: ScoreCreateOrConnectWithoutJobExecutionInput
@@ -55395,16 +62311,6 @@ export namespace Prisma {
     upsert?: JobConfigurationUpsertWithoutJobExecutionInput
     connect?: JobConfigurationWhereUniqueInput
     update?: XOR<XOR<JobConfigurationUpdateToOneWithWhereWithoutJobExecutionInput, JobConfigurationUpdateWithoutJobExecutionInput>, JobConfigurationUncheckedUpdateWithoutJobExecutionInput>
-  }
-
-  export type TraceUpdateOneWithoutJobExecutionNestedInput = {
-    create?: XOR<TraceCreateWithoutJobExecutionInput, TraceUncheckedCreateWithoutJobExecutionInput>
-    connectOrCreate?: TraceCreateOrConnectWithoutJobExecutionInput
-    upsert?: TraceUpsertWithoutJobExecutionInput
-    disconnect?: TraceWhereInput | boolean
-    delete?: TraceWhereInput | boolean
-    connect?: TraceWhereUniqueInput
-    update?: XOR<XOR<TraceUpdateToOneWithWhereWithoutJobExecutionInput, TraceUpdateWithoutJobExecutionInput>, TraceUncheckedUpdateWithoutJobExecutionInput>
   }
 
   export type ScoreUpdateOneWithoutJobExecutionNestedInput = {
@@ -55443,6 +62349,168 @@ export namespace Prisma {
     upsert?: ProjectUpsertWithoutBatchExportInput
     connect?: ProjectWhereUniqueInput
     update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutBatchExportInput, ProjectUpdateWithoutBatchExportInput>, ProjectUncheckedUpdateWithoutBatchExportInput>
+  }
+
+  export type ProjectCreateNestedOneWithoutMediaInput = {
+    create?: XOR<ProjectCreateWithoutMediaInput, ProjectUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutMediaInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type TraceMediaCreateNestedManyWithoutMediaInput = {
+    create?: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput> | TraceMediaCreateWithoutMediaInput[] | TraceMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutMediaInput | TraceMediaCreateOrConnectWithoutMediaInput[]
+    createMany?: TraceMediaCreateManyMediaInputEnvelope
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+  }
+
+  export type ObservationMediaCreateNestedManyWithoutMediaInput = {
+    create?: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput> | ObservationMediaCreateWithoutMediaInput[] | ObservationMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutMediaInput | ObservationMediaCreateOrConnectWithoutMediaInput[]
+    createMany?: ObservationMediaCreateManyMediaInputEnvelope
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+  }
+
+  export type TraceMediaUncheckedCreateNestedManyWithoutMediaInput = {
+    create?: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput> | TraceMediaCreateWithoutMediaInput[] | TraceMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutMediaInput | TraceMediaCreateOrConnectWithoutMediaInput[]
+    createMany?: TraceMediaCreateManyMediaInputEnvelope
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+  }
+
+  export type ObservationMediaUncheckedCreateNestedManyWithoutMediaInput = {
+    create?: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput> | ObservationMediaCreateWithoutMediaInput[] | ObservationMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutMediaInput | ObservationMediaCreateOrConnectWithoutMediaInput[]
+    createMany?: ObservationMediaCreateManyMediaInputEnvelope
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type ProjectUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<ProjectCreateWithoutMediaInput, ProjectUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutMediaInput
+    upsert?: ProjectUpsertWithoutMediaInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutMediaInput, ProjectUpdateWithoutMediaInput>, ProjectUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type TraceMediaUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput> | TraceMediaCreateWithoutMediaInput[] | TraceMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutMediaInput | TraceMediaCreateOrConnectWithoutMediaInput[]
+    upsert?: TraceMediaUpsertWithWhereUniqueWithoutMediaInput | TraceMediaUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: TraceMediaCreateManyMediaInputEnvelope
+    set?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    disconnect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    delete?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    update?: TraceMediaUpdateWithWhereUniqueWithoutMediaInput | TraceMediaUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: TraceMediaUpdateManyWithWhereWithoutMediaInput | TraceMediaUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+  }
+
+  export type ObservationMediaUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput> | ObservationMediaCreateWithoutMediaInput[] | ObservationMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutMediaInput | ObservationMediaCreateOrConnectWithoutMediaInput[]
+    upsert?: ObservationMediaUpsertWithWhereUniqueWithoutMediaInput | ObservationMediaUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: ObservationMediaCreateManyMediaInputEnvelope
+    set?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    disconnect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    delete?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    update?: ObservationMediaUpdateWithWhereUniqueWithoutMediaInput | ObservationMediaUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: ObservationMediaUpdateManyWithWhereWithoutMediaInput | ObservationMediaUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+  }
+
+  export type TraceMediaUncheckedUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput> | TraceMediaCreateWithoutMediaInput[] | TraceMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: TraceMediaCreateOrConnectWithoutMediaInput | TraceMediaCreateOrConnectWithoutMediaInput[]
+    upsert?: TraceMediaUpsertWithWhereUniqueWithoutMediaInput | TraceMediaUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: TraceMediaCreateManyMediaInputEnvelope
+    set?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    disconnect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    delete?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    connect?: TraceMediaWhereUniqueInput | TraceMediaWhereUniqueInput[]
+    update?: TraceMediaUpdateWithWhereUniqueWithoutMediaInput | TraceMediaUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: TraceMediaUpdateManyWithWhereWithoutMediaInput | TraceMediaUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+  }
+
+  export type ObservationMediaUncheckedUpdateManyWithoutMediaNestedInput = {
+    create?: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput> | ObservationMediaCreateWithoutMediaInput[] | ObservationMediaUncheckedCreateWithoutMediaInput[]
+    connectOrCreate?: ObservationMediaCreateOrConnectWithoutMediaInput | ObservationMediaCreateOrConnectWithoutMediaInput[]
+    upsert?: ObservationMediaUpsertWithWhereUniqueWithoutMediaInput | ObservationMediaUpsertWithWhereUniqueWithoutMediaInput[]
+    createMany?: ObservationMediaCreateManyMediaInputEnvelope
+    set?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    disconnect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    delete?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    connect?: ObservationMediaWhereUniqueInput | ObservationMediaWhereUniqueInput[]
+    update?: ObservationMediaUpdateWithWhereUniqueWithoutMediaInput | ObservationMediaUpdateWithWhereUniqueWithoutMediaInput[]
+    updateMany?: ObservationMediaUpdateManyWithWhereWithoutMediaInput | ObservationMediaUpdateManyWithWhereWithoutMediaInput[]
+    deleteMany?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+  }
+
+  export type ProjectCreateNestedOneWithoutTraceMediaInput = {
+    create?: XOR<ProjectCreateWithoutTraceMediaInput, ProjectUncheckedCreateWithoutTraceMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutTraceMediaInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type MediaCreateNestedOneWithoutTraceMediaInput = {
+    create?: XOR<MediaCreateWithoutTraceMediaInput, MediaUncheckedCreateWithoutTraceMediaInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutTraceMediaInput
+    connect?: MediaWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutTraceMediaNestedInput = {
+    create?: XOR<ProjectCreateWithoutTraceMediaInput, ProjectUncheckedCreateWithoutTraceMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutTraceMediaInput
+    upsert?: ProjectUpsertWithoutTraceMediaInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutTraceMediaInput, ProjectUpdateWithoutTraceMediaInput>, ProjectUncheckedUpdateWithoutTraceMediaInput>
+  }
+
+  export type MediaUpdateOneRequiredWithoutTraceMediaNestedInput = {
+    create?: XOR<MediaCreateWithoutTraceMediaInput, MediaUncheckedCreateWithoutTraceMediaInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutTraceMediaInput
+    upsert?: MediaUpsertWithoutTraceMediaInput
+    connect?: MediaWhereUniqueInput
+    update?: XOR<XOR<MediaUpdateToOneWithWhereWithoutTraceMediaInput, MediaUpdateWithoutTraceMediaInput>, MediaUncheckedUpdateWithoutTraceMediaInput>
+  }
+
+  export type ProjectCreateNestedOneWithoutObservationMediaInput = {
+    create?: XOR<ProjectCreateWithoutObservationMediaInput, ProjectUncheckedCreateWithoutObservationMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutObservationMediaInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type MediaCreateNestedOneWithoutObservationMediaInput = {
+    create?: XOR<MediaCreateWithoutObservationMediaInput, MediaUncheckedCreateWithoutObservationMediaInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutObservationMediaInput
+    connect?: MediaWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutObservationMediaNestedInput = {
+    create?: XOR<ProjectCreateWithoutObservationMediaInput, ProjectUncheckedCreateWithoutObservationMediaInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutObservationMediaInput
+    upsert?: ProjectUpsertWithoutObservationMediaInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutObservationMediaInput, ProjectUpdateWithoutObservationMediaInput>, ProjectUncheckedUpdateWithoutObservationMediaInput>
+  }
+
+  export type MediaUpdateOneRequiredWithoutObservationMediaNestedInput = {
+    create?: XOR<MediaCreateWithoutObservationMediaInput, MediaUncheckedCreateWithoutObservationMediaInput>
+    connectOrCreate?: MediaCreateOrConnectWithoutObservationMediaInput
+    upsert?: MediaUpsertWithoutObservationMediaInput
+    connect?: MediaWhereUniqueInput
+    update?: XOR<XOR<MediaUpdateToOneWithWhereWithoutObservationMediaInput, MediaUpdateWithoutObservationMediaInput>, MediaUncheckedUpdateWithoutObservationMediaInput>
   }
 
   export type TraceViewCreatetagsInput = {
@@ -55635,6 +62703,28 @@ export namespace Prisma {
     | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
     string_contains?: string | StringFieldRefInput<$PrismaModel>
@@ -55872,28 +62962,6 @@ export namespace Prisma {
     _min?: NestedEnumDatasetStatusFilter<$PrismaModel>
     _max?: NestedEnumDatasetStatusFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedEnumCommentObjectTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.CommentObjectType | EnumCommentObjectTypeFieldRefInput<$PrismaModel>
@@ -55925,6 +62993,33 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
   export type NestedEnumJobTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.JobType | EnumJobTypeFieldRefInput<$PrismaModel>
     in?: $Enums.JobType[] | ListEnumJobTypeFieldRefInput<$PrismaModel>
@@ -55937,17 +63032,6 @@ export namespace Prisma {
     in?: $Enums.JobConfigState[] | ListEnumJobConfigStateFieldRefInput<$PrismaModel>
     notIn?: $Enums.JobConfigState[] | ListEnumJobConfigStateFieldRefInput<$PrismaModel>
     not?: NestedEnumJobConfigStateFilter<$PrismaModel> | $Enums.JobConfigState
-  }
-
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
   export type NestedEnumJobTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -55970,22 +63054,6 @@ export namespace Prisma {
     _max?: NestedEnumJobConfigStateFilter<$PrismaModel>
   }
 
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
   export type NestedEnumJobExecutionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.JobExecutionStatus | EnumJobExecutionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.JobExecutionStatus[] | ListEnumJobExecutionStatusFieldRefInput<$PrismaModel>
@@ -56001,6 +63069,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumJobExecutionStatusFilter<$PrismaModel>
     _max?: NestedEnumJobExecutionStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -56672,6 +63767,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutOrganizationInput = {
@@ -56700,6 +63798,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutOrganizationInput = {
@@ -56871,7 +63972,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     session?: TraceSessionCreateNestedOneWithoutTracesInput
-    JobExecution?: JobExecutionCreateNestedManyWithoutTraceInput
   }
 
   export type TraceUncheckedCreateWithoutProjectInput = {
@@ -56891,7 +63991,6 @@ export namespace Prisma {
     sessionId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutTraceInput
   }
 
   export type TraceCreateOrConnectWithoutProjectInput = {
@@ -57188,9 +64287,10 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceCreateNestedManyWithoutModelInput
   }
 
   export type ModelUncheckedCreateWithoutProjectInput = {
@@ -57203,9 +64303,10 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceUncheckedCreateNestedManyWithoutModelInput
   }
 
   export type ModelCreateOrConnectWithoutProjectInput = {
@@ -57308,8 +64409,10 @@ export namespace Prisma {
     startTime?: Date | string | null
     endTime?: Date | string | null
     error?: string | null
+    jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobConfiguration: JobConfigurationCreateNestedOneWithoutJobExecutionInput
-    trace?: TraceCreateNestedOneWithoutJobExecutionInput
     score?: ScoreCreateNestedOneWithoutJobExecutionInput
   }
 
@@ -57323,6 +64426,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -57621,6 +64726,106 @@ export namespace Prisma {
 
   export type AnnotationQueueItemCreateManyProjectInputEnvelope = {
     data: AnnotationQueueItemCreateManyProjectInput | AnnotationQueueItemCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TraceMediaCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    field: string
+    media: MediaCreateNestedOneWithoutTraceMediaInput
+  }
+
+  export type TraceMediaUncheckedCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    field: string
+  }
+
+  export type TraceMediaCreateOrConnectWithoutProjectInput = {
+    where: TraceMediaWhereUniqueInput
+    create: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type TraceMediaCreateManyProjectInputEnvelope = {
+    data: TraceMediaCreateManyProjectInput | TraceMediaCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MediaCreateWithoutProjectInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    TraceMedia?: TraceMediaCreateNestedManyWithoutMediaInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaUncheckedCreateWithoutProjectInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutMediaInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaCreateOrConnectWithoutProjectInput = {
+    where: MediaWhereUniqueInput
+    create: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type MediaCreateManyProjectInputEnvelope = {
+    data: MediaCreateManyProjectInput | MediaCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ObservationMediaCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    observationId: string
+    field: string
+    media: MediaCreateNestedOneWithoutObservationMediaInput
+  }
+
+  export type ObservationMediaUncheckedCreateWithoutProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
+  export type ObservationMediaCreateOrConnectWithoutProjectInput = {
+    where: ObservationMediaWhereUniqueInput
+    create: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type ObservationMediaCreateManyProjectInputEnvelope = {
+    data: ObservationMediaCreateManyProjectInput | ObservationMediaCreateManyProjectInput[]
     skipDuplicates?: boolean
   }
 
@@ -57964,7 +65169,7 @@ export namespace Prisma {
     inputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     outputPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
     totalPrice?: DecimalNullableFilter<"Model"> | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFilter<"Model"> | string
+    unit?: StringNullableFilter<"Model"> | string | null
     tokenizerId?: StringNullableFilter<"Model"> | string | null
     tokenizerConfig?: JsonNullableFilter<"Model">
   }
@@ -58068,6 +65273,8 @@ export namespace Prisma {
     endTime?: DateTimeNullableFilter<"JobExecution"> | Date | string | null
     error?: StringNullableFilter<"JobExecution"> | string | null
     jobInputTraceId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputObservationId?: StringNullableFilter<"JobExecution"> | string | null
+    jobInputDatasetItemId?: StringNullableFilter<"JobExecution"> | string | null
     jobOutputScoreId?: StringNullableFilter<"JobExecution"> | string | null
   }
 
@@ -58314,6 +65521,99 @@ export namespace Prisma {
     data: XOR<AnnotationQueueItemUpdateManyMutationInput, AnnotationQueueItemUncheckedUpdateManyWithoutProjectInput>
   }
 
+  export type TraceMediaUpsertWithWhereUniqueWithoutProjectInput = {
+    where: TraceMediaWhereUniqueInput
+    update: XOR<TraceMediaUpdateWithoutProjectInput, TraceMediaUncheckedUpdateWithoutProjectInput>
+    create: XOR<TraceMediaCreateWithoutProjectInput, TraceMediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type TraceMediaUpdateWithWhereUniqueWithoutProjectInput = {
+    where: TraceMediaWhereUniqueInput
+    data: XOR<TraceMediaUpdateWithoutProjectInput, TraceMediaUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type TraceMediaUpdateManyWithWhereWithoutProjectInput = {
+    where: TraceMediaScalarWhereInput
+    data: XOR<TraceMediaUpdateManyMutationInput, TraceMediaUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type TraceMediaScalarWhereInput = {
+    AND?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+    OR?: TraceMediaScalarWhereInput[]
+    NOT?: TraceMediaScalarWhereInput | TraceMediaScalarWhereInput[]
+    id?: StringFilter<"TraceMedia"> | string
+    projectId?: StringFilter<"TraceMedia"> | string
+    createdAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"TraceMedia"> | Date | string
+    mediaId?: StringFilter<"TraceMedia"> | string
+    traceId?: StringFilter<"TraceMedia"> | string
+    field?: StringFilter<"TraceMedia"> | string
+  }
+
+  export type MediaUpsertWithWhereUniqueWithoutProjectInput = {
+    where: MediaWhereUniqueInput
+    update: XOR<MediaUpdateWithoutProjectInput, MediaUncheckedUpdateWithoutProjectInput>
+    create: XOR<MediaCreateWithoutProjectInput, MediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type MediaUpdateWithWhereUniqueWithoutProjectInput = {
+    where: MediaWhereUniqueInput
+    data: XOR<MediaUpdateWithoutProjectInput, MediaUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type MediaUpdateManyWithWhereWithoutProjectInput = {
+    where: MediaScalarWhereInput
+    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type MediaScalarWhereInput = {
+    AND?: MediaScalarWhereInput | MediaScalarWhereInput[]
+    OR?: MediaScalarWhereInput[]
+    NOT?: MediaScalarWhereInput | MediaScalarWhereInput[]
+    id?: StringFilter<"Media"> | string
+    sha256Hash?: StringFilter<"Media"> | string
+    projectId?: StringFilter<"Media"> | string
+    createdAt?: DateTimeFilter<"Media"> | Date | string
+    updatedAt?: DateTimeFilter<"Media"> | Date | string
+    uploadedAt?: DateTimeNullableFilter<"Media"> | Date | string | null
+    uploadHttpStatus?: IntNullableFilter<"Media"> | number | null
+    uploadHttpError?: StringNullableFilter<"Media"> | string | null
+    bucketPath?: StringFilter<"Media"> | string
+    bucketName?: StringFilter<"Media"> | string
+    contentType?: StringFilter<"Media"> | string
+    contentLength?: BigIntFilter<"Media"> | bigint | number
+  }
+
+  export type ObservationMediaUpsertWithWhereUniqueWithoutProjectInput = {
+    where: ObservationMediaWhereUniqueInput
+    update: XOR<ObservationMediaUpdateWithoutProjectInput, ObservationMediaUncheckedUpdateWithoutProjectInput>
+    create: XOR<ObservationMediaCreateWithoutProjectInput, ObservationMediaUncheckedCreateWithoutProjectInput>
+  }
+
+  export type ObservationMediaUpdateWithWhereUniqueWithoutProjectInput = {
+    where: ObservationMediaWhereUniqueInput
+    data: XOR<ObservationMediaUpdateWithoutProjectInput, ObservationMediaUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type ObservationMediaUpdateManyWithWhereWithoutProjectInput = {
+    where: ObservationMediaScalarWhereInput
+    data: XOR<ObservationMediaUpdateManyMutationInput, ObservationMediaUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type ObservationMediaScalarWhereInput = {
+    AND?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+    OR?: ObservationMediaScalarWhereInput[]
+    NOT?: ObservationMediaScalarWhereInput | ObservationMediaScalarWhereInput[]
+    id?: StringFilter<"ObservationMedia"> | string
+    projectId?: StringFilter<"ObservationMedia"> | string
+    createdAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    updatedAt?: DateTimeFilter<"ObservationMedia"> | Date | string
+    mediaId?: StringFilter<"ObservationMedia"> | string
+    traceId?: StringFilter<"ObservationMedia"> | string
+    observationId?: StringFilter<"ObservationMedia"> | string
+    field?: StringFilter<"ObservationMedia"> | string
+  }
+
   export type ProjectCreateWithoutApiKeysInput = {
     id?: string
     createdAt?: Date | string
@@ -58340,6 +65640,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutApiKeysInput = {
@@ -58368,6 +65671,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutApiKeysInput = {
@@ -58412,6 +65718,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutApiKeysInput = {
@@ -58440,6 +65749,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutLlmApiKeysInput = {
@@ -58468,6 +65780,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutLlmApiKeysInput = {
@@ -58496,6 +65811,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutLlmApiKeysInput = {
@@ -58540,6 +65858,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutLlmApiKeysInput = {
@@ -58568,6 +65889,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type OrganizationCreateWithoutOrganizationMembershipsInput = {
@@ -58809,6 +66133,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutProjectMembersInput = {
@@ -58837,6 +66164,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutProjectMembersInput = {
@@ -58953,6 +66283,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutProjectMembersInput = {
@@ -58981,6 +66314,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutProjectMembershipsInput = {
@@ -59083,6 +66419,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutInvitationsInput = {
@@ -59111,6 +66450,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutInvitationsInput = {
@@ -59229,6 +66571,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutInvitationsInput = {
@@ -59257,6 +66602,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type UserUpsertWithoutInvitationsInput = {
@@ -59334,6 +66682,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutSessionsInput = {
@@ -59362,6 +66713,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutSessionsInput = {
@@ -59386,7 +66740,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     project: ProjectCreateNestedOneWithoutTracesInput
-    JobExecution?: JobExecutionCreateNestedManyWithoutTraceInput
   }
 
   export type TraceUncheckedCreateWithoutSessionInput = {
@@ -59405,7 +66758,6 @@ export namespace Prisma {
     output?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutTraceInput
   }
 
   export type TraceCreateOrConnectWithoutSessionInput = {
@@ -59455,6 +66807,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutSessionsInput = {
@@ -59483,6 +66838,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceUpsertWithWhereUniqueWithoutSessionInput = {
@@ -59527,6 +66885,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutTracesInput = {
@@ -59555,6 +66916,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutTracesInput = {
@@ -59583,42 +66947,6 @@ export namespace Prisma {
   export type TraceSessionCreateOrConnectWithoutTracesInput = {
     where: TraceSessionWhereUniqueInput
     create: XOR<TraceSessionCreateWithoutTracesInput, TraceSessionUncheckedCreateWithoutTracesInput>
-  }
-
-  export type JobExecutionCreateWithoutTraceInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: $Enums.JobExecutionStatus
-    startTime?: Date | string | null
-    endTime?: Date | string | null
-    error?: string | null
-    project: ProjectCreateNestedOneWithoutJobExecutionInput
-    jobConfiguration: JobConfigurationCreateNestedOneWithoutJobExecutionInput
-    score?: ScoreCreateNestedOneWithoutJobExecutionInput
-  }
-
-  export type JobExecutionUncheckedCreateWithoutTraceInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    projectId: string
-    jobConfigurationId: string
-    status: $Enums.JobExecutionStatus
-    startTime?: Date | string | null
-    endTime?: Date | string | null
-    error?: string | null
-    jobOutputScoreId?: string | null
-  }
-
-  export type JobExecutionCreateOrConnectWithoutTraceInput = {
-    where: JobExecutionWhereUniqueInput
-    create: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput>
-  }
-
-  export type JobExecutionCreateManyTraceInputEnvelope = {
-    data: JobExecutionCreateManyTraceInput | JobExecutionCreateManyTraceInput[]
-    skipDuplicates?: boolean
   }
 
   export type ProjectUpsertWithoutTracesInput = {
@@ -59658,6 +66986,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutTracesInput = {
@@ -59686,6 +67017,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type TraceSessionUpsertWithoutTracesInput = {
@@ -59717,22 +67051,6 @@ export namespace Prisma {
     public?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type JobExecutionUpsertWithWhereUniqueWithoutTraceInput = {
-    where: JobExecutionWhereUniqueInput
-    update: XOR<JobExecutionUpdateWithoutTraceInput, JobExecutionUncheckedUpdateWithoutTraceInput>
-    create: XOR<JobExecutionCreateWithoutTraceInput, JobExecutionUncheckedCreateWithoutTraceInput>
-  }
-
-  export type JobExecutionUpdateWithWhereUniqueWithoutTraceInput = {
-    where: JobExecutionWhereUniqueInput
-    data: XOR<JobExecutionUpdateWithoutTraceInput, JobExecutionUncheckedUpdateWithoutTraceInput>
-  }
-
-  export type JobExecutionUpdateManyWithWhereWithoutTraceInput = {
-    where: JobExecutionScalarWhereInput
-    data: XOR<JobExecutionUpdateManyMutationInput, JobExecutionUncheckedUpdateManyWithoutTraceInput>
-  }
-
   export type ProjectCreateWithoutObservationsInput = {
     id?: string
     createdAt?: Date | string
@@ -59759,6 +67077,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutObservationsInput = {
@@ -59787,6 +67108,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutObservationsInput = {
@@ -59831,6 +67155,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutObservationsInput = {
@@ -59859,6 +67186,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutScoreInput = {
@@ -59887,6 +67217,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreInput = {
@@ -59915,6 +67248,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreInput = {
@@ -59930,9 +67266,11 @@ export namespace Prisma {
     startTime?: Date | string | null
     endTime?: Date | string | null
     error?: string | null
+    jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     project: ProjectCreateNestedOneWithoutJobExecutionInput
     jobConfiguration: JobConfigurationCreateNestedOneWithoutJobExecutionInput
-    trace?: TraceCreateNestedOneWithoutJobExecutionInput
   }
 
   export type JobExecutionUncheckedCreateWithoutScoreInput = {
@@ -59946,6 +67284,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
   }
 
   export type JobExecutionCreateOrConnectWithoutScoreInput = {
@@ -60028,6 +67368,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreInput = {
@@ -60056,6 +67399,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobExecutionUpsertWithWhereUniqueWithoutScoreInput = {
@@ -60139,6 +67485,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutScoreConfigInput = {
@@ -60167,6 +67516,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutScoreConfigInput = {
@@ -60259,6 +67611,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutScoreConfigInput = {
@@ -60287,6 +67642,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ScoreUpsertWithWhereUniqueWithoutScoreConfigInput = {
@@ -60331,6 +67689,9 @@ export namespace Prisma {
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutAnnotationQueueInput = {
@@ -60359,6 +67720,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutAnnotationQueueInput = {
@@ -60441,6 +67805,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutAnnotationQueueInput = {
@@ -60469,6 +67836,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type AnnotationQueueItemUpsertWithWhereUniqueWithoutQueueInput = {
@@ -60624,6 +67994,9 @@ export namespace Prisma {
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutAnnotationQueueItemInput = {
@@ -60652,6 +68025,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutAnnotationQueueItemInput = {
@@ -60825,6 +68201,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutAnnotationQueueItemInput = {
@@ -60853,6 +68232,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutDatasetInput = {
@@ -60881,6 +68263,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutDatasetInput = {
@@ -60909,6 +68294,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutDatasetInput = {
@@ -61019,6 +68407,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutDatasetInput = {
@@ -61047,6 +68438,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type DatasetItemUpsertWithWhereUniqueWithoutDatasetInput = {
@@ -61488,6 +68882,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutRawEventsInput = {
@@ -61516,6 +68913,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutRawEventsInput = {
@@ -61560,6 +68960,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutRawEventsInput = {
@@ -61588,6 +68991,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutCommentInput = {
@@ -61616,6 +69022,9 @@ export namespace Prisma {
     BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutCommentInput = {
@@ -61644,6 +69053,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutCommentInput = {
@@ -61688,6 +69100,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutCommentInput = {
@@ -61716,6 +69131,9 @@ export namespace Prisma {
     BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutPromptInput = {
@@ -61744,6 +69162,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPromptInput = {
@@ -61772,6 +69193,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPromptInput = {
@@ -61816,6 +69240,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPromptInput = {
@@ -61844,6 +69271,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutModelInput = {
@@ -61872,6 +69302,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutModelInput = {
@@ -61900,11 +69333,40 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutModelInput = {
     where: ProjectWhereUniqueInput
     create: XOR<ProjectCreateWithoutModelInput, ProjectUncheckedCreateWithoutModelInput>
+  }
+
+  export type PriceCreateWithoutModelInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUncheckedCreateWithoutModelInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceCreateOrConnectWithoutModelInput = {
+    where: PriceWhereUniqueInput
+    create: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput>
+  }
+
+  export type PriceCreateManyModelInputEnvelope = {
+    data: PriceCreateManyModelInput | PriceCreateManyModelInput[]
+    skipDuplicates?: boolean
   }
 
   export type ProjectUpsertWithoutModelInput = {
@@ -61944,6 +69406,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutModelInput = {
@@ -61972,6 +69437,117 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type PriceUpsertWithWhereUniqueWithoutModelInput = {
+    where: PriceWhereUniqueInput
+    update: XOR<PriceUpdateWithoutModelInput, PriceUncheckedUpdateWithoutModelInput>
+    create: XOR<PriceCreateWithoutModelInput, PriceUncheckedCreateWithoutModelInput>
+  }
+
+  export type PriceUpdateWithWhereUniqueWithoutModelInput = {
+    where: PriceWhereUniqueInput
+    data: XOR<PriceUpdateWithoutModelInput, PriceUncheckedUpdateWithoutModelInput>
+  }
+
+  export type PriceUpdateManyWithWhereWithoutModelInput = {
+    where: PriceScalarWhereInput
+    data: XOR<PriceUpdateManyMutationInput, PriceUncheckedUpdateManyWithoutModelInput>
+  }
+
+  export type PriceScalarWhereInput = {
+    AND?: PriceScalarWhereInput | PriceScalarWhereInput[]
+    OR?: PriceScalarWhereInput[]
+    NOT?: PriceScalarWhereInput | PriceScalarWhereInput[]
+    id?: StringFilter<"Price"> | string
+    createdAt?: DateTimeFilter<"Price"> | Date | string
+    updatedAt?: DateTimeFilter<"Price"> | Date | string
+    modelId?: StringFilter<"Price"> | string
+    usageType?: StringFilter<"Price"> | string
+    price?: DecimalFilter<"Price"> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type ModelCreateWithoutPriceInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    modelName: string
+    matchPattern: string
+    startDate?: Date | string | null
+    inputPrice?: Decimal | DecimalJsLike | number | string | null
+    outputPrice?: Decimal | DecimalJsLike | number | string | null
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    unit?: string | null
+    tokenizerId?: string | null
+    tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    project?: ProjectCreateNestedOneWithoutModelInput
+  }
+
+  export type ModelUncheckedCreateWithoutPriceInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    projectId?: string | null
+    modelName: string
+    matchPattern: string
+    startDate?: Date | string | null
+    inputPrice?: Decimal | DecimalJsLike | number | string | null
+    outputPrice?: Decimal | DecimalJsLike | number | string | null
+    totalPrice?: Decimal | DecimalJsLike | number | string | null
+    unit?: string | null
+    tokenizerId?: string | null
+    tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type ModelCreateOrConnectWithoutPriceInput = {
+    where: ModelWhereUniqueInput
+    create: XOR<ModelCreateWithoutPriceInput, ModelUncheckedCreateWithoutPriceInput>
+  }
+
+  export type ModelUpsertWithoutPriceInput = {
+    update: XOR<ModelUpdateWithoutPriceInput, ModelUncheckedUpdateWithoutPriceInput>
+    create: XOR<ModelCreateWithoutPriceInput, ModelUncheckedCreateWithoutPriceInput>
+    where?: ModelWhereInput
+  }
+
+  export type ModelUpdateToOneWithWhereWithoutPriceInput = {
+    where?: ModelWhereInput
+    data: XOR<ModelUpdateWithoutPriceInput, ModelUncheckedUpdateWithoutPriceInput>
+  }
+
+  export type ModelUpdateWithoutPriceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    modelName?: StringFieldUpdateOperationsInput | string
+    matchPattern?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    project?: ProjectUpdateOneWithoutModelNestedInput
+  }
+
+  export type ModelUncheckedUpdateWithoutPriceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    projectId?: NullableStringFieldUpdateOperationsInput | string | null
+    modelName?: StringFieldUpdateOperationsInput | string
+    matchPattern?: StringFieldUpdateOperationsInput | string
+    startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type ProjectCreateWithoutEvalTemplateInput = {
@@ -62000,6 +69576,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutEvalTemplateInput = {
@@ -62028,6 +69607,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutEvalTemplateInput = {
@@ -62114,6 +69696,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutEvalTemplateInput = {
@@ -62142,6 +69727,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithWhereUniqueWithoutEvalTemplateInput = {
@@ -62186,6 +69774,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobConfigurationInput = {
@@ -62214,6 +69805,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobConfigurationInput = {
@@ -62264,8 +69858,10 @@ export namespace Prisma {
     startTime?: Date | string | null
     endTime?: Date | string | null
     error?: string | null
+    jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     project: ProjectCreateNestedOneWithoutJobExecutionInput
-    trace?: TraceCreateNestedOneWithoutJobExecutionInput
     score?: ScoreCreateNestedOneWithoutJobExecutionInput
   }
 
@@ -62279,6 +69875,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -62329,6 +69927,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobConfigurationInput = {
@@ -62357,6 +69958,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type EvalTemplateUpsertWithoutJobConfigurationInput = {
@@ -62442,6 +70046,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutJobExecutionInput = {
@@ -62470,6 +70077,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutJobExecutionInput = {
@@ -62512,51 +70122,6 @@ export namespace Prisma {
   export type JobConfigurationCreateOrConnectWithoutJobExecutionInput = {
     where: JobConfigurationWhereUniqueInput
     create: XOR<JobConfigurationCreateWithoutJobExecutionInput, JobConfigurationUncheckedCreateWithoutJobExecutionInput>
-  }
-
-  export type TraceCreateWithoutJobExecutionInput = {
-    id?: string
-    externalId?: string | null
-    timestamp?: Date | string
-    name?: string | null
-    userId?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    release?: string | null
-    version?: string | null
-    public?: boolean
-    bookmarked?: boolean
-    tags?: TraceCreatetagsInput | string[]
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    project: ProjectCreateNestedOneWithoutTracesInput
-    session?: TraceSessionCreateNestedOneWithoutTracesInput
-  }
-
-  export type TraceUncheckedCreateWithoutJobExecutionInput = {
-    id?: string
-    externalId?: string | null
-    timestamp?: Date | string
-    name?: string | null
-    userId?: string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    release?: string | null
-    version?: string | null
-    projectId: string
-    public?: boolean
-    bookmarked?: boolean
-    tags?: TraceCreatetagsInput | string[]
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    sessionId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type TraceCreateOrConnectWithoutJobExecutionInput = {
-    where: TraceWhereUniqueInput
-    create: XOR<TraceCreateWithoutJobExecutionInput, TraceUncheckedCreateWithoutJobExecutionInput>
   }
 
   export type ScoreCreateWithoutJobExecutionInput = {
@@ -62639,6 +70204,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutJobExecutionInput = {
@@ -62667,6 +70235,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type JobConfigurationUpsertWithoutJobExecutionInput = {
@@ -62710,57 +70281,6 @@ export namespace Prisma {
     variableMapping?: JsonNullValueInput | InputJsonValue
     sampling?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     delay?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type TraceUpsertWithoutJobExecutionInput = {
-    update: XOR<TraceUpdateWithoutJobExecutionInput, TraceUncheckedUpdateWithoutJobExecutionInput>
-    create: XOR<TraceCreateWithoutJobExecutionInput, TraceUncheckedCreateWithoutJobExecutionInput>
-    where?: TraceWhereInput
-  }
-
-  export type TraceUpdateToOneWithWhereWithoutJobExecutionInput = {
-    where?: TraceWhereInput
-    data: XOR<TraceUpdateWithoutJobExecutionInput, TraceUncheckedUpdateWithoutJobExecutionInput>
-  }
-
-  export type TraceUpdateWithoutJobExecutionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    release?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: NullableStringFieldUpdateOperationsInput | string | null
-    public?: BoolFieldUpdateOperationsInput | boolean
-    bookmarked?: BoolFieldUpdateOperationsInput | boolean
-    tags?: TraceUpdatetagsInput | string[]
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    project?: ProjectUpdateOneRequiredWithoutTracesNestedInput
-    session?: TraceSessionUpdateOneWithoutTracesNestedInput
-  }
-
-  export type TraceUncheckedUpdateWithoutJobExecutionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    externalId?: NullableStringFieldUpdateOperationsInput | string | null
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: NullableStringFieldUpdateOperationsInput | string | null
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    release?: NullableStringFieldUpdateOperationsInput | string | null
-    version?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: StringFieldUpdateOperationsInput | string
-    public?: BoolFieldUpdateOperationsInput | boolean
-    bookmarked?: BoolFieldUpdateOperationsInput | boolean
-    tags?: TraceUpdatetagsInput | string[]
-    input?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    sessionId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ScoreUpsertWithoutJobExecutionInput = {
@@ -62838,6 +70358,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutPosthogIntegrationInput = {
@@ -62866,6 +70389,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutPosthogIntegrationInput = {
@@ -62910,6 +70436,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutPosthogIntegrationInput = {
@@ -62938,6 +70467,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateWithoutBatchExportInput = {
@@ -62966,6 +70498,9 @@ export namespace Prisma {
     comment?: CommentCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateWithoutBatchExportInput = {
@@ -62994,6 +70529,9 @@ export namespace Prisma {
     comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
     annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
     annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectCreateOrConnectWithoutBatchExportInput = {
@@ -63038,6 +70576,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutBatchExportInput = {
@@ -63066,6 +70607,679 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectCreateWithoutMediaInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    organization: OrganizationCreateNestedOneWithoutProjectsInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutMediaInput = {
+    id?: string
+    orgId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutMediaInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutMediaInput, ProjectUncheckedCreateWithoutMediaInput>
+  }
+
+  export type TraceMediaCreateWithoutMediaInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    field: string
+    project: ProjectCreateNestedOneWithoutTraceMediaInput
+  }
+
+  export type TraceMediaUncheckedCreateWithoutMediaInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    field: string
+  }
+
+  export type TraceMediaCreateOrConnectWithoutMediaInput = {
+    where: TraceMediaWhereUniqueInput
+    create: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput>
+  }
+
+  export type TraceMediaCreateManyMediaInputEnvelope = {
+    data: TraceMediaCreateManyMediaInput | TraceMediaCreateManyMediaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ObservationMediaCreateWithoutMediaInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    observationId: string
+    field: string
+    project: ProjectCreateNestedOneWithoutObservationMediaInput
+  }
+
+  export type ObservationMediaUncheckedCreateWithoutMediaInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
+  export type ObservationMediaCreateOrConnectWithoutMediaInput = {
+    where: ObservationMediaWhereUniqueInput
+    create: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput>
+  }
+
+  export type ObservationMediaCreateManyMediaInputEnvelope = {
+    data: ObservationMediaCreateManyMediaInput | ObservationMediaCreateManyMediaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProjectUpsertWithoutMediaInput = {
+    update: XOR<ProjectUpdateWithoutMediaInput, ProjectUncheckedUpdateWithoutMediaInput>
+    create: XOR<ProjectCreateWithoutMediaInput, ProjectUncheckedCreateWithoutMediaInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutMediaInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutMediaInput, ProjectUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type ProjectUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutProjectsNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type TraceMediaUpsertWithWhereUniqueWithoutMediaInput = {
+    where: TraceMediaWhereUniqueInput
+    update: XOR<TraceMediaUpdateWithoutMediaInput, TraceMediaUncheckedUpdateWithoutMediaInput>
+    create: XOR<TraceMediaCreateWithoutMediaInput, TraceMediaUncheckedCreateWithoutMediaInput>
+  }
+
+  export type TraceMediaUpdateWithWhereUniqueWithoutMediaInput = {
+    where: TraceMediaWhereUniqueInput
+    data: XOR<TraceMediaUpdateWithoutMediaInput, TraceMediaUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type TraceMediaUpdateManyWithWhereWithoutMediaInput = {
+    where: TraceMediaScalarWhereInput
+    data: XOR<TraceMediaUpdateManyMutationInput, TraceMediaUncheckedUpdateManyWithoutMediaInput>
+  }
+
+  export type ObservationMediaUpsertWithWhereUniqueWithoutMediaInput = {
+    where: ObservationMediaWhereUniqueInput
+    update: XOR<ObservationMediaUpdateWithoutMediaInput, ObservationMediaUncheckedUpdateWithoutMediaInput>
+    create: XOR<ObservationMediaCreateWithoutMediaInput, ObservationMediaUncheckedCreateWithoutMediaInput>
+  }
+
+  export type ObservationMediaUpdateWithWhereUniqueWithoutMediaInput = {
+    where: ObservationMediaWhereUniqueInput
+    data: XOR<ObservationMediaUpdateWithoutMediaInput, ObservationMediaUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type ObservationMediaUpdateManyWithWhereWithoutMediaInput = {
+    where: ObservationMediaScalarWhereInput
+    data: XOR<ObservationMediaUpdateManyMutationInput, ObservationMediaUncheckedUpdateManyWithoutMediaInput>
+  }
+
+  export type ProjectCreateWithoutTraceMediaInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    organization: OrganizationCreateNestedOneWithoutProjectsInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutTraceMediaInput = {
+    id?: string
+    orgId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutTraceMediaInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutTraceMediaInput, ProjectUncheckedCreateWithoutTraceMediaInput>
+  }
+
+  export type MediaCreateWithoutTraceMediaInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    project: ProjectCreateNestedOneWithoutMediaInput
+    ObservationMedia?: ObservationMediaCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaUncheckedCreateWithoutTraceMediaInput = {
+    id?: string
+    sha256Hash: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    ObservationMedia?: ObservationMediaUncheckedCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaCreateOrConnectWithoutTraceMediaInput = {
+    where: MediaWhereUniqueInput
+    create: XOR<MediaCreateWithoutTraceMediaInput, MediaUncheckedCreateWithoutTraceMediaInput>
+  }
+
+  export type ProjectUpsertWithoutTraceMediaInput = {
+    update: XOR<ProjectUpdateWithoutTraceMediaInput, ProjectUncheckedUpdateWithoutTraceMediaInput>
+    create: XOR<ProjectCreateWithoutTraceMediaInput, ProjectUncheckedCreateWithoutTraceMediaInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutTraceMediaInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutTraceMediaInput, ProjectUncheckedUpdateWithoutTraceMediaInput>
+  }
+
+  export type ProjectUpdateWithoutTraceMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutProjectsNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutTraceMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type MediaUpsertWithoutTraceMediaInput = {
+    update: XOR<MediaUpdateWithoutTraceMediaInput, MediaUncheckedUpdateWithoutTraceMediaInput>
+    create: XOR<MediaCreateWithoutTraceMediaInput, MediaUncheckedCreateWithoutTraceMediaInput>
+    where?: MediaWhereInput
+  }
+
+  export type MediaUpdateToOneWithWhereWithoutTraceMediaInput = {
+    where?: MediaWhereInput
+    data: XOR<MediaUpdateWithoutTraceMediaInput, MediaUncheckedUpdateWithoutTraceMediaInput>
+  }
+
+  export type MediaUpdateWithoutTraceMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    project?: ProjectUpdateOneRequiredWithoutMediaNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaUncheckedUpdateWithoutTraceMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutMediaNestedInput
+  }
+
+  export type ProjectCreateWithoutObservationMediaInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipCreateNestedManyWithoutProjectInput
+    organization: OrganizationCreateNestedOneWithoutProjectsInput
+    traces?: TraceCreateNestedManyWithoutProjectInput
+    observations?: ObservationCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyCreateNestedManyWithoutProjectInput
+    dataset?: DatasetCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionCreateNestedManyWithoutProjectInput
+    Prompt?: PromptCreateNestedManyWithoutProjectInput
+    Model?: ModelCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationCreateNestedManyWithoutProjectInput
+    Score?: ScoreCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportCreateNestedManyWithoutProjectInput
+    comment?: CommentCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutProjectInput
+    Media?: MediaCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectUncheckedCreateWithoutObservationMediaInput = {
+    id?: string
+    orgId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    name: string
+    projectMembers?: ProjectMembershipUncheckedCreateNestedManyWithoutProjectInput
+    traces?: TraceUncheckedCreateNestedManyWithoutProjectInput
+    observations?: ObservationUncheckedCreateNestedManyWithoutProjectInput
+    apiKeys?: ApiKeyUncheckedCreateNestedManyWithoutProjectInput
+    dataset?: DatasetUncheckedCreateNestedManyWithoutProjectInput
+    RawEvents?: EventsUncheckedCreateNestedManyWithoutProjectInput
+    invitations?: MembershipInvitationUncheckedCreateNestedManyWithoutProjectInput
+    sessions?: TraceSessionUncheckedCreateNestedManyWithoutProjectInput
+    Prompt?: PromptUncheckedCreateNestedManyWithoutProjectInput
+    Model?: ModelUncheckedCreateNestedManyWithoutProjectInput
+    EvalTemplate?: EvalTemplateUncheckedCreateNestedManyWithoutProjectInput
+    JobConfiguration?: JobConfigurationUncheckedCreateNestedManyWithoutProjectInput
+    JobExecution?: JobExecutionUncheckedCreateNestedManyWithoutProjectInput
+    LlmApiKeys?: LlmApiKeysUncheckedCreateNestedManyWithoutProjectInput
+    PosthogIntegration?: PosthogIntegrationUncheckedCreateNestedManyWithoutProjectInput
+    Score?: ScoreUncheckedCreateNestedManyWithoutProjectInput
+    scoreConfig?: ScoreConfigUncheckedCreateNestedManyWithoutProjectInput
+    BatchExport?: BatchExportUncheckedCreateNestedManyWithoutProjectInput
+    comment?: CommentUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueue?: AnnotationQueueUncheckedCreateNestedManyWithoutProjectInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedCreateNestedManyWithoutProjectInput
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutProjectInput
+    Media?: MediaUncheckedCreateNestedManyWithoutProjectInput
+  }
+
+  export type ProjectCreateOrConnectWithoutObservationMediaInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutObservationMediaInput, ProjectUncheckedCreateWithoutObservationMediaInput>
+  }
+
+  export type MediaCreateWithoutObservationMediaInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    project: ProjectCreateNestedOneWithoutMediaInput
+    TraceMedia?: TraceMediaCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaUncheckedCreateWithoutObservationMediaInput = {
+    id?: string
+    sha256Hash: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+    TraceMedia?: TraceMediaUncheckedCreateNestedManyWithoutMediaInput
+  }
+
+  export type MediaCreateOrConnectWithoutObservationMediaInput = {
+    where: MediaWhereUniqueInput
+    create: XOR<MediaCreateWithoutObservationMediaInput, MediaUncheckedCreateWithoutObservationMediaInput>
+  }
+
+  export type ProjectUpsertWithoutObservationMediaInput = {
+    update: XOR<ProjectUpdateWithoutObservationMediaInput, ProjectUncheckedUpdateWithoutObservationMediaInput>
+    create: XOR<ProjectCreateWithoutObservationMediaInput, ProjectUncheckedCreateWithoutObservationMediaInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutObservationMediaInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutObservationMediaInput, ProjectUncheckedUpdateWithoutObservationMediaInput>
+  }
+
+  export type ProjectUpdateWithoutObservationMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUpdateManyWithoutProjectNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutProjectsNestedInput
+    traces?: TraceUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUpdateManyWithoutProjectNestedInput
+    Model?: ModelUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUpdateManyWithoutProjectNestedInput
+    comment?: CommentUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+  }
+
+  export type ProjectUncheckedUpdateWithoutObservationMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    projectMembers?: ProjectMembershipUncheckedUpdateManyWithoutProjectNestedInput
+    traces?: TraceUncheckedUpdateManyWithoutProjectNestedInput
+    observations?: ObservationUncheckedUpdateManyWithoutProjectNestedInput
+    apiKeys?: ApiKeyUncheckedUpdateManyWithoutProjectNestedInput
+    dataset?: DatasetUncheckedUpdateManyWithoutProjectNestedInput
+    RawEvents?: EventsUncheckedUpdateManyWithoutProjectNestedInput
+    invitations?: MembershipInvitationUncheckedUpdateManyWithoutProjectNestedInput
+    sessions?: TraceSessionUncheckedUpdateManyWithoutProjectNestedInput
+    Prompt?: PromptUncheckedUpdateManyWithoutProjectNestedInput
+    Model?: ModelUncheckedUpdateManyWithoutProjectNestedInput
+    EvalTemplate?: EvalTemplateUncheckedUpdateManyWithoutProjectNestedInput
+    JobConfiguration?: JobConfigurationUncheckedUpdateManyWithoutProjectNestedInput
+    JobExecution?: JobExecutionUncheckedUpdateManyWithoutProjectNestedInput
+    LlmApiKeys?: LlmApiKeysUncheckedUpdateManyWithoutProjectNestedInput
+    PosthogIntegration?: PosthogIntegrationUncheckedUpdateManyWithoutProjectNestedInput
+    Score?: ScoreUncheckedUpdateManyWithoutProjectNestedInput
+    scoreConfig?: ScoreConfigUncheckedUpdateManyWithoutProjectNestedInput
+    BatchExport?: BatchExportUncheckedUpdateManyWithoutProjectNestedInput
+    comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
+    annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+  }
+
+  export type MediaUpsertWithoutObservationMediaInput = {
+    update: XOR<MediaUpdateWithoutObservationMediaInput, MediaUncheckedUpdateWithoutObservationMediaInput>
+    create: XOR<MediaCreateWithoutObservationMediaInput, MediaUncheckedCreateWithoutObservationMediaInput>
+    where?: MediaWhereInput
+  }
+
+  export type MediaUpdateToOneWithWhereWithoutObservationMediaInput = {
+    where?: MediaWhereInput
+    data: XOR<MediaUpdateWithoutObservationMediaInput, MediaUncheckedUpdateWithoutObservationMediaInput>
+  }
+
+  export type MediaUpdateWithoutObservationMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    project?: ProjectUpdateOneRequiredWithoutMediaNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaUncheckedUpdateWithoutObservationMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutMediaNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -63464,6 +71678,9 @@ export namespace Prisma {
     comment?: CommentUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUpdateManyWithoutProjectNestedInput
+    Media?: MediaUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateWithoutOrganizationInput = {
@@ -63492,6 +71709,9 @@ export namespace Prisma {
     comment?: CommentUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueue?: AnnotationQueueUncheckedUpdateManyWithoutProjectNestedInput
     annotationQueueItem?: AnnotationQueueItemUncheckedUpdateManyWithoutProjectNestedInput
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutProjectNestedInput
+    Media?: MediaUncheckedUpdateManyWithoutProjectNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateManyWithoutOrganizationInput = {
@@ -63670,7 +71890,7 @@ export namespace Prisma {
     inputPrice?: Decimal | DecimalJsLike | number | string | null
     outputPrice?: Decimal | DecimalJsLike | number | string | null
     totalPrice?: Decimal | DecimalJsLike | number | string | null
-    unit: string
+    unit?: string | null
     tokenizerId?: string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -63714,6 +71934,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -63818,6 +72040,39 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type TraceMediaCreateManyProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    field: string
+  }
+
+  export type MediaCreateManyProjectInput = {
+    id?: string
+    sha256Hash: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    uploadedAt?: Date | string | null
+    uploadHttpStatus?: number | null
+    uploadHttpError?: string | null
+    bucketPath: string
+    bucketName: string
+    contentType: string
+    contentLength: bigint | number
+  }
+
+  export type ObservationMediaCreateManyProjectInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    mediaId: string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
   export type ProjectMembershipUpdateWithoutProjectInput = {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -63859,7 +72114,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: TraceSessionUpdateOneWithoutTracesNestedInput
-    JobExecution?: JobExecutionUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceUncheckedUpdateWithoutProjectInput = {
@@ -63879,7 +72133,6 @@ export namespace Prisma {
     sessionId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    JobExecution?: JobExecutionUncheckedUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceUncheckedUpdateManyWithoutProjectInput = {
@@ -64214,9 +72467,10 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateWithoutProjectInput = {
@@ -64229,9 +72483,10 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
+    Price?: PriceUncheckedUpdateManyWithoutModelNestedInput
   }
 
   export type ModelUncheckedUpdateManyWithoutProjectInput = {
@@ -64244,7 +72499,7 @@ export namespace Prisma {
     inputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     outputPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     totalPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    unit?: StringFieldUpdateOperationsInput | string
+    unit?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerId?: NullableStringFieldUpdateOperationsInput | string | null
     tokenizerConfig?: NullableJsonNullValueInput | InputJsonValue
   }
@@ -64348,8 +72603,10 @@ export namespace Prisma {
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobConfiguration?: JobConfigurationUpdateOneRequiredWithoutJobExecutionNestedInput
-    trace?: TraceUpdateOneWithoutJobExecutionNestedInput
     score?: ScoreUpdateOneWithoutJobExecutionNestedInput
   }
 
@@ -64363,6 +72620,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -64376,6 +72635,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -64688,6 +72949,109 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TraceMediaUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    media?: MediaUpdateOneRequiredWithoutTraceMediaNestedInput
+  }
+
+  export type TraceMediaUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TraceMediaUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MediaUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    TraceMedia?: TraceMediaUpdateManyWithoutMediaNestedInput
+    ObservationMedia?: ObservationMediaUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+    TraceMedia?: TraceMediaUncheckedUpdateManyWithoutMediaNestedInput
+    ObservationMedia?: ObservationMediaUncheckedUpdateManyWithoutMediaNestedInput
+  }
+
+  export type MediaUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sha256Hash?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    uploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    uploadHttpStatus?: NullableIntFieldUpdateOperationsInput | number | null
+    uploadHttpError?: NullableStringFieldUpdateOperationsInput | string | null
+    bucketPath?: StringFieldUpdateOperationsInput | string
+    bucketName?: StringFieldUpdateOperationsInput | string
+    contentType?: StringFieldUpdateOperationsInput | string
+    contentLength?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ObservationMediaUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    media?: MediaUpdateOneRequiredWithoutObservationMediaNestedInput
+  }
+
+  export type ObservationMediaUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    mediaId?: StringFieldUpdateOperationsInput | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
   export type ProjectMembershipCreateManyOrganizationMembershipInput = {
     projectId: string
     userId: string
@@ -64755,7 +73119,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     project?: ProjectUpdateOneRequiredWithoutTracesNestedInput
-    JobExecution?: JobExecutionUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceUncheckedUpdateWithoutSessionInput = {
@@ -64774,7 +73137,6 @@ export namespace Prisma {
     output?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    JobExecution?: JobExecutionUncheckedUpdateManyWithoutTraceNestedInput
   }
 
   export type TraceUncheckedUpdateManyWithoutSessionInput = {
@@ -64795,58 +73157,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JobExecutionCreateManyTraceInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    projectId: string
-    jobConfigurationId: string
-    status: $Enums.JobExecutionStatus
-    startTime?: Date | string | null
-    endTime?: Date | string | null
-    error?: string | null
-    jobOutputScoreId?: string | null
-  }
-
-  export type JobExecutionUpdateWithoutTraceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumJobExecutionStatusFieldUpdateOperationsInput | $Enums.JobExecutionStatus
-    startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    error?: NullableStringFieldUpdateOperationsInput | string | null
-    project?: ProjectUpdateOneRequiredWithoutJobExecutionNestedInput
-    jobConfiguration?: JobConfigurationUpdateOneRequiredWithoutJobExecutionNestedInput
-    score?: ScoreUpdateOneWithoutJobExecutionNestedInput
-  }
-
-  export type JobExecutionUncheckedUpdateWithoutTraceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    projectId?: StringFieldUpdateOperationsInput | string
-    jobConfigurationId?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobExecutionStatusFieldUpdateOperationsInput | $Enums.JobExecutionStatus
-    startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    error?: NullableStringFieldUpdateOperationsInput | string | null
-    jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type JobExecutionUncheckedUpdateManyWithoutTraceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    projectId?: StringFieldUpdateOperationsInput | string
-    jobConfigurationId?: StringFieldUpdateOperationsInput | string
-    status?: EnumJobExecutionStatusFieldUpdateOperationsInput | $Enums.JobExecutionStatus
-    startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    error?: NullableStringFieldUpdateOperationsInput | string | null
-    jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type JobExecutionCreateManyScoreInput = {
     id?: string
     createdAt?: Date | string
@@ -64858,6 +73168,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
   }
 
   export type JobExecutionUpdateWithoutScoreInput = {
@@ -64868,9 +73180,11 @@ export namespace Prisma {
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     project?: ProjectUpdateOneRequiredWithoutJobExecutionNestedInput
     jobConfiguration?: JobConfigurationUpdateOneRequiredWithoutJobExecutionNestedInput
-    trace?: TraceUpdateOneWithoutJobExecutionNestedInput
   }
 
   export type JobExecutionUncheckedUpdateWithoutScoreInput = {
@@ -64884,6 +73198,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type JobExecutionUncheckedUpdateManyWithoutScoreInput = {
@@ -64897,6 +73213,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ScoreCreateManyScoreConfigInput = {
@@ -65189,6 +73507,38 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PriceCreateManyModelInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    usageType: string
+    price: Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUpdateWithoutModelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUncheckedUpdateWithoutModelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type PriceUncheckedUpdateManyWithoutModelInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    usageType?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
   export type JobConfigurationCreateManyEvalTemplateInput = {
     id?: string
     createdAt?: Date | string
@@ -65261,6 +73611,8 @@ export namespace Prisma {
     endTime?: Date | string | null
     error?: string | null
     jobInputTraceId?: string | null
+    jobInputObservationId?: string | null
+    jobInputDatasetItemId?: string | null
     jobOutputScoreId?: string | null
   }
 
@@ -65272,8 +73624,10 @@ export namespace Prisma {
     startTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     project?: ProjectUpdateOneRequiredWithoutJobExecutionNestedInput
-    trace?: TraceUpdateOneWithoutJobExecutionNestedInput
     score?: ScoreUpdateOneWithoutJobExecutionNestedInput
   }
 
@@ -65287,6 +73641,8 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -65300,7 +73656,85 @@ export namespace Prisma {
     endTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     error?: NullableStringFieldUpdateOperationsInput | string | null
     jobInputTraceId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputObservationId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobInputDatasetItemId?: NullableStringFieldUpdateOperationsInput | string | null
     jobOutputScoreId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TraceMediaCreateManyMediaInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    field: string
+  }
+
+  export type ObservationMediaCreateManyMediaInput = {
+    id?: string
+    projectId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    traceId: string
+    observationId: string
+    field: string
+  }
+
+  export type TraceMediaUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutTraceMediaNestedInput
+  }
+
+  export type TraceMediaUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TraceMediaUncheckedUpdateManyWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutObservationMediaNestedInput
+  }
+
+  export type ObservationMediaUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ObservationMediaUncheckedUpdateManyWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    traceId?: StringFieldUpdateOperationsInput | string
+    observationId?: StringFieldUpdateOperationsInput | string
+    field?: StringFieldUpdateOperationsInput | string
   }
 
 
@@ -65329,10 +73763,6 @@ export namespace Prisma {
      */
     export type TraceSessionCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TraceSessionCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use TraceCountOutputTypeDefaultArgs instead
-     */
-    export type TraceCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TraceCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use ScoreCountOutputTypeDefaultArgs instead
      */
     export type ScoreCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ScoreCountOutputTypeDefaultArgs<ExtArgs>
@@ -65357,6 +73787,10 @@ export namespace Prisma {
      */
     export type DatasetRunsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DatasetRunsCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use ModelCountOutputTypeDefaultArgs instead
+     */
+    export type ModelCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModelCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use EvalTemplateCountOutputTypeDefaultArgs instead
      */
     export type EvalTemplateCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EvalTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -65364,6 +73798,10 @@ export namespace Prisma {
      * @deprecated Use JobConfigurationCountOutputTypeDefaultArgs instead
      */
     export type JobConfigurationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobConfigurationCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MediaCountOutputTypeDefaultArgs instead
+     */
+    export type MediaCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MediaCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AccountDefaultArgs instead
      */
@@ -65392,6 +73830,10 @@ export namespace Prisma {
      * @deprecated Use ApiKeyDefaultArgs instead
      */
     export type ApiKeyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ApiKeyDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BackgroundMigrationDefaultArgs instead
+     */
+    export type BackgroundMigrationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BackgroundMigrationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use LlmApiKeysDefaultArgs instead
      */
@@ -65473,6 +73915,10 @@ export namespace Prisma {
      */
     export type ModelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModelDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use PriceDefaultArgs instead
+     */
+    export type PriceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PriceDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use AuditLogDefaultArgs instead
      */
     export type AuditLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AuditLogDefaultArgs<ExtArgs>
@@ -65500,6 +73946,18 @@ export namespace Prisma {
      * @deprecated Use BatchExportDefaultArgs instead
      */
     export type BatchExportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BatchExportDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MediaDefaultArgs instead
+     */
+    export type MediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MediaDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use TraceMediaDefaultArgs instead
+     */
+    export type TraceMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TraceMediaDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ObservationMediaDefaultArgs instead
+     */
+    export type ObservationMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ObservationMediaDefaultArgs<ExtArgs>
     /**
      * @deprecated Use TraceViewDefaultArgs instead
      */
