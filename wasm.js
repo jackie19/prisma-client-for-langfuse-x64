@@ -8,7 +8,7 @@ const {
   Public,
   getRuntime,
   skip
-} = require('./runtime/index-browser.js')
+} = require('@prisma/client/runtime/index-browser.js')
 
 
 const Prisma = {}
@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.22.0
- * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+ * Prisma Client JS version: 6.3.0
+ * Query Engine version: acc0b9dd43eb689cbd20c9470515d719db10d0b0
  */
 Prisma.prismaVersion = {
-  client: "5.22.0",
-  engine: "605197351a3c8bdd595af2d2a9bc3025bca48ea2"
+  client: "6.3.0",
+  engine: "acc0b9dd43eb689cbd20c9470515d719db10d0b0"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -48,11 +48,6 @@ In case this error is unexpected for you, please report it in https://pris.ly/pr
 Prisma.PrismaClientValidationError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.NotFoundError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`NotFoundError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
 )}
 Prisma.Decimal = Decimal
@@ -186,7 +181,8 @@ exports.Prisma.ProjectScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt',
-  name: 'name'
+  name: 'name',
+  retentionDays: 'retentionDays'
 };
 
 exports.Prisma.ApiKeyScalarFieldEnum = {
@@ -226,6 +222,8 @@ exports.Prisma.LlmApiKeysScalarFieldEnum = {
   baseURL: 'baseURL',
   customModels: 'customModels',
   withDefaultModels: 'withDefaultModels',
+  extraHeaders: 'extraHeaders',
+  extraHeaderKeys: 'extraHeaderKeys',
   config: 'config',
   projectId: 'projectId'
 };
@@ -446,6 +444,19 @@ exports.Prisma.EventsScalarFieldEnum = {
   method: 'method'
 };
 
+exports.Prisma.EventLogScalarFieldEnum = {
+  id: 'id',
+  bucketName: 'bucketName',
+  bucketPath: 'bucketPath',
+  projectId: 'projectId',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  eventId: 'eventId',
+  traceId: 'traceId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   projectId: 'projectId',
@@ -470,7 +481,8 @@ exports.Prisma.PromptScalarFieldEnum = {
   isActive: 'isActive',
   config: 'config',
   tags: 'tags',
-  labels: 'labels'
+  labels: 'labels',
+  commitMessage: 'commitMessage'
 };
 
 exports.Prisma.ModelScalarFieldEnum = {
@@ -628,6 +640,26 @@ exports.Prisma.ObservationMediaScalarFieldEnum = {
   traceId: 'traceId',
   observationId: 'observationId',
   field: 'field'
+};
+
+exports.Prisma.QueueBackUpScalarFieldEnum = {
+  id: 'id',
+  projectId: 'projectId',
+  queueName: 'queueName',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BillingMeterBackupScalarFieldEnum = {
+  stripeCustomerId: 'stripeCustomerId',
+  meterId: 'meterId',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  aggregatedValue: 'aggregatedValue',
+  eventName: 'eventName',
+  orgId: 'orgId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TraceViewScalarFieldEnum = {
@@ -815,6 +847,7 @@ exports.Prisma.ModelName = {
   DatasetRuns: 'DatasetRuns',
   DatasetRunItems: 'DatasetRunItems',
   Events: 'Events',
+  EventLog: 'EventLog',
   Comment: 'Comment',
   Prompt: 'Prompt',
   Model: 'Model',
@@ -829,6 +862,8 @@ exports.Prisma.ModelName = {
   Media: 'Media',
   TraceMedia: 'TraceMedia',
   ObservationMedia: 'ObservationMedia',
+  QueueBackUp: 'QueueBackUp',
+  BillingMeterBackup: 'BillingMeterBackup',
   TraceView: 'TraceView',
   ObservationView: 'ObservationView'
 };
